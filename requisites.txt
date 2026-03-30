@@ -1,0 +1,22 @@
+# ─── System (pacman) ──────────────────────────────
+# sudo pacman -S <package>
+ripgrep
+tree-sitter-cli
+gcc
+
+# ─── Node.js (via nvm.fish) ───────────────────────
+# 1. Install fisher:
+#    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+# 2. Install nvm.fish:
+#    fisher install jorgebucaran/nvm.fish
+# 3. Install Node LTS:
+#    nvm install lts
+
+# ─── Fish PATH (add to config.fish or run once) ───
+# fish_add_path ~/.local/share/nvim/mason/bin
+# fish_add_path ~/.local/share/nvm/YOURVERSION/bin
+
+# ─── LSP Servers (auto-installed by Mason) ────────
+# lua_ls       → Lua
+# ts_ls        → TypeScript/JavaScript
+# pyright      → Python
