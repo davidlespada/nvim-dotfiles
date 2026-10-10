@@ -1,0 +1,55 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_CreateEnvironment:
+.\"   https://wiki.libsdl.org/SDL_CreateEnvironment
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_CreateEnvironment
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_CreateEnvironment 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_CreateEnvironment \- Create a set of environment variables.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "SDL_Environment * SDL_CreateEnvironment(bool populated);
+.fi
+.SH DESCRIPTION
+Note that on Windows, the variable names pulled in from the system, if
+.BR populated
+is true, have their ASCII values uppercased, to match what most platforms expect even though the Windows system environment table is case-insensitive\[char46] Once those uppercased variable names are in an
+.BR SDL_Environment ,
+SDL treats them as case-sensitive\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I populated
+true to initialize it from the C runtime environment, false to create an empty environment\[char46]
+.SH RETURN VALUE
+Returns a pointer to the new environment or NULL on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH THREAD SAFETY
+If
+.BR populated
+is false, it is safe to call this function from any thread, otherwise it is safe if no other threads are calling setenv() or unsetenv()
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_GetEnvironmentVariable (3),
+.BR SDL_GetEnvironmentVariables (3),
+.BR SDL_SetEnvironmentVariable (3),
+.BR SDL_UnsetEnvironmentVariable (3),
+.BR SDL_DestroyEnvironment (3)

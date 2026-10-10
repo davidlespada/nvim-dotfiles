@@ -1,0 +1,44 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GetTrayEntries:
+.\"   https://wiki.libsdl.org/SDL_GetTrayEntries
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GetTrayEntries
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GetTrayEntries 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_GetTrayEntries \- Returns a list of entries in the menu, in order.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_tray.h>
+.PP
+.BI "const SDL_TrayEntry ** SDL_GetTrayEntries(SDL_TrayMenu *menu, int *count);
+.fi
+.SH FUNCTION PARAMETERS
+.TP
+.I menu
+The menu to get entries from\[char46]
+.TP
+.I count
+An optional pointer to obtain the number of entries in the menu\[char46]
+.SH RETURN VALUE
+Returns a NULL-terminated list of entries within the given menu\[char46] The pointer becomes invalid when any function that inserts or deletes entries in the menu is called\[char46]
+
+.SH THREAD SAFETY
+This function should be called on the thread that created the tray\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_RemoveTrayEntry (3),
+.BR SDL_InsertTrayEntryAt (3)

@@ -1,0 +1,49 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_crc16:
+.\"   https://wiki.libsdl.org/SDL_crc16
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_crc16
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_crc16 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_crc16 \- Calculate a CRC-16 value.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "Uint16 SDL_crc16(Uint16 crc, const void *data, size_t len);
+.fi
+.SH DESCRIPTION
+https://en\[char46]wikipedia\[char46]org/wiki/Cyclic_redundancy_check
+.PP
+This function can be called multiple times, to stream data to be checksummed in blocks\[char46] Each call must provide the previous CRC-16 return value to be updated with the next block\[char46] The first call to this function for a set of blocks should pass in a zero CRC value\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I crc
+the current checksum for this data set, or 0 for a new data set\[char46]
+.TP
+.I data
+a new block of data to add to the checksum\[char46]
+.TP
+.I len
+the size, in bytes, of the new block of data\[char46]
+.SH RETURN VALUE
+Returns a CRC-16 checksum value of all blocks in the data set\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+

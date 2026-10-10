@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README-dos</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">:root {
+color-scheme: dark light; 
+}
+body {
+background-color: white;
+padding: 2vw;
+color: #333;
+max-width: 1200px;
+margin: 0 auto;
+font-size: 16px;
+line-height: 1.5;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+overflow-wrap: break-word;
+}
+a {
+color: #0969da;
+
+}
+a:visited {
+color: #064998;
+}
+h1 {
+border-bottom: 2px solid #efefef;
+}
+h2 {
+border-bottom: 1px solid #efefef;
+}
+p {
+max-width: 85ch;
+}
+li {
+max-width: 85ch;
+}
+div.sourceCode {
+background-color: #f6f8fa;
+max-width: 100%;
+padding: 16px;
+}
+code {
+background-color: #f6f8fa;
+padding: 0px;
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+"Liberation Mono", monospace;
+}
+table {
+border: 1px solid #808080;
+border-collapse: collapse;
+}
+td {
+border: 1px solid #808080;
+padding: 5px;
+}
+tr:nth-child(even) {
+background-color: #f6f8fa;
+}
+.wikitopbanner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #efefef;
+padding: 10px;
+margin-bottom: 10px;
+width: auto;
+}
+.wikibottombanner {
+background-color: #efefef;
+padding: 10px;
+margin-top: 10px;
+width: auto;
+}
+.alertBox {
+background-color: #f8d7da;
+border: 1px solid #f5c6cb;
+max-width: 60%;
+padding: 10;
+margin: auto;
+}
+.anchorImage {
+visibility: hidden;
+padding-left: 0.2em;
+color: #fff;
+}
+.anchorText:hover .anchorImage {
+visibility: visible;
+}
+hr {
+display: block;
+height: 1px;
+border: 0;
+border-top: 1px solid #efefef;
+margin: 1em 0;
+padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+body {
+color: #e6edf3;
+background-color: #0d1117;
+}
+h1 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+h2 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+hr {
+border-color: rgba(48, 54, 61, 0.7);
+}
+div.sourceCode {
+background-color: #161b22;
+}
+code {
+background-color: #161b22;
+}
+a {
+color: #4493f8;
+}
+a:visited {
+color: #2f66ad;
+}
+table {
+border-color: rgba(48, 54, 61, 0.7);
+}
+td {
+border-color: rgba(48, 54, 61, 0.7);
+}
+tr:nth-child(even) {
+background-color: #161b22;
+}
+.wikitopbanner {
+background-color: #263040;
+}
+.wikibottombanner {
+background-color: #263040;
+}
+.anchorText:hover .anchorImage {
+filter: invert(100%);
+}
+}
+@media print {
+body {
+font-size: 12px;
+}
+table {
+font-size: inherit;
+}
+a:visited {
+color: #0969da;
+}
+.wikitopbanner,
+.anchorText,
+.wikibottombanner {
+display: none;
+}
+}
+</style>
+  <style type="text/css"> code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+{ content: attr(title);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; pointer-events: all; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+@media (prefers-color-scheme: dark) {
+code span.al { color: #95da4c; font-weight: bold; } 
+code span.an { color: #3f8058; } 
+code span.at { color: #2980b9; } 
+code span.bn { color: #f67400; } 
+code span.bu { color: #7f8c8d; } 
+code span.ch { color: #3daee9; } 
+code span.co { color: #7a7c7d; } 
+code span.cv { color: #7f8c8d; } 
+code span.cn { color: #27aeae; font-weight: bold; } 
+code span.cf { color: #fdbc4b; font-weight: bold; } 
+code span.dt { color: #2980b9; } 
+code span.dv { color: #f67400; } 
+code span.do { color: #a43340; } 
+code span.er { color: #da4453; } 
+code span.ex { color: #0099ff; font-weight: bold; } 
+code span.fl { color: #f67400; } 
+code span.fu { color: #8e44ad; } 
+code span.im { color: #27ae60; } 
+code span.in { color: #c45b00; } 
+code span.kw { color: #cfcfc2; font-weight: bold; } 
+code span.op { color: #cfcfc2; } 
+code span.ot { color: #27ae60; } 
+code span.pp { color: #27ae60; } 
+code span.sc { color: #3daee9; } 
+code span.ss { color: #da4453; } 
+code span.st { color: #f44f4f; } 
+code span.va { color: #27aeae; } 
+code span.vs { color: #da4453; } 
+code span.wa { color: #da4453; } 
+}</style>
+</head>
+<body>
+<h1 id="dos">DOS</h1>
+<p>SDL port for MS-DOS using the <a href="https://www.delorie.com/djgpp/">DJGPP</a> GCC cross-compiler.</p>
+<h2 id="building">Building</h2>
+<p>To build for DOS, make sure you have a DJGPP cross-compiler in your
+PATH and run:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">-S.</span> <span class="at">-Bbuild</span> <span class="at">-DCMAKE_TOOLCHAIN_FILE</span><span class="op">=</span>build-scripts/i586-pc-msdosdjgpp.cmake <span class="at">-DCMAKE_BUILD_TYPE</span><span class="op">=</span>Release</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">--build</span> build</span></code></pre></div>
+<p>The toolchain file looks for <code>i586-pc-msdosdjgpp-gcc</code> or
+<code>i386-pc-msdosdjgpp-gcc</code> in PATH.</p>
+<h2 id="running">Running</h2>
+<p>DOS executables require a DPMI host. Place <code>CWSDPMI.EXE</code>
+next to your executable.</p>
+<p>To run in DOSBox:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dosbox</span> myapp.exe</span></code></pre></div>
+<h2 id="system-requirements">System Requirements</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Minimum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CPU</td>
+<td>i386 or higher</td>
+</tr>
+<tr class="even">
+<td>RAM</td>
+<td>4 MB</td>
+</tr>
+<tr class="odd">
+<td>Video</td>
+<td>VGA (256-color mode 13h)</td>
+</tr>
+<tr class="even">
+<td>Audio</td>
+<td>Sound Blaster</td>
+</tr>
+<tr class="odd">
+<td>DPMI</td>
+<td>CWSDPMI.exe or compatible host</td>
+</tr>
+</tbody>
+</table>
+<p>Higher resolutions (640×480 and above) require a VESA VBE 1.2+
+compatible video card.</p>
+<h2 id="notes">Notes</h2>
+<h3 id="memory-model">Memory Model</h3>
+<p>The DOS port produces 32-bit protected-mode DPMI executables. It uses
+the &quot;fat DS&quot; nearptr trick (<code>__djgpp_nearptr_enable()</code>) to
+convert physical addresses to usable C pointers. This allows direct
+access to the VESA linear framebuffer and DMA buffers from C code
+without segment descriptor manipulation.</p>
+<p>SDL on DOS requires the fat DS trick. <code>SDL_RunApp()</code>
+enables it automatically via <code>SDL_main.h</code>. If you define
+<code>SDL_MAIN_HANDLED</code>, you must call
+<code>__djgpp_nearptr_enable()</code> yourself before initializing SDL,
+or video initialization will fail with a clear error message.</p>
+<h3 id="threading">Threading</h3>
+<p>DOS has no OS-level threads. SDL on DOS implements cooperative
+threading via a mini-scheduler that uses
+<code>setjmp</code>/<code>longjmp</code> for context switching. Threads
+are never preempted mid-instruction. Context switches occur only at
+explicit yield points such as <code>SDL_Delay</code> and the event pump,
+so make sure your main loop calls <code>SDL_PumpEvents</code> or
+<code>SDL_Delay</code> regularly. <code>SDL_Delay(0)</code> yields to
+other threads without sleeping and is safe to call in tight loops. In
+some cases, like a load screen, a longer delay (e.g.
+<code>SDL_Delay(16)</code>) may be needed to give background threads
+enough CPU time.</p>
+<h3 id="video">Video</h3>
+<p>The video driver supports VGA mode 13h (320×200×256) on any VGA card,
+and higher resolutions via VESA BIOS Extensions (VBE 1.2+). Both linear
+framebuffer (VBE 2.0+) and banked framebuffer modes are supported.
+Hardware page-flipping is used for tear-free rendering when
+available.</p>
+<p>Only software rendering is supported. There is no GPU renderer.</p>
+<p>All video modes are effectively fullscreen. When creating a window,
+the driver selects the closest available video mode to the requested
+size.</p>
+<p>8-bit indexed color (INDEX8) modes with programmable VGA DAC palettes
+are supported but will only be used when explicitly requested via the
+<code>SDL_PIXELFORMAT</code> window creation property.</p>
+<p>EGA and CGA cards are not supported. The driver detects VGA hardware
+at initialization and will fail with a clear error message if VGA is not
+present.</p>
+<h4 id="direct-framebuffer-hint">Direct Framebuffer Hint</h4>
+<p>Setting <code>SDL_HINT_DOS_ALLOW_DIRECT_FRAMEBUFFER</code> to
+<code>&quot;1&quot;</code> before calling <code>SDL_GetWindowSurface()</code>
+enables a fast path that skips the normal surface copy.
+<code>SDL_UpdateWindowSurface()</code> copies the system-RAM surface
+directly to VRAM via <code>dosmemput</code> and only programs the VGA
+DAC palette when it changes. Page flipping is done without waiting for
+vblank. No software cursor compositing is performed.</p>
+<p>This mode is designed for applications like Quake that manage their
+own rendering and want maximum frame throughput. The trade-offs are:</p>
+<ul>
+<li>No vsync. Tearing is expected.</li>
+<li>No software cursor. The application must draw its own cursor if
+needed.</li>
+<li>Reading back the surface may be slow on real hardware (uncached
+VRAM).</li>
+</ul>
+<p>The hint must be set before the first call to
+<code>SDL_GetWindowSurface()</code>. Changing it after that has no
+effect.</p>
+<h3 id="audio">Audio</h3>
+<p>Sound Blaster support is available for SB16 (16-bit stereo), SB Pro
+(8-bit stereo), and SB 2.0/1.x (8-bit mono). Configured automatically
+from the <code>BLASTER</code> environment variable.</p>
+<p>A ring buffer sits between the SDL audio pipeline and the DMA
+hardware. The audio thread fills the ring buffer cooperatively, and the
+Sound Blaster IRQ handler copies data from the ring buffer to the DMA
+buffer directly. This gives roughly 45 ms of cushion before audio would
+stutter. If your game runs at 22 fps or above, audio will be glitch-free
+with no extra effort. Below 20 fps, adding a <code>SDL_Delay(0)</code>
+in the middle of your game loop should be enough to keep the ring buffer
+fed.</p>
+<p>Audio recording is not implemented.</p>
+<h3 id="input">Input</h3>
+<ul>
+<li>Keyboard: IRQ1-driven with full extended scancode (0xE0 prefix)
+support.</li>
+<li>Mouse: INT 33h mouse driver with relative motion via mickeys.</li>
+<li>Joystick: gameport joystick via direct port 0x201 reads with
+software calibration. The joystick must be connected at init; there is
+no hot-plug detection. Note that disconnecting the joystick can degrade
+performance.</li>
+</ul>
+<h3 id="limitations">Limitations</h3>
+<ul>
+<li>No shared library / dynamic loading support (no
+<code>SDL_LoadObject</code>). DXE support may be added in the
+future.</li>
+</ul>
+</body>
+</html>

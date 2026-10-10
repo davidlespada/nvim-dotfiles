@@ -1,0 +1,55 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GetTraySubmenu:
+.\"   https://wiki.libsdl.org/SDL_GetTraySubmenu
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GetTraySubmenu
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GetTraySubmenu 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_GetTraySubmenu \- Gets a previously created tray entry submenu.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_tray.h>
+.PP
+.BI "SDL_TrayMenu * SDL_GetTraySubmenu(SDL_TrayEntry *entry);
+.fi
+.SH DESCRIPTION
+You should have called
+.BR SDL_CreateTraySubmenu ()
+on the entry object\[char46] This function allows you to fetch it again later\[char46]
+.PP
+This function does the same thing as
+.BR SDL_GetTrayMenu (),
+except that it takes a
+.BR SDL_TrayEntry
+instead of a
+.BR SDL_Tray \[char46]
+.PP
+A menu does not need to be destroyed; it will be destroyed with the tray\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I entry
+the tray entry to bind the menu to\[char46]
+.SH RETURN VALUE
+Returns the newly created menu\[char46]
+
+.SH THREAD SAFETY
+This function should be called on the thread that created the tray\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_InsertTrayEntryAt (3),
+.BR SDL_CreateTraySubmenu (3)

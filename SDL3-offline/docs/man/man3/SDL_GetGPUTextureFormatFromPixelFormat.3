@@ -1,0 +1,37 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GetGPUTextureFormatFromPixelFormat:
+.\"   https://wiki.libsdl.org/SDL_GetGPUTextureFormatFromPixelFormat
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GetGPUTextureFormatFromPixelFormat
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GetGPUTextureFormatFromPixelFormat 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_GetGPUTextureFormatFromPixelFormat \- Get the GPU texture format corresponding to an SDL pixel format.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_gpu.h>
+.PP
+.BI "SDL_GPUTextureFormat SDL_GetGPUTextureFormatFromPixelFormat(SDL_PixelFormat format);
+.fi
+.SH FUNCTION PARAMETERS
+.TP
+.I format
+a pixel format\[char46]
+.SH RETURN VALUE
+Returns the corresponding GPU texture format, or
+.BR SDL_GPU_TEXTUREFORMAT_INVALID
+if there is no corresponding GPU texture format\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]4\[char46]0\[char46]
+

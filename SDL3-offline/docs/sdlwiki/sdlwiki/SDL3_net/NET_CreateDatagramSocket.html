@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>NET_CreateDatagramSocket</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">:root {
+color-scheme: dark light; 
+}
+body {
+background-color: white;
+padding: 2vw;
+color: #333;
+max-width: 1200px;
+margin: 0 auto;
+font-size: 16px;
+line-height: 1.5;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+overflow-wrap: break-word;
+}
+a {
+color: #0969da;
+
+}
+a:visited {
+color: #064998;
+}
+h1 {
+border-bottom: 2px solid #efefef;
+}
+h2 {
+border-bottom: 1px solid #efefef;
+}
+p {
+max-width: 85ch;
+}
+li {
+max-width: 85ch;
+}
+div.sourceCode {
+background-color: #f6f8fa;
+max-width: 100%;
+padding: 16px;
+}
+code {
+background-color: #f6f8fa;
+padding: 0px;
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+"Liberation Mono", monospace;
+}
+table {
+border: 1px solid #808080;
+border-collapse: collapse;
+}
+td {
+border: 1px solid #808080;
+padding: 5px;
+}
+tr:nth-child(even) {
+background-color: #f6f8fa;
+}
+.wikitopbanner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #efefef;
+padding: 10px;
+margin-bottom: 10px;
+width: auto;
+}
+.wikibottombanner {
+background-color: #efefef;
+padding: 10px;
+margin-top: 10px;
+width: auto;
+}
+.alertBox {
+background-color: #f8d7da;
+border: 1px solid #f5c6cb;
+max-width: 60%;
+padding: 10;
+margin: auto;
+}
+.anchorImage {
+visibility: hidden;
+padding-left: 0.2em;
+color: #fff;
+}
+.anchorText:hover .anchorImage {
+visibility: visible;
+}
+hr {
+display: block;
+height: 1px;
+border: 0;
+border-top: 1px solid #efefef;
+margin: 1em 0;
+padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+body {
+color: #e6edf3;
+background-color: #0d1117;
+}
+h1 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+h2 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+hr {
+border-color: rgba(48, 54, 61, 0.7);
+}
+div.sourceCode {
+background-color: #161b22;
+}
+code {
+background-color: #161b22;
+}
+a {
+color: #4493f8;
+}
+a:visited {
+color: #2f66ad;
+}
+table {
+border-color: rgba(48, 54, 61, 0.7);
+}
+td {
+border-color: rgba(48, 54, 61, 0.7);
+}
+tr:nth-child(even) {
+background-color: #161b22;
+}
+.wikitopbanner {
+background-color: #263040;
+}
+.wikibottombanner {
+background-color: #263040;
+}
+.anchorText:hover .anchorImage {
+filter: invert(100%);
+}
+}
+@media print {
+body {
+font-size: 12px;
+}
+table {
+font-size: inherit;
+}
+a:visited {
+color: #0969da;
+}
+.wikitopbanner,
+.anchorText,
+.wikibottombanner {
+display: none;
+}
+}
+</style>
+  <style type="text/css"> code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+{ content: attr(title);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; pointer-events: all; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+@media (prefers-color-scheme: dark) {
+code span.al { color: #95da4c; font-weight: bold; } 
+code span.an { color: #3f8058; } 
+code span.at { color: #2980b9; } 
+code span.bn { color: #f67400; } 
+code span.bu { color: #7f8c8d; } 
+code span.ch { color: #3daee9; } 
+code span.co { color: #7a7c7d; } 
+code span.cv { color: #7f8c8d; } 
+code span.cn { color: #27aeae; font-weight: bold; } 
+code span.cf { color: #fdbc4b; font-weight: bold; } 
+code span.dt { color: #2980b9; } 
+code span.dv { color: #f67400; } 
+code span.do { color: #a43340; } 
+code span.er { color: #da4453; } 
+code span.ex { color: #0099ff; font-weight: bold; } 
+code span.fl { color: #f67400; } 
+code span.fu { color: #8e44ad; } 
+code span.im { color: #27ae60; } 
+code span.in { color: #c45b00; } 
+code span.kw { color: #cfcfc2; font-weight: bold; } 
+code span.op { color: #cfcfc2; } 
+code span.ot { color: #27ae60; } 
+code span.pp { color: #27ae60; } 
+code span.sc { color: #3daee9; } 
+code span.ss { color: #da4453; } 
+code span.st { color: #f44f4f; } 
+code span.va { color: #27aeae; } 
+code span.vs { color: #da4453; } 
+code span.wa { color: #da4453; } 
+}</style>
+</head>
+<body>
+<h6 id="this-function-is-part-of-sdl_net-a-separate-library-from-sdl">(This
+function is part of SDL_net, a separate library from SDL.)</h6>
+<h1 id="net_createdatagramsocket">NET_CreateDatagramSocket</h1>
+<p>Create and bind a new datagram socket.</p>
+<h2 id="header-file">Header File</h2>
+<p>Defined in <a href="https://github.com/libsdl-org/SDL_net/blob/main/include/SDL3_net/SDL_net.h">&lt;SDL3_net/SDL_net.h&gt;</a></p>
+<h2 id="syntax">Syntax</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>NET_DatagramSocket <span class="op">*</span> NET_CreateDatagramSocket<span class="op">(</span>NET_Address <span class="op">*</span>addr<span class="op">,</span> Uint16 port<span class="op">,</span> SDL_PropertiesID props<span class="op">);</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#define NET_PROP_DATAGRAM_SOCKET_REUSEADDR_BOOLEAN         </span><span class="st">&quot;NET.datagram_socket.reuseaddr&quot;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#define NET_PROP_DATAGRAM_SOCKET_ALLOW_BROADCAST_BOOLEAN   </span><span class="st">&quot;NET.datagram_socket.allow_broadcast&quot;</span></span></code></pre></div>
+<h2 id="function-parameters">Function Parameters</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td><a href="NET_Address.html">NET_Address</a> *</td>
+<td><strong>addr</strong></td>
+<td>the local address to listen for connections on, or NULL to listen on
+all available local addresses.</td>
+</tr>
+<tr class="even">
+<td>Uint16</td>
+<td><strong>port</strong></td>
+<td>the port on the local address to listen for connections on, or zero
+for the system to decide.</td>
+</tr>
+<tr class="odd">
+<td>SDL_PropertiesID</td>
+<td><strong>props</strong></td>
+<td>properties of the new socket. Specify zero for defaults.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="return-value">Return Value</h2>
+<p>(<a href="NET_DatagramSocket.html">NET_DatagramSocket</a> *) Returns
+a new <a href="NET_DatagramSocket.html">NET_DatagramSocket</a>, or NULL
+on error; call SDL_GetError() for details.</p>
+<h2 id="remarks">Remarks</h2>
+<p>Datagram sockets follow different rules than stream sockets. They are
+not a reliable stream of bytes but rather packets, they are not limited
+to talking to a single other remote system, they do not maintain a
+single &quot;connection&quot; that can be dropped, and they are more nimble about
+network failures at the expense of being more complex to use. What makes
+sense for your app depends entirely on what your app is trying to
+accomplish.</p>
+<p>Generally the idea of a datagram socket is that you send data one
+chunk (&quot;packet&quot;) at a time to any address you want, and it arrives
+whenever it gets there, even if later packets get there first, and maybe
+it doesn&#39;t get there at all, and you don&#39;t know when anything of this
+happens by default.</p>
+<p>This function creates a new datagram socket.</p>
+<p>This function does not block, and is not asynchronous, as the system
+can decide immediately if it can create a socket or not. If this returns
+success, you can immediately start talking to the network.</p>
+<p>You can specify an address to listen for connections on; this address
+must be local to the system, and probably one returned by <a href="NET_GetLocalAddresses.html">NET_GetLocalAddresses</a>(), but
+almost always you just want to specify NULL here, to listen on any
+address available to the app.</p>
+<p>If you need to bind to a specific port (like a server), you should
+specify it in the <code>port</code> argument; datagram servers should do
+this, so they can be reached at a well-known port. If you only plan to
+initiate communications (like a client), you should specify 0 and let
+the system pick an unused port. Only one process can bind to a specific
+port at a time, so if you aren&#39;t acting as a server, you should choose
+0. Datagram sockets can send individual packets to any port, so this
+just declares where data will arrive for your socket.</p>
+<p>Datagram sockets don&#39;t employ any protocol (above the UDP level), so
+they can talk to apps that aren&#39;t using SDL_net, but if you want to
+speak any protocol beyond arbitrary packets of bytes, such as WebRTC,
+you&#39;ll have to implement that yourself on top of the stream socket.</p>
+<p>Unlike BSD sockets or WinSock, you specify the port as a normal
+integer; you do not have to byteswap it into &quot;network order,&quot; as the
+library will handle that for you.</p>
+<p>The caller may supply properties to customize behavior. This is
+optional, and a value of zero for <code>props</code> will request
+defaults for all properties.</p>
+<p>These are the supported properties:</p>
+<ul>
+<li><a href="NET_PROP_DATAGRAM_SOCKET_REUSEADDR_BOOLEAN.html"><code>NET_PROP_DATAGRAM_SOCKET_REUSEADDR_BOOLEAN</code></a>:
+true if the socket should be created even if a previous socket has
+recently used this address. For various reasons, networks prefer that
+there be some delay between apps reusing the same address, but this can
+be problematic when iterating quickly, for software development purposes
+or just restarting a crashed service. This property defaults to true
+(although it should be noted that, at the operating system level, this
+defaults to false!). If this property is false and the OS feels that not
+enough time has elapsed, socket creation will fail and this function
+will report an error.</li>
+<li><a href="NET_PROP_DATAGRAM_SOCKET_ALLOW_BROADCAST_BOOLEAN.html"><code>NET_PROP_DATAGRAM_SOCKET_ALLOW_BROADCAST_BOOLEAN</code></a>:
+true if the socket should allow broadcasting. At the lower level, this
+will set <code>SO_BROADCAST</code> for IPv4 sockets, to allow sending to
+the subnet&#39;s broadcast address at the OS level. For IPv6, it&#39;ll join the
+all-nodes link-local multicast group, ff02::1, allowing sending and
+receiving there, more or less simulating the usual IPv4 broadcast
+semantics. Other protocols take similar approaches. If you do not intend
+to send or receive broadcast packets on this socket, set this property
+to false, or omit it, as it defaults to false. Note: IPv4 will still be
+able to receive broadcast packets without this option, but IPv6 will
+not. Also see notes about sending to a broadcast address in <a href="NET_SendDatagram.html">NET_SendDatagram</a>().</li>
+</ul>
+<h2 id="thread-safety">Thread Safety</h2>
+<p>It is safe to call this function from any thread.</p>
+<h2 id="version">Version</h2>
+<p>This function is available since SDL_net 3.0.0.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="NET_GetLocalAddresses.html">NET_GetLocalAddresses</a></li>
+<li><a href="NET_DestroyDatagramSocket.html">NET_DestroyDatagramSocket</a></li>
+</ul>
+<hr />
+<p><a href="CategoryAPI.html">CategoryAPI</a>, <a href="CategoryAPIFunction.html">CategoryAPIFunction</a>, <a href="CategorySDLNet.html">CategorySDLNet</a></p>
+</body>
+</html>

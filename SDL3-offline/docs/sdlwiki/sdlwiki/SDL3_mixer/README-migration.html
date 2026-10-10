@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README-migration</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">:root {
+color-scheme: dark light; 
+}
+body {
+background-color: white;
+padding: 2vw;
+color: #333;
+max-width: 1200px;
+margin: 0 auto;
+font-size: 16px;
+line-height: 1.5;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+overflow-wrap: break-word;
+}
+a {
+color: #0969da;
+
+}
+a:visited {
+color: #064998;
+}
+h1 {
+border-bottom: 2px solid #efefef;
+}
+h2 {
+border-bottom: 1px solid #efefef;
+}
+p {
+max-width: 85ch;
+}
+li {
+max-width: 85ch;
+}
+div.sourceCode {
+background-color: #f6f8fa;
+max-width: 100%;
+padding: 16px;
+}
+code {
+background-color: #f6f8fa;
+padding: 0px;
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+"Liberation Mono", monospace;
+}
+table {
+border: 1px solid #808080;
+border-collapse: collapse;
+}
+td {
+border: 1px solid #808080;
+padding: 5px;
+}
+tr:nth-child(even) {
+background-color: #f6f8fa;
+}
+.wikitopbanner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #efefef;
+padding: 10px;
+margin-bottom: 10px;
+width: auto;
+}
+.wikibottombanner {
+background-color: #efefef;
+padding: 10px;
+margin-top: 10px;
+width: auto;
+}
+.alertBox {
+background-color: #f8d7da;
+border: 1px solid #f5c6cb;
+max-width: 60%;
+padding: 10;
+margin: auto;
+}
+.anchorImage {
+visibility: hidden;
+padding-left: 0.2em;
+color: #fff;
+}
+.anchorText:hover .anchorImage {
+visibility: visible;
+}
+hr {
+display: block;
+height: 1px;
+border: 0;
+border-top: 1px solid #efefef;
+margin: 1em 0;
+padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+body {
+color: #e6edf3;
+background-color: #0d1117;
+}
+h1 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+h2 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+hr {
+border-color: rgba(48, 54, 61, 0.7);
+}
+div.sourceCode {
+background-color: #161b22;
+}
+code {
+background-color: #161b22;
+}
+a {
+color: #4493f8;
+}
+a:visited {
+color: #2f66ad;
+}
+table {
+border-color: rgba(48, 54, 61, 0.7);
+}
+td {
+border-color: rgba(48, 54, 61, 0.7);
+}
+tr:nth-child(even) {
+background-color: #161b22;
+}
+.wikitopbanner {
+background-color: #263040;
+}
+.wikibottombanner {
+background-color: #263040;
+}
+.anchorText:hover .anchorImage {
+filter: invert(100%);
+}
+}
+@media print {
+body {
+font-size: 12px;
+}
+table {
+font-size: inherit;
+}
+a:visited {
+color: #0969da;
+}
+.wikitopbanner,
+.anchorText,
+.wikibottombanner {
+display: none;
+}
+}
+</style>
+  <style type="text/css"> code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+{ content: attr(title);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; pointer-events: all; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+@media (prefers-color-scheme: dark) {
+code span.al { color: #95da4c; font-weight: bold; } 
+code span.an { color: #3f8058; } 
+code span.at { color: #2980b9; } 
+code span.bn { color: #f67400; } 
+code span.bu { color: #7f8c8d; } 
+code span.ch { color: #3daee9; } 
+code span.co { color: #7a7c7d; } 
+code span.cv { color: #7f8c8d; } 
+code span.cn { color: #27aeae; font-weight: bold; } 
+code span.cf { color: #fdbc4b; font-weight: bold; } 
+code span.dt { color: #2980b9; } 
+code span.dv { color: #f67400; } 
+code span.do { color: #a43340; } 
+code span.er { color: #da4453; } 
+code span.ex { color: #0099ff; font-weight: bold; } 
+code span.fl { color: #f67400; } 
+code span.fu { color: #8e44ad; } 
+code span.im { color: #27ae60; } 
+code span.in { color: #c45b00; } 
+code span.kw { color: #cfcfc2; font-weight: bold; } 
+code span.op { color: #cfcfc2; } 
+code span.ot { color: #27ae60; } 
+code span.pp { color: #27ae60; } 
+code span.sc { color: #3daee9; } 
+code span.ss { color: #da4453; } 
+code span.st { color: #f44f4f; } 
+code span.va { color: #27aeae; } 
+code span.vs { color: #da4453; } 
+code span.wa { color: #da4453; } 
+}</style>
+</head>
+<body>
+<h1 id="migrating-to-sdl_mixer-30">Migrating to SDL_mixer 3.0</h1>
+<h2 id="intro">Intro</h2>
+<p>SDL_mixer 3.0 (aka &quot;SDL3_mixer&quot;) is a dramatically different library
+than previous versions. The API has been completely redesigned. There is
+no compatibility layer. If you want to use it, you have to migrate to
+it.</p>
+<p>SDL3_mixer requires SDL3. It relies on many features that are new to
+SDL3, both internally and in the public API, so if your project is on
+SDL 1.2 or SDL2, you&#39;ll have to move your project to SDL3 at the same
+time.</p>
+<p>That being said, we think SDL3_mixer and SDL3 are both great pieces
+of software--significant improvements over their previous versions--and
+we think that once you move to them, you&#39;ll be quite happy you did.</p>
+<p>There are a lot of things that don&#39;t have simple replacements that
+can be changed mechanically to migrate to SDL3_mixer. The new API is in
+many ways more powerful, but also much simpler. For example, there&#39;s no
+equivalent of Mix_GetNumTracks(), because messing with the specifics of
+MOD files in the public API is both uncommon and generally pretty
+messy.</p>
+<p>This migration guide will attempt to walk through the important
+details but it&#39;s possible that some things can&#39;t be done the same way.
+Feel free to open bug reports if you&#39;re totally stuck.</p>
+<p>The end of this document provides a &quot;tl;dr&quot; section that lists each
+SDL2_mixer function name and a brief explanation about what to do with
+it.</p>
+<h2 id="things-that-are-totally-gone">Things that are totally gone</h2>
+<ul>
+<li><p>Native MIDI has been removed (we can still play midi files like
+other file formats, just not to native midi hardware). We have ripped
+this piece out of SDL2_mixer and packaged it as a separate library that
+can be used alongside SDL3_mixer, or without SDL_mixer at all: <a href="https://github.com/libsdl-org/SDL_native_midi">https://github.com/libsdl-org/SDL_native_midi</a></p></li>
+<li><p>Mix_GetNumTracks(), Mix_StartTrack(), Mix_ModMusicJumpToOrder(),
+Mix_SetSoundFonts(), Mix_GetSoundFonts(), Mix_EachSoundFont(),
+Mix_SetTimidityCfg(), Mix_GetTimidityCfg(): these have been removed, but
+decoder-specific settings can be passed on in a generic way in
+SDL3_mixer, using SDL properties.</p></li>
+<li><p>Mix_QuickLoad_WAV(): this was just too unsafe to offer.</p></li>
+<li><p>Mix_SetMusicCMD(): this was messy and relied on Unix signals. If
+you need to launch a program that makes sound outside of SDL_mixer, you
+can use SDL3&#39;s SDL_CreateProcess() to start it in a portable way, but
+pausing it will be difficult to do on some systems. It glib to give this
+advice, even if the advice is good: consider just not doing this sort of
+thing.</p></li>
+</ul>
+<h2 id="including-sdl3_mixer">Including SDL3_mixer</h2>
+<p>The proper way to include SDL3_mixer&#39;s header is:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;SDL3_mixer/SDL_mixer.h&gt;</span></span></code></pre></div>
+<p>Like SDL3, the new convention is to use <code>&lt;&gt;</code>
+brackets and a subdirectory.</p>
+<h2 id="symbol-names">Symbol names</h2>
+<p>In SDL2_mixer, all functions started with <code>Mix_</code> and
+macros started with <code>MIX_</code>. In SDL3_mixer, everything starts
+with <code>MIX_</code>.</p>
+<h2 id="versioning">Versioning</h2>
+<p>Versions are now bits packed into a single int instead of a struct,
+using SDL3&#39;s usual magic for unpacking these.</p>
+<h2 id="initialization">Initialization</h2>
+<p>Previously you had to tell SDL_mixer what file formats you expected
+to use during Mix_Init(). Now you don&#39;t:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(!</span>MIX_Init<span class="op">())</span> <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    SDL_Log<span class="op">(</span><span class="st">&quot;MIX_Init failed: </span><span class="sc">%s</span><span class="st">&quot;</span><span class="op">,</span> SDL_GetError<span class="op">());</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    SDL_Log<span class="op">(</span><span class="st">&quot;SDL_mixer is ready!&quot;</span><span class="op">);</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>MIX_Init() is reference-counted; it&#39;s safe to call it more than once,
+and only the first call will do actual initialization tasks. Likewise,
+actual deinitialization with MIX_Quit() will only happen when it has
+been called as many times as MIX_Init() has. This allows different parts
+of the program to initialize and use SDL3_mixer without knowing about
+other parts using it too.</p>
+<p>Previously the (singleton) mixer was opened with Mix_OpenAudio(), now
+one calls MIX_CreateMixerDevice(). You can open multiple mixers now, in
+case different parts of a program want to operate independently, or you
+need to use different audio devices at the same time (or, with
+Mix_CreateMixer(), write audio to a memory buffer instead of a
+device).</p>
+<p>MIX_CreateMixerDevice() accepts an SDL_AudioSpec as a hint, but makes
+no promises the audio device will be at any given format. The hint is
+just to indicate that most of the inputs will be in a certain format,
+and maybe this will reduce conversion work if the device can handle it.
+But SDL3_mixer is well-prepared to manage any input or output formats it
+ends up with.</p>
+<p>Mix_QuerySpec() has been replaced by MIX_GetMixerFormat().</p>
+<h2 id="locking">Locking</h2>
+<p>SDL2_mixer expected you to lock the SDL audio device directly if you
+needed explicit synchronization. SDL3 doesn&#39;t have a direct equivalent
+of SDL2&#39;s SDL_LockAudioDevice(), and SDL3_mixer might be operating
+without an audio device at all, so there are now explicit
+MIX_LockMixer() and MIX_UnlockMixer() API calls available.</p>
+<h2 id="music-vs-chunks">Music vs chunks</h2>
+<p>SDL2_mixer made a distinction between &quot;chunks&quot; (uncompressed audio
+sitting in memory, to be played on a &quot;channel&quot;) and &quot;music&quot; (streaming,
+probably compressed, audio). It offered multiple chunks to be mixed
+together, along with a single music input.</p>
+<p>In SDL3_mixer, there is no distinction between types of audio; all
+inputs can be compressed or uncompressed, preloaded into memory or
+streamed, in any supported file format. As many as you like of any type
+can mix at once.</p>
+<p>Preloaded (but not necessarily predecoded) audio is managed in
+MIX_Audio objects. These are audio files precached in RAM. They can be
+decompressed upfront, or on the fly while mixing.</p>
+<p>In SDL2_mixer, data would be loaded with Mix_LoadWAV() for chunks, or
+Mix_LoadMUS() for music, or some variant thereof. In SDL3_mixer, you
+will call MIX_LoadAudio(), MIX_LoadAudio_IO(), or if you have some
+unconventional need, MIX_LoadAudioWithProperties().</p>
+<p>A special function in SDL2_mixer, Mix_QuickLoad_RAW(), has been
+replaced with MIX_LoadRawAudioNoCopy(). It&#39;s a little more generic (it
+does not require your data be in the same format as the hardware), but
+it will still let you get data all the way through the mixing pipeline
+without any extra allocations or copies.</p>
+<p>Many functions in SDL2_mixer had two versions: one for chunks and one
+for music, like Mix_FreeChunk() vs Mix_FreeMusic(). In SDL3_mixer,
+equivalent APIs have a single function that works with everything.</p>
+<p>Mix_GetNumChunkDecoders() and Mix_GetChunkDecoder() (and the Music
+equivalents) have been replaced with MIX_GetNumAudioDecoders() and
+MIX_GetAudioDecoder(). The returned strings might be different than in
+SDL2_mixer for the same decoding backends.</p>
+<h2 id="channels">Channels</h2>
+<p>SDL2_mixer had &quot;channels,&quot; each of which contained a single chunk to
+be mixed during playback. Channels were referenced by index, and you
+would preallocate the number of channels you intended to use with
+Mix_AllocateChannels() (unless you needed 8 channels, the default, in
+which case you just used them).</p>
+<p>SDL3_mixer has &quot;tracks,&quot; each containing a single input (a loaded
+audio file, an SDL_AudioStream for dynamically generated sound, or an
+SDL_IOStream to stream a file on-demand). They are allocated one at a
+time, and referenced by the pointer returned from MIX_CreateTrack(). To
+keep an indexable set of tracks to match SDL2_mixer&#39;s channels, just
+call MIX_CreateTrack() in a loop, storing the pointers in an array, and
+use indices into that array. There are no tracks created by default, so
+to match SDL2_mixer&#39;s default, create 8 of them at startup.</p>
+<h2 id="metadata">Metadata</h2>
+<p>Functions that return metadata about an audio file, like
+Mix_GetMusicTitle(), have been removed. Instead, all audio files have a
+set of SDL properties.</p>
+<p>These properties offer both low-level tag information and a standard
+property for well-known metadata types. For example, if your MP3 has an
+ID3v2 tag, you might end up with a property named
+&quot;SDL_mixer.metadata.id3v2.TIT2&quot; and the same info in a standard
+&quot;SDL_mixer.metadata.title&quot; property (which there&#39;s a standard symbol
+for: <code>MIX_PROP_METADATA_TITLE_STRING</code>. This allows SDL3_mixer
+to expose non-standard information, but also offer easy lookup of the
+most common, and most important, metadata.</p>
+<p>After loading an audio file, MIX_GetAudioProperties() will provide
+the metadata (and also provide a convenient place for the app to hang
+their own app-specific data, as well).</p>
+<h2 id="hooks">Hooks</h2>
+<p>SDL3_mixer offers several callbacks at different points in the mixing
+pipeline. They can be used to recreate SDL2_mixer&#39;s Mix_SetPostMix(),
+Mix_HookMusic(), Mix_HookMusicFinished(), Mix_ChannelFinished(), and
+Mix_RegisterEffect().</p>
+<p>Note that in SDL3_mixer, all callbacks provide audio data in float32
+format, so you won&#39;t need to have different paths for different
+formats.</p>
+<h2 id="effects">Effects</h2>
+<p>SDL2_mixer had several &quot;effects&quot; that were internal code that used
+the Mix_RegisterEffect() interface to modify chunks before they were
+mixed.</p>
+<p>Mix_SetPanning() can be replaced with MIX_SetTrackStereo(), but this
+will force the track to play on the Front Left and Front Right speakers
+in a surround-sound setup. If you actually want the track to move left
+to right, respecting any surround-sound layout, use
+MIX_SetTrack3DPosition() and move the sound across the X axis.</p>
+<p>Mix_SetPosition() and Mix_SetDistance() can also use
+MIX_SetTrack3DPosition() to better effect, but you&#39;ll have to convert to
+3D coordinates instead of angle/distance. Here&#39;s some (untested) math to
+do that:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">float</span> radians <span class="op">=</span> angle <span class="op">*</span> <span class="op">(</span>SDL_PI_F <span class="op">/</span> <span class="fl">180.0</span><span class="bu">f</span><span class="op">);</span>  <span class="co">// convert degrees to radians.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">float</span> fdistance <span class="op">=</span> <span class="op">((</span><span class="dt">float</span><span class="op">)</span> distance<span class="op">);</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">float</span> x <span class="op">=</span> SDL_cosf<span class="op">(</span>radians<span class="op">)</span> <span class="op">*</span> fdistance<span class="op">;</span>  <span class="co">// left to right</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">float</span> y <span class="op">=</span> <span class="dv">0</span><span class="er">.0f</span><span class="op">;</span>   <span class="co">// leave everything vertically centered on the listener.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">float</span> z <span class="op">=</span> SDL_sinf<span class="op">(</span>radians<span class="op">)</span> <span class="op">*</span> fdistance<span class="op">;</span>  <span class="co">// front to back</span></span></code></pre></div>
+<p>Mix_SetReverseStereo() can be replaced with
+MIX_SetTrackOutputChannelMap():</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">int</span> chmap <span class="op">=</span> <span class="op">{</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">0</span> <span class="op">};</span>  <span class="co">// left becomes right, right becomes left.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>MIX_SetTrackOutputChannelMap<span class="op">(</span>track<span class="op">,</span> chmap<span class="op">,</span> <span class="dv">2</span><span class="op">);</span></span></code></pre></div>
+<h2 id="channel-groups">Channel groups</h2>
+<p>In SDL2_mixer, you could &quot;tag&quot; channels with an int value, and then
+reference all channels that match that tag.</p>
+<p>In SDL3_mixer, you can still tag a track, but the tag is an arbitrary
+string, like &quot;ui&quot; or &quot;ambient&quot; or whatever. A track can have multiple
+tags.</p>
+<p>Tag tracks with MIX_TagTrack() and remove a tag with
+MIX_UntagTrack().</p>
+<h2 id="playing">Playing</h2>
+<p>There are several different functions in SDL2_mixer to start a
+channel playing (Mix_Play*, Mix_FadeIn*, etc). All of these have
+collapsed into MIX_PlayTrack(). MIX_PlayTrack() takes an
+SDL_PropertiesID for options (if the defaults don&#39;t cover it). Before
+playing, a track must have an input assigned, either through
+MIX_SetTrackAudio() to play from preloaded audio, MIX_SetTrackIOStream()
+to play from a file loaded on-demand, or MIX_SetTrackAudioStream() to
+play procedural audio, either buffered upfront or generated
+on-demand.</p>
+<h2 id="volume">Volume</h2>
+<p>Mix_VolumeChunk() and Mix_VolumeMusic() are replaced by
+MIX_SetTrackGain(). They take a float instead of an int from 0 to 128,
+and can be used to not only quiet the existing data, but also make it
+louder.</p>
+<p>Mix_MasterVolume() is replaced by MIX_SetMixerGain(). Same idea.</p>
+<h2 id="halting">Halting</h2>
+<p>Mix_HaltChannel(), MIX_HaltMusic(), Mix_FadeOutChannel() and
+Mix_FadeOutMusic() are replaced by MIX_StopTrack(). Be careful here:
+fade-outs work in sample frames of the track&#39;s input, not milliseconds,
+in SDL3_mixer. Use MIX_TrackMSToFrames() to convert. However, If
+stopping multiple tracks at once with MIX_StopAllTracks() or
+MIX_StopTag(), the fade out is specified in <em>milliseconds</em>, since
+we can&#39;t guarantee that all tracks have the same sample rate.</p>
+<h2 id="pausing">Pausing</h2>
+<p>Mix_Pause(), Mix_PauseMusic(), Mix_Resume() and Mix_ResumeMusic()
+became MIX_PauseTrack() and MIX_ResumeTrack().</p>
+<h2 id="music-state">Music state</h2>
+<p>Mix_MusicDuration() became MIX_GetAudioDuration() and
+Mix_GetMusicPosition() became MIX_GetTrackPlaybackPosition().
+Mix_SetMusicPosition() is now MIX_SetTrackPlaybackPosition().</p>
+<h2 id="shutdown">Shutdown</h2>
+<p>Mix_CloseAudio() is now MIX_DestroyMixer(). Destroying a mixer will
+destroy everything it owns (tracks, etc), but not MIX_Audio objects,
+since they can be shared between mixers. MIX_Quit() can be used to
+destroy <em>everything</em> that SDL3_mixer created, including the
+mixers and MIX_Audio objects, which might be more convenient.</p>
+<h2 id="tldr">tl;dr</h2>
+<p>A very brief comment on what to do with each symbol in
+SDL2_mixer.</p>
+<p>Some of these are listed as &quot;no equivalent in SDL3_mixer&quot; but could
+possibly be added if there is a need. If you&#39;re stuck, please file an
+issue and we can discuss it!</p>
+<ul>
+<li>MIX_MAJOR_VERSION =&gt; SDL_MIXER_MAJOR_VERSION</li>
+<li>MIX_MINOR_VERSION =&gt; SDL_MIXER_MAJOR_VERSION</li>
+<li>MIX_PATCHLEVEL =&gt; SDL_MIXER_MICRO_VERSION</li>
+<li>MIX_VERSION =&gt; SDL_MIXER_VERSION</li>
+<li>Mix_Linked_Version =&gt; MIX_Version</li>
+<li>Mix_Version =&gt; MIX_Version</li>
+<li>SDL_MIXER_COMPILEDVERSION =&gt; SDL_MIXER_VERSION</li>
+<li>MIX_InitFlags =&gt; not needed in SDL3_mixer.</li>
+<li>Mix_Init =&gt; MIX_Init (no initflags needed)</li>
+<li>Mix_Quit =&gt; MIX_Quit</li>
+<li>MIX_CHANNELS =&gt; not needed in SDL3_mixer.</li>
+<li>MIX_DEFAULT_FREQUENCY =&gt; 44100</li>
+<li>MIX_DEFAULT_FORMAT =&gt; SDL_AUDIO_S16</li>
+<li>MIX_DEFAULT_CHANNELS =&gt; 2</li>
+<li>MIX_MAX_VOLUME =&gt; 1.0f</li>
+<li>Mix_Chunk =&gt; MIX_Audio</li>
+<li>Mix_Fading =&gt; not needed in SDL3_mixer.</li>
+<li>Mix_MusicType =&gt; MIX_PROP_AUDIO_DECODER_STRING property with
+MIX_GetAudioProperties().</li>
+<li>Mix_Music =&gt; MIX_Audio</li>
+<li>Mix_OpenAudio =&gt; MIX_CreateMixerDevice</li>
+<li>Mix_PauseAudio =&gt; MIX_PauseAllTracks</li>
+<li>Mix_QuerySpec =&gt; MIX_GetMixerFormat</li>
+<li>Mix_AllocateChannels =&gt; MIX_CreateTrack</li>
+<li>Mix_LoadWAV_IO =&gt; MIX_LoadAudio_IO</li>
+<li>Mix_LoadWAV =&gt; MIX_LoadAudio</li>
+<li>Mix_LoadMUS_IO =&gt; MIX_LoadAudio_IO</li>
+<li>Mix_LoadMUS =&gt; MIX_LoadAudio</li>
+<li>Mix_LoadMUSType_IO =&gt; MIX_LoadAudioWithProperties with
+MIX_PROP_AUDIO_DECODER_STRING property set.</li>
+<li>Mix_QuickLoad_WAV =&gt; MIX_LoadAudio_IO with an
+SDL_IOFromConstMem() and closeio=true.</li>
+<li>Mix_QuickLoad_RAW =&gt; MIX_LoadRawAudioNoCopy</li>
+<li>Mix_FreeChunk =&gt; MIX_DestroyAudio</li>
+<li>Mix_FreeMusic =&gt; MIX_DestroyAudio</li>
+<li>Mix_GetNumChunkDecoders =&gt; MIX_GetNumAudioDecoders</li>
+<li>Mix_GetChunkDecoder =&gt; MIX_GetAudioDecoder</li>
+<li>Mix_HasChunkDecoder =&gt; call MIX_GetAudioDecoder, up to
+MIX_GetNumAudioDecoders times</li>
+<li>Mix_GetNumMusicDecoders =&gt; MIX_GetNumAudioDecoders</li>
+<li>Mix_GetMusicDecoder =&gt; MIX_GetAudioDecoder</li>
+<li>Mix_HasMusicDecoder =&gt; call MIX_GetAudioDecoder, up to
+MIX_GetNumAudioDecoders times</li>
+<li>Mix_MusicType =&gt; MIX_PROP_AUDIO_DECODER_STRING property with
+MIX_GetAudioProperties().</li>
+<li>Mix_GetMusicTitle =&gt; MIX_PROP_METADATA_TITLE_STRING property with
+Mix_GetAudioProperties()</li>
+<li>Mix_GetMusicTitleTag =&gt; MIX_PROP_METADATA_TITLE_STRING property
+with Mix_GetAudioProperties()</li>
+<li>Mix_GetMusicArtistTag =&gt; MIX_PROP_METADATA_ARTIST_STRING property
+with Mix_GetAudioProperties()</li>
+<li>Mix_GetMusicAlbumTag =&gt; MIX_PROP_METADATA_ALBUM_STRING property
+with Mix_GetAudioProperties()</li>
+<li>Mix_GetMusicCopyrightTag =&gt; MIX_PROP_METADATA_COPYRIGHT_STRING
+property with Mix_GetAudioProperties()</li>
+<li>Mix_SetPostMix =&gt; MIX_SetPostMixCallback</li>
+<li>Mix_HookMusic =&gt; MIX_SetTrackAudioStream and set a get-callback
+on that stream, start track playing.</li>
+<li>Mix_HookMusicFinished =&gt; MIX_SetTrackStoppedCallback</li>
+<li>Mix_GetMusicHookData =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_ChannelFinished =&gt; MIX_SetTrackStoppedCallback</li>
+<li>MIX_CHANNEL_POST =&gt; MIX_SetPostMixCallback</li>
+<li>Mix_RegisterEffect =&gt; MIX_SetTrackCookedCallback, plus optional
+MIX_SetTrackStoppedCallback</li>
+<li>Mix_UnregisterEffect =&gt; MIX_SetTrackCookedCallback, plus optional
+MIX_SetTrackStoppedCallback</li>
+<li>Mix_UnregisterAllEffects =&gt; MIX_SetTrackCookedCallback, plus
+optional MIX_SetTrackStoppedCallback</li>
+<li>MIX_EFFECTSMAXSPEED =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_SetPanning =&gt; MIX_SetTrackStereo or
+MIX_SetTrack3DPosition</li>
+<li>Mix_SetPosition =&gt; MIX_SetTrack3DPosition</li>
+<li>Mix_SetDistance =&gt; MIX_SetTrack3DPosition</li>
+<li>Mix_SetReverseStereo =&gt; MIX_SetTrackOutputChannelMap</li>
+<li>Mix_ReserveChannels =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_GroupChannel =&gt; MIX_TagTrack</li>
+<li>Mix_GroupChannels =&gt; MIX_TagTrack</li>
+<li>Mix_GroupAvailable =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_GroupCount =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_GroupOldest =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_GroupNewer =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_PlayChannel =&gt; MIX_SetTrackAudio then MIX_PlayTrack</li>
+<li>Mix_PlayChannelTimed =&gt; MIX_SetTrackAudio then MIX_PlayTrack</li>
+<li>Mix_PlayMusic =&gt; MIX_SetTrackAudio then MIX_PlayTrack</li>
+<li>Mix_FadeInMusic =&gt; MIX_SetTrackAudio then MIX_PlayTrack</li>
+<li>Mix_FadeInMusicPos =&gt; MIX_SetTrackAudio then MIX_PlayTrack</li>
+<li>Mix_FadeInChannel =&gt; MIX_SetTrackAudio then MIX_PlayTrack</li>
+<li>Mix_FadeInChannelTimed =&gt; MIX_SetTrackAudio then
+MIX_PlayTrack</li>
+<li>Mix_Volume =&gt; MIX_SetTrackGain</li>
+<li>Mix_VolumeChunk =&gt; MIX_SetTrackGain; gain is not set on
+MIX_Audio, only on MIX_Track</li>
+<li>Mix_VolumeMusic =&gt; MIX_SetTrackGain</li>
+<li>Mix_GetMusicVolume =&gt; MIX_GetTrackGain</li>
+<li>Mix_MasterVolume =&gt; MIX_SetMixerGain</li>
+<li>Mix_HaltChannel =&gt; MIX_StopTrack</li>
+<li>Mix_HaltGroup =&gt; MIX_StopTag</li>
+<li>Mix_HaltMusic =&gt; MIX_StopTrack</li>
+<li>Mix_ExpireChannel =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_FadeOutChannel =&gt; MIX_StopTrack</li>
+<li>Mix_FadeOutGroup =&gt; MIX_StopTag</li>
+<li>Mix_FadeOutMusic =&gt; MIX_StopTrack</li>
+<li>Mix_FadingMusic =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_FadingChannel =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_Pause =&gt; MIX_PauseTrack</li>
+<li>Mix_PauseGroup =&gt; MIX_PauseTag</li>
+<li>Mix_Resume =&gt; MIX_ResumeTrack</li>
+<li>Mix_PauseGroup =&gt; MIX_ResumeTag</li>
+<li>Mix_Paused =&gt; MIX_TrackPaused</li>
+<li>Mix_PauseMusic =&gt; MIX_PauseTrack</li>
+<li>Mix_ResumeMusic =&gt; MIX_ResumeTrack</li>
+<li>Mix_RewindMusic =&gt; MIX_SetTrackPlaybackPosition(track, 0)</li>
+<li>Mix_PausedMusic =&gt; MIX_TrackPaused</li>
+<li>Mix_ModMusicJumpToOrder =&gt; MIX_PlayTrack with
+MIX_PROP_PLAY_START_ORDER_NUMBER property set.</li>
+<li>Mix_StartTrack =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_GetNumTracks =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_SetMusicPosition =&gt; MIX_SetTrackPlaybackPosition</li>
+<li>Mix_GetMusicPosition =&gt; MIX_GetTrackPlaybackPosition</li>
+<li>Mix_MusicDuration =&gt; MIX_GetAudioDuration</li>
+<li>Mix_GetMusicLoopStartTime =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_GetMusicLoopEndTime =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_GetMusicLoopLengthTime =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_Playing =&gt; MIX_TrackPlaying</li>
+<li>Mix_PlayingMusic =&gt; MIX_TrackPlaying</li>
+<li>Mix_SetSoundFonts =&gt; MIX_LoadAudioWithProperties with
+&quot;SDL_mixer.decoder.fluidsynth.soundfont_iostream&quot; or
+&quot;SDL_mixer.decoder.fluidsynth.soundfont_path&quot; property set</li>
+<li>Mix_GetSoundFonts =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_EachSoundFont =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_SetTimidityCfg =&gt; FIXME currently
+SDL_setenv(&quot;TIMIDITY_CFG&quot;)</li>
+<li>Mix_GetTimidityCfg =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_GetChunk =&gt; MIX_GetTrackAudio or MIX_GetTrackAudioStream</li>
+<li>Mix_CloseAudio =&gt; MIX_DestroyMixer</li>
+<li>Mix_GetError =&gt; SDL_GetError</li>
+<li>Mix_SetError =&gt; SDL_SetError</li>
+<li>Mix_SetMusicCMD =&gt; no equivalent in SDL3_mixer. SDL_CreateProcess
+can launch external programs, though.</li>
+<li>Mix_GetSynchroValue =&gt; no equivalent in SDL3_mixer.</li>
+<li>Mix_SetSynchroValue =&gt; no equivalent in SDL3_mixer.</li>
+</ul>
+</body>
+</html>

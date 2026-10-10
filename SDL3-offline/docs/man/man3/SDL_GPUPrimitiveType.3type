@@ -1,0 +1,49 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GPUPrimitiveType:
+.\"   https://wiki.libsdl.org/SDL_GPUPrimitiveType
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GPUPrimitiveType
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GPUPrimitiveType 3type "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 DATATYPES"
+.SH NAME
+SDL_GPUPrimitiveType \- Specifies the primitive topology of a graphics pipeline.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_gpu.h>
+.PP
+.BI "typedef enum SDL_GPUPrimitiveType
+.BI "{
+.BI "    SDL_GPU_PRIMITIVETYPE_TRIANGLELIST,  /**< A series of separate triangles. */
+.BI "    SDL_GPU_PRIMITIVETYPE_TRIANGLESTRIP, /**< A series of connected triangles. */
+.BI "    SDL_GPU_PRIMITIVETYPE_LINELIST,      /**< A series of separate lines. */
+.BI "    SDL_GPU_PRIMITIVETYPE_LINESTRIP,     /**< A series of connected lines. */
+.BI "    SDL_GPU_PRIMITIVETYPE_POINTLIST      /**< A series of separate points. */
+.BI "} SDL_GPUPrimitiveType;
+.fi
+.SH DESCRIPTION
+If you are using POINTLIST you must include a point size output in the vertex shader\[char46]
+.PP
+
+\(bu For HLSL compiling to SPIRV you must decorate a float output with [[vk::builtin(\(dqPointSize\(dq)]]\[char46]
+.PP
+\(bu For GLSL you must set the gl_PointSize builtin\[char46]
+.PP
+\(bu For MSL you must include a float output with the [[point_size]] decorator\[char46]
+.PP
+Note that sized point topology is totally unsupported on D3D12\[char46] Any size other than 1 will be ignored\[char46] In general, you should avoid using point topology for both compatibility and performance reasons\[char46] You WILL regret using it\[char46]
+
+.SH AVAILABILITY
+This enum is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_CreateGPUGraphicsPipeline (3)

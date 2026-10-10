@@ -1,0 +1,156 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_CreateGPUDeviceWithProperties:
+.\"   https://wiki.libsdl.org/SDL_CreateGPUDeviceWithProperties
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_CreateGPUDeviceWithProperties
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_CreateGPUDeviceWithProperties 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_CreateGPUDeviceWithProperties \- Creates a GPU context.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_gpu.h>
+.PP
+.BI "SDL_GPUDevice * SDL_CreateGPUDeviceWithProperties(
+.BI "    SDL_PropertiesID props);
+.fi
+.SH DESCRIPTION
+These are the supported properties:
+.PP
+
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_DEBUGMODE_BOOLEAN :
+enable debug mode properties and validations, defaults to true\[char46]
+.PP
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_PREFERLOWPOWER_BOOLEAN :
+enable to prefer energy efficiency over maximum GPU performance, defaults to false\[char46]
+.PP
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_VERBOSE_BOOLEAN :
+enable to automatically log useful debug information on device creation, defaults to true\[char46]
+.PP
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_NAME_STRING :
+the name of the GPU driver to use, if a specific one is desired\[char46]
+.PP
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_FEATURE_CLIP_DISTANCE_BOOLEAN :
+Enable Vulkan device feature shaderClipDistance\[char46] If disabled, clip distances are not supported in shader code: gl_ClipDistance[] built-ins of GLSL, SV_ClipDistance0/1 semantics of HLSL and [[clip_distance]] attribute of Metal\[char46] Disabling optional features allows the application to run on some older Android devices\[char46] Defaults to true\[char46]
+.PP
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_FEATURE_DEPTH_CLAMPING_BOOLEAN :
+Enable Vulkan device feature depthClamp\[char46] If disabled, there is no depth clamp support and enable_depth_clip in
+.BR SDL_GPURasterizerState
+must always be set to true\[char46] Disabling optional features allows the application to run on some older Android devices\[char46] Defaults to true\[char46]
+.PP
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_FEATURE_INDIRECT_DRAW_FIRST_INSTANCE_BOOLEAN :
+Enable Vulkan device feature drawIndirectFirstInstance\[char46] If disabled, the argument first_instance of
+.BR SDL_GPUIndirectDrawCommand
+must be set to zero\[char46] Disabling optional features allows the application to run on some older Android devices\[char46] Defaults to true\[char46]
+.PP
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_FEATURE_ANISOTROPY_BOOLEAN :
+Enable Vulkan device feature samplerAnisotropy\[char46] If disabled, enable_anisotropy of
+.BR SDL_GPUSamplerCreateInfo
+must be set to false\[char46] Disabling optional features allows the application to run on some older Android devices\[char46] Defaults to true\[char46]
+.PP
+These are the current shader format properties:
+.PP
+
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_SHADERS_PRIVATE_BOOLEAN :
+The app is able to provide shaders for an NDA platform\[char46]
+.PP
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_SHADERS_SPIRV_BOOLEAN :
+The app is able to provide SPIR-V shaders if applicable\[char46]
+.PP
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_SHADERS_DXBC_BOOLEAN :
+The app is able to provide DXBC shaders if applicable
+.PP
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_SHADERS_DXIL_BOOLEAN :
+The app is able to provide DXIL shaders if applicable\[char46]
+.PP
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_SHADERS_MSL_BOOLEAN :
+The app is able to provide MSL shaders if applicable\[char46]
+.PP
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_SHADERS_METALLIB_BOOLEAN :
+The app is able to provide Metal shader libraries if applicable\[char46]
+.PP
+With the D3D12 backend:
+.PP
+
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_D3D12_SEMANTIC_NAME_STRING :
+the prefix to use for all vertex semantics, default is \(dqTEXCOORD\(dq\[char46]
+.PP
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_D3D12_ALLOW_FEWER_RESOURCE_SLOTS_BOOLEAN :
+By default, Resourcing Binding Tier 2 is required for D3D12 support\[char46] However, an application can set this property to true to enable Tier 1 support, if (and only if) the application uses 8 or fewer storage resources across all shader stages\[char46] As of writing, this property is useful for targeting Intel Haswell and Broadwell GPUs; other hardware either supports Tier 2 Resource Binding or does not support D3D12 in any capacity\[char46] Defaults to false\[char46]
+.PP
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_D3D12_AGILITY_SDK_VERSION_NUMBER :
+Certain feature checks are only possible on Windows 11 by default\[char46] By setting this alongside
+.BR SDL_PROP_GPU_DEVICE_CREATE_D3D12_AGILITY_SDK_PATH_STRING
+and vendoring D3D12Core\[char46]dll from the D3D12 Agility SDK, you can make those feature checks possible on older platforms\[char46] The version you provide must match the one given in the DLL\[char46]
+.PP
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_D3D12_AGILITY_SDK_PATH_STRING :
+Certain feature checks are only possible on Windows 11 by default\[char46] By setting this alongside
+.BR SDL_PROP_GPU_DEVICE_CREATE_D3D12_AGILITY_SDK_VERSION_NUMBER
+and vendoring D3D12Core\[char46]dll from the D3D12 Agility SDK, you can make those feature checks possible on older platforms\[char46] The path you provide must be relative to the executable path of your app\[char46] Be sure not to put the DLL in the same directory as the exe; Microsoft strongly advises against this!
+.PP
+With the Vulkan backend:
+.PP
+
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_VULKAN_REQUIRE_HARDWARE_ACCELERATION_BOOLEAN :
+By default, Vulkan device enumeration includes drivers of all types, including software renderers (for example, the Lavapipe Mesa driver)\[char46] This can be useful if your application _requires_
+.BR SDL_GPU ,
+but if you can provide your own fallback renderer (for example, an OpenGL renderer) this property can be set to true\[char46] Defaults to false\[char46]
+.PP
+\(bu
+.BR SDL_PROP_GPU_DEVICE_CREATE_VULKAN_OPTIONS_POINTER :
+a pointer to an
+.BR SDL_GPUVulkanOptions
+structure to be processed during device creation\[char46] This allows configuring a variety of Vulkan-specific options such as increasing the API version and opting into extensions aside from the minimal set SDL requires\[char46]
+.PP
+With the Metal backend: -
+
+.BR SDL_PROP_GPU_DEVICE_CREATE_METAL_ALLOW_MACFAMILY1_BOOLEAN :
+By default, macOS support requires what Apple calls \(dqMTLGPUFamilyMac2\(dq hardware or newer\[char46] However, an application can set this property to true to enable support for \(dqMTLGPUFamilyMac1\(dq hardware, if (and only if) the application does not write to sRGB textures\[char46] (For history\(aqs sake: MacFamily1 also does not support indirect command buffers, MSAA depth resolve, and stencil resolve/feedback, but these are not exposed features in
+.BR SDL_GPU \[char46])
+
+.SH FUNCTION PARAMETERS
+.TP
+.I props
+the properties to use\[char46]
+.SH RETURN VALUE
+Returns a GPU context on success or NULL on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_GetGPUShaderFormats (3),
+.BR SDL_GetGPUDeviceDriver (3),
+.BR SDL_DestroyGPUDevice (3),
+.BR SDL_GPUSupportsProperties (3)

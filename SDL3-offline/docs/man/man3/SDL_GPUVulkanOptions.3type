@@ -1,0 +1,40 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GPUVulkanOptions:
+.\"   https://wiki.libsdl.org/SDL_GPUVulkanOptions
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GPUVulkanOptions
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GPUVulkanOptions 3type "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 DATATYPES"
+.SH NAME
+SDL_GPUVulkanOptions \- A structure specifying additional options when using Vulkan.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_gpu.h>
+.PP
+.BI "typedef struct SDL_GPUVulkanOptions
+.BI "{
+.BI "    Uint32 vulkan_api_version; /**< The Vulkan API version to request for the instance. Use Vulkan's VK_MAKE_VERSION or VK_MAKE_API_VERSION. */
+.BI "    void *feature_list; /**< Pointer to the first element of a chain of Vulkan feature structs. (Requires API version 1.1 or higher.)*/
+.BI "	void *vulkan_10_physical_device_features; /**< Pointer to a VkPhysicalDeviceFeatures struct to enable additional Vulkan 1.0 features. */
+.BI "	Uint32 device_extension_count; /**< Number of additional device extensions to require. */
+.BI "	const char **device_extension_names; /**< Pointer to a list of additional device extensions to require. */
+.BI "	Uint32 instance_extension_count; /**< Number of additional instance extensions to require. */
+.BI "	const char **instance_extension_names; /**< Pointer to a list of additional instance extensions to require. */
+.BI "} SDL_GPUVulkanOptions;
+.fi
+.SH DESCRIPTION
+When no such structure is provided, SDL will use Vulkan API version 1\[char46]0 and a minimal set of features\[char46] The requested API version influences how the feature_list is processed by SDL\[char46] When requesting API version 1\[char46]0, the feature_list is ignored\[char46] Only the vulkan_10_physical_device_features and the extension lists are used\[char46] When requesting API version 1\[char46]1, the feature_list is scanned for feature structures introduced in Vulkan 1\[char46]1\[char46] When requesting Vulkan 1\[char46]2 or higher, the feature_list is additionally scanned for compound feature structs such as VkPhysicalDeviceVulkan11Features\[char46] The device and instance extension lists, as well as vulkan_10_physical_device_features, are always processed\[char46]
+
+.SH AVAILABILITY
+This struct is available since SDL 3\[char46]4\[char46]0\[char46]
+

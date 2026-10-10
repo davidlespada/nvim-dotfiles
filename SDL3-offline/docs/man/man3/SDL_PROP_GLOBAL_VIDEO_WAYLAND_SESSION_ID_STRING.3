@@ -1,0 +1,47 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_PROP_GLOBAL_VIDEO_WAYLAND_SESSION_ID_STRING:
+.\"   https://wiki.libsdl.org/SDL_PROP_GLOBAL_VIDEO_WAYLAND_SESSION_ID_STRING
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_PROP_GLOBAL_VIDEO_WAYLAND_SESSION_ID_STRING
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_PROP_GLOBAL_VIDEO_WAYLAND_SESSION_ID_STRING 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_PROP_GLOBAL_VIDEO_WAYLAND_SESSION_ID_STRING \- The session ID string used for saving and restoring window state across runs.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_video.h>
+.PP
+.BI "#define SDL_PROP_GLOBAL_VIDEO_WAYLAND_SESSION_ID_STRING \(dqSDL.video.wayland.session_id\(dq
+.fi
+.SH DESCRIPTION
+This requires that the compositor supports the
+.BR xdg_session_management_v1
+protocol\[char46]
+.PP
+To save and restore the current state of Wayland toplevel windows, set this to a non-null value before creating a window, and serialize this value before shutting down\[char46] To restore the previous state on subsequent runs, set this property to the previously serialized value before window creation\[char46]
+.PP
+This can be set at any time before the first call to a window creation function\[char46] Reading should be deferred until serialization time, as compositors may not set the session identifier string immediately, and the identifier string may change during runtime, so it should not be cached\[char46]
+.PP
+Setting this to an empty string (\(dq\(dq) before creating a window will cause a new session with an automatically generated identifier string to be created\[char46]
+.PP
+Setting this to null or an empty string before shutting down the video subsystem will cause the existing session to be removed\[char46]
+.PP
+Note that for windows to be saved/restored by the session, they also need a stable, unique identifier string set via the
+.BR SDL_PROP_WINDOW_CREATE_WAYLAND_WINDOW_ID_STRING
+property at creation time\[char46]
+
+.SH AVAILABILITY
+This property is available since SDL 3\[char46]6\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_CreateWindowWithProperties (3)

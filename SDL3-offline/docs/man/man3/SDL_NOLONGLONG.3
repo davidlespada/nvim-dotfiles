@@ -1,0 +1,38 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_NOLONGLONG:
+.\"   https://wiki.libsdl.org/SDL_NOLONGLONG
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_NOLONGLONG
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_NOLONGLONG 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_NOLONGLONG \- Don\(aqt let SDL use \(dqlong long\(dq C types.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "#define SDL_NOLONGLONG 1
+.fi
+.SH DESCRIPTION
+SDL will define this if it believes the compiler doesn\(aqt understand the \(dqlong long\(dq syntax for C datatypes\[char46] This can happen on older compilers\[char46]
+.PP
+If _your_ compiler doesn\(aqt support \(dqlong long\(dq but SDL doesn\(aqt know it, it is safe to define this yourself to build against the SDL headers\[char46]
+.PP
+If this is defined, it will remove access to some C runtime support functions, like
+.BR SDL_ulltoa
+and
+.BR SDL_strtoll
+that refer to this datatype explicitly\[char46] The rest of SDL will still be available\[char46]
+.PP
+SDL\(aqs own source code cannot be built with a compiler that has this defined, for various technical reasons\[char46]
+

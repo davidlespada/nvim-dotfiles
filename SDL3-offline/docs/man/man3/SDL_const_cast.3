@@ -1,0 +1,54 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_const_cast:
+.\"   https://wiki.libsdl.org/SDL_const_cast
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_const_cast
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_const_cast 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_const_cast \- Handle a Const Cast properly whether using C or C++.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "#define SDL_const_cast(type, expression) const_cast<type>(expression)  /* or `((type)(expression))` in C */
+.fi
+.SH DESCRIPTION
+If compiled as C++, this macro offers a proper C++ const_cast<>\[char46]
+.PP
+If compiled as C, this macro does a normal C-style cast\[char46]
+.PP
+This is helpful to avoid compiler warnings in C++\[char46]
+
+.SH MACRO PARAMETERS
+.TP
+.I type
+the type to cast the expression to\[char46]
+.TP
+.I expression
+the expression to cast to a different type\[char46]
+.SH RETURN VALUE
+Returns
+.BR expression ,
+cast to
+.BR type \[char46]
+
+.SH THREAD SAFETY
+It is safe to call this macro from any thread\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_reinterpret_cast (3),
+.BR SDL_static_cast (3)

@@ -1,0 +1,37 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_MALLOC:
+.\"   https://wiki.libsdl.org/SDL_MALLOC
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_MALLOC
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_MALLOC 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_MALLOC \- A macro to tag a function as an allocator.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_begin_code.h>
+.PP
+.BI "#define SDL_MALLOC __declspec(allocator) __desclspec(restrict)
+.fi
+.SH DESCRIPTION
+This is a hint to the compiler that a function is an allocator, like malloc(), with certain rules\[char46] A description of how GCC treats this hint is here:
+.PP
+https://gcc\[char46]gnu\[char46]org/onlinedocs/gcc/Common-Function-Attributes\[char46]html#index-malloc-function-attribute
+.PP
+On compilers without allocator tag support, this is defined to nothing\[char46]
+.PP
+Most apps don\(aqt need to, and should not, use this directly\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+

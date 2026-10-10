@@ -1,0 +1,86 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_iconv:
+.\"   https://wiki.libsdl.org/SDL_iconv
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_iconv
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_iconv 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_iconv \- This function converts text between encodings, reading from and writing to a buffer.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "size_t SDL_iconv(SDL_iconv_t cd, const char **inbuf,
+.BI "             size_t *inbytesleft, char **outbuf,
+.BI "             size_t *outbytesleft);
+.BI "
+.BI "
+.BI "#define SDL_ICONV_ERROR     (size_t)-1  /**< Generic error. Check SDL_GetError()? */
+.BI "#define SDL_ICONV_E2BIG     (size_t)-2  /**< Output buffer was too small. */
+.BI "#define SDL_ICONV_EILSEQ    (size_t)-3  /**< Invalid input sequence was encountered. */
+.BI "#define SDL_ICONV_EINVAL    (size_t)-4  /**< Incomplete input sequence was encountered. */
+.fi
+.SH DESCRIPTION
+It returns the number of successful conversions on success\[char46] On error,
+.BR SDL_ICONV_E2BIG
+is returned when the output buffer is too small, or
+.BR SDL_ICONV_EILSEQ
+is returned when an invalid input sequence is encountered, or
+.BR SDL_ICONV_EINVAL
+is returned when an incomplete input sequence is encountered\[char46]
+.PP
+On exit:
+.PP
+
+\(bu inbuf will point to the beginning of the next multibyte sequence\[char46] On error, this is the location of the problematic input sequence\[char46] On success, this is the end of the input sequence\[char46]
+.PP
+\(bu inbytesleft will be set to the number of bytes left to convert, which will be 0 on success\[char46]
+.PP
+\(bu outbuf will point to the location where to store the next output byte\[char46]
+.PP
+\(bu outbytesleft will be set to the number of bytes left in the output buffer\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I cd
+The character set conversion context, created in
+.BR SDL_iconv_open ()\[char46]
+
+.TP
+.I inbuf
+Address of variable that points to the first character of the input sequence\[char46]
+.TP
+.I inbytesleft
+The number of bytes in the input buffer\[char46]
+.TP
+.I outbuf
+Address of variable that points to the output buffer\[char46]
+.TP
+.I outbytesleft
+The number of bytes in the output buffer\[char46]
+.SH RETURN VALUE
+Returns the number of conversions on success, or a negative error code\[char46]
+
+.SH THREAD SAFETY
+Do not use the same
+.BR SDL_iconv_t
+from two threads at once\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_iconv_open (3),
+.BR SDL_iconv_close (3),
+.BR SDL_iconv_string (3)

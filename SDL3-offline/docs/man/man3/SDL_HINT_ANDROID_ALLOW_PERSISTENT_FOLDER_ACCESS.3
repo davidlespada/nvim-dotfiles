@@ -1,0 +1,42 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_HINT_ANDROID_ALLOW_PERSISTENT_FOLDER_ACCESS:
+.\"   https://wiki.libsdl.org/SDL_HINT_ANDROID_ALLOW_PERSISTENT_FOLDER_ACCESS
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_HINT_ANDROID_ALLOW_PERSISTENT_FOLDER_ACCESS
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_HINT_ANDROID_ALLOW_PERSISTENT_FOLDER_ACCESS 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_HINT_ANDROID_ALLOW_PERSISTENT_FOLDER_ACCESS \- A variable to control whether we allow persistent folder access on Android when using the SDL select folder dialog.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_hints.h>
+.PP
+.BI "#define SDL_HINT_ANDROID_ALLOW_PERSISTENT_FOLDER_ACCESS \(dqSDL_ANDROID_ALLOW_PERSISTENT_FOLDER_ACCESS\(dq
+.fi
+.SH DESCRIPTION
+If set to
+.BR 1 ,
+the selected folder will be accessible persistently across app launches\[char46] That allows the user to only have to select the directory once, and then the app can access it again in the future without needing to ask the user to select it again\[char46]
+.PP
+The variable can be set to the following values:
+.PP
+
+\(bu \(dq0\(dq: Persistent folder access is not allowed\[char46] (default)
+.PP
+\(bu \(dq1\(dq: Persistent folder access is allowed\[char46]
+.PP
+This hint should be set before the SDL folder selection dialog is shown, and can be changed between dialog invocations\[char46]
+
+.SH AVAILABILITY
+This hint is available since SDL 3\[char46]6\[char46]0\[char46]
+

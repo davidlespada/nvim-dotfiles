@@ -1,0 +1,57 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_InsertTrayEntryAt:
+.\"   https://wiki.libsdl.org/SDL_InsertTrayEntryAt
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_InsertTrayEntryAt
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_InsertTrayEntryAt 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_InsertTrayEntryAt \- Insert a tray entry at a given position.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_tray.h>
+.PP
+.BI "SDL_TrayEntry * SDL_InsertTrayEntryAt(SDL_TrayMenu *menu, int pos, const char *label, SDL_TrayEntryFlags flags);
+.fi
+.SH DESCRIPTION
+If label is NULL, the entry will be a separator\[char46] Many functions won\(aqt work for an entry that is a separator\[char46]
+.PP
+An entry does not need to be destroyed; it will be destroyed with the tray\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I menu
+the menu to append the entry to\[char46]
+.TP
+.I pos
+the desired position for the new entry\[char46] Entries at or following this place will be moved\[char46] If pos is -1, the entry is appended\[char46]
+.TP
+.I label
+the text to be displayed on the entry, in UTF-8 encoding, or NULL for a separator\[char46]
+.TP
+.I flags
+a combination of flags, some of which are mandatory\[char46]
+.SH RETURN VALUE
+Returns the newly created entry, or NULL if pos is out of bounds\[char46]
+
+.SH THREAD SAFETY
+This function should be called on the thread that created the tray\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_TrayEntryFlags (3type),
+.BR SDL_GetTrayEntries (3),
+.BR SDL_RemoveTrayEntry (3),
+.BR SDL_GetTrayEntryParent (3)

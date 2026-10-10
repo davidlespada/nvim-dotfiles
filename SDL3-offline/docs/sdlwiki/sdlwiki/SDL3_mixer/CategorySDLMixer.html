@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>CategorySDLMixer</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">:root {
+color-scheme: dark light; 
+}
+body {
+background-color: white;
+padding: 2vw;
+color: #333;
+max-width: 1200px;
+margin: 0 auto;
+font-size: 16px;
+line-height: 1.5;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+overflow-wrap: break-word;
+}
+a {
+color: #0969da;
+
+}
+a:visited {
+color: #064998;
+}
+h1 {
+border-bottom: 2px solid #efefef;
+}
+h2 {
+border-bottom: 1px solid #efefef;
+}
+p {
+max-width: 85ch;
+}
+li {
+max-width: 85ch;
+}
+div.sourceCode {
+background-color: #f6f8fa;
+max-width: 100%;
+padding: 16px;
+}
+code {
+background-color: #f6f8fa;
+padding: 0px;
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+"Liberation Mono", monospace;
+}
+table {
+border: 1px solid #808080;
+border-collapse: collapse;
+}
+td {
+border: 1px solid #808080;
+padding: 5px;
+}
+tr:nth-child(even) {
+background-color: #f6f8fa;
+}
+.wikitopbanner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #efefef;
+padding: 10px;
+margin-bottom: 10px;
+width: auto;
+}
+.wikibottombanner {
+background-color: #efefef;
+padding: 10px;
+margin-top: 10px;
+width: auto;
+}
+.alertBox {
+background-color: #f8d7da;
+border: 1px solid #f5c6cb;
+max-width: 60%;
+padding: 10;
+margin: auto;
+}
+.anchorImage {
+visibility: hidden;
+padding-left: 0.2em;
+color: #fff;
+}
+.anchorText:hover .anchorImage {
+visibility: visible;
+}
+hr {
+display: block;
+height: 1px;
+border: 0;
+border-top: 1px solid #efefef;
+margin: 1em 0;
+padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+body {
+color: #e6edf3;
+background-color: #0d1117;
+}
+h1 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+h2 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+hr {
+border-color: rgba(48, 54, 61, 0.7);
+}
+div.sourceCode {
+background-color: #161b22;
+}
+code {
+background-color: #161b22;
+}
+a {
+color: #4493f8;
+}
+a:visited {
+color: #2f66ad;
+}
+table {
+border-color: rgba(48, 54, 61, 0.7);
+}
+td {
+border-color: rgba(48, 54, 61, 0.7);
+}
+tr:nth-child(even) {
+background-color: #161b22;
+}
+.wikitopbanner {
+background-color: #263040;
+}
+.wikibottombanner {
+background-color: #263040;
+}
+.anchorText:hover .anchorImage {
+filter: invert(100%);
+}
+}
+@media print {
+body {
+font-size: 12px;
+}
+table {
+font-size: inherit;
+}
+a:visited {
+color: #0969da;
+}
+.wikitopbanner,
+.anchorText,
+.wikibottombanner {
+display: none;
+}
+}
+</style>
+  <style type="text/css"> code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+{ content: attr(title);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; pointer-events: all; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+@media (prefers-color-scheme: dark) {
+code span.al { color: #95da4c; font-weight: bold; } 
+code span.an { color: #3f8058; } 
+code span.at { color: #2980b9; } 
+code span.bn { color: #f67400; } 
+code span.bu { color: #7f8c8d; } 
+code span.ch { color: #3daee9; } 
+code span.co { color: #7a7c7d; } 
+code span.cv { color: #7f8c8d; } 
+code span.cn { color: #27aeae; font-weight: bold; } 
+code span.cf { color: #fdbc4b; font-weight: bold; } 
+code span.dt { color: #2980b9; } 
+code span.dv { color: #f67400; } 
+code span.do { color: #a43340; } 
+code span.er { color: #da4453; } 
+code span.ex { color: #0099ff; font-weight: bold; } 
+code span.fl { color: #f67400; } 
+code span.fu { color: #8e44ad; } 
+code span.im { color: #27ae60; } 
+code span.in { color: #c45b00; } 
+code span.kw { color: #cfcfc2; font-weight: bold; } 
+code span.op { color: #cfcfc2; } 
+code span.ot { color: #27ae60; } 
+code span.pp { color: #27ae60; } 
+code span.sc { color: #3daee9; } 
+code span.ss { color: #da4453; } 
+code span.st { color: #f44f4f; } 
+code span.va { color: #27aeae; } 
+code span.vs { color: #da4453; } 
+code span.wa { color: #da4453; } 
+}</style>
+</head>
+<body>
+<h1 id="categorysdlmixer">CategorySDLMixer</h1>
+<p>SDL_mixer is a library to make complicated audio processing tasks
+easier.</p>
+<p>It offers audio file decoding, mixing multiple sounds together, basic
+3D positional audio, and various audio effects.</p>
+<p>It can mix sound to multiple audio devices in real time, or generate
+mixed audio data to a memory buffer for any other use. It can do both at
+the same time!</p>
+<p>To use the library, first call <a href="MIX_Init.html">MIX_Init</a>(). Then create a mixer with <a href="MIX_CreateMixerDevice.html">MIX_CreateMixerDevice</a>() (or <a href="MIX_CreateMixer.html">MIX_CreateMixer</a>() to render to
+memory).</p>
+<p>Once you have a mixer, you can load sound data with <a href="MIX_LoadAudio.html">MIX_LoadAudio</a>(), <a href="MIX_LoadAudio_IO.html">MIX_LoadAudio_IO</a>(), or <a href="MIX_LoadAudioWithProperties.html">MIX_LoadAudioWithProperties</a>().
+Data gets loaded once and can be played over and over.</p>
+<p>When loading audio, SDL_mixer can parse out several metadata tag
+formats, such as ID3 and APE tags, and exposes this information through
+the <a href="MIX_GetAudioProperties.html">MIX_GetAudioProperties</a>()
+function.</p>
+<p>To play audio, you create a track with <a href="MIX_CreateTrack.html">MIX_CreateTrack</a>(). You need one track
+for each sound that will be played simultaneously; think of tracks as
+individual sliders on a mixer board. You might have loaded hundreds of
+audio files, but you probably only have a handful of tracks that you
+assign those loaded files to when they are ready to play, and reuse
+those tracks with different audio later. Tracks take their input from a
+<a href="MIX_Audio.html">MIX_Audio</a> (static data to be played
+multiple times) or an SDL_AudioStream (streaming PCM audio the app
+supplies, possibly as needed). A third option is to supply an
+SDL_IOStream, to load and decode on the fly, which might be more
+efficient for background music that is only used once, etc.</p>
+<p>Assign input to a <a href="MIX_Track.html">MIX_Track</a> with <a href="MIX_SetTrackAudio.html">MIX_SetTrackAudio</a>(), <a href="MIX_SetTrackAudioStream.html">MIX_SetTrackAudioStream</a>(), or <a href="MIX_SetTrackIOStream.html">MIX_SetTrackIOStream</a>().</p>
+<p>Once a track has an input, start it playing with <a href="MIX_PlayTrack.html">MIX_PlayTrack</a>(). There are many options to
+this function to dictate mixing features: looping, fades, etc.</p>
+<p>Tracks can be tagged with arbitrary strings, like &quot;music&quot; or &quot;ingame&quot;
+or &quot;ui&quot;. These tags can be used to start, stop, and pause a selection of
+tracks at the same moment.</p>
+<p>All significant portions of the mixing pipeline have callbacks, so
+that an app can hook in to the appropriate locations to examine or
+modify audio data as it passes through the mixer: a &quot;raw&quot; callback for
+raw PCM data decoded from an audio file without any modifications, a
+&quot;cooked&quot; callback for that same data after all transformations (fade,
+positioning, etc) have been processed, a &quot;stopped&quot; callback for when the
+track finishes mixing, a &quot;postmix&quot; callback for the final mixed audio
+about to be sent to the audio hardware to play. Additionally, you can
+use <a href="MIX_Group.html">MIX_Group</a> objects to mix a subset of
+playing tracks and access the data before it is mixed in with other
+tracks. All of this is optional, but allows for powerful access and
+control of the mixing process.</p>
+<p>SDL_mixer can also be used for decoding audio files without actually
+rendering a mix. This is done with <a href="MIX_AudioDecoder.html">MIX_AudioDecoder</a>. Even though SDL_mixer
+handles decoding transparently when used as the audio engine for an app,
+and probably won&#39;t need this interface in that normal scenario, this can
+be useful when using a different audio library to access many file
+formats.</p>
+<p>This library offers several features on top of mixing sounds
+together: a track can have its own gain, to adjust its volume, in
+addition to a master gain applied as well. One can set the &quot;frequency
+ratio&quot; of a track or the final mixed output, to speed it up or slow it
+down, which also adjusts its pitch. A channel map can also be applied
+per-track, to change what speaker a given channel of audio is output
+to.</p>
+<p>Almost all timing in SDL_mixer is in <em>sample frames</em>. Stereo
+PCM audio data in Sint16 format takes 4 bytes per sample frame (2 bytes
+per sample times 2 channels), for example. This allows everything in
+SDL_mixer to run at sample-perfect accuracy, and it lets it run without
+concern for wall clock time--you can produce audio faster than
+real-time, if desired. The problem, though, is different pieces of audio
+at different <em>sample rates</em> will produce a different number of
+sample frames for the same length of time. To deal with this, conversion
+routines are offered: <a href="MIX_TrackMSToFrames.html">MIX_TrackMSToFrames</a>(), <a href="MIX_TrackFramesToMS.html">MIX_TrackFramesToMS</a>(), etc.
+Functions that operate on multiple tracks at once will deal with time in
+milliseconds, so it can do these conversions internally; be sure to read
+the documentation for these small quirks!</p>
+<p>SDL_mixer offers basic positional audio: a simple 3D positioning API
+through <a href="MIX_SetTrack3DPosition.html">MIX_SetTrack3DPosition</a>() and <a href="MIX_SetTrackStereo.html">MIX_SetTrackStereo</a>(). The former will
+do simple distance attenuation and spatialization--on a stereo setup,
+you will hear sounds move from left to right--and on a surround-sound
+configuration, individual tracks can move around the user. The latter,
+<a href="MIX_SetTrackStereo.html">MIX_SetTrackStereo</a>(), will force a
+sound to the Front Left and Front Right speakers and let the app pan it
+left and right as desired. Either effect can be useful for different
+situations. SDL_mixer is not meant to be a full 3D audio engine, but
+rather Good Enough for many purposes; if something more powerful in
+terms of 3D audio is needed, consider a proper 3D library like
+OpenAL.</p>
+<!-- END CATEGORY DOCUMENTATION -->
+
+<h2 id="functions">Functions</h2>
+<!-- DO NOT HAND-EDIT CATEGORY LISTS, THEY ARE AUTOGENERATED AND WILL BE OVERWRITTEN, BASED ON TAGS IN INDIVIDUAL PAGE FOOTERS. EDIT THOSE INSTEAD. -->
+
+<!-- BEGIN CATEGORY LIST: CategorySDLMixer, CategoryAPIFunction -->
+
+<ul>
+<li><a href="MIX_AudioFramesToMS.html">MIX_AudioFramesToMS</a></li>
+<li><a href="MIX_AudioMSToFrames.html">MIX_AudioMSToFrames</a></li>
+<li><a href="MIX_CreateAudioDecoder.html">MIX_CreateAudioDecoder</a></li>
+<li><a href="MIX_CreateAudioDecoder_IO.html">MIX_CreateAudioDecoder_IO</a></li>
+<li><a href="MIX_CreateGroup.html">MIX_CreateGroup</a></li>
+<li><a href="MIX_CreateMixer.html">MIX_CreateMixer</a></li>
+<li><a href="MIX_CreateMixerDevice.html">MIX_CreateMixerDevice</a></li>
+<li><a href="MIX_CreateSineWaveAudio.html">MIX_CreateSineWaveAudio</a></li>
+<li><a href="MIX_CreateTrack.html">MIX_CreateTrack</a></li>
+<li><a href="MIX_DecodeAudio.html">MIX_DecodeAudio</a></li>
+<li><a href="MIX_DestroyAudio.html">MIX_DestroyAudio</a></li>
+<li><a href="MIX_DestroyAudioDecoder.html">MIX_DestroyAudioDecoder</a></li>
+<li><a href="MIX_DestroyGroup.html">MIX_DestroyGroup</a></li>
+<li><a href="MIX_DestroyMixer.html">MIX_DestroyMixer</a></li>
+<li><a href="MIX_DestroyTrack.html">MIX_DestroyTrack</a></li>
+<li><a href="MIX_FramesToMS.html">MIX_FramesToMS</a></li>
+<li><a href="MIX_Generate.html">MIX_Generate</a></li>
+<li><a href="MIX_GetAudioDecoder.html">MIX_GetAudioDecoder</a></li>
+<li><a href="MIX_GetAudioDecoderFormat.html">MIX_GetAudioDecoderFormat</a></li>
+<li><a href="MIX_GetAudioDecoderProperties.html">MIX_GetAudioDecoderProperties</a></li>
+<li><a href="MIX_GetAudioDuration.html">MIX_GetAudioDuration</a></li>
+<li><a href="MIX_GetAudioFormat.html">MIX_GetAudioFormat</a></li>
+<li><a href="MIX_GetAudioProperties.html">MIX_GetAudioProperties</a></li>
+<li><a href="MIX_GetGroupMixer.html">MIX_GetGroupMixer</a></li>
+<li><a href="MIX_GetGroupProperties.html">MIX_GetGroupProperties</a></li>
+<li><a href="MIX_GetMixerFormat.html">MIX_GetMixerFormat</a></li>
+<li><a href="MIX_GetMixerFrequencyRatio.html">MIX_GetMixerFrequencyRatio</a></li>
+<li><a href="MIX_GetMixerGain.html">MIX_GetMixerGain</a></li>
+<li><a href="MIX_GetMixerProperties.html">MIX_GetMixerProperties</a></li>
+<li><a href="MIX_GetNumAudioDecoders.html">MIX_GetNumAudioDecoders</a></li>
+<li><a href="MIX_GetTaggedTracks.html">MIX_GetTaggedTracks</a></li>
+<li><a href="MIX_GetTrack3DPosition.html">MIX_GetTrack3DPosition</a></li>
+<li><a href="MIX_GetTrackAudio.html">MIX_GetTrackAudio</a></li>
+<li><a href="MIX_GetTrackAudioStream.html">MIX_GetTrackAudioStream</a></li>
+<li><a href="MIX_GetTrackFadeFrames.html">MIX_GetTrackFadeFrames</a></li>
+<li><a href="MIX_GetTrackFrequencyRatio.html">MIX_GetTrackFrequencyRatio</a></li>
+<li><a href="MIX_GetTrackGain.html">MIX_GetTrackGain</a></li>
+<li><a href="MIX_GetTrackLoops.html">MIX_GetTrackLoops</a></li>
+<li><a href="MIX_GetTrackMixer.html">MIX_GetTrackMixer</a></li>
+<li><a href="MIX_GetTrackPlaybackPosition.html">MIX_GetTrackPlaybackPosition</a></li>
+<li><a href="MIX_GetTrackProperties.html">MIX_GetTrackProperties</a></li>
+<li><a href="MIX_GetTrackRemaining.html">MIX_GetTrackRemaining</a></li>
+<li><a href="MIX_GetTrackTags.html">MIX_GetTrackTags</a></li>
+<li><a href="MIX_Init.html">MIX_Init</a></li>
+<li><a href="MIX_LoadAudio.html">MIX_LoadAudio</a></li>
+<li><a href="MIX_LoadAudio_IO.html">MIX_LoadAudio_IO</a></li>
+<li><a href="MIX_LoadAudioNoCopy.html">MIX_LoadAudioNoCopy</a></li>
+<li><a href="MIX_LoadAudioWithProperties.html">MIX_LoadAudioWithProperties</a></li>
+<li><a href="MIX_LoadRawAudio.html">MIX_LoadRawAudio</a></li>
+<li><a href="MIX_LoadRawAudio_IO.html">MIX_LoadRawAudio_IO</a></li>
+<li><a href="MIX_LoadRawAudioNoCopy.html">MIX_LoadRawAudioNoCopy</a></li>
+<li><a href="MIX_LockMixer.html">MIX_LockMixer</a></li>
+<li><a href="MIX_MSToFrames.html">MIX_MSToFrames</a></li>
+<li><a href="MIX_PauseAllTracks.html">MIX_PauseAllTracks</a></li>
+<li><a href="MIX_PauseTag.html">MIX_PauseTag</a></li>
+<li><a href="MIX_PauseTrack.html">MIX_PauseTrack</a></li>
+<li><a href="MIX_PlayAudio.html">MIX_PlayAudio</a></li>
+<li><a href="MIX_PlayTag.html">MIX_PlayTag</a></li>
+<li><a href="MIX_PlayTrack.html">MIX_PlayTrack</a></li>
+<li><a href="MIX_Quit.html">MIX_Quit</a></li>
+<li><a href="MIX_ResumeAllTracks.html">MIX_ResumeAllTracks</a></li>
+<li><a href="MIX_ResumeTag.html">MIX_ResumeTag</a></li>
+<li><a href="MIX_ResumeTrack.html">MIX_ResumeTrack</a></li>
+<li><a href="MIX_SetGroupPostMixCallback.html">MIX_SetGroupPostMixCallback</a></li>
+<li><a href="MIX_SetMixerFrequencyRatio.html">MIX_SetMixerFrequencyRatio</a></li>
+<li><a href="MIX_SetMixerGain.html">MIX_SetMixerGain</a></li>
+<li><a href="MIX_SetPostMixCallback.html">MIX_SetPostMixCallback</a></li>
+<li><a href="MIX_SetTagGain.html">MIX_SetTagGain</a></li>
+<li><a href="MIX_SetTrack3DPosition.html">MIX_SetTrack3DPosition</a></li>
+<li><a href="MIX_SetTrackAudio.html">MIX_SetTrackAudio</a></li>
+<li><a href="MIX_SetTrackAudioStream.html">MIX_SetTrackAudioStream</a></li>
+<li><a href="MIX_SetTrackCookedCallback.html">MIX_SetTrackCookedCallback</a></li>
+<li><a href="MIX_SetTrackFrequencyRatio.html">MIX_SetTrackFrequencyRatio</a></li>
+<li><a href="MIX_SetTrackGain.html">MIX_SetTrackGain</a></li>
+<li><a href="MIX_SetTrackGroup.html">MIX_SetTrackGroup</a></li>
+<li><a href="MIX_SetTrackIOStream.html">MIX_SetTrackIOStream</a></li>
+<li><a href="MIX_SetTrackLoops.html">MIX_SetTrackLoops</a></li>
+<li><a href="MIX_SetTrackOutputChannelMap.html">MIX_SetTrackOutputChannelMap</a></li>
+<li><a href="MIX_SetTrackPlaybackPosition.html">MIX_SetTrackPlaybackPosition</a></li>
+<li><a href="MIX_SetTrackRawCallback.html">MIX_SetTrackRawCallback</a></li>
+<li><a href="MIX_SetTrackRawIOStream.html">MIX_SetTrackRawIOStream</a></li>
+<li><a href="MIX_SetTrackStereo.html">MIX_SetTrackStereo</a></li>
+<li><a href="MIX_SetTrackStoppedCallback.html">MIX_SetTrackStoppedCallback</a></li>
+<li><a href="MIX_StopAllTracks.html">MIX_StopAllTracks</a></li>
+<li><a href="MIX_StopTag.html">MIX_StopTag</a></li>
+<li><a href="MIX_StopTrack.html">MIX_StopTrack</a></li>
+<li><a href="MIX_TagTrack.html">MIX_TagTrack</a></li>
+<li><a href="MIX_TrackFramesToMS.html">MIX_TrackFramesToMS</a></li>
+<li><a href="MIX_TrackMSToFrames.html">MIX_TrackMSToFrames</a></li>
+<li><a href="MIX_TrackPaused.html">MIX_TrackPaused</a></li>
+<li><a href="MIX_TrackPlaying.html">MIX_TrackPlaying</a></li>
+<li><a href="MIX_UnlockMixer.html">MIX_UnlockMixer</a></li>
+<li><a href="MIX_UntagTrack.html">MIX_UntagTrack</a></li>
+<li><a href="MIX_Version.html">MIX_Version</a></li>
+</ul>
+<!-- END CATEGORY LIST -->
+
+<h2 id="datatypes">Datatypes</h2>
+<!-- DO NOT HAND-EDIT CATEGORY LISTS, THEY ARE AUTOGENERATED AND WILL BE OVERWRITTEN, BASED ON TAGS IN INDIVIDUAL PAGE FOOTERS. EDIT THOSE INSTEAD. -->
+
+<!-- BEGIN CATEGORY LIST: CategorySDLMixer, CategoryAPIDatatype -->
+
+<ul>
+<li><a href="MIX_Audio.html">MIX_Audio</a></li>
+<li><a href="MIX_AudioDecoder.html">MIX_AudioDecoder</a></li>
+<li><a href="MIX_Group.html">MIX_Group</a></li>
+<li><a href="MIX_GroupMixCallback.html">MIX_GroupMixCallback</a></li>
+<li><a href="MIX_Mixer.html">MIX_Mixer</a></li>
+<li><a href="MIX_PostMixCallback.html">MIX_PostMixCallback</a></li>
+<li><a href="MIX_Track.html">MIX_Track</a></li>
+<li><a href="MIX_TrackMixCallback.html">MIX_TrackMixCallback</a></li>
+<li><a href="MIX_TrackStoppedCallback.html">MIX_TrackStoppedCallback</a></li>
+</ul>
+<!-- END CATEGORY LIST -->
+
+<h2 id="structs">Structs</h2>
+<!-- DO NOT HAND-EDIT CATEGORY LISTS, THEY ARE AUTOGENERATED AND WILL BE OVERWRITTEN, BASED ON TAGS IN INDIVIDUAL PAGE FOOTERS. EDIT THOSE INSTEAD. -->
+
+<!-- BEGIN CATEGORY LIST: CategorySDLMixer, CategoryAPIStruct -->
+
+<ul>
+<li><a href="MIX_Point3D.html">MIX_Point3D</a></li>
+<li><a href="MIX_StereoGains.html">MIX_StereoGains</a></li>
+</ul>
+<!-- END CATEGORY LIST -->
+
+<h2 id="enums">Enums</h2>
+<!-- DO NOT HAND-EDIT CATEGORY LISTS, THEY ARE AUTOGENERATED AND WILL BE OVERWRITTEN, BASED ON TAGS IN INDIVIDUAL PAGE FOOTERS. EDIT THOSE INSTEAD. -->
+
+<!-- BEGIN CATEGORY LIST: CategorySDLMixer, CategoryAPIEnum -->
+
+<ul>
+<li>(none.)</li>
+</ul>
+<!-- END CATEGORY LIST -->
+
+<h2 id="macros">Macros</h2>
+<!-- DO NOT HAND-EDIT CATEGORY LISTS, THEY ARE AUTOGENERATED AND WILL BE OVERWRITTEN, BASED ON TAGS IN INDIVIDUAL PAGE FOOTERS. EDIT THOSE INSTEAD. -->
+
+<!-- BEGIN CATEGORY LIST: CategorySDLMixer, CategoryAPIMacro -->
+
+<ul>
+<li><a href="SDL_MIXER_MAJOR_VERSION.html">SDL_MIXER_MAJOR_VERSION</a></li>
+<li><a href="SDL_MIXER_MICRO_VERSION.html">SDL_MIXER_MICRO_VERSION</a></li>
+<li><a href="SDL_MIXER_MINOR_VERSION.html">SDL_MIXER_MINOR_VERSION</a></li>
+<li><a href="SDL_MIXER_VERSION.html">SDL_MIXER_VERSION</a></li>
+<li><a href="SDL_MIXER_VERSION_ATLEAST.html">SDL_MIXER_VERSION_ATLEAST</a></li>
+</ul>
+<!-- END CATEGORY LIST -->
+
+<hr />
+<p><a href="CategoryAPICategory.html">CategoryAPICategory</a></p>
+</body>
+</html>

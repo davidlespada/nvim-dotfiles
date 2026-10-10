@@ -1,0 +1,38 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GamepadCapSenseEvent:
+.\"   https://wiki.libsdl.org/SDL_GamepadCapSenseEvent
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GamepadCapSenseEvent
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GamepadCapSenseEvent 3type "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 DATATYPES"
+.SH NAME
+SDL_GamepadCapSenseEvent \- Gamepad capsense event structure (event.gcapsense.*)
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_events.h>
+.PP
+.BI "typedef struct SDL_GamepadCapSenseEvent
+.BI "{
+.BI "    SDL_EventType type;     /**< SDL_EVENT_GAMEPAD_CAPSENSE_TOUCH or SDL_EVENT_GAMEPAD_CAPSENSE_RELEASE */
+.BI "    Uint32 reserved;
+.BI "    Uint64 timestamp;       /**< In nanoseconds, populated using SDL_GetTicksNS() */
+.BI "    SDL_JoystickID which;   /**< The joystick instance id */
+.BI "    Uint8 capsense;         /**< The capsense type (SDL_GamepadCapSenseType) */
+.BI "    bool down;              /**< true if the capsense is touched */
+.BI "    Uint8 padding1;
+.BI "    Uint8 padding2;
+.BI "} SDL_GamepadCapSenseEvent;
+.fi
+.SH AVAILABILITY
+This struct is available since SDL 3\[char46]6\[char46]0\[char46]
+

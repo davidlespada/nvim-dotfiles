@@ -1,0 +1,43 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_HINT_AUDIO_DEVICE_RAW_STREAM:
+.\"   https://wiki.libsdl.org/SDL_HINT_AUDIO_DEVICE_RAW_STREAM
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_HINT_AUDIO_DEVICE_RAW_STREAM
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_HINT_AUDIO_DEVICE_RAW_STREAM 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_HINT_AUDIO_DEVICE_RAW_STREAM \- Specify whether this audio device should do audio processing.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_hints.h>
+.PP
+.BI "#define SDL_HINT_AUDIO_DEVICE_RAW_STREAM \(dqSDL_AUDIO_DEVICE_RAW_STREAM\(dq
+.fi
+.SH DESCRIPTION
+Some operating systems perform echo cancellation, gain control, and noise reduction as needed\[char46] If your application already handles these, you can set this hint to prevent the OS from doing additional audio processing\[char46]
+.PP
+This corresponds to the WASAPI audio option
+.BR AUDCLNT_STREAMOPTIONS_RAW \[char46]
+.PP
+The variable can be set to the following values:
+.PP
+
+\(bu \(dq0\(dq: audio processing can be done by the OS\[char46] (default)
+.PP
+\(bu \(dq1\(dq: audio processing is done by the application\[char46]
+.PP
+This hint should be set before an audio device is opened\[char46]
+
+.SH AVAILABILITY
+This hint is available since SDL 3\[char46]4\[char46]0\[char46]
+

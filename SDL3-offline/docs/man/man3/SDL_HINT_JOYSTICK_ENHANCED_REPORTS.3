@@ -1,0 +1,44 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_HINT_JOYSTICK_ENHANCED_REPORTS:
+.\"   https://wiki.libsdl.org/SDL_HINT_JOYSTICK_ENHANCED_REPORTS
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_HINT_JOYSTICK_ENHANCED_REPORTS
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_HINT_JOYSTICK_ENHANCED_REPORTS 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_HINT_JOYSTICK_ENHANCED_REPORTS \- A variable controlling whether enhanced reports should be used for controllers when using the HIDAPI driver.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_hints.h>
+.PP
+.BI "#define SDL_HINT_JOYSTICK_ENHANCED_REPORTS \(dqSDL_JOYSTICK_ENHANCED_REPORTS\(dq
+.fi
+.SH DESCRIPTION
+Enhanced reports allow rumble and effects on Bluetooth PlayStation controllers and gyro on Nintendo Switch controllers, but break Windows DirectInput for other applications that don\(aqt use SDL\[char46]
+.PP
+Once enhanced reports are enabled, they can\(aqt be disabled on PlayStation controllers without power cycling the controller\[char46]
+.PP
+The variable can be set to the following values:
+.PP
+
+\(bu \(dq0\(dq: enhanced reports are not enabled\[char46]
+.PP
+\(bu \(dq1\(dq: enhanced reports are enabled\[char46] (default)
+.PP
+\(bu \(dqauto\(dq: enhanced features are advertised to the application, but SDL doesn\(aqt change the controller report mode unless the application uses them\[char46]
+.PP
+This hint can be enabled anytime\[char46]
+
+.SH AVAILABILITY
+This hint is available since SDL 3\[char46]2\[char46]0\[char46]
+

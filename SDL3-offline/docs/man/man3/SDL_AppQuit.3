@@ -1,0 +1,79 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_AppQuit:
+.\"   https://wiki.libsdl.org/SDL_AppQuit
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_AppQuit
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_AppQuit 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_AppQuit \- App-implemented deinit entry point for
+.BR SDL_MAIN_USE_CALLBACKS
+apps.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_main.h>
+.PP
+.BI "void SDL_AppQuit(void *appstate, SDL_AppResult result);
+.fi
+.SH DESCRIPTION
+Apps implement this function when using
+.BR SDL_MAIN_USE_CALLBACKS \[char46]
+If using a standard \(dqmain\(dq function, you should not supply this\[char46]
+.PP
+This function is called once by SDL before terminating the program\[char46]
+.PP
+This function will be called in all normal cases, even if
+.BR SDL_AppInit
+requests termination at startup\[char46] This function will not be called for abnormal process termination, such as a segfault or other crash\[char46]
+.PP
+This function should not go into an infinite mainloop; it should deinitialize any resources necessary, perform whatever shutdown activities, and return\[char46]
+.PP
+You do not need to call
+.BR SDL_Quit ()
+in this function, as SDL will call it after this function returns and before the process terminates, but it is safe to do so\[char46]
+.PP
+The
+.BR appstate
+parameter is an optional pointer provided by the app during
+.BR SDL_AppInit ()\[char46]
+If the app never provided a pointer, this will be NULL\[char46] This function call is the last time this pointer will be provided, so any resources to it should be cleaned up here\[char46]
+.PP
+This function is called by SDL on the main thread\[char46]
+.PP
+Note that as of SDL 3\[char46]6\[char46]0, on mobile platforms, this function will be called if the system is terminating the app mid-run\[char46] In this case,
+.BR result
+will be set to
+.BR SDL_APP_CONTINUE
+to signify that this was not the app requesting termination due to either a successful or failed run\[char46] This operates as an alternative to registering an event watcher to monitor for
+.BR SDL_EVENT_TERMINATING ,
+if the app is using the main callbacks anyway\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I appstate
+an optional pointer, provided by the app in
+.BR SDL_AppInit \[char46]
+
+.TP
+.I result
+the result code that terminated the app (success or failure)\[char46]
+.SH THREAD SAFETY
+
+.BR SDL_AppEvent ()
+may get called concurrently with this function if other threads that push events are still active\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_AppInit (3)

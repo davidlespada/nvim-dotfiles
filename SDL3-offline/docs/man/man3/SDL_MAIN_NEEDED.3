@@ -1,0 +1,45 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_MAIN_NEEDED:
+.\"   https://wiki.libsdl.org/SDL_MAIN_NEEDED
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_MAIN_NEEDED
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_MAIN_NEEDED 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_MAIN_NEEDED \- Defined if the target platform _requires_ a special mainline through SDL.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_main.h>
+.PP
+.BI "#define SDL_MAIN_NEEDED
+.fi
+.SH DESCRIPTION
+This won\(aqt be defined otherwise\[char46] If defined, SDL\(aqs headers will redefine
+.BR main
+to
+.BR SDL_main \[char46]
+.PP
+This macro is defined by
+.BR SDL_main\[char46]h ,
+which is not automatically included by
+.BR SDL\[char46]h \[char46]
+.PP
+Even if required, an app can define
+.BR SDL_MAIN_HANDLED
+and provide their own, if they know what they\(aqre doing\[char46]
+.PP
+This macro is used internally by SDL, and apps probably shouldn\(aqt rely on it\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+

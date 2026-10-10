@@ -1,0 +1,45 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_randf_r:
+.\"   https://wiki.libsdl.org/SDL_randf_r
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_randf_r
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_randf_r 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_randf_r \- Generate a uniform pseudo-random floating point number less than 1.0
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "float SDL_randf_r(Uint64 *state);
+.fi
+.SH DESCRIPTION
+There are no guarantees as to the quality of the random sequence produced, and this should not be used for security (cryptography, passwords) or where money is on the line (loot-boxes, casinos)\[char46] There are many random number libraries available with different characteristics and you should pick one of those to meet any serious needs\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I state
+a pointer to the current random number state, this may not be NULL\[char46]
+.SH RETURN VALUE
+Returns a random value in the range of [0\[char46]0, 1\[char46]0)\[char46]
+
+.SH THREAD SAFETY
+This function is thread-safe, as long as the state pointer isn\(aqt shared between threads\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_rand_bits_r (3),
+.BR SDL_rand_r (3),
+.BR SDL_randf (3)

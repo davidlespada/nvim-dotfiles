@@ -1,0 +1,35 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_AssertBreakpoint:
+.\"   https://wiki.libsdl.org/SDL_AssertBreakpoint
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_AssertBreakpoint
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_AssertBreakpoint 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_AssertBreakpoint \- The macro used when an assertion triggers a breakpoint.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_assert.h>
+.PP
+.BI "#define SDL_AssertBreakpoint() SDL_TriggerBreakpoint()
+.fi
+.SH DESCRIPTION
+This isn\(aqt for direct use by apps; use
+.BR SDL_assert
+or
+.BR SDL_TriggerBreakpoint
+instead\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+

@@ -1,0 +1,36 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_MAIN_HANDLED:
+.\"   https://wiki.libsdl.org/SDL_MAIN_HANDLED
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_MAIN_HANDLED
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_MAIN_HANDLED 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_MAIN_HANDLED \- Inform SDL that the app is providing an entry point instead of SDL.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_main.h>
+.PP
+.BI "#define SDL_MAIN_HANDLED 1
+.fi
+.SH DESCRIPTION
+SDL does not define this macro, but will check if it is defined when including
+.BR SDL_main\[char46]h \[char46]
+If defined, SDL will expect the app to provide the proper entry point for the platform, and all the other magic details needed, like manually calling
+.BR SDL_SetMainReady \[char46]
+.PP
+Please see [README-main-functions](README-main-functions), (or docs/README-main-functions\[char46]md in the source tree) for a more detailed explanation\[char46]
+
+.SH AVAILABILITY
+This macro is used by the headers since SDL 3\[char46]2\[char46]0\[char46]
+

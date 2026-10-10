@@ -1,0 +1,71 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_AsyncIOFromFile:
+.\"   https://wiki.libsdl.org/SDL_AsyncIOFromFile
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_AsyncIOFromFile
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_AsyncIOFromFile 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_AsyncIOFromFile \- Use this function to create a new
+.BR SDL_AsyncIO
+object for reading from and/or writing to a named file.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_asyncio.h>
+.PP
+.BI "SDL_AsyncIO * SDL_AsyncIOFromFile(const char *file, const char *mode);
+.fi
+.SH DESCRIPTION
+The
+.BR mode
+string understands the following values:
+.PP
+
+\(bu \(dqr\(dq: Open a file for reading only\[char46] It must exist\[char46]
+.PP
+\(bu \(dqw\(dq: Open a file for writing only\[char46] It will create missing files or truncate existing ones\[char46]
+.PP
+\(bu \(dqr+\(dq: Open a file for update both reading and writing\[char46] The file must exist\[char46]
+.PP
+\(bu \(dqw+\(dq: Create an empty file for both reading and writing\[char46] If a file with the same name already exists its content is erased and the file is treated as a new empty file\[char46]
+.PP
+There is no \(dqb\(dq mode, as there is only \(dqbinary\(dq style I/O, and no \(dqa\(dq mode for appending, since you specify the position when starting a task\[char46]
+.PP
+This function supports Unicode filenames, but they must be encoded in UTF-8 format, regardless of the underlying operating system\[char46]
+.PP
+This call is _not_ asynchronous; it will open the file before returning, under the assumption that doing so is generally a fast operation\[char46] Future reads and writes to the opened file will be async, however\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I file
+a UTF-8 string representing the filename to open\[char46]
+.TP
+.I mode
+an ASCII string representing the mode to be used for opening the file\[char46]
+.SH RETURN VALUE
+Returns a pointer to the
+.BR SDL_AsyncIO
+structure that is created or NULL on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_CloseAsyncIO (3),
+.BR SDL_ReadAsyncIO (3),
+.BR SDL_WriteAsyncIO (3)

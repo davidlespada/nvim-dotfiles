@@ -1,0 +1,280 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_CreateGPUComputePipeline:
+.\"   https://wiki.libsdl.org/SDL_CreateGPUComputePipeline
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_CreateGPUComputePipeline
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_CreateGPUComputePipeline 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_CreateGPUComputePipeline \- Creates a pipeline object to be used in a compute workflow.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_gpu.h>
+.PP
+.BI "SDL_GPUComputePipeline * SDL_CreateGPUComputePipeline(
+.BI "    SDL_GPUDevice *device,
+.BI "    const SDL_GPUComputePipelineCreateInfo *createinfo);
+.fi
+.SH DESCRIPTION
+Shader resource bindings must be authored to follow a particular convention depending on the shader format\[char46] See below for details\[char46]
+.PP
+---
+.PP
+.BR "SPIR-V (GLSL)"
+.PP
+For compute shaders, use:
+.PP
+
+\(bu Set 0 for samplers, read-only storage textures, and read-only storage buffers
+.PP
+\(bu Set 1 for read-write storage textures and read-write storage buffers
+.PP
+\(bu Set 2 for uniform data
+.PP
+The first resource in a given set must have a
+.BR binding
+of 0\[char46] Additional resources must appear at consecutive bindings (1, 2, etc), leaving no gaps in the set\[char46]
+.PP
+All samplers must come first in the binding order of Set 0, in order of how they are bound via
+.BR SDL_BindGPUComputeSamplers() \[char46]
+.PP
+All read-only storage textures must come after all samplers in the binding order, in order of how they are bound via
+.BR SDL_BindGPUComputeStorageTextures() \[char46]
+.PP
+All read-only storage buffers must come after all read-only storage textures in the binding order, in order of how they are bound via
+.BR SDL_BindGPUComputeStorageBuffers() \[char46]
+.PP
+All read-write storage textures must come first in the binding order of Set 1, in order of how they are bound via
+.BR SDL_BeginGPUComputePass() \[char46]
+.PP
+All read-write storage buffers must come after all read-write storage textures in the binding order, in order of how they are bound via
+.BR SDL_BeginGPUComputePass() \[char46]
+.PP
+.BR Example
+.PP
+If a compute shader binds 2 of each resource type, its binding layout should look like this:
+
+.IP
+.EX
+// Any samplers come first in Set 0, in SDL bind slot order
+layout(set = 0, binding = 0) uniform sampler2D samplerBoundToSlot0;
+layout(set = 0, binding = 1) uniform sampler2D samplerBoundToSlot1;
+// Any read-only storage textures come next in Set 0, in SDL bind slot order
+layout(set = 0, binding = 2) uniform image2D storageTextureBoundToSlot0;
+layout(set = 0, binding = 3) uniform image2D storageTextureBoundToSlot1;
+// Any read-only storage buffers come next in Set 0, in SDL bind slot order
+layout(set = 0, binding = 4) buffer storageBufferBoundToSlot0 { ... };
+layout(set = 0, binding = 5) buffer storageBufferBoundToSlot1 { ... };
+// Any read-write storage textures come first in Set 1, in SDL bind slot order
+layout(set = 1, binding = 0) uniform image2D rwStorageTextureBoundToSlot0;
+layout(set = 1, binding = 1) uniform image2D rwStorageTextureBoundToSlot1;
+// Any read-write storage buffers come next in Set 1, in SDL bind slot order
+layout(set = 1, binding = 2) buffer rwStorageBufferBoundToSlot0 { ... };
+layout(set = 1, binding = 3) buffer rwStorageBufferBoundToSlot1 { ... };
+// Any uniform buffers are in Set 2, in SDL slot order
+layout(set = 2, binding = 0) uniform UniformDataBoundToSlot0 { ... };
+layout(set = 2, binding = 1) uniform UniformDataBoundToSlot1 { ... };
+.EE
+.PP
+
+---
+.PP
+.BR "DXBC / DXIL (HLSL)"
+.PP
+For compute shaders, use:
+.PP
+
+\(bu
+.BR "(t[n], space0)"
+for sampled textures, read-only storage textures, and read-only storage buffers
+.PP
+\(bu
+.BR "(s[n], space0)"
+for samplers
+.PP
+\(bu
+.BR "(u[n], space1)"
+for read-write storage textures and read-write storage buffers
+.PP
+\(bu
+.BR "(b[n], space2)"
+for uniform data
+.PP
+The first resource in a given register set must have a register index of
+.BR 0 \[char46]
+Additional resources must appear at consecutive indices (1, 2, etc), leaving no gaps in the register set\[char46]
+.PP
+All sampled textures must come first in the
+.BR t
+register set, in order of how they are bound via
+.BR SDL_BindGPUComputeSamplers() \[char46]
+.PP
+All sampler objects must be in the
+.BR s
+register set, in the same order as the textures above\[char46]
+.PP
+All read-only storage textures must come after all samplers in the
+.BR t
+register set, in order of how they are bound via
+.BR SDL_BindComputeStorageTextures() \[char46]
+.PP
+All read-only storage buffers must come after all storage textures in the
+.BR t
+register set, in order of how they are bound via
+.BR SDL_BindComputeStorageBuffers() \[char46]
+.PP
+All read-write storage textures must come first in the
+.BR u
+register set in
+.BR space1 ,
+in order of how they are bound via
+.BR SDL_BeginGPUComputePass() \[char46]
+.PP
+All read-write storage buffers must come after all read-write storage textures in the
+.BR u
+register set in
+.BR space1 ,
+in order of how they are bound via
+.BR SDL_BeginGPUComputePass() \[char46]
+.PP
+.BR Example
+.PP
+If a compute shader binds 2 of each resource type, the layout should look like this:
+
+.IP
+.EX
+// Any samplers and sampled textures come first in their respective register sets, in SDL bind slot order
+SamplerState SamplerBoundToSlot0 : register( s0, space0 );
+SamplerState SamplerBoundToSlot1 : register( s1, space0 );
+Texture2D SampledTextureBoundToSlot0 : register( t0, space0 );
+Texture2D SampledTextureBoundToSlot1 : register( t1, space0 );
+// Any read-only storage textures come next in the `t` register set, in SDL bind slot order
+Texture2D StorageTextureBoundToSlot0 : register( t2, space0 );
+Texture2D StorageTextureBoundToSlot1 : register( t3, space0 );
+// Any read-only storage buffers come next in the `t` register set, in SDL bind slot order
+ByteAddressBuffer StorageBufferBoundToSlot0 : register( t4, space0 );
+ByteAddressBuffer StorageBufferBoundToSlot1 : register( t5, space0 );
+// Any read-write storage textures come first in the `u` register set in space1, in SDL bind slot order
+RWTexture2D RWStorageTextureBoundToSlot0 : register( u0, space1 );
+RWTexture2D RWStorageTextureBoundToSlot1 : register( u1, space1 );
+// Any read-write storage buffers come next in the `u` register set in space1, in SDL bind slot order
+RWByteAddressBuffer RWStorageTextureBoundToSlot0 : register( u2, space1 );
+RWByteAddressBuffer RWStorageTextureBoundToSlot1 : register( u3, space1 );
+// Any uniform buffers are in the `b` register set in space2, in SDL slot order
+cbuffer UniformDataBoundToSlot0 : register( b0, space2 ) { ... };
+cbuffer UniformDataBoundToSlot1 : register( b1, space2 ) { ... };
+.EE
+.PP
+
+---
+.PP
+.BR "MSL / Metallib (Metal Shading Language)"
+.PP
+The first resource in a given argument table must have an index of
+.BR 0 \[char46]
+Additional resources must appear at consecutive indices (1, 2, etc), leaving no gaps in the table\[char46]
+.PP
+All sampled textures must come first in the
+.BR [[texture]]
+argument table, in order of how they are bound via
+.BR SDL_BindGPUComputeSamplers() \[char46]
+.PP
+All sampler objects must be in the
+.BR [[sampler]]
+argument table, in the same order as the textures above\[char46]
+.PP
+All read-only storage textures must come after all sampled textures in the
+.BR [[texture]]
+argument table, in order of how they are bound via
+.BR SDL_BindGPUComputeStorageTextures() \[char46]
+.PP
+All read-write storage textures must come after all read-only storage textures in the
+.BR [[texture]]
+argument table, in order of how they are bound via
+.BR SDL_BeginGPUComputePass() \[char46]
+.PP
+All uniform buffers must come first in the
+.BR [[buffer]]
+argument table, in order of their slots in
+.BR SDL_PushGPUComputeUniformData() \[char46]
+.PP
+All read-only storage buffers must come after all uniform buffers in the
+.BR [[buffer]]
+argument table, in order of how they are bound via
+.BR SDL_BindGPUComputeStorageBuffers() \[char46]
+.PP
+All read-write storage buffers must come after all read-only storage buffers in the
+.BR [[buffer]]
+argument table, in order of how they are bound via
+.BR SDL_BeginGPUComputePass() \[char46]
+.PP
+.BR Example
+.PP
+For a compute shader binding 2 of each resource type, the main function signature should look like this:
+
+.IP
+.EX
+kernel void ExampleComputeShader(
+    // Any samplers go in the `sampler` table, in SDL bind slot order
+    sampler samplerBoundToSlot0 [[sampler(0)]],
+    sampler samplerBoundToSlot1 [[sampler(1)]],
+    // Any sampled textures come first in the `texture` table, in SDL bind slot order
+    texture2d<float> sampledTextureBoundToSlot0 [[texture(0)]],
+    texture2d<float> sampledTextureBoundToSlot1 [[texture(1)]],
+    // Any read-only storage textures come next in the `texture` table, in SDL bind slot order
+    texture2d<float> storageTextureBoundToSlot0 [[texture(2)]],
+    texture2d<float> storageTextureBoundToSlot1 [[texture(3)]],
+    // Any read-write storage textures come next in the `texture` table, in SDL bind slot order
+    texture2d<float, access::write> rwStorageTextureBoundToSlot0 [[texture(4)]];
+    texture2d<float, access::write> rwStorageTextureBoundToSlot1 [[texture(5)]];
+    // Any uniform buffers come first in the `buffer` table, in SDL slot order
+    constant SomeUniformStruct uniformDataBoundToSlot0 [[buffer(0)]],
+    constant SomeUniformStruct uniformDataBoundToSlot1 [[buffer(1)]],
+    // Any read-only storage buffers come next in the `buffer` table, in SDL bind slot order
+    device SomeBufferStruct& storageBufferBoundToSlot0 [[buffer(2)]],
+    device SomeBufferStruct& storageBufferBoundToSlot1 [[buffer(3)]]);
+    // Any read-write storage buffers come next in the `buffer` table, in SDL bind slot order
+    device SomeBufferStruct& rwStorageBufferBoundToSlot0 [[buffer(4)]];
+    device SomeBufferStruct& rwStorageBufferBoundToSlot1 [[buffer(5)]]);
+.EE
+.PP
+
+---
+.PP
+There are optional properties that can be provided through
+.BR props \[char46]
+These are the supported properties:
+.PP
+
+\(bu
+.BR SDL_PROP_GPU_COMPUTEPIPELINE_CREATE_NAME_STRING :
+a name that can be displayed in debugging tools\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I device
+a GPU Context\[char46]
+.TP
+.I createinfo
+a struct describing the state of the compute pipeline to create\[char46]
+.SH RETURN VALUE
+Returns a compute pipeline object on success, or NULL on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_BindGPUComputePipeline (3),
+.BR SDL_ReleaseGPUComputePipeline (3)

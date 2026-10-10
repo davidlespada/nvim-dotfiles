@@ -1,0 +1,54 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GPUSwapchainComposition:
+.\"   https://wiki.libsdl.org/SDL_GPUSwapchainComposition
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GPUSwapchainComposition
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GPUSwapchainComposition 3type "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 DATATYPES"
+.SH NAME
+SDL_GPUSwapchainComposition \- Specifies the texture format and colorspace of the swapchain textures.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_gpu.h>
+.PP
+.BI "typedef enum SDL_GPUSwapchainComposition
+.BI "{
+.BI "    SDL_GPU_SWAPCHAINCOMPOSITION_SDR,
+.BI "    SDL_GPU_SWAPCHAINCOMPOSITION_SDR_LINEAR,
+.BI "    SDL_GPU_SWAPCHAINCOMPOSITION_HDR_EXTENDED_LINEAR,
+.BI "    SDL_GPU_SWAPCHAINCOMPOSITION_HDR10_ST2084
+.BI "} SDL_GPUSwapchainComposition;
+.fi
+.SH DESCRIPTION
+SDR will always be supported\[char46] Other compositions may not be supported on certain systems\[char46]
+.PP
+It is recommended to query
+.BR SDL_WindowSupportsGPUSwapchainComposition
+after claiming the window if you wish to change the swapchain composition from SDR\[char46]
+.PP
+
+\(bu SDR: B8G8R8A8 or R8G8B8A8 swapchain\[char46] Pixel values are in sRGB encoding\[char46]
+.PP
+\(bu SDR_LINEAR: B8G8R8A8_SRGB or R8G8B8A8_SRGB swapchain\[char46] Pixel values are stored in memory in sRGB encoding but accessed in shaders in \(dqlinear sRGB\(dq encoding which is sRGB but with a linear transfer function\[char46]
+.PP
+\(bu HDR_EXTENDED_LINEAR: R16G16B16A16_FLOAT swapchain\[char46] Pixel values are in extended linear sRGB encoding and permits values outside of the [0, 1] range\[char46]
+.PP
+\(bu HDR10_ST2084: A2R10G10B10 or A2B10G10R10 swapchain\[char46] Pixel values are in BT\[char46]2020 ST2084 (PQ) encoding\[char46]
+
+.SH AVAILABILITY
+This enum is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_SetGPUSwapchainParameters (3),
+.BR SDL_WindowSupportsGPUSwapchainComposition (3),
+.BR SDL_WaitAndAcquireGPUSwapchainTexture (3)

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README-migration</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">:root {
+color-scheme: dark light; 
+}
+body {
+background-color: white;
+padding: 2vw;
+color: #333;
+max-width: 1200px;
+margin: 0 auto;
+font-size: 16px;
+line-height: 1.5;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+overflow-wrap: break-word;
+}
+a {
+color: #0969da;
+
+}
+a:visited {
+color: #064998;
+}
+h1 {
+border-bottom: 2px solid #efefef;
+}
+h2 {
+border-bottom: 1px solid #efefef;
+}
+p {
+max-width: 85ch;
+}
+li {
+max-width: 85ch;
+}
+div.sourceCode {
+background-color: #f6f8fa;
+max-width: 100%;
+padding: 16px;
+}
+code {
+background-color: #f6f8fa;
+padding: 0px;
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+"Liberation Mono", monospace;
+}
+table {
+border: 1px solid #808080;
+border-collapse: collapse;
+}
+td {
+border: 1px solid #808080;
+padding: 5px;
+}
+tr:nth-child(even) {
+background-color: #f6f8fa;
+}
+.wikitopbanner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #efefef;
+padding: 10px;
+margin-bottom: 10px;
+width: auto;
+}
+.wikibottombanner {
+background-color: #efefef;
+padding: 10px;
+margin-top: 10px;
+width: auto;
+}
+.alertBox {
+background-color: #f8d7da;
+border: 1px solid #f5c6cb;
+max-width: 60%;
+padding: 10;
+margin: auto;
+}
+.anchorImage {
+visibility: hidden;
+padding-left: 0.2em;
+color: #fff;
+}
+.anchorText:hover .anchorImage {
+visibility: visible;
+}
+hr {
+display: block;
+height: 1px;
+border: 0;
+border-top: 1px solid #efefef;
+margin: 1em 0;
+padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+body {
+color: #e6edf3;
+background-color: #0d1117;
+}
+h1 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+h2 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+hr {
+border-color: rgba(48, 54, 61, 0.7);
+}
+div.sourceCode {
+background-color: #161b22;
+}
+code {
+background-color: #161b22;
+}
+a {
+color: #4493f8;
+}
+a:visited {
+color: #2f66ad;
+}
+table {
+border-color: rgba(48, 54, 61, 0.7);
+}
+td {
+border-color: rgba(48, 54, 61, 0.7);
+}
+tr:nth-child(even) {
+background-color: #161b22;
+}
+.wikitopbanner {
+background-color: #263040;
+}
+.wikibottombanner {
+background-color: #263040;
+}
+.anchorText:hover .anchorImage {
+filter: invert(100%);
+}
+}
+@media print {
+body {
+font-size: 12px;
+}
+table {
+font-size: inherit;
+}
+a:visited {
+color: #0969da;
+}
+.wikitopbanner,
+.anchorText,
+.wikibottombanner {
+display: none;
+}
+}
+</style>
+  <style type="text/css"> code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+{ content: attr(title);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; pointer-events: all; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+@media (prefers-color-scheme: dark) {
+code span.al { color: #95da4c; font-weight: bold; } 
+code span.an { color: #3f8058; } 
+code span.at { color: #2980b9; } 
+code span.bn { color: #f67400; } 
+code span.bu { color: #7f8c8d; } 
+code span.ch { color: #3daee9; } 
+code span.co { color: #7a7c7d; } 
+code span.cv { color: #7f8c8d; } 
+code span.cn { color: #27aeae; font-weight: bold; } 
+code span.cf { color: #fdbc4b; font-weight: bold; } 
+code span.dt { color: #2980b9; } 
+code span.dv { color: #f67400; } 
+code span.do { color: #a43340; } 
+code span.er { color: #da4453; } 
+code span.ex { color: #0099ff; font-weight: bold; } 
+code span.fl { color: #f67400; } 
+code span.fu { color: #8e44ad; } 
+code span.im { color: #27ae60; } 
+code span.in { color: #c45b00; } 
+code span.kw { color: #cfcfc2; font-weight: bold; } 
+code span.op { color: #cfcfc2; } 
+code span.ot { color: #27ae60; } 
+code span.pp { color: #27ae60; } 
+code span.sc { color: #3daee9; } 
+code span.ss { color: #da4453; } 
+code span.st { color: #f44f4f; } 
+code span.va { color: #27aeae; } 
+code span.vs { color: #da4453; } 
+code span.wa { color: #da4453; } 
+}</style>
+</head>
+<body>
+<h1 id="migrating-to-sdl_net-30">Migrating to SDL_net 3.0</h1>
+<p>SDL_net 3.0 (aka &quot;SDL3_net&quot;) is a dramatically different library than
+previous versions. The API has been completely redesigned. There is no
+compatibility layer. If you want to use it, you have to migrate to
+it.</p>
+<p>SDL3_net requires SDL3. It relies on many features that are new to
+SDL3, both internally and in the public API, so if your project is on
+SDL 1.2 or SDL2, you&#39;ll have to move your project to SDL3 at the same
+time.</p>
+<p>That being said, we think SDL3_net and SDL3 are both great pieces of
+software--significant improvements over their previous versions--and we
+think that once you move to them, you&#39;ll be quite happy you did.</p>
+<p>There are some things that don&#39;t have simple replacements that can be
+changed mechanically to migrate to SDL3_net. The new API is in many ways
+more powerful, but also much simpler.</p>
+<p>This migration guide will attempt to walk through the important
+details but it&#39;s possible that some things can&#39;t be done the same way.
+Feel free to open bug reports if you&#39;re totally stuck.</p>
+<p>The end of this document provides a &quot;tl;dr&quot; section that lists each
+SDL2_net function name and a brief explanation about what to do with
+it.</p>
+<h2 id="things-that-are-totally-gone">Things that are totally gone</h2>
+<ul>
+<li>Building SDL_net without SDL at all (the <code>WITHOUT_SDL</code>
+define in SDL2_net) is no longer an option. SDL3 is required, both in
+including the SDL_net public headers and in the library&#39;s implementation
+code.</li>
+<li>Network addresses used to be in a public struct (IPaddress). The new
+object (NET_Address) is an opaque type. If your app was setting or
+reading IPv4 addresses directly in the struct, this will have to change.
+SDL3_net offers functions to create and query NET_Address objects.</li>
+<li>UDP transmission no longer deals with &quot;channels.&quot; This was a
+confusing interface in general. One could build a channel system on top
+of SDL3_net easily with an array of NET_Address objects, but
+NET_DatagramSocket only deals with sending and receiving from addresses
+now.</li>
+<li>UDP packets had several API functions for memory management. In
+SDL3_net, you just provide a pointer to data you want to send, or a
+buffer to receive into, and that&#39;s it. Internal memory management is
+done with SDL_malloc().</li>
+<li>Socket sets are gone. The entire API has collapsed down into
+NET_WaitUntilInputAvailable(), which just takes an array of sockets to
+check.</li>
+</ul>
+<h2 id="including-sdl3_net">Including SDL3_net</h2>
+<p>The proper way to include SDL3_net&#39;s header is:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;SDL3_net/SDL_net.h&gt;</span></span></code></pre></div>
+<p>Like SDL3, the new convention is to use <code>&lt;&gt;</code>
+brackets and a subdirectory.</p>
+<h2 id="symbol-names">Symbol names</h2>
+<p>In SDL2_net, all functions started with <code>SDLNet_</code> and
+macros started with <code>SDLNET_</code>. In SDL3_net, everything starts
+with <code>NET_</code>.</p>
+<h2 id="versioning">Versioning</h2>
+<p>Versions are now bits packed into a single int instead of a struct,
+using SDL3&#39;s usual magic for unpacking these.</p>
+<h2 id="return-values">Return values</h2>
+<p>Most things that returned an int in SDL2_net would return a -1 or 0
+to report error or success, respectively. In SDL3_net, these sorts of
+functions return bools, with true for success and false for failure. Be
+careful in migrating, as your compiler might catch this and warn
+you...</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>NET_Init<span class="op">()</span> <span class="op">&lt;</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span> <span class="co">/* failure! */</span> <span class="op">}</span></span></code></pre></div>
+<p>...but it won&#39;t catch this...</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(!</span>NET_Init<span class="op">())</span> <span class="op">{</span> <span class="co">/* Success in SDL2_net, but failure in SDL3_net! */</span> <span class="op">}</span></span></code></pre></div>
+<h2 id="multiple-protocols">Multiple protocols</h2>
+<p>SDL2_net&#39;s public API was hardcoded to offer IPv4 networking.
+SDL3_net has replaced its IPaddress struct with the opaque NET_Address.
+This can handle addresses from different network protocols, including
+future ones that haven&#39;t been conceived of yet. But most notably: it
+means that your app can abstractly handle both IPv4 and IPv6.</p>
+<p>(In theory, this could also work with, say, an IPX or AppleTalk
+network in the wild, but it might require small fixes to SDL3_net&#39;s
+code. Send patches.)</p>
+<p>Using NET_ResolveHostname() might give you any available protocol,
+letting the OS decide the best option for the system.</p>
+<p>SDL3_net goes even further: it offers &quot;dual-stack&quot; sockets. If you
+create a server or datagram socket bound to a NULL address, it will try
+to create both IPv4 and IPv6 OS-level sockets under the hood, and listen
+on both. This is not just an IPv4-over-IPv6 bridge. This makes it
+possible that you&#39;ll get traffic from both protocols at the same time,
+with clients coming from addresses that look like 157.90.7.176 and
+2a01:4f8:251:5583::2 simultaneously, and your server can trivially
+bridge between them.</p>
+<h2 id="blocking-vs-non-blocking">Blocking vs Non-blocking</h2>
+<p>SDL2_net was (mostly) a blocking API. If it took time to complete a
+network operation, you would have to wait. Some waits might be short,
+like passing a datagram to the kernel&#39;s transmit buffers, but others
+might take many seconds, depending on network conditions. It offered a
+wrapper over the select() call with what it called &quot;socket sets&quot; to
+query if data was available, to avoid blocking. A DNS lookup was going
+to take as long as it takes.</p>
+<p>SDL3_net takes the opposite approach: everything is
+<em>non-blocking</em> now. If data is not available, read calls will
+return immediately, reporting this. If data cannot be sent right away,
+it will queue internally until the library can send it later. DNS
+queries happen on a pool of background threads and the app can check in
+from time to time to see if there are results available.</p>
+<p>The concept of &quot;socket sets&quot; has collapsed down into a single
+function: NET_WaitUntilInputAvailable(), which takes an array of various
+SDL_net objects and a timeout. A non-blocking query has a timeout of
+zero, an indefinite wait until <em>something</em> happens is a timeout
+of -1.</p>
+<p>If you prefer blocking behavior, there are functions to wait for
+specific things to happen (with an optional timeout). These will put the
+calling thread to sleep for efficiency.</p>
+<ul>
+<li>NET_WaitUntilResolved: Wait for a specific DNS query to finish.</li>
+<li>NET_WaitUntilConnected: Wait for a specific stream socket to
+connect.</li>
+<li>NET_WaitUntilStreamSocketDrained: Wait for a stream socket to send
+all queued data.</li>
+<li>NET_WaitUntilInputAvailable: Like the other NET_WaitUntil*
+functions, but check multiple things at the same time.</li>
+</ul>
+<p>There are simple non-blocking query functions, too:
+NET_GetAddressStatus, NET_GetConnectionStatus,
+NET_GetStreamSocketPendingWrites.</p>
+<h2 id="thread-safety">Thread safety</h2>
+<p>All functions in SDL3_net are thread safe, with one caveat: you can
+not operate on the same socket from two threads at once. Two threads can
+work with two separate sockets at the same time without problems.</p>
+<h2 id="network-byte-order">Network byte order</h2>
+<p>In SDL2_net, things like network addresses and port numbers might
+need to be in &quot;network byte order&quot; (bigendian) in some cases. In
+SDL3_net, these values are always in &quot;host byte order&quot; (the native byte
+order of the system), and SDL3_net will manage byteswapping behind the
+scenes as necessary.</p>
+<p>Of course any payload bytes sent over the internet might comes from
+any computer with any byte order, so the app still needs to deal with
+that exactly the same as they did with SDL2_net.</p>
+<h2 id="initialization">Initialization</h2>
+<p>SDL2_net expected you to call SDL_Init() before SDLNet_Init(). Now
+you don&#39;t have to.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(!</span>NET_Init<span class="op">())</span> <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    SDL_Log<span class="op">(</span><span class="st">&quot;NET_Init failed: </span><span class="sc">%s</span><span class="st">&quot;</span><span class="op">,</span> SDL_GetError<span class="op">());</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    SDL_Log<span class="op">(</span><span class="st">&quot;SDL_net is ready!&quot;</span><span class="op">);</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>NET_Init() is reference-counted; it&#39;s safe to call it more than once,
+and only the first call will do actual initialization tasks. Likewise,
+actual deinitialization with NET_Quit() will only happen when it has
+been called as many times as NET_Init() has. This allows different parts
+of the program to initialize and use SDL3_net without knowing about
+other parts using it too.</p>
+<h2 id="stream-sockets">Stream sockets</h2>
+<p>SDL2_net represents server (&quot;listen&quot;) sockets with the same type as
+connected sockets: a TCPsocket object. In SDL3_net, these are split into
+two separate objects: NET_Server and NET_StreamSocket.</p>
+<p>NET_StreamSocket is the thing that actually transmits data over the
+network between a client and server; both ends of the connection have
+one and both can read or write to theirs.</p>
+<p>NET_Server is the thing that will listen for new connections from
+clients, and generate the server&#39;s end of the NET_StreamSocket for each
+one.</p>
+<p>Creating NET_Server with a NULL address will possibly listen on both
+IPv4 and IPv6 networks separately under the hood.</p>
+<h2 id="datagram-sockets">Datagram sockets</h2>
+<p>SDLNet_UDP_Open() would let you specify a port but only binds to
+INADDR_ANY. SDL3_net&#39;s NET_CreateDatagramSocket() will let you bind to
+specific interfaces or specify a NULL address for the equivalent of
+INADDR_ANY (but it might listen on both IPv4 and IPv6 interfaces under
+the hood).</p>
+<h2 id="broadcasting">Broadcasting</h2>
+<p>In SDL2_net, you could send UDP packets to the subnet&#39;s broadcast
+address (if you could figure it out), or 255.255.255.255 (which wouldn&#39;t
+work on Windows).</p>
+<p>In SDL3_net, you create a datagram socket with the
+<code>NET_PROP_DATAGRAM_SOCKET_ALLOW_BROADCAST_BOOLEAN</code> property,
+and call NET_SendDatagram() with a NULL address.</p>
+<p>This abstracts out broadcasting for different protocols (including
+IPv6, where SDL3_net fakes this under the hood with multicasting on your
+behalf). SDL3_net will also make efforts to broadcast to all network
+interfaces if appropriate, and broadcast to different network protocols.
+As such, it&#39;s possible that a single broadcast packet will arrive for
+the same app on multiple interfaces, and it might appear to come from
+different computers, since it might have an IPv4 and IPv6 address. Plan
+accordingly, so you know whether to drop duplicate packets.</p>
+<p>Futher, if you broadcast from a client in order to locate servers,
+and that server is listening on both IPv4 and IPv6, you might get two
+responses that appear to be different servers. Plan to add something
+unique in the payload so you can recognize they are the same machine, or
+separate out IPv4/IPv6 servers in your server browser, etc.</p>
+<p>(And, of course, please limit the amount of broadcasting your app
+does in general, to be a good citizen of your subnet!)</p>
+<h2 id="simulating-failure">Simulating failure</h2>
+<p>SDL2_net had SDLNet_UDP_SetPacketLoss(). SDL3_net extends this to
+other pieces of the network stack: you can set up separate simulated
+failure percentages for stream sockets (being reliable, they will
+introduce delays into the stream and possibly just drop the connection
+outright sometimes), and DNS lookups (some will take longer, and some
+will fail, as if packets aren&#39;t arriving from the DNS server or domains
+are mysteriously missing).</p>
+<p>These functions are NET_SimulateAddressResolutionLoss(),
+NET_SimulateStreamPacketLoss(), and
+NET_SimulateDatagramPacketLoss().</p>
+<h2 id="tldr">tl;dr</h2>
+<p>A very brief comment on what to do with each symbol in SDL2_net.</p>
+<p>Some of these are listed as &quot;no equivalent in SDL3_net&quot; but could
+possibly be added if there is a need. If you&#39;re stuck, please file an
+issue and we can discuss it!</p>
+<ul>
+<li>SDL_NET_MAJOR_VERSION =&gt; SDL_NET_MAJOR_VERSION</li>
+<li>SDL_NET_MINOR_VERSION =&gt; SDL_NET_MAJOR_VERSION</li>
+<li>SDL_NET_PATCHLEVEL =&gt; SDL_NET_MICRO_VERSION</li>
+<li>SDL_NET_VERSION =&gt; SDL_NET_VERSION</li>
+<li>SDL_NET_VERSION_ATLEAST =&gt; SDL_NET_VERSION_ATLEAST</li>
+<li>SDLNet_Linked_Version =&gt; NET_Version</li>
+<li>SDL_NET_COMPILEDVERSION =&gt; SDL_NET_VERSION</li>
+<li>SDLNet_Init =&gt; NET_Init</li>
+<li>SDLNet_Quit =&gt; NET_Quit</li>
+<li>IPaddress =&gt; NET_Address</li>
+<li>SDLNet_ResolveHost =&gt; NET_ResolveHostname (the port number from
+SDL2_net is specified in other functions).</li>
+<li>SDLNet_ResolveIP =&gt; NET_GetAddressString (this does not attempt
+to figure out the hostname via DNS, though! File an issue if you need
+this!)</li>
+<li>SDLNet_GetLocalAddresses =&gt; NET_GetLocalAddresses</li>
+<li>TCPsocket =&gt; NET_StreamSocket</li>
+<li>SDLNet_TCP_OpenServer =&gt; NET_CreateServer</li>
+<li>SDLNet_TCP_OpenClient =&gt; NET_CreateClient</li>
+<li>SDLNet_TCP_Open =&gt; No direct equivalent, use NET_CreateServer or
+NET_CreateClient as appropriate.</li>
+<li>SDLNet_TCP_Accept =&gt; NET_AcceptClient</li>
+<li>SDLNet_TCP_GetPeerAddress =&gt; NET_GetStreamSocketAddress</li>
+<li>SDLNet_TCP_Send =&gt; NET_WriteToStreamSocket</li>
+<li>SDLNet_TCP_Recv =&gt; NET_ReadFromStreamSocket</li>
+<li>SDLNet_TCP_Close =&gt; NET_DestroyStreamSocket</li>
+<li>SDLNET_MAX_UDPCHANNELS =&gt; no equivalent in SDL3_net.</li>
+<li>SDLNET_MAX_UDPADDRESSES =&gt; no equivalent in SDL3_net.</li>
+<li>UDPpacket =&gt; NET_Datagram</li>
+<li>SDLNet_AllocPacket =&gt; no equivalent in SDL3_net.</li>
+<li>SDLNet_ResizePacket =&gt; no equivalent in SDL3_net.</li>
+<li>SDLNet_FreePacket =&gt; NET_DestroyDatagram</li>
+<li>SDLNet_AllocPacketV =&gt; no equivalent in SDL3_net.</li>
+<li>SDLNet_FreePacketV =&gt; NET_DestroyDatagram in a loop.</li>
+<li>UDPsocket =&gt; NET_DatagramSocket</li>
+<li>SDLNet_UDP_Open =&gt; NET_CreateDatagramSocket</li>
+<li>SDLNet_UDP_SetPacketLoss =&gt; NET_SimulateDatagramPacketLoss</li>
+<li>SDLNet_UDP_Bind =&gt; no equivalent in SDL3_net.</li>
+<li>SDLNet_UDP_Unbind =&gt; no equivalent in SDL3_net.</li>
+<li>SDLNet_UDP_GetPeerAddress =&gt; no equivalent in SDL3_net.
+NET_Datagram::addr has it in received packets.</li>
+<li>SDLNet_UDP_SendV =&gt; NET_SendDatagram in a loop.</li>
+<li>SDLNet_UDP_Send =&gt; NET_SendDatagram</li>
+<li>SDLNet_UDP_RecvV =&gt; NET_ReceiveDatagram in a loop.</li>
+<li>SDLNet_UDP_Recv =&gt; NET_ReceiveDatagram</li>
+<li>SDLNet_UDP_Close =&gt; NET_DestroyDatagramSocket</li>
+<li>SDLNet_GenericSocket =&gt; <code>void *</code></li>
+<li>SDLNet_SocketSet =&gt; no equivalent in SDL3_net. Just pass an array
+of things to NET_WaitUntilInputAvailable().</li>
+<li>SDLNet_AllocSocketSet =&gt; no equivalent in SDL3_net. Just pass an
+array of things to NET_WaitUntilInputAvailable().</li>
+<li>SDLNet_AddSocket =&gt; no equivalent in SDL3_net. Just pass an array
+of things to NET_WaitUntilInputAvailable().</li>
+<li>SDLNet_TCP_AddSocket =&gt; no equivalent in SDL3_net. Just pass an
+array of things to NET_WaitUntilInputAvailable().</li>
+<li>SDLNet_UDP_AddSocket =&gt; no equivalent in SDL3_net. Just pass an
+array of things to NET_WaitUntilInputAvailable().</li>
+<li>SDLNet_DelSocket =&gt; no equivalent in SDL3_net. Just pass an array
+of things to NET_WaitUntilInputAvailable().</li>
+<li>SDLNet_TCP_DelSocket =&gt; no equivalent in SDL3_net. Just pass an
+array of things to NET_WaitUntilInputAvailable().</li>
+<li>SDLNet_UDP_DelSocket =&gt; no equivalent in SDL3_net. Just pass an
+array of things to NET_WaitUntilInputAvailable().</li>
+<li>SDLNet_CheckSockets =&gt; NET_WaitUntilInputAvailable</li>
+<li>SDLNet_SocketReady =&gt; no equivalent in SDL3_net. Just try to use
+them, they&#39;re all non-blocking.</li>
+<li>SDLNet_FreeSocketSet =&gt; no equivalent in SDL3_net. Just pass an
+array of things to NET_WaitUntilInputAvailable().</li>
+<li>SDLNet_SetError =&gt; SDL_SetError</li>
+<li>SDLNet_GetError =&gt; SDL_GetError</li>
+<li>SDLNet_Write16 =&gt; SDL_SwapBE16</li>
+<li>SDLNet_Write32 =&gt; SDL_SwapBE32</li>
+<li>SDLNet_Read16 =&gt; SDL_SwapBE16</li>
+<li>SDLNet_Read32 =&gt; SDL_SwapBE32</li>
+</ul>
+</body>
+</html>

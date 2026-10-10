@@ -1,0 +1,80 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_PutAudioStreamPlanarData:
+.\"   https://wiki.libsdl.org/SDL_PutAudioStreamPlanarData
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_PutAudioStreamPlanarData
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_PutAudioStreamPlanarData 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_PutAudioStreamPlanarData \- Add data to the stream with each channel in a separate array.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_audio.h>
+.PP
+.BI "bool SDL_PutAudioStreamPlanarData(SDL_AudioStream *stream, const void * const *channel_buffers, int num_channels, int num_samples);
+.fi
+.SH DESCRIPTION
+This data must match the format/channels/samplerate specified in the latest call to
+.BR SDL_SetAudioStreamFormat ,
+or the format specified when creating the stream if it hasn\(aqt been changed\[char46]
+.PP
+The data will be interleaved and queued\[char46] Note that
+.BR SDL_AudioStream
+only operates on interleaved data, so this is simply a convenience function for easily queueing data from sources that provide separate arrays\[char46] There is no equivalent function to retrieve planar data\[char46]
+.PP
+The arrays in
+.BR channel_buffers
+are ordered as they are to be interleaved; the first array will be the first sample in the interleaved data\[char46] Any individual array may be NULL; in this case, silence will be interleaved for that channel\[char46]
+.PP
+.BR num_channels
+specifies how many arrays are in
+.BR channel_buffers \[char46]
+This can be used as a safety to prevent overflow, in case the stream format has changed elsewhere\[char46] If more channels are specified than the current input spec, they are ignored\[char46] If less channels are specified, the missing arrays are treated as if they are NULL (silence is written to those channels)\[char46] If the count is -1, SDL will assume the array count matches the current input spec\[char46]
+.PP
+Note that
+.BR num_samples
+is the number of _samples per array_\[char46] This can also be thought of as the number of _sample frames_ to be queued\[char46] A value of 1 with stereo arrays will queue two samples to the stream\[char46] This is different than
+.BR SDL_PutAudioStreamData ,
+which wants the size of a single array in bytes\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I stream
+the stream the audio data is being added to\[char46]
+.TP
+.I channel_buffers
+a pointer to an array of arrays, one array per channel\[char46]
+.TP
+.I num_channels
+the number of arrays in
+.BR channel_buffers
+or -1\[char46]
+.TP
+.I num_samples
+the number of _samples_ per array to write to the stream\[char46]
+.SH RETURN VALUE
+Returns true on success or false on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread, but if the stream has a callback set, the caller might need to manage extra locking\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]4\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_ClearAudioStream (3),
+.BR SDL_FlushAudioStream (3),
+.BR SDL_GetAudioStreamData (3),
+.BR SDL_GetAudioStreamQueued (3)

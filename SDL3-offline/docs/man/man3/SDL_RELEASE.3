@@ -1,0 +1,32 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_RELEASE:
+.\"   https://wiki.libsdl.org/SDL_RELEASE
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_RELEASE
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_RELEASE 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_RELEASE \- Wrapper around Clang thread safety analysis annotations.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_mutex.h>
+.PP
+.BI "#define SDL_RELEASE(x) \(rs
+.BI "  SDL_THREAD_ANNOTATION_ATTRIBUTE__(release_capability(x))
+.fi
+.SH DESCRIPTION
+Please see https://clang\[char46]llvm\[char46]org/docs/ThreadSafetyAnalysis\[char46]html#mutex-h
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+

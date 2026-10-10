@@ -1,0 +1,55 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_AppEvent_func:
+.\"   https://wiki.libsdl.org/SDL_AppEvent_func
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_AppEvent_func
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_AppEvent_func 3type "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 DATATYPES"
+.SH NAME
+SDL_AppEvent_func \- Function pointer typedef for
+.BR SDL_AppEvent .
+
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_init.h>
+.PP
+.BI "typedef SDL_AppResult (SDLCALL *SDL_AppEvent_func)(void *appstate, SDL_Event *event);
+.fi
+.SH DESCRIPTION
+These are used by
+.BR SDL_EnterAppMainCallbacks \[char46]
+This mechanism operates behind the scenes for apps using the optional main callbacks\[char46] Apps that want to use this should just implement
+.BR SDL_AppEvent
+directly\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I appstate
+an optional pointer, provided by the app in
+.BR SDL_AppInit \[char46]
+
+.TP
+.I event
+the new event for the app to examine\[char46]
+.SH RETURN VALUE
+Returns
+.BR SDL_APP_FAILURE
+to terminate with an error,
+.BR SDL_APP_SUCCESS
+to terminate with success,
+.BR SDL_APP_CONTINUE
+to continue\[char46]
+
+.SH AVAILABILITY
+This datatype is available since SDL 3\[char46]2\[char46]0\[char46]
+

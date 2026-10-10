@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.16)
+project(sdl3-starter C)
+set(CMAKE_C_STANDARD 11)
+find_package(SDL3 REQUIRED)
+add_executable(sdl3-starter main.c)
+target_link_libraries(sdl3-starter PRIVATE SDL3::SDL3)

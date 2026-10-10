@@ -1,0 +1,70 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_ELF_NOTE_DLOPEN:
+.\"   https://wiki.libsdl.org/SDL_ELF_NOTE_DLOPEN
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_ELF_NOTE_DLOPEN
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_ELF_NOTE_DLOPEN 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_ELF_NOTE_DLOPEN \- Add a note that your application has dynamic shared library dependencies.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_dlopennote.h>
+.PP
+.BI "#define SDL_ELF_NOTE_DLOPEN(feature, description, priority, ...) \(rs
+.BI "    SDL_ELF_NOTE_INTERNAL(                                       \(rs
+.BI "        \(dq[{\(rs\(dqfeature\(rs\(dq:\(rs\(dq\(dq feature                               \(rs
+.BI "        \(dq\(rs\(dq,\(rs\(dqdescription\(rs\(dq:\(rs\(dq\(dq description                      \(rs
+.BI "        \(dq\(rs\(dq,\(rs\(dqpriority\(rs\(dq:\(rs\(dq\(dq priority                            \(rs
+.BI "        \(dq\(rs\(dq,\(rs\(dqsoname\(rs\(dq:\(dq SDL_DLNOTE_JSON_ARRAY(__VA_ARGS__) \(dq}]\(dq,   \(rs
+.BI "        SDL_DLNOTE_UNIQUE_NAME);
+.fi
+.SH DESCRIPTION
+You can do this by adding the following to the global scope:
+
+.IP
+.EX
+SDL_ELF_NOTE_DLOPEN(
+    "png",
+    "Support for loading PNG images using libpng (required for APNG)",
+    SDL_ELF_NOTE_DLOPEN_PRIORITY_RECOMMENDED,
+    "libpng12.so.0"
+)
+.EE
+.PP
+
+A trailing semicolon is not needed\[char46]
+.PP
+Or if you support multiple versions of a library, you can list them:
+
+.IP
+.EX
+// Our app supports SDL1, SDL2, and SDL3 by dynamically loading them
+SDL_ELF_NOTE_DLOPEN(
+    "SDL",
+    "Create windows through SDL video backend",
+    SDL_ELF_NOTE_DLOPEN_PRIORITY_REQUIRED
+    "libSDL-1.2.so.0", "libSDL2-2.0.so.0", "libSDL3.so.0"
+)
+.EE
+.PP
+
+This macro is not available for compilers that do not support variadic macro\(aqs\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]4\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_ELF_NOTE_DLOPEN_PRIORITY_SUGGESTED (3),
+.BR SDL_ELF_NOTE_DLOPEN_PRIORITY_RECOMMENDED (3),
+.BR SDL_ELF_NOTE_DLOPEN_PRIORITY_REQUIRED (3)

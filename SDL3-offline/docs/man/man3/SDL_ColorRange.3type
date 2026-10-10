@@ -1,0 +1,33 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_ColorRange:
+.\"   https://wiki.libsdl.org/SDL_ColorRange
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_ColorRange
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_ColorRange 3type "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 DATATYPES"
+.SH NAME
+SDL_ColorRange \- Colorspace color range, as described by https://www.itu.int/rec/R-REC-BT.2100-2-201807-I/en
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_pixels.h>
+.PP
+.BI "typedef enum SDL_ColorRange
+.BI "{
+.BI "    SDL_COLOR_RANGE_UNKNOWN = 0,
+.BI "    SDL_COLOR_RANGE_LIMITED = 1, /**< Narrow range, e.g. 16-235 for 8-bit RGB and luma, and 16-240 for 8-bit chroma */
+.BI "    SDL_COLOR_RANGE_FULL = 2    /**< Full range, e.g. 0-255 for 8-bit RGB and luma, and 1-255 for 8-bit chroma */
+.BI "} SDL_ColorRange;
+.fi
+.SH AVAILABILITY
+This enum is available since SDL 3\[char46]2\[char46]0\[char46]
+

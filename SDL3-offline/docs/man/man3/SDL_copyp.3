@@ -1,0 +1,55 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_copyp:
+.\"   https://wiki.libsdl.org/SDL_copyp
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_copyp
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_copyp 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_copyp \- A macro to copy memory between objects, with basic type checking.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "#define SDL_copyp(dst, src)                                                                 \(rs
+.BI "    { SDL_COMPILE_TIME_ASSERT(SDL_copyp, sizeof (*(dst)) == sizeof (*(src))); }             \(rs
+.BI "    SDL_memcpy((dst), (src), sizeof(*(src)))
+.fi
+.SH DESCRIPTION
+
+.BR SDL_memcpy
+and
+.BR SDL_memmove
+do not care where you copy memory to and from, which can lead to bugs\[char46] This macro aims to avoid most of those bugs by making sure that the source and destination are both pointers to objects that are the same size\[char46] It does not check that the objects are the same _type_, just that the copy will not overflow either object\[char46]
+.PP
+The size check happens at compile time, and the compiler will throw an error if the objects are different sizes\[char46]
+.PP
+Generally this is intended to copy a single object, not an array\[char46]
+.PP
+This macro looks like it double-evaluates its parameters, but the extras them are in
+.BR sizeof
+sections, which generate no code nor side-effects\[char46]
+
+.SH MACRO PARAMETERS
+.TP
+.I dst
+a pointer to the destination object\[char46] Must not be NULL\[char46]
+.TP
+.I src
+a pointer to the source object\[char46] Must not be NULL\[char46]
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+

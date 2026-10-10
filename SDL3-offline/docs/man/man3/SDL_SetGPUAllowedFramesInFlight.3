@@ -1,0 +1,55 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_SetGPUAllowedFramesInFlight:
+.\"   https://wiki.libsdl.org/SDL_SetGPUAllowedFramesInFlight
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_SetGPUAllowedFramesInFlight
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_SetGPUAllowedFramesInFlight 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_SetGPUAllowedFramesInFlight \- Configures the maximum allowed number of frames in flight.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_gpu.h>
+.PP
+.BI "bool SDL_SetGPUAllowedFramesInFlight(
+.BI "    SDL_GPUDevice *device,
+.BI "    Uint32 allowed_frames_in_flight);
+.fi
+.SH DESCRIPTION
+The default value when the device is created is 2\[char46] This means that after you have submitted 2 frames for presentation, if the GPU has not finished working on the first frame,
+.BR SDL_AcquireGPUSwapchainTexture ()
+will fill the swapchain texture pointer with NULL, and
+.BR SDL_WaitAndAcquireGPUSwapchainTexture ()
+will block\[char46]
+.PP
+Higher values increase throughput at the expense of visual latency\[char46] Lower values decrease visual latency at the expense of throughput\[char46]
+.PP
+Note that calling this function will stall and flush the command queue to prevent synchronization issues\[char46]
+.PP
+The minimum value of allowed frames in flight is 1, and the maximum is 3\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I device
+a GPU context\[char46]
+.TP
+.I allowed_frames_in_flight
+the maximum number of frames that can be pending on the GPU\[char46]
+.SH RETURN VALUE
+Returns true if successful, false on error; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+

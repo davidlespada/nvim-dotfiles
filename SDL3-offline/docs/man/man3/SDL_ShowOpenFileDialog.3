@@ -1,0 +1,72 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_ShowOpenFileDialog:
+.\"   https://wiki.libsdl.org/SDL_ShowOpenFileDialog
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_ShowOpenFileDialog
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_ShowOpenFileDialog 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_ShowOpenFileDialog \- Displays a dialog that lets the user select a file on their filesystem.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_dialog.h>
+.PP
+.BI "void SDL_ShowOpenFileDialog(SDL_DialogFileCallback callback, void *userdata, SDL_Window *window, const SDL_DialogFileFilter *filters, int nfilters, const char *default_location, bool allow_many);
+.fi
+.SH DESCRIPTION
+This is an asynchronous function; it will return immediately, and the result will be passed to the callback\[char46]
+.PP
+The callback will be invoked with a null-terminated list of files the user chose\[char46] The list will be empty if the user canceled the dialog, and it will be NULL if an error occurred\[char46]
+.PP
+Note that the callback may be called from a different thread than the one the function was invoked on\[char46]
+.PP
+Depending on the platform, the user may be allowed to input paths that don\(aqt yet exist\[char46]
+.PP
+On Linux, dialogs may require XDG Portals, which requires DBus, which requires an event-handling loop\[char46] Apps that do not use SDL to handle events should add a call to
+.BR SDL_PumpEvents
+in their main loop\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I callback
+a function pointer to be invoked when the user selects a file and accepts, or cancels the dialog, or an error occurs\[char46]
+.TP
+.I userdata
+an optional pointer to pass extra data to the callback when it will be invoked\[char46]
+.TP
+.I window
+the window that the dialog should be modal for, may be NULL\[char46] Not all platforms support this option\[char46]
+.TP
+.I filters
+a list of filters, may be NULL\[char46] Not all platforms support this option, and platforms that do support it may allow the user to ignore the filters\[char46] If non-NULL, it must remain valid at least until the callback is invoked\[char46]
+.TP
+.I nfilters
+the number of filters\[char46] Ignored if filters is NULL\[char46]
+.TP
+.I default_location
+the default folder or file to start the dialog at, may be NULL\[char46] Not all platforms support this option\[char46]
+.TP
+.I allow_many
+if non-zero, the user will be allowed to select multiple entries\[char46] Not all platforms support this option\[char46]
+.SH THREAD SAFETY
+This function should be called only from the main thread\[char46] The callback may be invoked from the same thread or from a different one, depending on the OS\(aqs constraints\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_DialogFileCallback (3type),
+.BR SDL_DialogFileFilter (3type),
+.BR SDL_ShowSaveFileDialog (3),
+.BR SDL_ShowOpenFolderDialog (3),
+.BR SDL_ShowFileDialogWithProperties (3)

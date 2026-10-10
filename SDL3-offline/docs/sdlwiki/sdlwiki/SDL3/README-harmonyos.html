@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README-harmonyos</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">:root {
+color-scheme: dark light; 
+}
+body {
+background-color: white;
+padding: 2vw;
+color: #333;
+max-width: 1200px;
+margin: 0 auto;
+font-size: 16px;
+line-height: 1.5;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+overflow-wrap: break-word;
+}
+a {
+color: #0969da;
+
+}
+a:visited {
+color: #064998;
+}
+h1 {
+border-bottom: 2px solid #efefef;
+}
+h2 {
+border-bottom: 1px solid #efefef;
+}
+p {
+max-width: 85ch;
+}
+li {
+max-width: 85ch;
+}
+div.sourceCode {
+background-color: #f6f8fa;
+max-width: 100%;
+padding: 16px;
+}
+code {
+background-color: #f6f8fa;
+padding: 0px;
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+"Liberation Mono", monospace;
+}
+table {
+border: 1px solid #808080;
+border-collapse: collapse;
+}
+td {
+border: 1px solid #808080;
+padding: 5px;
+}
+tr:nth-child(even) {
+background-color: #f6f8fa;
+}
+.wikitopbanner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #efefef;
+padding: 10px;
+margin-bottom: 10px;
+width: auto;
+}
+.wikibottombanner {
+background-color: #efefef;
+padding: 10px;
+margin-top: 10px;
+width: auto;
+}
+.alertBox {
+background-color: #f8d7da;
+border: 1px solid #f5c6cb;
+max-width: 60%;
+padding: 10;
+margin: auto;
+}
+.anchorImage {
+visibility: hidden;
+padding-left: 0.2em;
+color: #fff;
+}
+.anchorText:hover .anchorImage {
+visibility: visible;
+}
+hr {
+display: block;
+height: 1px;
+border: 0;
+border-top: 1px solid #efefef;
+margin: 1em 0;
+padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+body {
+color: #e6edf3;
+background-color: #0d1117;
+}
+h1 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+h2 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+hr {
+border-color: rgba(48, 54, 61, 0.7);
+}
+div.sourceCode {
+background-color: #161b22;
+}
+code {
+background-color: #161b22;
+}
+a {
+color: #4493f8;
+}
+a:visited {
+color: #2f66ad;
+}
+table {
+border-color: rgba(48, 54, 61, 0.7);
+}
+td {
+border-color: rgba(48, 54, 61, 0.7);
+}
+tr:nth-child(even) {
+background-color: #161b22;
+}
+.wikitopbanner {
+background-color: #263040;
+}
+.wikibottombanner {
+background-color: #263040;
+}
+.anchorText:hover .anchorImage {
+filter: invert(100%);
+}
+}
+@media print {
+body {
+font-size: 12px;
+}
+table {
+font-size: inherit;
+}
+a:visited {
+color: #0969da;
+}
+.wikitopbanner,
+.anchorText,
+.wikibottombanner {
+display: none;
+}
+}
+</style>
+  <style type="text/css"> code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+{ content: attr(title);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; pointer-events: all; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+@media (prefers-color-scheme: dark) {
+code span.al { color: #95da4c; font-weight: bold; } 
+code span.an { color: #3f8058; } 
+code span.at { color: #2980b9; } 
+code span.bn { color: #f67400; } 
+code span.bu { color: #7f8c8d; } 
+code span.ch { color: #3daee9; } 
+code span.co { color: #7a7c7d; } 
+code span.cv { color: #7f8c8d; } 
+code span.cn { color: #27aeae; font-weight: bold; } 
+code span.cf { color: #fdbc4b; font-weight: bold; } 
+code span.dt { color: #2980b9; } 
+code span.dv { color: #f67400; } 
+code span.do { color: #a43340; } 
+code span.er { color: #da4453; } 
+code span.ex { color: #0099ff; font-weight: bold; } 
+code span.fl { color: #f67400; } 
+code span.fu { color: #8e44ad; } 
+code span.im { color: #27ae60; } 
+code span.in { color: #c45b00; } 
+code span.kw { color: #cfcfc2; font-weight: bold; } 
+code span.op { color: #cfcfc2; } 
+code span.ot { color: #27ae60; } 
+code span.pp { color: #27ae60; } 
+code span.sc { color: #3daee9; } 
+code span.ss { color: #da4453; } 
+code span.st { color: #f44f4f; } 
+code span.va { color: #27aeae; } 
+code span.vs { color: #da4453; } 
+code span.wa { color: #da4453; } 
+}</style>
+</head>
+<body>
+<h1 id="harmonyos">HarmonyOS</h1>
+<p>(And also OpenHarmony.)</p>
+<h2 id="what-is-harmonyos">What is HarmonyOS?</h2>
+<p>(This is my current understanding, please correct these docs if
+incorrect.)</p>
+<p>HarmonyOS is an operating system for tablets and phones. It is
+developed by <a href="https://www.huawei.com/en/">Huawei</a>. It is
+competitive with platforms like Android and iOS, capable of powering
+high-end phones. Unlike Google and Apple, Huawei is a Chinese company,
+and HarmonyOS is largely serving the Chinese market at this time.</p>
+<p>The system uses some custom pieces, but also relies on open source
+software from outside of the project, such as NodeJS, musl, etc.</p>
+<p>Much of the platform is open source, under the name &quot;OpenHarmony,&quot;
+and Huawei&#39;s proprietary spin of OpenHarmony is called HarmonyOS. Huawei
+is the primary contributor to OpenHarmony.</p>
+<p>So it is probably best said: HarmonyOS is to Android what OpenHarmony
+is to AOSP. But, to be clear, OpenHarmony is not derived from
+Android.</p>
+<p>This document will generally refer to HarmonyOS, but from a
+development viewpoint, you are actually targeting OpenHarmony, even if
+you&#39;re building with intent to only target HarmonyOS on Huawei-produced
+phones.</p>
+<h2 id="supported-versions">Supported versions</h2>
+<p>All testing to date has been done on a real phone, a Huawei Mate 80.
+SDL currently supports HarmonyOS 5.0.4 (API level 16) and later,
+although low-end testing hasn&#39;t been done so there might be little
+changes needed for extreme compatibility. Report bugs or send patches if
+this becomes a problem.</p>
+<h2 id="some-basic-target-platform-truths">Some basic target platform
+truths</h2>
+<p>More or less, an app on HarmonyOS is a NodeJS process, in the same
+way that an app on Android is a Java virtual machine process. While one
+generally writes apps in Java or Kotlin for Android, HarmonyOS uses a
+TypeScript variant called ArkTS. However, like SDL on Android, we will
+be focusing on native code in C or C++, so SDL makes moves similar to
+its Android strategy, migrating from ArkTS to native code as quickly as
+possible and handing control over to a (presumably C or C++) native code
+app, and making it so the app can entirely opt out of interacting with
+the ArkTS layer directly.</p>
+<p>The equivalent of the Android &quot;JNI&quot; layer is NodeJS&#39;s NAPI
+interfaces. A large portion of the system APIs are accessible directly
+from OS-provided native libraries, so there is a lot less reason to dip
+back down into the ArkTS layer for most tasks, whereas lots of things on
+Android need to talk to Java-only interfaces to accomplish common and
+important tasks, even in an otherwise-entirely native program.</p>
+<p>The C/C++ compiler is based on Clang (you might end up using a
+compiler called &quot;BiSheng&quot;, which is Clang with some custom optimization
+techniques developed by Huawei, but the binary is still called
+&quot;clang&quot;).</p>
+<p>The platform triplet is &quot;aarch64-linux-ohos&quot; (other CPU architectures
+are possible, but this is likely the most common. The devtools mention
+32-bit ARM and x86-64, too). The CMake toolchain file sets the variable
+<code>OHOS</code> (OpenHarmony OS) to &quot;OHOS&quot;, so <code>if(OHOS)</code>
+works. Further, <code>CMAKE_SYSTEM_NAME</code> is set to &quot;OHOS&quot;. The C
+preprocessor defines <code>__OHOS__</code>.</p>
+<h2 id="getting-hardware-to-run-harmonyos">Getting hardware to run
+HarmonyOS</h2>
+<p>(This information is accurate as of September 2026, but may be out of
+date at any moment, so please check other sources before assuming this
+is still correct.)</p>
+<p>HarmonyOS phones work in America (at least on WiFi; presumably one
+could get a working (e)SIM card for phone calls and cell network access,
+but I haven&#39;t tried). It may be difficult to obtain a phone: I couldn&#39;t
+find one for purchase on Amazon or eBay from the United States. You
+might have an easier time in other countries. I assume it is super-easy
+in China. :)</p>
+<p>One can run OpenHarmony (not HarmonyOS) on a Raspberry Pi 4b,
+compliments of the Oniro project, which provides both source code and
+prebuilt images for download:</p>
+<p><a href="https://docs.oniroproject.org/device-development/developer-boards/raspberry-pi-4model-b/">https://docs.oniroproject.org/device-development/developer-boards/raspberry-pi-4model-b/</a></p>
+<p>This lets you run the open source variant of the OS on real hardware,
+but obviously a Raspberry Pi isn&#39;t a tablet or a phone, so the
+experience is somewhat tangential to the the most common configuration
+one might expect in the field, but it <em>does</em> work.</p>
+<p>DevEco Studio offers phone, tablet, and smartwatch emulators for
+Huawei hardware, and these apparently run on Windows, macOS and Linux,
+but will not let you download them outside of mainland China (except for
+smartwatch emulators, for some reason). Comments on Huawei&#39;s forums
+suggest relaxing this restriction is planned, but no timeline has been
+announced.</p>
+<h2 id="get-harmonyos-development-tools">Get HarmonyOS development
+tools</h2>
+<p>You will need to download Huawei&#39;s developer tools. They offer a full
+IDE, called &quot;DevEco Studio,&quot; but this is not strictly necessary for
+compiling SDL itself.</p>
+<p>There are also command line tools available for Windows, macOS, and
+Linux, and these <em>are</em> sufficient to compile SDL. For building
+full applications, you likely need DevEco Studio to at least set up your
+project and manage signing keys, etc. Some things (but not all) are
+doable from the command line tools, and a handful of things are
+(currently) not.</p>
+<p>DevEco Studio, the GUI, is only available for Windows and macOS. It
+appears to be a fork of IntelliJ IDEA. It does not appear to be open
+source, afaict.</p>
+<p>To download the developer tools, you&#39;ll need to register an account
+at <a href="https://developer.huawei.com/en/">the Huawei developer
+site</a>. Then visit <a href="https://developer.huawei.com/consumer/en/download/">the tool
+download page</a> For Linux, scroll down to &quot;Command Line Tools.&quot;
+Download for your platform, which should be a simple .zip file, and
+unpack it. If you&#39;re on Windows or macOS, download and install DevEco
+Studio itself while you&#39;re here, too.</p>
+<h2 id="dont-fight-against-deveco-studio">Don&#39;t fight against DevEco
+Studio</h2>
+<p>I&#39;m a Linux user, and I avoid programming IDEs in general, so my
+instinct is to just get everything done with my text editor and the
+command line tools, and this <em>feels</em> possible, but I haven&#39;t
+quite figured it out. The system is friendly to things like CMake,
+clang, etc, and the documentation, even in English, is pretty thorough,
+but I still couldn&#39;t get there without using DevEco Studio a little.</p>
+<p>The system appears designed to at least hand off a working project
+from DevEco Studio to a Linux machine for building and deploying from
+the command line tools, for Continuous Integration if nothing else.
+Figuring out how to eliminate the Windows/Mac GUI dependency entirely is
+an ongoing and unresolved concern. I definitely needed it to manage
+signing keys. Once I got that far, I was able to copy the appropriate
+directories to a Linux system and use the <code>hvigorw</code> command
+line tool to build and sign an app, and <code>hdc</code> to install it
+on a real phone. Please see &quot;The Helper Script&quot; section, below, to
+automate a lot of the Linux command line pieces, too.</p>
+<h2 id="install-command-line-tools">Install command line tools.</h2>
+<p>(If you&#39;re entirely focused on DevEco Studio, you can probably skip
+this.)</p>
+<p>I unzipped the downloaded command line tools so they&#39;re sitting in
+<code>$HOME/HarmonyOS-SDK/command-line-tools</code>, but anywhere you
+want to put it is fine.</p>
+<p>When this document refers to this directory, it&#39;ll call it
+<code>$CLT</code> for short.</p>
+<p>Add some things to your PATH, so you can find <code>hdc</code> and
+<code>hvigorw</code>, etc.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:<span class="va">$CLT</span>/sdk/default/openharmony/toolchains:<span class="va">$CLT</span>/bin</span></code></pre></div>
+<h2 id="putting-a-harmonyos-phone-in-developer-mode">Putting a HarmonyOS
+phone in developer mode.</h2>
+<p>If you want to test and debug your SDL apps natively on a real phone
+directly, you have to put the device in Developer Mode. As the name
+implies, this is not necessary to install published apps, but only apps
+under development locally. Any retail phone running HarmonyOS should be
+able to do this. This is almost identical to how one would do this for
+local Android development.</p>
+<p>On the phone, go to Settings, Device Name (it&#39;s &quot;Mate 80&quot; on mine, in
+a box by itself near the top of the main settings page). This will bring
+up an &quot;About&quot; page. Scroll down to &quot;Software version&quot; and tap the
+version number seven times quickly. The phone will pop up a dialog
+asking if you want to enable developer mode and reboot. Say yes. If
+you&#39;ve already done this, it will tell you so.</p>
+<p>After reboot, go into Settings, System. There will be a new
+&quot;Developer options&quot; section at the bottom. Turn on USB debugging. Plug
+in a USB cable to your computer, and choose to trust the connection (and
+choose &quot;use USB to transfer files&quot; if given the option, otherwise it
+will only allow charging over USB).</p>
+<p>At this point, you should be able to use &quot;hdc&quot; somewhat like you
+would use &quot;adc&quot; on an Android device:</p>
+<p>See if the phone is visible/accessible:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">hdc</span> list targets <span class="at">-v</span></span></code></pre></div>
+<p>You can also connect the phone over Wifi on the same LAN and not use
+USB. If you want to try, turn on &quot;Wireless debugging&quot; in Developer
+Options, note the IP address and port, and run:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">hdc</span> tconn 192.168.1.104:40317</span></code></pre></div>
+<p>Where the IP address and port match the phone.</p>
+<p>(DevEco Studio: add the device by IP address and port by going to
+&quot;Tools&quot; -&gt; &quot;IP Connection&quot; on the menu bar. This appears to be IPv4
+only at the moment, but it successfully connected to the phone. This was
+a good option, because for whatever reason the phone&#39;s USB connection
+would continually drop and reconnect on my VirtualBox Windows 10 VM. But
+YMMV!)</p>
+<h2 id="harmonyos-app-development-with-sdl">HarmonyOS App Development
+with SDL</h2>
+<h3 id="create-a-new-project">Create a new project</h3>
+<p>Copy the &quot;openharmony-project&quot; directory out of the root of SDL&#39;s
+source tree to where you want your project to live, and name it
+appropriately (&quot;mygame-openharmony&quot; or whatever). Then, in that new
+directory:</p>
+<ul>
+<li>in AppScope/app.json5, change at least &quot;bundleName&quot; and &quot;vendor&quot; to
+match your project.</li>
+<li>in AppScope/resources/base/element/string.json, change &quot;app_name&quot;&#39;s
+value to the name of your app.</li>
+<li>in build-profile.json5, you need to add a signingConfig (this is
+probably doable without the GUI, but I have not entirely solved how to
+do this outside of DevEco Studio yet).</li>
+</ul>
+<p>Do not create a new project in DevEco Studio, since there are pieces
+of ArkTS scripting that need to be set up correctly for SDL, and that
+code is already present in openharmony-project. You <em>should</em> be
+able to open the project in DevEco Studio once you&#39;ve set it up.</p>
+<h3 id="add-source-code-to-your-new-project">Add source code to your new
+project.</h3>
+<p>Native code building uses CMake, whether you use DevEco Studio or
+not. This makes integrating SDL into your project easy!</p>
+<p>Edit the text file entry/src/main/cpp/CMakeLists.txt inside your new
+project directory and change this line:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cmake"><code class="sourceCode cmake"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">add_library</span>(<span class="bn">main</span> <span class="ot">SHARED</span> myapp.c)</span></code></pre></div>
+<p>&quot;myapp.c&quot; should be replaced with any source files that comprise your
+app. This is a standard CMake project file, so you can get as fancy as
+you want or just have a list of files separated by spaces.</p>
+<p>These files do not have to be in this directory; they can live
+outside of the project directory entirely, as long as you specify the
+correct directory to reach them.</p>
+<p>You must either copy the SDL source tree into entry/src/main/cpp, or
+make a symlink to it, or edit the <code>add_subdirectory(&quot;SDL&quot;)</code>
+line to point to it. This line makes SDL&#39;s source compile with the rest
+of the project. The directory you point to must be the root of an SDL
+clone, the one that holds CMakeLists.txt, src, and include.</p>
+<p>Your app <em>must</em> compile to a shared library named &quot;libmain.so&quot;
+... the &quot;add_library&quot; line does this. Do not build an executable! It
+must be a shared library, due to how HarmonyOS deals with apps. When
+you&#39;re done building, you should have a libmain.so and a libSDL3.so
+file.</p>
+<h3 id="customize-your-project">Customize your project</h3>
+<p>If you need some specific permissions (microphone/camera access,
+internet access, etc), you must list them in
+openharmony-project/entry/src/main/module.json5 ...some of these are
+automatically granted on installation, some will require the user to
+approve them on first use at runtime, but all of them must be listed.
+See the &quot;requestPermissions&quot; section of this file for examples. There
+are more permissions available than are listed there!</p>
+<p>You must set up some basic strings, before publishing your app, or
+you will either have an app icon with name &quot;label&quot; or fail certification
+because you didn&#39;t explain clearly why you need various permissions.</p>
+<p>These are in a JSON file in:</p>
+<p>openharmony-project/entry/src/main/resources/base/element/string.json</p>
+<p>You can do localizations of these strings by making a second copy of
+the file, where &quot;base&quot; is replaced with the proper localization (&quot;en_GB&quot;
+or whatever). See the documentation at:</p>
+<p><a href="https://developer.huawei.com/consumer/en/doc/harmonyos-guides/resource-categories-and-access">https://developer.huawei.com/consumer/en/doc/harmonyos-guides/resource-categories-and-access</a></p>
+<p>Static data files that ship with your app go in the directory:</p>
+<p>openharmony-project/entry/src/main/resources/rawfile/</p>
+<p>The file tree under this directory will be packaged up with the app
+and made available through SDL APIs (see &quot;Filesystem&quot; and &quot;IOStream&quot;
+sections, below).</p>
+<h3 id="get-a-harmonyos-debug-certificate">Get a HarmonyOS Debug
+Certificate</h3>
+<p>You need to sign apps to run them on a real device, even for local
+debugging and testing and not just deployment and release.</p>
+<p>For now, just open your project in DevEco Studio, then in the menu
+bar, go to &quot;File&quot;, &quot;Project Structure&quot;, &quot;Signing Configs&quot;,
+&quot;Automatically generate signature&quot;. Log in to your Huawei developer
+account if needed. Let it do the work. Later, I copied the project&#39;s
+directory and &quot;.ohos&quot; dir in my home directory to a Linux system,
+adjusted a few Windows absolute paths in build-profile.json5, and that
+was good enough.</p>
+<h3 id="build-your-app-from-the-command-line">Build your app from the
+command line</h3>
+<p>Building your project from DevEco Studio is just a single click, but
+you can also build from the command line on macOS, Windows, or
+Linux.</p>
+<p>If you have everything (signing certs, the entire project structure,
+etc) in place, you can build an app from the command line. The HarmonyOS
+equivalent of Android&#39;s <code>gradlew</code> command is
+<code>hvigorw</code>. Go to the root folder of the project and run:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">hvigorw</span> assembleHap</span></code></pre></div>
+<p>If everything went well (AND IT OFTEN DOES NOT, READ THE OUTPUT!),
+you&#39;ll have a signed HarmonyOS app bundle (a &quot;.hap&quot; file) you can
+install to a device.</p>
+<p>There is a Bash shell script to automate this as much as possible:
+see the &quot;The Helper Script&quot; section, below.</p>
+<h3 id="install-on-real-hardware-from-the-command-line">Install on real
+hardware from the command line.</h3>
+<p>Make sure the phone is connected (run
+<code>hdc list targets -v</code> to verify).</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (or whatever the directory and .hap file are named.)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">hdc</span> install ./entry/build/default/outputs/default/entry-default-signed.hap</span></code></pre></div>
+<p>There is a Bash shell script to automate this as much as possible:
+see the &quot;The Helper Script&quot; section, below.</p>
+<h3 id="debugging">Debugging</h3>
+<p>If you just want to do &quot;printf debugging,&quot; then SDL_Log() will write
+to the system&#39;s &quot;hilog&quot; output, and you can use
+<code>hdc hilog |grep -F &quot;APPBUNDLENAME&quot;</code> to find your app&#39;s
+output in the absolute firehose of text that is produced through that
+interface.</p>
+<p>One can use a real GUI debugger through DevEco Studio without a lot
+of drama, and one can also use lldb from the command line with &quot;remote
+debugging.&quot; The latter option takes a lot of manual setup, and
+additionally you have to be familiar with LLDB&#39;s text interface to find
+this useful, but it <em>can</em> be done from Linux, where DevEco Studio
+isn&#39;t available (and also Windows and macOS, if all you have are the
+command line tools).</p>
+<p>There is a Bash shell script to automate this as much as possible:
+see the &quot;The Helper Script&quot; section, below.</p>
+<p>The instructions on setup from scratch, without the shell script, are
+here:</p>
+<p><a href="https://developer.huawei.com/consumer/en/doc/harmonyos-guides/debug-lldb#remote-debugging">https://developer.huawei.com/consumer/en/doc/harmonyos-guides/debug-lldb#remote-debugging</a></p>
+<p>The only thing that document fails to mention is that the PID number
+you need for LLDB&#39;s <code>attach</code> command can be obtained by
+running <code>hdc shell ps</code> and looking for your app&#39;s bundle
+ID.</p>
+<h3 id="the-helper-script">The Helper Script</h3>
+<p>There is a Bash shell script to simplify several tasks, if you&#39;re
+using the command line tools. This is not necessary from DevEco Studio.
+This has only been tested on Linux.</p>
+<p>Make sure your PATH is set up (see &quot;Install Command Line Tools,&quot;
+above), and run this command:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">SDL/build-scripts/harmonyos-tool.sh</span> openharmony-project <span class="at">--build</span> <span class="at">--debug</span></span></code></pre></div>
+<p>&quot;openharmony-project&quot; is literally the path to your project file. It
+can be a relative path, including &quot;.&quot; if you are sitting in the
+directory.</p>
+<p>All the other command line arguments are optional, and can be used in
+any combination (for example, you can --launch without --build&#39;ing, or
+--install and --debug in one run, etc.)</p>
+<p>If you specify --log, the script will fire up <code>hdc hilog</code>
+in the background and filter out everything but your app bundle&#39;s log
+calls, so you can watch the log while other tasks complete. It will
+start this once passed the --install stage (even if you didn&#39;t install),
+so you are watching it while launching/debugging begins. After all other
+tasks are done, harmonyos-tool.sh won&#39;t terminate until either the
+<code>hdc</code> process terminates or the user hits CTRL-C (rather,
+until SIGINT is delivered, which CTRL-C does). The script will kill the
+<code>hdc</code> process in that case before terminating itself.</p>
+<p>If you specify --clean, the script will clean up any build artifacts
+from previous compiles, etc. This will run before --build, so you can
+specify <code>--clean --build</code> for a complete rebuild.</p>
+<p>If you specify --build, the script will compile C/C++ code and
+assemble the .hap file to be run on a device or emulator.</p>
+<p>If you specify --install, the script will (re)install the .hap on a
+device (which will kill the process if it&#39;s currently running).</p>
+<p>If you specify --uninstall, the script will remove the existing app
+on a device (which will kill the process if it&#39;s currently running).</p>
+<p>If you specify --launch, the script will launch the app on a device,
+if it isn&#39;t already running.</p>
+<p>If you specify --debug, the script will prepare remote debugging via
+lldb, and attach to the running app.</p>
+<p>If you specify --kill, the script will force-stop any existing
+process.</p>
+<p>(--debug implies --launch, &quot;--build --launch&quot; and &quot;--build --debug&quot;
+imply --install.)</p>
+<p>Most of these tasks obviously need a phone that hdc can talk to.</p>
+<p>Note that debugging always attaches to a process, so if you need to
+debug something at startup, plan to add a sleep to the start of the
+program, as it can take several seconds for the attachment to complete.
+It isn&#39;t clear to me how to launch an app from the debugger so you can
+break at startup, but there is probably a way.</p>
+<p>Also note that this script is fragile in general; be gentle, report
+bugs, send patches.</p>
+<h2 id="sdlharmonyos-subsystem-details">SDL/HarmonyOS subsystem
+details</h2>
+<p>Specifics of actually using SDL on HarmonyOS follow.</p>
+<h3 id="sdl-platform-defines">SDL platform defines</h3>
+<p>SDL will define SDL_PLATFORM_OPENHARMONY and SDL_PLATFORM_UNIX. Do be
+cautioned that while HarmonyOS has some Linux kernel compatibility
+interfaces, it is <em>not</em> comparable to a &quot;normal&quot; Linux system in
+almost any way, so SDL_PLATFORM_LINUX is not defined (SDL for Android,
+which literally uses the Linux kernel, follows this same convention
+inside SDL). HarmonyOS devices don&#39;t use the actual Linux kernel (they
+use a microkernel named &quot;HongMeng&quot;), but OpenHarmony devices that aren&#39;t
+specifically HarmonyOS <em>might</em> use a Linux kernel. Don&#39;t make
+assumptions.</p>
+<h3 id="dynamic-api">Dynamic API</h3>
+<p>Presumably users cannot override the SDL build in their phone&#39;s apps,
+so the Dynamic API is disabled on this platform.</p>
+<h3 id="log">Log</h3>
+<p>SDL_Log() and friends will push through hilog, so you can view the
+output from the <code>hdc hilog</code> command. Note that logs are
+preformatted strings by the time they hit hilog, so things like &quot;%s&quot; are
+already processed, and thus there is no <code>{public}</code> and
+<code>{private}</code> format modifiers available like there would be if
+calling into hilog&#39;s APIs directly.</p>
+<p>Output from <code>hdc hilog</code> for
+<code>SDL_Log(&quot;Hello world!&quot;);</code> will look something like:</p>
+<pre><code>06-29 22:22:02.953 25275 25275 I A00000/org.libsdl.loopwave/SDL/APP: Hello world!</code></pre>
+<p>This is kind of chatty, but not unlike Android&#39;s
+<code>adc logcat</code> output.</p>
+<p>These logs are viewable to end-users, even in release builds, if they
+have a phone in Developer Mode that can talk to <code>hdc</code>, so be
+careful what you log!</p>
+<p>Also plan to use &quot;grep&quot; to find relevant logs; <code>hdc hilog</code>
+is an endless waterfall of unrelated data that you <em>will</em> get
+lost in immediately.</p>
+<h3 id="main">Main</h3>
+<p>HarmonyOS has a fairly complicated startup sequence (described later
+in this document). Apps for this platform should use the &quot;main
+callbacks&quot; (with <code>#define SDL_USE_MAIN_CALLBACKS</code>) instead of
+an ANSI C style &quot;main&quot; entry point, as that fits the app design paradigm
+of OpenHarmony.</p>
+<p>However, if you build an app with a standard &quot;main&quot; function, SDL
+will notice this, spin a thread, and attempt to call that function from
+the new background thread, and call exit() when it returns. This
+<em>happens</em> to work, at least for simple test cases that do
+rendering and touch input, but one uses this path at their own risk, as
+several important things might result in unexpected race conditions and
+unexpected behavior, possibly in a later version of the OS. It is
+strongly recommended that you migrate to the Main Callbacks!</p>
+<h3 id="filesystem">Filesystem</h3>
+<p>HarmonyOS uses &#39;/&#39; as a path separator, like Unix-style (etc)
+systems.</p>
+<p>SDL_GetBasePath() returns &quot;assets://&quot; unconditionally (see IOStream
+section, below). SDL_GetPrefPath() returns a path under the string
+returned from OH_AbilityRuntime_ApplicationContextGetFilesDir(), which
+in practice looks like &quot;/data/storage/el2/base/files/APPNAME&quot; ... this
+looks like an absolute path, but HarmonyOS maps this to an
+app-and-user-specific path behind the scenes. The prefpath is
+readable/writable with both SDL_IOStream and &quot;normal&quot; APIs like
+fopen().</p>
+<p>There is also SDL_GetOpenHarmonyInternalStoragePath(), which returns
+the base directory used for SDL_GetPrefPath() without extra subdirs
+appended to it or mkdir() calls issued, but generally SDL_GetPrefPath()
+is preferred as the more-portable option.</p>
+<h3 id="iostream">IOStream</h3>
+<p>This works like Android: some files are accessible like normal
+filesystem things, and can be accessed with fopen(), open(), etc. Other
+things are installed with the application (the &quot;HAP&quot;), and they need
+special APIs to access, that sort of map to Android&#39;s AAssetManager, but
+a little more powerful (these are called &quot;RawFile&quot; APIs on
+HarmonyOS).</p>
+<p>Both types of files can be accessed as SDL_IOStreams through
+SDL_IOFromFile(). SDL uses the same conventions as Android here: if the
+file path is a relative path or prefixed with &quot;assets://&quot;, it&#39;ll use the
+RawFile APIs. Absolute paths will use &quot;normal&quot; filesystem APIs.
+SDL_GetBasePath() returns &quot;assets://&quot;, so one can access files installed
+with the app with SDL_IOFromFile().</p>
+<p>&quot;assets://&quot; is entirely an SDL3 construct; it will not work with
+fopen(), and is not understood by the system itself.</p>
+<h3 id="async-io">Async I/O</h3>
+<p>SDL uses the &quot;generic&quot; asyncio backend here (a thread pool that uses
+SDL_IOStreams). Not only is there no sort of io_uring-style interface
+(afaik), but this also means you can async-load stuff from &quot;assets://&quot;
+paths without problems.</p>
+<h3 id="video">Video</h3>
+<p>One SDL_Window is allowed at a time and it takes the entire available
+display (like Android). Currently we only report a single display (the
+phone/tablet&#39;s screen).</p>
+<p>Setting an SDL_Window to be fullscreen means it will turn off the
+system status and navigation bars, allowing the window to use those
+extra pixels. A non-fullscreen window leaves those bars in place,
+letting users see the current time, battery/network/etc status, and
+other icon things.</p>
+<p>Touch events work, and multitouch is supported. Mouse events (from an
+external, physical mouse) are supported. Physical keyboard input works,
+and enabling text input will pop up a screen keyboard.</p>
+<p>Clipboard is supported for text. SDL_SetClipboardText() works as
+expected and other apps will see the text. However, an app needs the
+<code>ohos.permission.READ_PASTEBOARD</code> permission to obtain data
+from the system clipboard, and this is a <em>restricted</em> permission:
+you must list it in modules.json5, prompt the user to approve it
+beforehand by calling SDL_RequestOpenHarmonyPermission(), and also the
+app developer must explicitly apply for permission from Huawei through
+AppGallery Connect! Consider if you actually need to read clipboard data
+into your app that badly.</p>
+<p>SDL_GetSystemTheme() and SDL_EVENT_SYSTEM_THEME_CHANGED both
+work.</p>
+<h3 id="rendergpu">Render/GPU</h3>
+<p>OpenGL ES 3 is supported, as is Vulkan. Desktop OpenGL is supported
+by the platform, too, but for now support is disabled within SDL itself
+as likely superfluous (until it is not, open an issue if you need it).
+EGL is used to manage GL contexts internally, and a HarmonyOS-specific
+Vulkan extension is provided to get a surface.</p>
+<p>Like other platforms, we favor OpenGL ES 2 for the 2D renderer;
+Vulkan and &quot;GPU&quot; also works, but SDL&#39;s GLES is assumed to be more
+trusted at the current moment, and historically GLES has been more solid
+on mobile devices than Vulkan, but HarmonyOS-based phones might have
+significantly better Vulkan support than other comparable smartphones;
+this is yet to be determined.</p>
+<p>Since Vulkan works, the SDL3 GPU API is available and operational, in
+addition to the hardware-accelerated 2D Renderer API.</p>
+<h3 id="audio">Audio</h3>
+<p>HarmonyOS support OpenSL ES, but like on Android, it is deprecated.
+As our OpenSL ES backend is heavy with Android-specific code, it is not
+used on HarmonyOS. There is a new backend using HarmonyOS&#39;s OHAudio API.
+This is almost exactly like Android&#39;s AAudio API.</p>
+<p>Recording works, but you must request
+<code>ohos.permission.MICROPHONE</code> permission before it will work.
+You must list it in modules.json5, and prompt the user to approve it
+beforehand by calling SDL_RequestOpenHarmonyPermission(). Once
+permission is granted, recording audio devices can be opened as usual,
+and this permission remains for future runs, unless the user revokes in
+in the system preferences later. On HarmonyOS, if a user denies
+permission, they will never get the popup request dialog again, and must
+go and grant permission through the system preferences. Plan accordingly
+if you want your UI to explain this to users.</p>
+<p>Note that SDL for Android currently requests permission from the user
+on behalf of the app when opening a recording device, and blocks until
+the user approves or denies the request, but on HarmonyOS this is not
+done. This may change in the future, but for now the app should handle
+requesting permission before opening the device. If a future revision of
+SDL tries to manage the permission, it won&#39;t hurt anything if the app
+has already taken care of it.</p>
+<h3 id="power">Power</h3>
+<p>Battery percent, and whether the device is plugged in, are
+reported.</p>
+<h3 id="thread">Thread</h3>
+<p>OpenHarmony uses pthreads, and are fully supported.</p>
+<h3 id="loadso">LoadSO</h3>
+<p>HarmonyOS uses ELF shared libraries and has a POSIX-style dlopen()
+mechanism, so SDL_LoadObject() works as expected.</p>
+<h3 id="tray">Tray</h3>
+<p>The Tray API uses the &quot;dummy&quot; backend as this functionality doesn&#39;t
+make sense on a phone.</p>
+<h3 id="time">Time</h3>
+<p>The Time and Timer subsystems use the usual Unix implementations and
+work fine.</p>
+<h3 id="locale">Locale</h3>
+<p>SDL_GetPreferredLocales() returns a single locale, as specified in
+System Preferences -&gt; &quot;System&quot; -&gt; &quot;Language &amp; Region&quot;. In my
+case, I have it set to English/United States, so SDL reports
+&quot;en_US&quot;.</p>
+<p>SDL will send SDL_EVENT_LOCALE_CHANGED events if the user changes
+their locale in the system preferences while the app is running.</p>
+<h3 id="camera">Camera</h3>
+<p>Camera access works. You must request the
+<code>ohos.permission.CAMERA</code> permission in modules.json5. SDL
+will handle the UI to prompt the user for permission during
+SDL_OpenCamera() if necessary, so the app doesn&#39;t have to manage this
+further (unlike using a microphone in the audio API, SDL&#39;s camera API
+was built on the idea that the user&#39;s permission or refusal might be
+coming at a later time).</p>
+<h3 id="misc">Misc</h3>
+<p>SDL_OpenURL() works, and will launch the appropriate app (&quot;ability&quot;)
+for whatever protocol is specified: &quot;https://&quot;, etc, URLs will bring up
+a web browser, custom URL schemes can launch specific apps, etc.</p>
+<h3 id="still-todo">STILL TODO</h3>
+<ul>
+<li>Message boxes</li>
+<li>Assert</li>
+<li>Dialog</li>
+<li>Haptic</li>
+<li>HIDAPI</li>
+<li>Joystick</li>
+<li>Process</li>
+<li>Sensor</li>
+<li>Storage</li>
+<li>Pen (tablets work over USB-C on the phone, but this isn&#39;t wired up
+in SDL at all)</li>
+<li>SDL_EVENT_DISPLAY_ORIENTATION (window resizes when phone orientation
+changes, this event doesn&#39;t fire yet, though)</li>
+<li>Can external displays be used over USB-C =&gt; HDMI? (yes, at least
+for mirroring)</li>
+<li>SDL_HINT_ORIENTATION (for runtime control; but you <em>can</em>
+explicitly set the &quot;orientation&quot; setting in module.json5 for now if you
+need a specific global, unchanging setting.)</li>
+</ul>
+<h2 id="building-sdl-for-harmonyos">Building SDL for HarmonyOS</h2>
+<p>(Skip this if you are developing an SDL-based app and not SDL itself.
+There&#39;s a different section of this document for you, later.)</p>
+<p>SDL for HarmonyOS is built with CMake, like other platforms. Please
+note that you <em>must</em> use the CMake that comes with HarmonyOS&#39;s
+development tools, or building will fail, as standard CMake does not
+recognize this platform at all currently.</p>
+<p>Generate a project file for building SDL. We use Ninja, because it&#39;s
+a fast command line tool that will maximize multi-CPU compiling, but
+it&#39;s probably possible to generate a real Visual Studio, Xcode, etc,
+project.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> SDL</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> buildbot-ohos   <span class="co"># or whatever you want to call the build directory.</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> buildbot-ohos</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="va">$CLT</span><span class="ex">/sdk/default/openharmony/native/build-tools/cmake/bin/cmake</span> <span class="at">-G</span> Ninja <span class="at">-DCMAKE_TOOLCHAIN_FILE</span><span class="op">=</span><span class="va">$CLT</span>/sdk/default/openharmony/native/build/cmake/ohos.toolchain.cmake <span class="at">-DCMAKE_BUILD_TYPE</span><span class="op">=</span>Release <span class="at">-DOHOS_COMPATIBLE_SDK_VERSION</span><span class="op">=</span>16.0.0 ..</span></code></pre></div>
+<p>(One can also add -DOHOS_ARCH=cputype, where &quot;cputype&quot; is &quot;arm64-v8a&quot;
+for ARM64, &quot;armeabi-v7a&quot; for ARM32, and &quot;x86_64&quot; Intel 64-bit. It
+defaults to ARM64 if unspecified.)</p>
+<p>If all went well, you should be able to build SDL for HarmonyOS now.
+In our case, build with Ninja:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ninja</span></span></code></pre></div>
+<p>Or use whatever instructs Xcode/Visual Studio/etc to build
+things.</p>
+<h2 id="startup-sequence">Startup sequence</h2>
+<p>(You can probably skip this section if you just want to target
+HarmonyOS with an SDL3-based app and not delve into the low-level
+details.)</p>
+<p>Starting an SDL app on HarmonyOS works differently than any other
+platform, but efforts have been made to <em>hide</em> most of this from
+the C programmer, so this should mostly feel like any other SDL app they
+have built in C before.</p>
+<p>This is how startup works:</p>
+<p>(Exact paths might vary, and maybe this will simplify later.)</p>
+<ul>
+<li>The actual application entry point is in ArkTS, in the source file
+<code>$PROJECT/entry/src/main/ets/entryability/EntryAbility.ets</code>.</li>
+<li>This file defines a class, EntryAbility, that extends UIAbility, and
+also imports the native SDL library.</li>
+<li>By now, libSDL3.so has been loaded. In a shared library constructor
+named SDL_RegisterNativeInterfaces, it uses NAPI to register a native
+module. Once this module initializes, we&#39;ll be able to call into SDL&#39;s C
+code from ArkTS through interfaces we defined in
+SDL_Init_Native_Interfaces(). This is in
+SDL/src/core/openharmony/SDL_openharmony.c. This will <em>also</em> hook
+into XComponent&#39;s API, to register some event callbacks.</li>
+<li>EntryAbility has an overridden method named onCreate. When this
+runs, the app (&quot;Ability&quot; in HarmonyOS terms) is starting up. This
+function calls into the sdl module we registered to hand it a few
+objects (including the EntryAbility instance, and some small things that
+are trivial to create in ArkTS.</li>
+<li>SDL, now in native code, will save off those objects as appropriate,
+and also monkey-patch EntryAbility, so that it now has several
+overridden methods that only exist in native code. This lets us deal
+with ArkTS-only interfaces on EntryAbility that the system intends to
+interact with, without providing any ArkTS scripting for them.</li>
+<li>EntryAbility now has an overridden method named onWindowStageCreate.
+When this runs, the system is ready for the app to display to the
+screen. This method, in C, calls
+<code>windowStage.loadContent(&#39;pages/Index&#39;, ...)</code>.</li>
+<li>This causes the app to load
+<code>$PROJECT/entry/src/main/ets/pages/Index.ets</code>.</li>
+<li>Index.ets specifies a layout for the window/view/whatever. We simply
+have a single row and column containing a single &quot;XComponent&quot; which is
+more or less a UI widget backed by native code.</li>
+<li>When the XComponent&#39;s OnSurfaceCreated callback fires (landing in
+SDL_XComponent_OnSurfaceCreatedCallback()), we are then ready to hand
+control to the actual C application. This starts in
+SDL_OpenHarmonyMainSurfaceCreated(), which eventually lands in
+RunAppOpenHarmonyMain().</li>
+<li>Here we load libmain.so, which is where the app&#39;s actual C code
+lives. If we see if libmain contains a symbol named &quot;SDL_main&quot;, we spin
+a thread and call into that symbol from the new thread as a standard
+ANSI C &quot;main&quot; entry point, and exit() the process when it returns (which
+looks like a crash on HarmonyOS, so please don&#39;t return.)</li>
+<li>If there was no symbol called &quot;SDL_main&quot;, we look for the Main
+Callbacks symbols in libmain.so: SDL_AppInit, SDL_AppIterate, etc. If
+found, we will call libmain.so&#39;s SDL_AppInit() and respond
+appropriately. If not found, we panic and terminate the process, since
+we&#39;re out of options and something was obviously built incorrectly.</li>
+<li>Later, whenever the XComponent fires its OnFrame callback, we will
+call SDL_OpenHarmonyOnFrameCallback(), which calls libmain.so&#39;s
+SDL_AppIterate(), if we ended up using the Main Callbacks.</li>
+</ul>
+<h2 id="incomplete-notes">Incomplete notes</h2>
+<p>Everything below here is incomplete, in-progress, and maybe
+incomprehensible. You can stop reading now, if you like.</p>
+<ul>
+<li><p>A lot of how to get started with native code and rendering was
+gleaned from <a href="https://gitee.com/harmonyos_samples/ndk-opengl">https://gitee.com/harmonyos_samples/ndk-opengl</a>
+and then trying to find various symbols used in there in the HarmonyOS
+documentation.</p></li>
+<li><p><a href="https://github.com/openharmony/app_samples/ETSUI/XComponent">https://github.com/openharmony/app_samples/ETSUI/XComponent</a>,
+seems to do a lot of the native startup without the windowStage
+nonsense. Not clear if this still works, or is safe to do, but it
+<em>would</em> simplify things a little.</p></li>
+</ul>
+<h3 id="android-mappings">Android mappings</h3>
+<p>These are not direct mappings (the command lines are not identical,
+etc).</p>
+<ul>
+<li>&quot;adc&quot; command line tool: &quot;hdc&quot;</li>
+<li>&quot;adc logcat&quot;: &quot;hdc hilog&quot;</li>
+<li>&quot;gradlew&quot;: &quot;hvigorw&quot;</li>
+</ul>
+<h3 id="get-a-harmonyos-debug-certificate-without-deveco-studio">Get a
+HarmonyOS Debug Certificate without DevEco Studio</h3>
+<p>This is a giant dump of notes for doing this manually, which I didn&#39;t
+<em>quite</em> manage to get working. Huawei has docs on this, which
+I&#39;ve sort of half limped through.</p>
+<p>For now, just create your project in DevEco Studio, then in the menu
+bar, got to &quot;File&quot; -&gt; &quot;Project Structure&quot; -&gt; &quot;Signing Configs&quot;
+-&gt; &quot;Automatically generate signature&quot;. Log in to your Huawei
+developer account if needed. Let it do the work. Later, I copied the
+project&#39;s directory and &quot;.ohos&quot; dir in my home directory to a Linux
+system, adjusted a few Windows absolute paths in build-profile.json5,
+and that was good enough.</p>
+<p>(Ignore these notes if you aren&#39;t improving them.)</p>
+<p>If you aren&#39;t using DevEco Studio to automatically generate
+signatures:</p>
+<p>You need a signing certificate before you can install apps on a real
+HarmonyOS device.</p>
+<p>You get a certificate by generating a Certificate Signing Request (a
+&quot;CSR&quot;) and submitting it to Huawei.</p>
+<p>Right now this needs DevEco Studio to generate the CSR file, as a
+one-time step. Go into the IDE, click the hamburger menu icon on the top
+left of the window, choose the &quot;Build&quot; menu item, and then click
+&quot;Generate Key and CSR&quot;. In the dialog that pops up, you&#39;ll first make a
+signing key in &quot;.p12&quot; format. Enter a filename and save path, choose a
+password for the key. Fill in the &quot;Alias&quot; which is any short, unique,
+possibly-ASCII, human readable string. Ignore the Advanced section.</p>
+<p>Click &quot;Next&quot;. Now you&#39;ll generate the CSR file. The same .p12 file,
+password and alias you just generated will be prefilled in the new
+dialog. Just tell it where to save the new .csr file. Click &quot;Finish&quot; and
+you&#39;re done with DevEco Studio for this task.</p>
+<p>The Common Name (&quot;CN=&quot; field) on the Certificate Request is what
+DevEco Studio refers as an &quot;alias.&quot; I put this in as &quot;icculus.org&quot; for
+mine, but it might just need to be unique. It&#39;s required, all the other
+fields are not (indeed, DevEco Studio does not ask for them by default
+and leaves them blank).</p>
+<p><em>TODO IN THE FUTURE:</em> the CSR files are in a standard format,
+so OpenSSL&#39;s command line utility can <em>probably</em> generate them
+without having to go through DevEco Studio, but anything OpenSSL is
+complicated and needs research.</p>
+<p>Dumping the .csr file that DevEco Studio generated (using the command
+line: <code>openssl req -in MyCSRFile.csr -noout -text</code>) reports
+the following, so there are probably OpenSSL incantations to generate
+your own .p12 and .csr file directly.</p>
+<pre><code>Certificate Request:
+    Data:
+        Version: 1 (0x0)
+        Subject: C=, ST=, L=, O=, OU=, CN=[the &quot;Alias&quot; that I entered is here]
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (256 bit)
+                pub:
+                    [hex values for public key are here]
+                ASN1 OID: prime256v1
+                NIST CURVE: P-256
+        Attributes:
+            Requested Extensions:
+                X509v3 Subject Key Identifier:
+                    [hex values for key identifier are here]
+    Signature Algorithm: ecdsa-with-SHA256
+    Signature Value:
+        [hex values for signature are here]</code></pre>
+<p>Once you have a .csr file, go to Huawei&#39;s AppGallery Connect portal,
+and find the &quot;Certificates, app IDs, and profiles&quot; tab at the top. Click
+the &quot;New certificate&quot; button, and upload the .csr file you generated.
+Give it a name, set the &quot;Certificate type&quot; to &quot;Debug certificate&quot; and
+point to your .csr file. Click &quot;Submit&quot;.</p>
+<p>If everything went okay, you&#39;ll have a certificate listed for
+download. This should be an immediate thing, it doesn&#39;t need approval on
+Huawei&#39;s side. Download the .cer file and save it for later.</p>
+</body>
+</html>

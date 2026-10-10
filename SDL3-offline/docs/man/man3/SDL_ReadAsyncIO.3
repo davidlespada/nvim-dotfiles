@@ -1,0 +1,80 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_ReadAsyncIO:
+.\"   https://wiki.libsdl.org/SDL_ReadAsyncIO
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_ReadAsyncIO
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_ReadAsyncIO 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_ReadAsyncIO \- Start an async read.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_asyncio.h>
+.PP
+.BI "bool SDL_ReadAsyncIO(SDL_AsyncIO *asyncio, void *ptr, Uint64 offset, Uint64 size, SDL_AsyncIOQueue *queue, void *userdata);
+.fi
+.SH DESCRIPTION
+This function reads up to
+.BR size
+bytes from
+.BR offset
+position in the data source to the area pointed at by
+.BR ptr \[char46]
+This function may read less bytes than requested\[char46]
+.PP
+This function returns as quickly as possible; it does not wait for the read to complete\[char46] On a successful return, this work will continue in the background\[char46] If the work begins, even failure is asynchronous: a failing return value from this function only means the work couldn\(aqt start at all\[char46]
+.PP
+.BR ptr
+must remain available until the work is done, and may be accessed by the system at any time until then\[char46] Do not allocate it on the stack, as this might take longer than the life of the calling function to complete!
+.PP
+An
+.BR SDL_AsyncIOQueue
+must be specified\[char46] The newly-created task will be added to it when it completes its work\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I asyncio
+a pointer to an
+.BR SDL_AsyncIO
+structure\[char46]
+.TP
+.I ptr
+a pointer to a buffer to read data into\[char46]
+.TP
+.I offset
+the position to start reading in the data source\[char46]
+.TP
+.I size
+the number of bytes to read from the data source\[char46]
+.TP
+.I queue
+a queue to add the new
+.BR SDL_AsyncIO
+to\[char46]
+.TP
+.I userdata
+an app-defined pointer that will be provided with the task results\[char46]
+.SH RETURN VALUE
+Returns true on success or false on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_WriteAsyncIO (3),
+.BR SDL_CreateAsyncIOQueue (3)

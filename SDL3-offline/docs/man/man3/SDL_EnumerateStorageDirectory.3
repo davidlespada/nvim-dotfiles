@@ -1,0 +1,66 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_EnumerateStorageDirectory:
+.\"   https://wiki.libsdl.org/SDL_EnumerateStorageDirectory
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_EnumerateStorageDirectory
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_EnumerateStorageDirectory 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_EnumerateStorageDirectory \- Enumerate a directory in a storage container through a callback function.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_storage.h>
+.PP
+.BI "bool SDL_EnumerateStorageDirectory(SDL_Storage *storage, const char *path, SDL_EnumerateDirectoryCallback callback, void *userdata);
+.fi
+.SH DESCRIPTION
+This function provides every directory entry through an app-provided callback, called once for each directory entry, until all results have been provided or the callback returns either
+.BR SDL_ENUM_SUCCESS
+or
+.BR SDL_ENUM_FAILURE \[char46]
+.PP
+This will return false if there was a system problem in general, or if a callback returns
+.BR SDL_ENUM_FAILURE \[char46]
+A successful return means a callback returned
+.BR SDL_ENUM_SUCCESS
+to halt enumeration, or all directory entries were enumerated\[char46]
+.PP
+If
+.BR path
+is NULL, this is treated as a request to enumerate the root of the storage container\(aqs tree\[char46] An empty string also works for this\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I storage
+a storage container\[char46]
+.TP
+.I path
+the path of the directory to enumerate, or NULL for the root\[char46]
+.TP
+.I callback
+a function that is called for each entry in the directory\[char46]
+.TP
+.I userdata
+a pointer that is passed to
+.BR callback \[char46]
+
+.SH RETURN VALUE
+Returns true on success or false on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_StorageReady (3)

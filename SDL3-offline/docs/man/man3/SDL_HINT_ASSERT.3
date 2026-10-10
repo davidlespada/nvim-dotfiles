@@ -1,0 +1,52 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_HINT_ASSERT:
+.\"   https://wiki.libsdl.org/SDL_HINT_ASSERT
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_HINT_ASSERT
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_HINT_ASSERT 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_HINT_ASSERT \- A variable controlling response to
+.BR SDL_assert
+failures.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_hints.h>
+.PP
+.BI "#define SDL_HINT_ASSERT \(dqSDL_ASSERT\(dq
+.fi
+.SH DESCRIPTION
+The variable can be set to the following case-sensitive values:
+.PP
+
+\(bu \(dqabort\(dq: Program terminates immediately\[char46]
+.PP
+\(bu \(dqbreak\(dq: Program triggers a debugger breakpoint\[char46]
+.PP
+\(bu \(dqretry\(dq: Program reruns the
+.BR SDL_assert \(aqs
+test again\[char46]
+.PP
+\(bu \(dqignore\(dq: Program continues on, ignoring this assertion failure this time\[char46]
+.PP
+\(bu \(dqalways_ignore\(dq: Program continues on, ignoring this assertion failure for the rest of the run\[char46]
+.PP
+Note that
+.BR SDL_SetAssertionHandler
+offers a programmatic means to deal with assertion failures through a callback, and this hint is largely intended to be used via environment variables by end users and automated tools\[char46]
+.PP
+This hint should be set before an assertion failure is triggered and can be changed at any time\[char46]
+
+.SH AVAILABILITY
+This hint is available since SDL 3\[char46]2\[char46]0\[char46]
+

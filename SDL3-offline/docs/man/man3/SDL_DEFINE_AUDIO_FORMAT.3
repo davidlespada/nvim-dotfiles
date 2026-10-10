@@ -1,0 +1,66 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_DEFINE_AUDIO_FORMAT:
+.\"   https://wiki.libsdl.org/SDL_DEFINE_AUDIO_FORMAT
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_DEFINE_AUDIO_FORMAT
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_DEFINE_AUDIO_FORMAT 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_DEFINE_AUDIO_FORMAT \- Define an
+.BR SDL_AudioFormat
+value.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_audio.h>
+.PP
+.BI "#define SDL_DEFINE_AUDIO_FORMAT(signed, bigendian, flt, size) \(rs
+.BI "    (((Uint16)(signed) << 15) | ((Uint16)(bigendian) << 12) | ((Uint16)(flt) << 8) | ((size) & SDL_AUDIO_MASK_BITSIZE))
+.fi
+.SH DESCRIPTION
+SDL does not support custom audio formats, so this macro is not of much use externally, but it can be illustrative as to what the various bits of an
+.BR SDL_AudioFormat
+mean\[char46]
+.PP
+For example,
+.BR SDL_AUDIO_S32LE
+looks like this:
+
+.IP
+.EX
+SDL_DEFINE_AUDIO_FORMAT(1, 0, 0, 32)
+.EE
+.PP
+
+.SH MACRO PARAMETERS
+.TP
+.I signed
+1 for signed data, 0 for unsigned data\[char46]
+.TP
+.I bigendian
+1 for bigendian data, 0 for littleendian data\[char46]
+.TP
+.I flt
+1 for floating point data, 0 for integer data\[char46]
+.TP
+.I size
+number of bits per sample\[char46]
+.SH RETURN VALUE
+Returns a format value in the style of
+.BR SDL_AudioFormat \[char46]
+
+.SH THREAD SAFETY
+It is safe to call this macro from any thread\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+

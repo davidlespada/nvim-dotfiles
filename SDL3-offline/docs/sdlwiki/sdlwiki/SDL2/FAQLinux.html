@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>FAQLinux</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">:root {
+color-scheme: dark light; 
+}
+body {
+background-color: white;
+padding: 2vw;
+color: #333;
+max-width: 1200px;
+margin: 0 auto;
+font-size: 16px;
+line-height: 1.5;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+overflow-wrap: break-word;
+}
+a {
+color: #0969da;
+
+}
+a:visited {
+color: #064998;
+}
+h1 {
+border-bottom: 2px solid #efefef;
+}
+h2 {
+border-bottom: 1px solid #efefef;
+}
+p {
+max-width: 85ch;
+}
+li {
+max-width: 85ch;
+}
+div.sourceCode {
+background-color: #f6f8fa;
+max-width: 100%;
+padding: 16px;
+}
+code {
+background-color: #f6f8fa;
+padding: 0px;
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+"Liberation Mono", monospace;
+}
+table {
+border: 1px solid #808080;
+border-collapse: collapse;
+}
+td {
+border: 1px solid #808080;
+padding: 5px;
+}
+tr:nth-child(even) {
+background-color: #f6f8fa;
+}
+.wikitopbanner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #efefef;
+padding: 10px;
+margin-bottom: 10px;
+width: auto;
+}
+.wikibottombanner {
+background-color: #efefef;
+padding: 10px;
+margin-top: 10px;
+width: auto;
+}
+.alertBox {
+background-color: #f8d7da;
+border: 1px solid #f5c6cb;
+max-width: 60%;
+padding: 10;
+margin: auto;
+}
+.anchorImage {
+visibility: hidden;
+padding-left: 0.2em;
+color: #fff;
+}
+.anchorText:hover .anchorImage {
+visibility: visible;
+}
+hr {
+display: block;
+height: 1px;
+border: 0;
+border-top: 1px solid #efefef;
+margin: 1em 0;
+padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+body {
+color: #e6edf3;
+background-color: #0d1117;
+}
+h1 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+h2 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+hr {
+border-color: rgba(48, 54, 61, 0.7);
+}
+div.sourceCode {
+background-color: #161b22;
+}
+code {
+background-color: #161b22;
+}
+a {
+color: #4493f8;
+}
+a:visited {
+color: #2f66ad;
+}
+table {
+border-color: rgba(48, 54, 61, 0.7);
+}
+td {
+border-color: rgba(48, 54, 61, 0.7);
+}
+tr:nth-child(even) {
+background-color: #161b22;
+}
+.wikitopbanner {
+background-color: #263040;
+}
+.wikibottombanner {
+background-color: #263040;
+}
+.anchorText:hover .anchorImage {
+filter: invert(100%);
+}
+}
+@media print {
+body {
+font-size: 12px;
+}
+table {
+font-size: inherit;
+}
+a:visited {
+color: #0969da;
+}
+.wikitopbanner,
+.anchorText,
+.wikibottombanner {
+display: none;
+}
+}
+</style>
+  <style type="text/css"> code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+{ content: attr(title);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; pointer-events: all; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+@media (prefers-color-scheme: dark) {
+code span.al { color: #95da4c; font-weight: bold; } 
+code span.an { color: #3f8058; } 
+code span.at { color: #2980b9; } 
+code span.bn { color: #f67400; } 
+code span.bu { color: #7f8c8d; } 
+code span.ch { color: #3daee9; } 
+code span.co { color: #7a7c7d; } 
+code span.cv { color: #7f8c8d; } 
+code span.cn { color: #27aeae; font-weight: bold; } 
+code span.cf { color: #fdbc4b; font-weight: bold; } 
+code span.dt { color: #2980b9; } 
+code span.dv { color: #f67400; } 
+code span.do { color: #a43340; } 
+code span.er { color: #da4453; } 
+code span.ex { color: #0099ff; font-weight: bold; } 
+code span.fl { color: #f67400; } 
+code span.fu { color: #8e44ad; } 
+code span.im { color: #27ae60; } 
+code span.in { color: #c45b00; } 
+code span.kw { color: #cfcfc2; font-weight: bold; } 
+code span.op { color: #cfcfc2; } 
+code span.ot { color: #27ae60; } 
+code span.pp { color: #27ae60; } 
+code span.sc { color: #3daee9; } 
+code span.ss { color: #da4453; } 
+code span.st { color: #f44f4f; } 
+code span.va { color: #27aeae; } 
+code span.vs { color: #da4453; } 
+code span.wa { color: #da4453; } 
+}</style>
+</head>
+<body>
+<h1 id="faq-linux">FAQ: Linux</h1>
+<p>(Note that most of this page covers SDL 1.2, and not SDL 2.0. You
+should consider using <a href="../SDL3/FrontPage.html">SDL 3.0</a> and
+not SDL2 or 1.2, which are now unsupported.)</p>
+<h2 id="what-is-supported">What is supported?</h2>
+<p>SDL supports all known Linux hardware with GNU libc and kernel
+version 2.6 or newer.</p>
+<p>For the latest information see
+<!-- http://hg.libsdl.org/SDL/file/default/docs/README-platforms.md -->
+<a href="Installation.html">the page about Installation</a>.</p>
+<h2 id="how-do-i-add-sdl-to-my-project">How do I add SDL to my
+project?</h2>
+<p>The short answer is use the output of the command &quot;sdl-config
+--cflags --libs&quot; for SDL 1.2 or &quot;sdl2-config --cflags --libs&quot;, for
+example:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">gcc</span> <span class="at">-o</span> test test.c <span class="kw">`</span><span class="ex">sdl-config</span> <span class="at">--cflags</span> <span class="at">--libs</span><span class="kw">`</span></span></code></pre></div>
+<p>If you are using home-grown Makefiles for your project, you can get
+the proper CFLAGS and LDFLAGS for SDL by adding the following lines to
+your Makefile:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">SDL_CFLAGS</span> := <span class="va">$(</span><span class="ex">shell</span> sdl-config <span class="at">--cflags</span><span class="va">)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">SDL_LDFLAGS</span> := <span class="va">$(</span><span class="ex">shell</span> sdl-config <span class="at">--libs</span><span class="va">)</span></span></code></pre></div>
+<p>If you are using autoconf and automake for your project, you can copy
+the contents of &#39;<a href="https://hg.libsdl.org/SDL/file/SDL-1.2/sdl.m4">sdl.m4</a>&#39; (<a href="https://github.com/libsdl-org/SDL/blob/SDL2/sdl2.m4">sdl2.m4</a>)
+into your acinclude.m4 file, and then add the following to your
+configure.in file (for SDL 1.2):</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode m4"><code class="sourceCode m4"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">dnl</span> Check for SDL</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    SDL_VERSION<span class="ch">=</span><span class="dv">1</span>.<span class="dv">2</span>.<span class="dv">0</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    AM_PATH_SDL<span class="ch">(</span>$SDL_VERSION<span class="ch">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>              :<span class="ch">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>              AC_MSG_ERROR<span class="ch">(</span>[<span class="ch">***</span> SDL version $SDL_VERSION not found<span class="ch">!</span>]<span class="ch">)</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="ch">)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    CFLAGS<span class="ch">=</span>&quot;$CFLAGS $SDL_CFLAGS&quot;</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    LIBS<span class="ch">=</span>&quot;$LIBS $SDL_LIBS&quot;</span></code></pre></div>
+<p>For SDL 2.0, the <code>AM_PATH_SDL</code> above will be
+<code>AM_PATH_SDL2</code> and <code>SDL_VERSION</code> should also be
+set appropriately.</p>
+<h2 id="i-installed-the-sdl-rpm-but-cant-compile-sdl-applications">I
+installed the SDL RPM, but can&#39;t compile SDL applications</h2>
+<p>You need to install the SDL-devel RPM, available from: <a href="https://www.libsdl.org/download.php">https://www.libsdl.org/download.php</a></p>
+<h2 id="im-using-nasm-098-and-getting-a-crash-when-linking-sdl">I&#39;m
+using nasm 0.98 and getting a crash when linking SDL</h2>
+<p>There is a bug in the nasm assembler version 0.98 - the version
+shipped with RedHat 7.1. You should upgrade nasm to at least version
+0.98.08. If for some reason you can&#39;t upgrade, you can disable the
+assembly code in SDL by passing &quot;--disable-nasm&quot; to configure when
+building SDL from source.</p>
+<h2 id="i-installed-sdl-from-source-but-cant-build-or-run-sdl-applications">I
+installed SDL from source but can&#39;t build or run SDL applications</h2>
+<p>Edit the file /etc/ld.so.conf, and make sure it contains the
+line:</p>
+<p><code>/usr/local/lib</code></p>
+<p>As root, run /sbin/ldconfig</p>
+<p>Make sure /usr/local/bin is in your execution path:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="va">$PATH</span>:/usr/local/bin/</span></code></pre></div>
+<p>Make sure that there aren&#39;t any other versions of SDL on your system,
+and that you have removed any file named &quot;config.cache&quot; from the
+directory of the software that refuses to build.</p>
+<p>If all of the above still don&#39;t work, send e-mail to the SDL <a href="https://discourse.libsdl.org/">mailing list</a> with the output
+from the following commands run from the directory of the software that
+refuses to build:</p>
+<ul>
+<li>which sdl-config</li>
+<li>sdl-config --version</li>
+<li>locate libSDL</li>
+<li>tail config.log</li>
+</ul>
+<h2 id="im-running-mandrake-or-slackware-and-applications-cant-find-sdl">I&#39;m
+running Mandrake or Slackware and applications can&#39;t find SDL!</h2>
+<p>You probably have a version of SDL built with aRts sound support, and
+the KDE libraries are not installed in a system standard location. You
+need to add the directory containing libartsc.so.0 to the file
+/etc/ld.so.conf and then run the command &quot;ldconfig&quot;. On newer versions
+of Mandrake, this directory is: /opt/kde/lib</p>
+<h2 id="how-do-i-set-an-environment-variable">How do I set an
+environment variable?</h2>
+<p>How to set an environment variable depends on your login shell:</p>
+<p>For Bourne shell derivatives: (sh, ash, ksh, zsh, bash, etc.)</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    <span class="va">VARIABLE</span><span class="op">=</span><span class="st">&#39;value&#39;</span><span class="kw">;</span> <span class="bu">export</span> <span class="va">VARIABLE</span></span></code></pre></div>
+<p>For C shell derivatives: (csh, tcsh, etc.)</p>
+<pre class="c++sh"><code>    setenv VARIABLE &#39;value&#39;</code></pre>
+<h2 id="i-get-the-error-no-video-devices-available">I get the error: &quot;no
+video devices available&quot;</h2>
+<p>SDL doesn&#39;t use the X11 video driver if it can&#39;t open the X display,
+and if no other drivers are available, it will report this error. To fix
+this, set your display environment variable appropriately:</p>
+<p>sh:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>    <span class="va">DISPLAY</span><span class="op">=</span>:0 <span class="kw">;</span> <span class="bu">export</span> <span class="va">DISPLAY</span></span></code></pre></div>
+<p>csh:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>    <span class="ex">setenv</span> DISPLAY :0</span></code></pre></div>
+<p>If you still have problems, try running xhost + localhost Finally, if
+all those didn&#39;t work, and you built SDL from source, make sure that you
+have the X11 development libraries installed, otherwise you&#39;ll get a
+version of SDL that doesn&#39;t include X11 display support. After you
+install the X development libraries, you need to &quot;make clean&quot; and then
+rerun the configure and build process.</p>
+<h2 id="i-get-the-error-sdl-audio-timeout---buggy-audio-driver-disabled">I
+get the error: &quot;SDL: Audio timeout - buggy audio driver?
+(disabled)&quot;</h2>
+<p>Some audio drivers don&#39;t properly implement select(). I added a hack
+to approximate the timing using timing functions, and you can enabled
+this by setting the environment variable SDL_DSP_NOSELECT to &quot;1&quot;. You
+can also use ESounD or aRts as a high-latency sound server.</p>
+<h2 id="how-do-i-disable-framebuffer-console-acceleration">How do I
+disable framebuffer console acceleration?</h2>
+<p>As of SDL 1.0.3, you can set the environment variable SDL_FBACCEL to
+&quot;0&quot;.</p>
+<h2 id="how-do-i-enable-dma-audio-support">How do I enable DMA audio
+support?</h2>
+<p>As of SDL 1.0.4, you can set the environment variable SDL_AUDIODRIVER
+to &quot;dma&quot;.</p>
+<h2 id="how-do-i-turn-off-dga-mouse-support">How do I turn off DGA mouse
+support?</h2>
+<p>As of SDL 1.0.8, you can set the environment variable
+SDL_VIDEO_X11_DGAMOUSE to &quot;0&quot;.</p>
+<h2 id="how-do-i-enable-x11-mouse-acceleration">How do I enable X11
+mouse acceleration?</h2>
+<p>As of SDL 1.0.8, you can set the environment variable
+SDL_VIDEO_X11_MOUSEACCEL to &quot;X/Y&quot;, where &#39;X&#39; is the numerator and &#39;Y&#39; is
+the denomenator of the mouse acceleration. For example, if you wanted to
+set mouse acceleration to 2, you would set the variable to &quot;2/1&quot;. By
+default SDL does not change the current X11 mouse acceleration.</p>
+<h2 id="how-do-i-disable-xfree86-xvideo-acceleration">How do I disable
+XFree86 XVideo acceleration?</h2>
+<p>You can disable all YUV hardware acceleration by setting the
+environment variable SDL_VIDEO_YUV_HWACCEL to &quot;0&quot;.</p>
+<h2 id="how-do-i-tell-sdl-to-default-to-aalib">How do I tell SDL to
+default to AALib?</h2>
+<p>Building SDL: make distclean; ./configure --enable-video-aalib ; make
+install Running your app: set the environment variable SDL_VIDEODRIVER
+to &quot;aalib&quot;.</p>
+<h2 id="how-do-i-tell-sdl-to-use-the-dga-20-video-driver">How do I tell
+SDL to use the DGA 2.0 video driver?</h2>
+<p>Make sure that you have XFree86 4.01 or newer, run the program as
+root, set the environment variable SDL_VIDEODRIVER to &quot;dga&quot;, and use a
+video card like the Voodoo 3000, Matrox G400, or any other card with a
+decent DGA driver.</p>
+<h2 id="when-i-specify-sdl_fullscreen-in-x11-the-screen-goes-black-and-my-window-is-centered-in-the-middle-instead-of-covering-the-whole-screen">When
+I specify SDL_FULLSCREEN in X11, the screen goes black and my window is
+centered in the middle, instead of covering the whole screen!</h2>
+<p>X needs to be able to switch to the desired resolution. For this to
+work, your monitor must support the resolution, and you need to have the
+resolution listed in your X server configuration.</p>
+<p>The following example is taken from my config for XFree86 4.0.1, but
+3.3.x is similar. Note that if your monitor isn&#39;t capable of using these
+video modes, the X server will drop these modes from the list of
+available video modes. Example:</p>
+<pre>
+Section &quot;Screen&quot;
+    Identifier  &quot;Screen 1&quot;
+    Device      &quot;3dfx&quot;
+    Monitor     &quot;Samsung LCD&quot;
+    DefaultDepth 16
+
+    Subsection &quot;Display&quot;
+        Depth       8
+        Modes       &quot;1280x1024&quot; &quot;1024x768&quot; &quot;800x600&quot; &quot;640x480&quot; &quot;320x240&quot;
+        ViewPort    0 0
+    EndSubsection
+    Subsection &quot;Display&quot;
+        Depth       16
+        Modes       &quot;1280x1024&quot; &quot;1024x768&quot; &quot;800x600&quot; &quot;640x480&quot;
+        ViewPort    0 0
+    EndSubsection
+EndSection
+</pre>
+
+<p>Note the different entries for 8 &amp; 16 bit screendepth. I.e. the
+320x240 resolution is <em>not</em> available when X is started with
+16bit depth (the default).</p>
+<p>To test these entries, restart X after you modified XF86Config and
+press ctrl-alt-plus and ctrl-alt-minus to cycle through the resolutions.
+-- contributed by Andreas Umbach</p>
+<h2 id="how-do-i-get-all-the-dependencies-for-building-sdl-on-fedora">How do
+I get all the dependencies for building SDL on Fedora?</h2>
+<p>You can install these packages for building SDL 2.0 on Fedora:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sudo</span> yum install rpm-build alsa-lib-devel libX11-devel libXScrnSaver-devel libXau-devel libXcursor-devel libXext-devel libXfixes-devel libXi-devel libXinerama-devel libXrandr-devel libXrender-devel libXxf86vm-devel mesa-libGL-devel pulseaudio-libs-devel</span></code></pre></div>
+<h2 id="how-do-i-get-all-the-dependencies-for-building-sdl-on-ubuntu">How do
+I get all the dependencies for building SDL on Ubuntu?</h2>
+<p>Run the following command:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sudo</span> apt-get build-dep libsdl1.2</span></code></pre></div>
+<p>Or you can get all the dependencies individually:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sudo</span> apt-get install build-essential mercurial make autoconf automake libtool libasound2-dev libpulse-dev libaudio-dev libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxi-dev libxinerama-dev libxxf86vm-dev libxss-dev libgl1-mesa-dev libesd0-dev</span></code></pre></div>
+</body>
+</html>

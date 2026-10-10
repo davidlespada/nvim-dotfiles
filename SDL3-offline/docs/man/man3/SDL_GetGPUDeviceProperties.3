@@ -1,0 +1,152 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GetGPUDeviceProperties:
+.\"   https://wiki.libsdl.org/SDL_GetGPUDeviceProperties
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GetGPUDeviceProperties
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GetGPUDeviceProperties 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_GetGPUDeviceProperties \- Get the properties associated with a GPU device.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_gpu.h>
+.PP
+.BI "SDL_PropertiesID SDL_GetGPUDeviceProperties(SDL_GPUDevice *device);
+.fi
+.SH DESCRIPTION
+All properties are optional and may differ between GPU backends and SDL versions\[char46]
+.PP
+The following properties are provided by SDL:
+.PP
+
+.BR SDL_PROP_GPU_DEVICE_NAME_STRING :
+Contains the name of the underlying device as reported by the system driver\[char46] This string has no standardized format, is highly inconsistent between hardware devices and drivers, and is able to change at any time\[char46] Do not attempt to parse this string as it is bound to fail at some point in the future when system drivers are updated, new hardware devices are introduced, or when SDL adds new GPU backends or modifies existing ones\[char46]
+.PP
+Strings that have been found in the wild include:
+.PP
+
+\(bu GTX 970
+.PP
+\(bu GeForce GTX 970
+.PP
+\(bu NVIDIA GeForce GTX 970
+.PP
+\(bu Microsoft Direct3D12 (NVIDIA GeForce GTX 970)
+.PP
+\(bu NVIDIA Graphics Device
+.PP
+\(bu GeForce GPU
+.PP
+\(bu P106-100
+.PP
+\(bu AMD 15D8:C9
+.PP
+\(bu AMD Custom GPU 0405
+.PP
+\(bu AMD Radeon (TM) Graphics
+.PP
+\(bu ASUS Radeon RX 470 Series
+.PP
+\(bu Intel(R) Arc(tm) A380 Graphics (DG2)
+.PP
+\(bu Virtio-GPU Venus (NVIDIA TITAN V)
+.PP
+\(bu SwiftShader Device (LLVM 16\[char46]0\[char46]0)
+.PP
+\(bu llvmpipe (LLVM 15\[char46]0\[char46]4, 256 bits)
+.PP
+\(bu Microsoft Basic Render Driver
+.PP
+\(bu unknown device
+.PP
+The above list shows that the same device can have different formats, the vendor name may or may not appear in the string, the included vendor name may not be the vendor of the chipset on the device, some manufacturers include pseudo-legal marks while others don\(aqt, some devices may not use a marketing name in the string, the device string may be wrapped by the name of a translation interface, the device may be emulated in software, or the string may contain generic text that does not identify the device at all\[char46]
+.PP
+
+.BR SDL_PROP_GPU_DEVICE_DRIVER_NAME_STRING :
+Contains the self-reported name of the underlying system driver\[char46]
+.PP
+Strings that have been found in the wild include:
+.PP
+
+\(bu Intel Corporation
+.PP
+\(bu Intel open-source Mesa driver
+.PP
+\(bu Qualcomm Technologies Inc\[char46] Adreno Vulkan Driver
+.PP
+\(bu MoltenVK
+.PP
+\(bu Mali-G715
+.PP
+\(bu venus
+.PP
+
+.BR SDL_PROP_GPU_DEVICE_DRIVER_VERSION_STRING :
+Contains the self-reported version of the underlying system driver\[char46] This is a relatively short version string in an unspecified format\[char46] If
+.BR SDL_PROP_GPU_DEVICE_DRIVER_INFO_STRING
+is available then that property should be preferred over this one as it may contain additional information that is useful for identifying the exact driver version used\[char46]
+.PP
+Strings that have been found in the wild include:
+.PP
+
+\(bu 53\[char46]0\[char46]0
+.PP
+\(bu 0\[char46]405\[char46]2463
+.PP
+\(bu 32\[char46]0\[char46]15\[char46]6614
+.PP
+
+.BR SDL_PROP_GPU_DEVICE_DRIVER_INFO_STRING :
+Contains the detailed version information of the underlying system driver as reported by the driver\[char46] This is an arbitrary string with no standardized format and it may contain newlines\[char46] This property should be preferred over
+.BR SDL_PROP_GPU_DEVICE_DRIVER_VERSION_STRING
+if it is available as it usually contains the same information but in a format that is easier to read\[char46]
+.PP
+Strings that have been found in the wild include:
+.PP
+
+\(bu 101\[char46]6559
+.PP
+\(bu 1\[char46]2\[char46]11
+.PP
+\(bu Mesa 21\[char46]2\[char46]2 (LLVM 12\[char46]0\[char46]1)
+.PP
+\(bu Mesa 22\[char46]2\[char46]0-devel (git-f226222 2022-04-14 impish-oibaf-ppa)
+.PP
+\(bu v1\[char46]r53p0-00eac0\[char46]824c4f31403fb1fbf8ee1042422c2129
+.PP
+This string has also been observed to be a multiline string (which has a trailing newline):
+
+.IP
+.EX
+Driver Build: 85da404, I46ff5fc46f, 1606794520
+Date: 11/30/20
+Compiler Version: EV031.31.04.01
+Driver Branch: promo490_3_Google
+.EE
+.PP
+
+.SH FUNCTION PARAMETERS
+.TP
+.I device
+a GPU context to query\[char46]
+.SH RETURN VALUE
+Returns a valid property ID on success or 0 on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]4\[char46]0\[char46]
+

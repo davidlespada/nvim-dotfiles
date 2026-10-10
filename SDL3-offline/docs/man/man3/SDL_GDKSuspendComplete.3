@@ -1,0 +1,53 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GDKSuspendComplete:
+.\"   https://wiki.libsdl.org/SDL_GDKSuspendComplete
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GDKSuspendComplete
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GDKSuspendComplete 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_GDKSuspendComplete \- Callback from the application to let the suspend continue.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_main.h>
+.PP
+.BI "void SDL_GDKSuspendComplete(void);
+.fi
+.SH DESCRIPTION
+This should be called in response to an
+.BR SDL_EVENT_DID_ENTER_BACKGROUND
+event, which can be detected via event watch\[char46] However, do NOT call this function directly from within an event watch callback\[char46] Instead, wait until the app has suppressed all rendering operations, then call this from the application render thread\[char46]
+.PP
+When using
+.BR SDL_Render ,
+this should be called after calling
+.BR SDL_GDKSuspendRenderer \[char46]
+.PP
+When using
+.BR SDL_GPU ,
+this should be called after calling
+.BR SDL_GDKSuspendGPU \[char46]
+.PP
+If you\(aqre writing your own D3D12 renderer, this should be called after calling
+.BR ID3D12CommandQueue::SuspendX \[char46]
+.PP
+This function is only needed for Xbox GDK support; all other platforms will do nothing and set an \(dqunsupported\(dq error message\[char46]
+
+.SH THREAD SAFETY
+This function is not thread safe\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_AddEventWatch (3)

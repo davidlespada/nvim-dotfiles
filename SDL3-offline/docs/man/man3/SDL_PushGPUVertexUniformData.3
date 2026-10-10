@@ -1,0 +1,53 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_PushGPUVertexUniformData:
+.\"   https://wiki.libsdl.org/SDL_PushGPUVertexUniformData
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_PushGPUVertexUniformData
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_PushGPUVertexUniformData 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_PushGPUVertexUniformData \- Pushes data to a vertex uniform slot on the command buffer.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_gpu.h>
+.PP
+.BI "void SDL_PushGPUVertexUniformData(
+.BI "    SDL_GPUCommandBuffer *command_buffer,
+.BI "    Uint32 slot_index,
+.BI "    const void *data,
+.BI "    Uint32 length);
+.fi
+.SH DESCRIPTION
+Subsequent draw calls in this command buffer will use this uniform data\[char46]
+.PP
+The data being pushed must respect std140 layout conventions\[char46] In practical terms this means you must ensure that vec3 and vec4 fields are 16-byte aligned\[char46]
+.PP
+For detailed information about accessing uniform data from a shader, please refer to
+.BR SDL_CreateGPUShader \[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I command_buffer
+a command buffer\[char46]
+.TP
+.I slot_index
+the vertex uniform slot to push data to\[char46]
+.TP
+.I data
+client data to write\[char46]
+.TP
+.I length
+the length of the data to write\[char46]
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+

@@ -1,0 +1,76 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_CreateProcess:
+.\"   https://wiki.libsdl.org/SDL_CreateProcess
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_CreateProcess
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_CreateProcess 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_CreateProcess \- Create a new process.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_process.h>
+.PP
+.BI "SDL_Process * SDL_CreateProcess(const char * const *args, bool pipe_stdio);
+.fi
+.SH DESCRIPTION
+The path to the executable is supplied in args[0]\[char46] args[1\[char46]\[char46]N] are additional arguments passed on the command line of the new process, and the argument list should be terminated with a NULL, e\[char46]g\[char46]:
+
+.IP
+.EX
+const char *args[] = { "myprogram", "argument", NULL };
+.EE
+.PP
+
+Setting pipe_stdio to true is equivalent to setting
+.BR SDL_PROP_PROCESS_CREATE_STDIN_NUMBER
+and
+.BR SDL_PROP_PROCESS_CREATE_STDOUT_NUMBER
+to
+.BR SDL_PROCESS_STDIO_APP ,
+and will allow the use of
+.BR SDL_ReadProcess ()
+or
+.BR SDL_GetProcessInput ()
+and
+.BR SDL_GetProcessOutput ()\[char46]
+.PP
+See
+.BR SDL_CreateProcessWithProperties ()
+for more details\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I args
+the path and arguments for the new process\[char46]
+.TP
+.I pipe_stdio
+true to create pipes to the process\(aqs standard input and from the process\(aqs standard output, false for the process to have no input and inherit the application\(aqs standard output\[char46]
+.SH RETURN VALUE
+Returns the newly created and running process, or NULL if the process couldn\(aqt be created\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_CreateProcessWithProperties (3),
+.BR SDL_GetProcessProperties (3),
+.BR SDL_ReadProcess (3),
+.BR SDL_GetProcessInput (3),
+.BR SDL_GetProcessOutput (3),
+.BR SDL_KillProcess (3),
+.BR SDL_WaitProcess (3),
+.BR SDL_DestroyProcess (3)

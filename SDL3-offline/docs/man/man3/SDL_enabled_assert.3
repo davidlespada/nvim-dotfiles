@@ -1,0 +1,62 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_enabled_assert:
+.\"   https://wiki.libsdl.org/SDL_enabled_assert
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_enabled_assert
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_enabled_assert 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_enabled_assert \- The macro used when an assertion is enabled.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_assert.h>
+.PP
+.BI "#define SDL_enabled_assert(condition) \(rs
+.BI "    do { \(rs
+.BI "        while ( !(condition) ) { \(rs
+.BI "            static struct SDL_AssertData sdl_assert_data = { false, 0, #condition, NULL, 0, NULL, NULL }; \(rs
+.BI "            const SDL_AssertState sdl_assert_state = SDL_ReportAssertion(&sdl_assert_data, SDL_FUNCTION, SDL_ASSERT_FILE, SDL_LINE); \(rs
+.BI "            if (sdl_assert_state == SDL_ASSERTION_RETRY) { \(rs
+.BI "                continue; /* go again. */ \(rs
+.BI "            } else if (sdl_assert_state == SDL_ASSERTION_BREAK) { \(rs
+.BI "                SDL_AssertBreakpoint(); \(rs
+.BI "            } \(rs
+.BI "            break; /* not retrying. */ \(rs
+.BI "        } \(rs
+.BI "    } while (SDL_NULL_WHILE_LOOP_CONDITION)
+.fi
+.SH DESCRIPTION
+This isn\(aqt for direct use by apps, but this is the code that is inserted when an
+.BR SDL_assert
+is enabled\[char46]
+.PP
+The
+.BR "do {} while(0)"
+avoids dangling else problems:
+
+.IP
+.EX
+if (x) SDL_assert(y); else blah();
+.EE
+.PP
+
+\[char46]\[char46]\[char46] without the do/while, the \(dqelse\(dq could attach to this macro\(aqs \(dqif\(dq\[char46] We try to handle just the minimum we need here in a macro\[char46]\[char46]\[char46]the loop, the static vars, and break points\[char46] The heavy lifting is handled in
+.BR SDL_ReportAssertion ()\[char46]
+
+.SH MACRO PARAMETERS
+.TP
+.I condition
+the condition to assert\[char46]
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+

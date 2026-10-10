@@ -1,0 +1,36 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_HINT_WAVE_CHUNK_LIMIT:
+.\"   https://wiki.libsdl.org/SDL_HINT_WAVE_CHUNK_LIMIT
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_HINT_WAVE_CHUNK_LIMIT
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_HINT_WAVE_CHUNK_LIMIT 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_HINT_WAVE_CHUNK_LIMIT \- A variable controlling the maximum number of chunks in a WAVE file.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_hints.h>
+.PP
+.BI "#define SDL_HINT_WAVE_CHUNK_LIMIT \(dqSDL_WAVE_CHUNK_LIMIT\(dq
+.fi
+.SH DESCRIPTION
+This sets an upper bound on the number of chunks in a WAVE file to avoid wasting time on malformed or corrupt WAVE files\[char46] This defaults to \(dq10000\(dq\[char46]
+.PP
+This hint should be set before calling
+.BR SDL_LoadWAV ()
+or
+.BR SDL_LoadWAV_IO ()
+
+.SH AVAILABILITY
+This hint is available since SDL 3\[char46]2\[char46]0\[char46]
+

@@ -1,0 +1,57 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_RunOnMainThread:
+.\"   https://wiki.libsdl.org/SDL_RunOnMainThread
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_RunOnMainThread
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_RunOnMainThread 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_RunOnMainThread \- Call a function on the main thread during event processing.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_init.h>
+.PP
+.BI "bool SDL_RunOnMainThread(SDL_MainThreadCallback callback, void *userdata, bool wait_complete);
+.fi
+.SH DESCRIPTION
+If this is called on the main thread, the callback is executed immediately\[char46] If this is called on another thread, this callback is queued for execution on the main thread during event processing\[char46]
+.PP
+Be careful of deadlocks when using this functionality\[char46] You should not have the main thread wait for the current thread while this function is being called with
+.BR wait_complete
+true\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I callback
+the callback to call on the main thread\[char46]
+.TP
+.I userdata
+a pointer that is passed to
+.BR callback \[char46]
+
+.TP
+.I wait_complete
+true to wait for the callback to complete, false to return immediately\[char46]
+.SH RETURN VALUE
+Returns true on success or false on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_IsMainThread (3)

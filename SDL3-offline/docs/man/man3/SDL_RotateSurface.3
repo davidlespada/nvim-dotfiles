@@ -1,0 +1,56 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_RotateSurface:
+.\"   https://wiki.libsdl.org/SDL_RotateSurface
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_RotateSurface
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_RotateSurface 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_RotateSurface \- Return a copy of a surface rotated clockwise a number of degrees.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_surface.h>
+.PP
+.BI "SDL_Surface * SDL_RotateSurface(SDL_Surface *surface, float angle);
+.fi
+.SH DESCRIPTION
+The angle of rotation can be negative for counter-clockwise rotation\[char46]
+.PP
+When the rotation isn\(aqt a multiple of 90 degrees, the resulting surface is larger than the original, with the background filled in with the colorkey, if available, or RGBA 255/255/255/0 if not\[char46]
+.PP
+If
+.BR surface
+has the
+.BR SDL_PROP_SURFACE_ROTATION_FLOAT
+property set on it, the new copy will have the adjusted value set: if the rotation property is 90 and
+.BR angle
+was 30, the new surface will have a property value of 60 (that is: to be upright vs gravity, this surface needs to rotate 60 more degrees)\[char46] However, note that further rotations on the new surface in this example will produce unexpected results, since the image will have resized and padded to accommodate the not-90 degree angle\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I surface
+the surface to rotate\[char46]
+.TP
+.I angle
+the rotation angle, in degrees\[char46]
+.SH RETURN VALUE
+Returns a rotated copy of the surface or NULL on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH THREAD SAFETY
+This function can be called on different threads with different surfaces\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]4\[char46]0\[char46]
+

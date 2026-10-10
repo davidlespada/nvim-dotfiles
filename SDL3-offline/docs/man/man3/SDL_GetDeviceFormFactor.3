@@ -1,0 +1,39 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GetDeviceFormFactor:
+.\"   https://wiki.libsdl.org/SDL_GetDeviceFormFactor
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GetDeviceFormFactor
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GetDeviceFormFactor 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_GetDeviceFormFactor \- Get the form factor of the current device.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_system.h>
+.PP
+.BI "SDL_FormFactor SDL_GetDeviceFormFactor(void);
+.fi
+.SH DESCRIPTION
+This function guesses what the device may be, but may report inaccurate or outright wrong results\[char46] For example, it may report a laptop as a desktop, or a car device as a phone\[char46]
+.PP
+Depending on the usage, there may be different functions better suited for each purpose\[char46] For example, activating touch controls can be done by detecting the presence of a touchscreen rather than restricting to phones and tablets\[char46]
+
+.SH RETURN VALUE
+Returns the best guess for the form factor of the current device\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]6\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_FormFactor (3type),
+.BR SDL_GetDeviceFormFactorName (3)

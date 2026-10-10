@@ -1,0 +1,75 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_CreateGPUBuffer:
+.\"   https://wiki.libsdl.org/SDL_CreateGPUBuffer
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_CreateGPUBuffer
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_CreateGPUBuffer 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_CreateGPUBuffer \- Creates a buffer object to be used in graphics or compute workflows.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_gpu.h>
+.PP
+.BI "SDL_GPUBuffer * SDL_CreateGPUBuffer(
+.BI "    SDL_GPUDevice *device,
+.BI "    const SDL_GPUBufferCreateInfo *createinfo);
+.fi
+.SH DESCRIPTION
+The contents of this buffer are undefined until data is written to the buffer\[char46]
+.PP
+Note that certain combinations of usage flags are invalid\[char46] For example, a buffer cannot have both the VERTEX and INDEX flags\[char46]
+.PP
+If you use a STORAGE flag, the data in the buffer must respect std430 layout conventions\[char46] In practical terms this means you must ensure that vec3 and vec4 fields are 16-byte aligned\[char46]
+.PP
+For better understanding of underlying concepts and memory management with SDL GPU API, you may refer
+.URL https://moonside.games/posts/sdl-gpu-concepts-cycling/ "this blog post"
+\[char46]
+.PP
+There are optional properties that can be provided through
+.BR props \[char46]
+These are the supported properties:
+.PP
+
+\(bu
+.BR SDL_PROP_GPU_BUFFER_CREATE_NAME_STRING :
+a name that can be displayed in debugging tools\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I device
+a GPU Context\[char46]
+.TP
+.I createinfo
+a struct describing the state of the buffer to create\[char46]
+.SH RETURN VALUE
+Returns a buffer object on success, or NULL on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_UploadToGPUBuffer (3),
+.BR SDL_DownloadFromGPUBuffer (3),
+.BR SDL_CopyGPUBufferToBuffer (3),
+.BR SDL_BindGPUVertexBuffers (3),
+.BR SDL_BindGPUIndexBuffer (3),
+.BR SDL_BindGPUVertexStorageBuffers (3),
+.BR SDL_BindGPUFragmentStorageBuffers (3),
+.BR SDL_DrawGPUPrimitivesIndirect (3),
+.BR SDL_DrawGPUIndexedPrimitivesIndirect (3),
+.BR SDL_BindGPUComputeStorageBuffers (3),
+.BR SDL_DispatchGPUComputeIndirect (3),
+.BR SDL_ReleaseGPUBuffer (3)

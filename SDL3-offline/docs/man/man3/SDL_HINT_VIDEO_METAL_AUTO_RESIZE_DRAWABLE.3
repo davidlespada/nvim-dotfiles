@@ -1,0 +1,46 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_HINT_VIDEO_METAL_AUTO_RESIZE_DRAWABLE:
+.\"   https://wiki.libsdl.org/SDL_HINT_VIDEO_METAL_AUTO_RESIZE_DRAWABLE
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_HINT_VIDEO_METAL_AUTO_RESIZE_DRAWABLE
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_HINT_VIDEO_METAL_AUTO_RESIZE_DRAWABLE 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_HINT_VIDEO_METAL_AUTO_RESIZE_DRAWABLE \- A variable indicating whether the metal layer drawable size should be updated for the
+.BR SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED
+event on macOS.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_hints.h>
+.PP
+.BI "#define SDL_HINT_VIDEO_METAL_AUTO_RESIZE_DRAWABLE \(dqSDL_VIDEO_METAL_AUTO_RESIZE_DRAWABLE\(dq
+.fi
+.SH DESCRIPTION
+The variable can be set to the following values:
+.PP
+
+\(bu \(dq0\(dq: the metal layer drawable size will not be updated on the
+.BR SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED
+event\[char46]
+.PP
+\(bu \(dq1\(dq: the metal layer drawable size will be updated on the
+.BR SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED
+event\[char46] (default)
+.PP
+This hint should be set before
+.BR SDL_Metal_CreateView
+called\[char46]
+
+.SH AVAILABILITY
+This hint is available since SDL 3\[char46]4\[char46]0\[char46]
+

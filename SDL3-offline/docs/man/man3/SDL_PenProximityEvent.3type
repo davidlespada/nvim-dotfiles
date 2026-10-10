@@ -1,0 +1,49 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_PenProximityEvent:
+.\"   https://wiki.libsdl.org/SDL_PenProximityEvent
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_PenProximityEvent
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_PenProximityEvent 3type "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 DATATYPES"
+.SH NAME
+SDL_PenProximityEvent \- Pressure-sensitive pen proximity event structure (event.pproximity.*)
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_events.h>
+.PP
+.BI "typedef struct SDL_PenProximityEvent
+.BI "{
+.BI "    SDL_EventType type; /**< SDL_EVENT_PEN_PROXIMITY_IN or SDL_EVENT_PEN_PROXIMITY_OUT */
+.BI "    Uint32 reserved;
+.BI "    Uint64 timestamp;   /**< In nanoseconds, populated using SDL_GetTicksNS() */
+.BI "    SDL_WindowID windowID; /**< The window with pen focus, if any */
+.BI "    SDL_PenID which;        /**< The pen instance id */
+.BI "    SDL_PenInputFlags pen_state;   /**< Complete pen input state at time of event (added in 3.4.16). */
+.BI "    SDL_PenDeviceType device_type; /**< the device type of the pen, if known (added in 3.4.18). */
+.BI "} SDL_PenProximityEvent;
+.fi
+.SH DESCRIPTION
+When a pen becomes visible to the system (it is close enough to a tablet, etc), SDL will send an
+.BR SDL_EVENT_PEN_PROXIMITY_IN
+event with the new pen\(aqs ID\[char46] This ID is valid until the pen leaves proximity again (has been removed from the tablet\(aqs area, the tablet has been unplugged, etc)\[char46] If the same pen reenters proximity again, it will be given a new ID\[char46]
+.PP
+Note that \(dqproximity\(dq means \(dqclose enough for the tablet to know the tool is there\[char46]\(dq The pen touching and lifting off from the tablet while not leaving the area are handled by
+.BR SDL_EVENT_PEN_DOWN
+and
+.BR SDL_EVENT_PEN_UP \[char46]
+.PP
+Not all platforms have a window associated with the pen during proximity events\[char46] Some wait until motion/button/etc events to offer this info\[char46]
+
+.SH AVAILABILITY
+This struct is available since SDL 3\[char46]2\[char46]0\[char46]
+

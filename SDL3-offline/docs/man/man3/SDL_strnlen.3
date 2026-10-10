@@ -1,0 +1,58 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_strnlen:
+.\"   https://wiki.libsdl.org/SDL_strnlen
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_strnlen
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_strnlen 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_strnlen \- This works exactly like strnlen() but doesn\(aqt require access to a C runtime.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "size_t SDL_strnlen(const char *str, size_t maxlen);
+.fi
+.SH DESCRIPTION
+Counts up to a maximum of
+.BR maxlen
+bytes in
+.BR str ,
+excluding the null terminator\[char46]
+.PP
+If you need the length of a UTF-8 string, consider using
+.BR SDL_utf8strnlen ()\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I str
+The null-terminated string to read\[char46] Must not be NULL\[char46]
+.TP
+.I maxlen
+The maximum amount of bytes to count\[char46]
+.SH RETURN VALUE
+Returns the length (in bytes, excluding the null terminator) of
+.BR src
+but never more than
+.BR maxlen \[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_strlen (3),
+.BR SDL_utf8strlen (3),
+.BR SDL_utf8strnlen (3)

@@ -1,0 +1,233 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GetTextureProperties:
+.\"   https://wiki.libsdl.org/SDL_GetTextureProperties
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GetTextureProperties
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GetTextureProperties 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_GetTextureProperties \- Get the properties associated with a texture.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_render.h>
+.PP
+.BI "SDL_PropertiesID SDL_GetTextureProperties(SDL_Texture *texture);
+.fi
+.SH DESCRIPTION
+The following read-only properties are provided by SDL:
+.PP
+
+\(bu
+.BR SDL_PROP_TEXTURE_COLORSPACE_NUMBER :
+an
+.BR SDL_Colorspace
+value describing the texture colorspace\[char46]
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_FORMAT_NUMBER :
+one of the enumerated values in
+.BR SDL_PixelFormat \[char46]
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_ACCESS_NUMBER :
+one of the enumerated values in
+.BR SDL_TextureAccess \[char46]
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_WIDTH_NUMBER :
+the width of the texture in pixels\[char46]
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_HEIGHT_NUMBER :
+the height of the texture in pixels\[char46]
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_SDR_WHITE_POINT_FLOAT :
+for HDR10 and floating point textures, this defines the value of 100% diffuse white, with higher values being displayed in the High Dynamic Range headroom\[char46] This defaults to 100 for HDR10 textures and 1\[char46]0 for other textures\[char46]
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_HDR_HEADROOM_FLOAT :
+for HDR10 and floating point textures, this defines the maximum dynamic range used by the content, in terms of the SDR white point\[char46] If this is defined, any values outside the range supported by the display will be scaled into the available HDR headroom, otherwise they are clipped\[char46] This defaults to 1\[char46]0 for SDR textures, 4\[char46]0 for HDR10 textures, and no default for floating point textures\[char46]
+.PP
+With the direct3d11 renderer:
+.PP
+
+\(bu
+.BR SDL_PROP_TEXTURE_D3D11_TEXTURE_POINTER :
+the ID3D11Texture2D associated with the texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_D3D11_TEXTURE_U_POINTER :
+the ID3D11Texture2D associated with the U plane of a YUV texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_D3D11_TEXTURE_V_POINTER :
+the ID3D11Texture2D associated with the V plane of a YUV texture
+.PP
+With the direct3d12 renderer:
+.PP
+
+\(bu
+.BR SDL_PROP_TEXTURE_D3D12_TEXTURE_POINTER :
+the ID3D12Resource associated with the texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_D3D12_TEXTURE_U_POINTER :
+the ID3D12Resource associated with the U plane of a YUV texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_D3D12_TEXTURE_V_POINTER :
+the ID3D12Resource associated with the V plane of a YUV texture
+.PP
+With the metal renderer:
+.PP
+
+\(bu
+.BR SDL_PROP_TEXTURE_METAL_TEXTURE_POINTER :
+the MTLTexture associated with the texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_METAL_TEXTURE_UV_POINTER :
+the MTLTexture associated with the UV plane of an NV12 texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_METAL_TEXTURE_U_POINTER :
+the MTLTexture associated with the U plane of a YUV texture style texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_METAL_TEXTURE_V_POINTER :
+the MTLTexture associated with the V plane of a YUV texture
+.PP
+With the vulkan renderer:
+.PP
+
+\(bu
+.BR SDL_PROP_TEXTURE_VULKAN_TEXTURE_NUMBER :
+the VkImage associated with the texture\[char46] For NV12 style textures this is the single two plane VkImage holding both the Y and UV planes, and for YUV style textures it is the VkImage holding the Y plane\[char46]
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_VULKAN_TEXTURE_UV_NUMBER :
+the VkImage associated with the UV plane of an NV12 texture, if it was created with separate planes\[char46]
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_VULKAN_TEXTURE_U_NUMBER :
+the VkImage associated with the U plane of a YUV texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_VULKAN_TEXTURE_V_NUMBER :
+the VkImage associated with the V plane of a YUV texture
+.PP
+With the opengl renderer:
+.PP
+
+\(bu
+.BR SDL_PROP_TEXTURE_OPENGL_TEXTURE_NUMBER :
+the GLuint texture associated with the texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_OPENGL_TEXTURE_UV_NUMBER :
+the GLuint texture associated with the UV plane of an NV12 texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_OPENGL_TEXTURE_U_NUMBER :
+the GLuint texture associated with the U plane of a YUV texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_OPENGL_TEXTURE_V_NUMBER :
+the GLuint texture associated with the V plane of a YUV texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_OPENGL_TEXTURE_TARGET_NUMBER :
+the GLenum for the texture target
+.BR "" ( GL_TEXTURE_2D ,
+
+.BR GL_TEXTURE_RECTANGLE_ARB ,
+etc)
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_OPENGL_TEX_W_FLOAT :
+the texture coordinate width of the texture (0\[char46]0 - 1\[char46]0)
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_OPENGL_TEX_H_FLOAT :
+the texture coordinate height of the texture (0\[char46]0 - 1\[char46]0)
+.PP
+With the opengles2 renderer:
+.PP
+
+\(bu
+.BR SDL_PROP_TEXTURE_OPENGLES2_TEXTURE_NUMBER :
+the GLuint texture associated with the texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_OPENGLES2_TEXTURE_UV_NUMBER :
+the GLuint texture associated with the UV plane of an NV12 texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_OPENGLES2_TEXTURE_U_NUMBER :
+the GLuint texture associated with the U plane of a YUV texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_OPENGLES2_TEXTURE_V_NUMBER :
+the GLuint texture associated with the V plane of a YUV texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_OPENGLES2_TEXTURE_TARGET_NUMBER :
+the GLenum for the texture target
+.BR "" ( GL_TEXTURE_2D ,
+
+.BR GL_TEXTURE_EXTERNAL_OES ,
+etc)
+.PP
+With the gpu renderer:
+.PP
+
+\(bu
+.BR SDL_PROP_TEXTURE_GPU_TEXTURE_POINTER :
+the
+.BR SDL_GPUTexture
+associated with the texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_GPU_TEXTURE_UV_POINTER :
+the
+.BR SDL_GPUTexture
+associated with the UV plane of an NV12 texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_GPU_TEXTURE_U_POINTER :
+the
+.BR SDL_GPUTexture
+associated with the U plane of a YUV texture
+.PP
+\(bu
+.BR SDL_PROP_TEXTURE_GPU_TEXTURE_V_POINTER :
+the
+.BR SDL_GPUTexture
+associated with the V plane of a YUV texture
+
+.SH FUNCTION PARAMETERS
+.TP
+.I texture
+the texture to query\[char46]
+.SH RETURN VALUE
+Returns a valid property ID on success or 0 on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+

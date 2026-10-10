@@ -1,0 +1,43 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_NODISCARD:
+.\"   https://wiki.libsdl.org/SDL_NODISCARD
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_NODISCARD
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_NODISCARD 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_NODISCARD \- A macro to tag a function\(aqs return value as critical.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_begin_code.h>
+.PP
+.BI "#define SDL_NODISCARD [[nodiscard]]
+.fi
+.SH DESCRIPTION
+This is a hint to the compiler that a function\(aqs return value should not be ignored\[char46]
+.PP
+If an NODISCARD function\(aqs return value is thrown away (the function is called as if it returns
+.BR void ),
+the compiler will issue a warning\[char46]
+.PP
+While it\(aqs generally good practice to check return values for errors, often times legitimate programs do not for good reasons\[char46] Be careful about what functions are tagged as NODISCARD\[char46] It operates best when used on a function that\(aqs failure is surprising and catastrophic; a good example would be a program that checks the return values of all its file write function calls but not the call to close the file, which it assumes incorrectly never fails\[char46]
+.PP
+Function callers that want to throw away a NODISCARD return value can call the function with a
+.BR (void)
+cast, which informs the compiler the act is intentional\[char46]
+.PP
+On compilers without nodiscard support, this is defined to nothing\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+

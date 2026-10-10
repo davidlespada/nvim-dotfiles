@@ -1,0 +1,51 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_IsAudioDevicePhysical:
+.\"   https://wiki.libsdl.org/SDL_IsAudioDevicePhysical
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_IsAudioDevicePhysical
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_IsAudioDevicePhysical 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_IsAudioDevicePhysical \- Determine if an audio device is physical (instead of logical).
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_audio.h>
+.PP
+.BI "bool SDL_IsAudioDevicePhysical(SDL_AudioDeviceID devid);
+.fi
+.SH DESCRIPTION
+An
+.BR SDL_AudioDeviceID
+that represents physical hardware is a physical device; there is one for each piece of hardware that SDL can see\[char46] Logical devices are created by calling
+.BR SDL_OpenAudioDevice
+or
+.BR SDL_OpenAudioDeviceStream ,
+and while each is associated with a physical device, there can be any number of logical devices on one physical device\[char46]
+.PP
+For the most part, logical and physical IDs are interchangeable--if you try to open a logical device, SDL understands to assign that effort to the underlying physical device, etc\[char46] However, it might be useful to know if an arbitrary device ID is physical or logical\[char46] This function reports which\[char46]
+.PP
+This function may return either true or false for invalid device IDs\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I devid
+the device ID to query\[char46]
+.SH RETURN VALUE
+Returns true if devid is a physical device, false if it is logical\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+

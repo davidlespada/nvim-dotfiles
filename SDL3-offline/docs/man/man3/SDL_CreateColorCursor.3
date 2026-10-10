@@ -1,0 +1,64 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_CreateColorCursor:
+.\"   https://wiki.libsdl.org/SDL_CreateColorCursor
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_CreateColorCursor
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_CreateColorCursor 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_CreateColorCursor \- Create a color cursor.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_mouse.h>
+.PP
+.BI "SDL_Cursor * SDL_CreateColorCursor(SDL_Surface *surface,
+.BI "                              int hot_x,
+.BI "                              int hot_y);
+.fi
+.SH DESCRIPTION
+If this function is passed a surface with alternate representations added with
+.BR SDL_AddSurfaceAlternateImage (),
+the surface will be interpreted as the content to be used for 100% display scale, and the alternate representations will be used for high DPI situations if
+.BR SDL_HINT_MOUSE_DPI_SCALE_CURSORS
+is enabled\[char46] For example, if the original surface is 32x32, then on a 2x macOS display or 200% display scale on Windows, a 64x64 version of the image will be used, if available\[char46] If a matching version of the image isn\(aqt available, the closest larger size image will be downscaled to the appropriate size and be used instead, if available\[char46] Otherwise, the closest smaller image will be upscaled and be used instead\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I surface
+an
+.BR SDL_Surface
+structure representing the cursor image\[char46]
+.TP
+.I hot_x
+the x position of the cursor hot spot\[char46]
+.TP
+.I hot_y
+the y position of the cursor hot spot\[char46]
+.SH RETURN VALUE
+Returns the new cursor on success or NULL on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH THREAD SAFETY
+This function should only be called on the main thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_AddSurfaceAlternateImage (3),
+.BR SDL_CreateAnimatedCursor (3),
+.BR SDL_CreateCursor (3),
+.BR SDL_CreateSystemCursor (3),
+.BR SDL_DestroyCursor (3),
+.BR SDL_SetCursor (3)

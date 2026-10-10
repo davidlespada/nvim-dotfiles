@@ -1,0 +1,61 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_AudioStreamDataCompleteCallback:
+.\"   https://wiki.libsdl.org/SDL_AudioStreamDataCompleteCallback
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_AudioStreamDataCompleteCallback
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_AudioStreamDataCompleteCallback 3type "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 DATATYPES"
+.SH NAME
+SDL_AudioStreamDataCompleteCallback \- A callback that fires for completed
+.BR SDL_PutAudioStreamDataNoCopy ()
+data.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_audio.h>
+.PP
+.BI "typedef void (SDLCALL *SDL_AudioStreamDataCompleteCallback)(void *userdata, const void *buf, int buflen);
+.fi
+.SH DESCRIPTION
+When using
+.BR SDL_PutAudioStreamDataNoCopy ()
+to provide data to an
+.BR SDL_AudioStream ,
+it\(aqs not safe to dispose of the data until the stream has completely consumed it\[char46] Often times it\(aqs difficult to know exactly when this has happened\[char46]
+.PP
+This callback fires once when the stream no longer needs the buffer, allowing the app to easily free or reuse it\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I userdata
+an opaque pointer provided by the app for their personal use\[char46]
+.TP
+.I buf
+the pointer provided to
+.BR SDL_PutAudioStreamDataNoCopy ()\[char46]
+
+.TP
+.I buflen
+the size of buffer, in bytes, provided to
+.BR SDL_PutAudioStreamDataNoCopy ()\[char46]
+
+.SH THREAD SAFETY
+This callbacks may run from any thread, so if you need to protect shared data, you should use
+.BR SDL_LockAudioStream
+to serialize access; this lock will be held before your callback is called, so your callback does not need to manage the lock explicitly\[char46]
+
+.SH AVAILABILITY
+This datatype is available since SDL 3\[char46]4\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_SetAudioStreamGetCallback (3),
+.BR SDL_SetAudioStreamPutCallback (3)

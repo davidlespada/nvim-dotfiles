@@ -1,0 +1,56 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_HINT_OPENGL_FORCE_SRGB_FRAMEBUFFER:
+.\"   https://wiki.libsdl.org/SDL_HINT_OPENGL_FORCE_SRGB_FRAMEBUFFER
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_HINT_OPENGL_FORCE_SRGB_FRAMEBUFFER
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_HINT_OPENGL_FORCE_SRGB_FRAMEBUFFER 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_HINT_OPENGL_FORCE_SRGB_FRAMEBUFFER \- A variable controlling whether to force an sRGB-capable OpenGL context.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_hints.h>
+.PP
+.BI "#define SDL_HINT_OPENGL_FORCE_SRGB_FRAMEBUFFER \(dqSDL_OPENGL_FORCE_SRGB_FRAMEBUFFER\(dq
+.fi
+.SH DESCRIPTION
+At OpenGL context creation time, some platforms can request an sRGB-capable context\[char46] However, sometimes any form of the request can cause surprising results on some drivers, platforms, and hardware\[char46] Usually the surprise is in the form of rendering that is either a little darker or a little brighter than intended\[char46]
+.PP
+This hint allows the user to override the app\(aqs sRGB requests and either force a specific value, or avoid requesting anything at all, depending on what makes things work correctly for their system\[char46]
+.PP
+This is meant as a fail-safe; apps should probably not explicitly set this, and most users should not, either\[char46]
+.PP
+Note that some platforms cannot make this request at all, and on all platforms this request can be denied by the operating system\[char46]
+.PP
+In addition to attempting to obtain the type of sRGB-capable OpenGL context requested by this hint, SDL will try to force the state of GL_FRAMEBUFFER_SRGB on the new context, if appropriate\[char46]
+.PP
+The variable can be set to the following values:
+.PP
+
+\(bu \(dq0\(dq: Force a request for an OpenGL context that is _not_ sRGB-capable\[char46]
+.PP
+\(bu \(dq1\(dq: Force a request for an OpenGL context that _is_ sRGB-capable\[char46]
+.PP
+\(bu \(dqskip\(dq: Don\(aqt make any request for an sRGB-capable context (don\(aqt specify the attribute at all during context creation time)\[char46]
+.PP
+\(bu any other string is undefined behavior\[char46]
+.PP
+If unset, or set to an empty string, SDL will make a request using the value the app specified with the
+.BR SDL_GL_FRAMEBUFFER_SRGB_CAPABLE
+attribute\[char46]
+.PP
+This hint should be set before an OpenGL context is created\[char46]
+
+.SH AVAILABILITY
+This hint is available since SDL 3\[char46]4\[char46]2\[char46]
+

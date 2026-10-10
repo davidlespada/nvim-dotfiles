@@ -1,0 +1,42 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_RequestNotificationPermission:
+.\"   https://wiki.libsdl.org/SDL_RequestNotificationPermission
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_RequestNotificationPermission
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_RequestNotificationPermission 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_RequestNotificationPermission \- Requests permission from the system to display notifications.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_notification.h>
+.PP
+.BI "bool SDL_RequestNotificationPermission(void);
+.fi
+.SH DESCRIPTION
+A return value of
+.BR true
+only means that the system supports notifications, and that the request for permission was successfully issued\[char46] It does not reflect any user settings to allow or deny notifications\[char46]
+
+.SH RETURN VALUE
+Returns True on success or false on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]6\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_ShowNotification (3),
+.BR SDL_ShowNotificationWithProperties (3),
+.BR SDL_NotificationAction (3type)

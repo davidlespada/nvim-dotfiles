@@ -1,0 +1,69 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_WaitAsyncIOResult:
+.\"   https://wiki.libsdl.org/SDL_WaitAsyncIOResult
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_WaitAsyncIOResult
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_WaitAsyncIOResult 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_WaitAsyncIOResult \- Block until an async I/O task queue has a completed task.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_asyncio.h>
+.PP
+.BI "bool SDL_WaitAsyncIOResult(SDL_AsyncIOQueue *queue, SDL_AsyncIOOutcome *outcome, Sint32 timeoutMS);
+.fi
+.SH DESCRIPTION
+This function puts the calling thread to sleep until there a task assigned to the queue that has finished\[char46]
+.PP
+If a task assigned to the queue has finished, this will return true and fill in
+.BR outcome
+with the details of the task\[char46] If no task in the queue has finished, this function will return false\[char46]
+.PP
+If a task has completed, this function will free its resources and the task pointer will no longer be valid\[char46] The task will be removed from the queue\[char46]
+.PP
+It is safe for multiple threads to call this function on the same queue at once; a completed task will only go to one of the threads\[char46]
+.PP
+Note that by the nature of various platforms, more than one waiting thread may wake to handle a single task, but only one will obtain it, so
+.BR timeoutMS
+is a _maximum_ wait time, and this function may return false sooner\[char46]
+.PP
+This function may return false if there was a system error, the OS inadvertently awoke multiple threads, or if
+.BR SDL_SignalAsyncIOQueue ()
+was called to wake up all waiting threads without a finished task\[char46]
+.PP
+A timeout can be used to specify a maximum wait time, but rather than polling, it is possible to have a timeout of -1 to wait forever, and use
+.BR SDL_SignalAsyncIOQueue ()
+to wake up the waiting threads later\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I queue
+the async I/O task queue to wait on\[char46]
+.TP
+.I outcome
+details of a finished task will be written here\[char46] May not be NULL\[char46]
+.TP
+.I timeoutMS
+the maximum time to wait, in milliseconds, or -1 to wait indefinitely\[char46]
+.SH RETURN VALUE
+Returns true if task has completed, false otherwise\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_SignalAsyncIOQueue (3)

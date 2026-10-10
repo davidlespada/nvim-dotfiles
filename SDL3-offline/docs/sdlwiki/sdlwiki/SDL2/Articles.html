@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Articles</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">:root {
+color-scheme: dark light; 
+}
+body {
+background-color: white;
+padding: 2vw;
+color: #333;
+max-width: 1200px;
+margin: 0 auto;
+font-size: 16px;
+line-height: 1.5;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+overflow-wrap: break-word;
+}
+a {
+color: #0969da;
+
+}
+a:visited {
+color: #064998;
+}
+h1 {
+border-bottom: 2px solid #efefef;
+}
+h2 {
+border-bottom: 1px solid #efefef;
+}
+p {
+max-width: 85ch;
+}
+li {
+max-width: 85ch;
+}
+div.sourceCode {
+background-color: #f6f8fa;
+max-width: 100%;
+padding: 16px;
+}
+code {
+background-color: #f6f8fa;
+padding: 0px;
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+"Liberation Mono", monospace;
+}
+table {
+border: 1px solid #808080;
+border-collapse: collapse;
+}
+td {
+border: 1px solid #808080;
+padding: 5px;
+}
+tr:nth-child(even) {
+background-color: #f6f8fa;
+}
+.wikitopbanner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #efefef;
+padding: 10px;
+margin-bottom: 10px;
+width: auto;
+}
+.wikibottombanner {
+background-color: #efefef;
+padding: 10px;
+margin-top: 10px;
+width: auto;
+}
+.alertBox {
+background-color: #f8d7da;
+border: 1px solid #f5c6cb;
+max-width: 60%;
+padding: 10;
+margin: auto;
+}
+.anchorImage {
+visibility: hidden;
+padding-left: 0.2em;
+color: #fff;
+}
+.anchorText:hover .anchorImage {
+visibility: visible;
+}
+hr {
+display: block;
+height: 1px;
+border: 0;
+border-top: 1px solid #efefef;
+margin: 1em 0;
+padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+body {
+color: #e6edf3;
+background-color: #0d1117;
+}
+h1 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+h2 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+hr {
+border-color: rgba(48, 54, 61, 0.7);
+}
+div.sourceCode {
+background-color: #161b22;
+}
+code {
+background-color: #161b22;
+}
+a {
+color: #4493f8;
+}
+a:visited {
+color: #2f66ad;
+}
+table {
+border-color: rgba(48, 54, 61, 0.7);
+}
+td {
+border-color: rgba(48, 54, 61, 0.7);
+}
+tr:nth-child(even) {
+background-color: #161b22;
+}
+.wikitopbanner {
+background-color: #263040;
+}
+.wikibottombanner {
+background-color: #263040;
+}
+.anchorText:hover .anchorImage {
+filter: invert(100%);
+}
+}
+@media print {
+body {
+font-size: 12px;
+}
+table {
+font-size: inherit;
+}
+a:visited {
+color: #0969da;
+}
+.wikitopbanner,
+.anchorText,
+.wikibottombanner {
+display: none;
+}
+}
+</style>
+  <style type="text/css"> code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+{ content: attr(title);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; pointer-events: all; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+@media (prefers-color-scheme: dark) {
+code span.al { color: #95da4c; font-weight: bold; } 
+code span.an { color: #3f8058; } 
+code span.at { color: #2980b9; } 
+code span.bn { color: #f67400; } 
+code span.bu { color: #7f8c8d; } 
+code span.ch { color: #3daee9; } 
+code span.co { color: #7a7c7d; } 
+code span.cv { color: #7f8c8d; } 
+code span.cn { color: #27aeae; font-weight: bold; } 
+code span.cf { color: #fdbc4b; font-weight: bold; } 
+code span.dt { color: #2980b9; } 
+code span.dv { color: #f67400; } 
+code span.do { color: #a43340; } 
+code span.er { color: #da4453; } 
+code span.ex { color: #0099ff; font-weight: bold; } 
+code span.fl { color: #f67400; } 
+code span.fu { color: #8e44ad; } 
+code span.im { color: #27ae60; } 
+code span.in { color: #c45b00; } 
+code span.kw { color: #cfcfc2; font-weight: bold; } 
+code span.op { color: #cfcfc2; } 
+code span.ot { color: #27ae60; } 
+code span.pp { color: #27ae60; } 
+code span.sc { color: #3daee9; } 
+code span.ss { color: #da4453; } 
+code span.st { color: #f44f4f; } 
+code span.va { color: #27aeae; } 
+code span.vs { color: #da4453; } 
+code span.wa { color: #da4453; } 
+}</style>
+</head>
+<body>
+<h1 id="articles-related-to-sdl">Articles Related to SDL</h1>
+<h2 id="sdl-20">SDL 2.0</h2>
+<ul>
+<li><p>Georgik - Useful software engineering tips</p>
+<p><a href="http://georgik.rocks/tag/sdl2/">Articles about SDL2 for
+Android NDK and Gradle 4</a></p></li>
+</ul>
+<p>If you know of an article about SDL 2.0 that should be linked here
+please let us know either <a href="Articles/edit.html">editing this
+page</a> or <a href="https://github.com/libsdl-org/sdlwiki/issues/new?title=New%20SDL2%20article%20for%20wiki.libsdl.org/Articles">submitting
+an issue about it</a>. Thanks!</p>
+<h2 id="sdl-12">SDL 1.2</h2>
+<ul>
+<li><p>Free Software Magazine - May 2006</p>
+<p><a href="http://www.freesoftwaremagazine.com/articles/linux_pdas">The
+GP2x PDA</a> (<a href="https://web.archive.org/web/20181114065653/http://freesoftwaremagazine.com/articles/linux_pdas/">Archive</a>)</p></li>
+<li><p>Ask Slashdot - April 2004</p>
+<p><a href="http://slashdot.org/askslashdot/01/04/03/1747256.shtml">Game
+Programming w/ the Simple Directmedia Layer?</a></p></li>
+<li><p>O&#39;Reilly Network - October 2003</p>
+<p><a href="http://linuxdevcenter.com/pub/a/linux/2003/10/23/sdl_anim.html">Animation
+in SDL: OpenGL</a> (<a href="https://web.archive.org/web/20180103014310/http://linuxdevcenter.com/pub/a/linux/2003/10/23/sdl_anim.html">Archive</a>)</p></li>
+<li><p>O&#39;Reilly Network - August 2003</p>
+<p><a href="http://linuxdevcenter.com/pub/a/linux/2003/08/07/sdl_anim.html">Animation
+in SDL: Hardware Surfaces</a> (<a href="https://web.archive.org/web/20180103014309/http://linuxdevcenter.com/pub/a/linux/2003/08/07/sdl_anim.html">Archive</a>)</p></li>
+<li><p>O&#39;Reilly Network - May 2003</p>
+<p><a href="http://linuxdevcenter.com/pub/a/linux/2003/05/15/sdl_anim.html">Animation
+in SDL</a></p></li>
+<li><p>GameProgrammer.com - August 2002</p>
+<p><a href="http://gameprogrammer.com/sdl.html">Why Use
+SDL?</a></p></li>
+<li><p>OSNews - August 2002</p>
+<p><a href="http://www.osnews.com/story/1549">Interview with Bill
+Kendrick of NewBreedSoftware</a></p></li>
+<li><p>OSNews - August 2002</p>
+<p><a href="http://www.osnews.com/story/1518">Interview with Michael
+Speck of LGames</a></p></li>
+<li><p>Pyrogon Developer Diary - February 2002</p>
+<p><a href="http://www.pyrogon.com/about/diary/2_26_2002.php">The Whys
+and Hows of Porting Software</a></p></li>
+<li><p>GameDev.net - December 2001</p>
+<p><a href="http://www.gamedev.net/reference/programming/features/sdl2/">The
+Simple DirectMedia Layer from a Win32 Perspective, Part 2: SDL Video</a>
+(<a href="https://web.archive.org/web/20101205151944/http://www.gamedev.net/reference/programming/features/sdl2/">Archive</a>)</p></li>
+<li><p>GameDev.net - December 2001</p>
+<p><a href="http://www.gamedev.net/reference/programming/features/sdl1/">The
+Simple DirectMedia Layer from a Win32 Perspective, Part 1: Setting Up
+Your System for SDL</a> (<a href="https://web.archive.org/web/20100212123942/http://www.gamedev.net/reference/programming/features/sdl1">Archive</a>)</p></li>
+<li><p>O&#39;Reilly Network - September 2001</p>
+<p><a href="http://linuxdevcenter.com/pub/a/linux/2001/09/21/sdl.html">SDL:
+The DirectX Alternative</a></p></li>
+<li><p>Ask Slashdot - August 2001</p>
+<p><a href="http://developers.slashdot.org/article.pl?sid=01/08/18/1537234">Sam
+Lantinga Slings Some Answers</a></p></li>
+<li><p>Ask Slashdot - August 2001</p>
+<p><a href="http://news.slashdot.org/article.pl?sid=01/08/10/1736243">Ask Sam
+Lantinga About SDL On PS2 And More</a></p></li>
+<li><p>TECH Linux - October 2000</p>
+<p><a href="http://www15.big.or.jp/~yamamori/sun/tech-linux-2/index_e.html">How
+to make CD-Rom Bootable SDL Game</a></p></li>
+<li><p>Planète Linux - Feb. 2000</p>
+<p><a href="http://www.megastep.org/SDL/">Programmer des jeux sous Linux
+avec SDL</a></p></li>
+</ul>
+</body>
+</html>

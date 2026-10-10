@@ -1,0 +1,40 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_HINT_VIDEO_OFFSCREEN_SAVE_FRAMES:
+.\"   https://wiki.libsdl.org/SDL_HINT_VIDEO_OFFSCREEN_SAVE_FRAMES
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_HINT_VIDEO_OFFSCREEN_SAVE_FRAMES
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_HINT_VIDEO_OFFSCREEN_SAVE_FRAMES 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_HINT_VIDEO_OFFSCREEN_SAVE_FRAMES \- A variable controlling whether the offscreen video driver saves output frames.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_hints.h>
+.PP
+.BI "#define SDL_HINT_VIDEO_OFFSCREEN_SAVE_FRAMES \(dqSDL_VIDEO_OFFSCREEN_SAVE_FRAMES\(dq
+.fi
+.SH DESCRIPTION
+This only saves frames that are generated using software rendering, not accelerated OpenGL rendering\[char46]
+.PP
+
+\(bu \(dq0\(dq: Video frames are not saved to disk\[char46] (default)
+.PP
+\(bu \(dq1\(dq: Video frames are saved to files in the format
+.BR "" \(dq SDL_windowX -Y\[char46]bmp\(dq,
+where X is the window ID, and Y is the frame number\[char46]
+.PP
+This hint can be set anytime\[char46]
+
+.SH AVAILABILITY
+This hint is available since SDL 3\[char46]2\[char46]0\[char46]
+

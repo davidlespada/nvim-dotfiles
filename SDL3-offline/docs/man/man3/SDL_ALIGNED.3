@@ -1,0 +1,62 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_ALIGNED:
+.\"   https://wiki.libsdl.org/SDL_ALIGNED
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_ALIGNED
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_ALIGNED 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_ALIGNED \- A macro to specify data alignment.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_begin_code.h>
+.PP
+.BI "#define SDL_ALIGNED(x) __attribute__((aligned(x)))
+.fi
+.SH DESCRIPTION
+This informs the compiler that a given datatype or variable must be aligned to a specific byte count\[char46]
+.PP
+For example:
+
+.IP
+.EX
+// make sure this is struct is aligned to 16 bytes for SIMD access.
+typedef struct {
+   float x, y, z, w;
+} SDL_ALIGNED(16) MySIMDAlignedData;
+
+// make sure this one field in a struct is aligned to 16 bytes for SIMD access.
+typedef struct {
+   SomeStuff stuff;
+   float SDL_ALIGNED(16) position[4];
+   SomeOtherStuff other_stuff;
+} MyStruct;
+
+// make sure this variable is aligned to 32 bytes.
+int SDL_ALIGNED(32) myval = 0;
+.EE
+.PP
+
+Alignment is only guaranteed for things the compiler places: local variables on the stack and global/static variables\[char46] To dynamically allocate something that respects this alignment, use
+.BR SDL_aligned_alloc ()
+or some other mechanism\[char46]
+.PP
+On compilers without alignment support, this macro is defined to an invalid symbol, to make it clear that the current compiler is likely to generate incorrect code when it sees this macro\[char46]
+
+.SH MACRO PARAMETERS
+.TP
+.I x
+the byte count to align to, so the data\(aqs address will be a multiple of this value\[char46]
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]4\[char46]0\[char46]
+

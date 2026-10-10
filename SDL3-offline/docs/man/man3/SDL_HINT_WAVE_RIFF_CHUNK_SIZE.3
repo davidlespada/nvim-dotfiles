@@ -1,0 +1,51 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_HINT_WAVE_RIFF_CHUNK_SIZE:
+.\"   https://wiki.libsdl.org/SDL_HINT_WAVE_RIFF_CHUNK_SIZE
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_HINT_WAVE_RIFF_CHUNK_SIZE
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_HINT_WAVE_RIFF_CHUNK_SIZE 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_HINT_WAVE_RIFF_CHUNK_SIZE \- A variable controlling how the size of the RIFF chunk affects the loading of a WAVE file.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_hints.h>
+.PP
+.BI "#define SDL_HINT_WAVE_RIFF_CHUNK_SIZE \(dqSDL_WAVE_RIFF_CHUNK_SIZE\(dq
+.fi
+.SH DESCRIPTION
+The size of the RIFF chunk (which includes all the sub-chunks of the WAVE file) is not always reliable\[char46] In case the size is wrong, it\(aqs possible to just ignore it and step through the chunks until a fixed limit is reached\[char46]
+.PP
+Note that files that have trailing data unrelated to the WAVE file or corrupt files may slow down the loading process without a reliable boundary\[char46] By default, SDL stops after 10000 chunks to prevent wasting time\[char46] Use
+.BR SDL_HINT_WAVE_CHUNK_LIMIT
+to adjust this value\[char46]
+.PP
+The variable can be set to the following values:
+.PP
+
+\(bu \(dqforce\(dq - Always use the RIFF chunk size as a boundary for the chunk search\[char46]
+.PP
+\(bu \(dqignorezero\(dq - Like \(dqforce\(dq, but a zero size searches up to 4 GiB\[char46] (default)
+.PP
+\(bu \(dqignore\(dq - Ignore the RIFF chunk size and always search up to 4 GiB\[char46]
+.PP
+\(bu \(dqmaximum\(dq - Search for chunks until the end of file\[char46] (not recommended)
+.PP
+This hint should be set before calling
+.BR SDL_LoadWAV ()
+or
+.BR SDL_LoadWAV_IO ()
+
+.SH AVAILABILITY
+This hint is available since SDL 3\[char46]2\[char46]0\[char46]
+

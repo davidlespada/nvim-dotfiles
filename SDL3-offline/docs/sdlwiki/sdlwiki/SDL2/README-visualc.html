@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README-visualc</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">:root {
+color-scheme: dark light; 
+}
+body {
+background-color: white;
+padding: 2vw;
+color: #333;
+max-width: 1200px;
+margin: 0 auto;
+font-size: 16px;
+line-height: 1.5;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+overflow-wrap: break-word;
+}
+a {
+color: #0969da;
+
+}
+a:visited {
+color: #064998;
+}
+h1 {
+border-bottom: 2px solid #efefef;
+}
+h2 {
+border-bottom: 1px solid #efefef;
+}
+p {
+max-width: 85ch;
+}
+li {
+max-width: 85ch;
+}
+div.sourceCode {
+background-color: #f6f8fa;
+max-width: 100%;
+padding: 16px;
+}
+code {
+background-color: #f6f8fa;
+padding: 0px;
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+"Liberation Mono", monospace;
+}
+table {
+border: 1px solid #808080;
+border-collapse: collapse;
+}
+td {
+border: 1px solid #808080;
+padding: 5px;
+}
+tr:nth-child(even) {
+background-color: #f6f8fa;
+}
+.wikitopbanner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #efefef;
+padding: 10px;
+margin-bottom: 10px;
+width: auto;
+}
+.wikibottombanner {
+background-color: #efefef;
+padding: 10px;
+margin-top: 10px;
+width: auto;
+}
+.alertBox {
+background-color: #f8d7da;
+border: 1px solid #f5c6cb;
+max-width: 60%;
+padding: 10;
+margin: auto;
+}
+.anchorImage {
+visibility: hidden;
+padding-left: 0.2em;
+color: #fff;
+}
+.anchorText:hover .anchorImage {
+visibility: visible;
+}
+hr {
+display: block;
+height: 1px;
+border: 0;
+border-top: 1px solid #efefef;
+margin: 1em 0;
+padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+body {
+color: #e6edf3;
+background-color: #0d1117;
+}
+h1 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+h2 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+hr {
+border-color: rgba(48, 54, 61, 0.7);
+}
+div.sourceCode {
+background-color: #161b22;
+}
+code {
+background-color: #161b22;
+}
+a {
+color: #4493f8;
+}
+a:visited {
+color: #2f66ad;
+}
+table {
+border-color: rgba(48, 54, 61, 0.7);
+}
+td {
+border-color: rgba(48, 54, 61, 0.7);
+}
+tr:nth-child(even) {
+background-color: #161b22;
+}
+.wikitopbanner {
+background-color: #263040;
+}
+.wikibottombanner {
+background-color: #263040;
+}
+.anchorText:hover .anchorImage {
+filter: invert(100%);
+}
+}
+@media print {
+body {
+font-size: 12px;
+}
+table {
+font-size: inherit;
+}
+a:visited {
+color: #0969da;
+}
+.wikitopbanner,
+.anchorText,
+.wikibottombanner {
+display: none;
+}
+}
+</style>
+  <style type="text/css"> code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+{ content: attr(title);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; pointer-events: all; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+@media (prefers-color-scheme: dark) {
+code span.al { color: #95da4c; font-weight: bold; } 
+code span.an { color: #3f8058; } 
+code span.at { color: #2980b9; } 
+code span.bn { color: #f67400; } 
+code span.bu { color: #7f8c8d; } 
+code span.ch { color: #3daee9; } 
+code span.co { color: #7a7c7d; } 
+code span.cv { color: #7f8c8d; } 
+code span.cn { color: #27aeae; font-weight: bold; } 
+code span.cf { color: #fdbc4b; font-weight: bold; } 
+code span.dt { color: #2980b9; } 
+code span.dv { color: #f67400; } 
+code span.do { color: #a43340; } 
+code span.er { color: #da4453; } 
+code span.ex { color: #0099ff; font-weight: bold; } 
+code span.fl { color: #f67400; } 
+code span.fu { color: #8e44ad; } 
+code span.im { color: #27ae60; } 
+code span.in { color: #c45b00; } 
+code span.kw { color: #cfcfc2; font-weight: bold; } 
+code span.op { color: #cfcfc2; } 
+code span.ot { color: #27ae60; } 
+code span.pp { color: #27ae60; } 
+code span.sc { color: #3daee9; } 
+code span.ss { color: #da4453; } 
+code span.st { color: #f44f4f; } 
+code span.va { color: #27aeae; } 
+code span.vs { color: #da4453; } 
+code span.wa { color: #da4453; } 
+}</style>
+</head>
+<body>
+<h1 id="using-sdl-with-microsoft-visual-c">Using SDL with Microsoft
+Visual C++</h1>
+<h3 id="by-lion-kimbro-with-additions-by-james-turk">by Lion Kimbro with
+additions by James Turk</h3>
+<p>You can either use the precompiled libraries from the <a href="https://www.libsdl.org/download.php">SDL</a> web site, or you can
+build SDL yourself.</p>
+<h3 id="building-sdl">Building SDL</h3>
+<ol start="0" type="1">
+<li><p>To build SDL, your machine must, at a minimum, have the
+DirectX9.0c SDK installed. It may or may not be retrievable from the <a href="https://www.microsoft.com">Microsoft</a> website, so you might
+need to locate it <a href="https://duckduckgo.com/?q=directx9.0c+sdk+download&amp;t=h_&amp;ia=web">online</a>.
+<em>Editor&#39;s note: I&#39;ve been able to successfully build SDL using Visual
+Studio 2019 <strong>without</strong> the DX9.0c SDK</em></p></li>
+<li><p>Open the Visual Studio solution file at
+<code>./VisualC/SDL.sln</code>.</p></li>
+<li><p>Your IDE will likely prompt you to upgrade this solution file to
+whatever later version of the IDE you&#39;re using. In the
+<code>Retarget Projects</code> dialog, all of the affected project files
+should be checked allowing you to use the latest
+<code>Windows SDK Version</code> you have installed, along with the
+<code>Platform Toolset</code>.</p></li>
+</ol>
+<p>If you choose <em>NOT</em> to upgrade to use the latest
+<code>Windows SDK Version</code> or <code>Platform Toolset</code>, then
+you&#39;ll need the <code>Visual Studio 2010 Platform Toolset</code>.</p>
+<ol start="3" type="1">
+<li>Build the <code>.dll</code> and <code>.lib</code> files by right
+clicking on each project in turn (Projects are listed in the
+<em>Workspace</em> panel in the <em>FileView</em> tab), and selecting
+<code>Build</code>.</li>
+</ol>
+<p>You may get a few warnings, but you should not get any errors.</p>
+<p>Later, we will refer to the following <code>.lib</code> and
+<code>.dll</code> files that have just been generated:</p>
+<ul>
+<li><code>./VisualC/Win32/Debug/SDL2.dll</code> or
+<code>./VisualC/Win32/Release/SDL2.dll</code></li>
+<li><code>./VisualC/Win32/Debug/SDL2.lib</code> or
+<code>./VisualC/Win32/Release/SDL2.lib</code></li>
+<li><code>./VisualC/Win32/Debug/SDL2main.lib</code> or
+<code>./VisualC/Win32/Release/SDL2main.lib</code></li>
+</ul>
+<p><em>Note for the <code>x64</code> versions, just replace
+<code>Win32</code> in the path with <code>x64</code></em></p>
+<h3 id="creating-a-project-with-sdl">Creating a Project with SDL</h3>
+<ul>
+<li><p>Create a project as a <code>Win32 Application</code>.</p></li>
+<li><p>Create a C++ file for your project.</p></li>
+<li><p>Set the C runtime to <code>Multi-threaded DLL</code> in the menu:
+<code>Project|Settings|C/C++                  tab|Code Generation|Runtime Library </code>.</p></li>
+<li><p>Add the SDL <code>include</code> directory to your list of
+includes in the menu:
+<code>Project|Settings|C/C++ tab|Preprocessor|Additional include directories </code></p></li>
+</ul>
+<p><em>VC7 Specific: Instead of doing this, I find it easier to add the
+include and library directories to the list that VC7 keeps. Do this by
+selecting Tools|Options|Projects|VC++ Directories and under the &quot;Show
+Directories For:&quot; dropbox select &quot;Include Files&quot;, and click the &quot;New
+Directory Icon&quot; and add the [SDLROOT]\include directory (e.g. If you
+installed to c:\SDL\ add c:\SDL\include). Proceed to change the dropbox
+selection to &quot;Library Files&quot; and add [SDLROOT]\lib.</em></p>
+<p>The &quot;include directory&quot; I am referring to is the
+<code>./include</code> folder.</p>
+<p>Now we&#39;re going to use the files that we had created earlier in the
+<em>Build SDL</em> step.</p>
+<p>Copy the following file into your Project directory:</p>
+<ul>
+<li><code>SDL2.dll</code></li>
+</ul>
+<p>Add the following files to your project (It is not necessary to copy
+them to your project directory):</p>
+<ul>
+<li><code>SDL2.lib</code></li>
+<li><code>SDL2main.lib</code></li>
+</ul>
+<p>To add them to your project, right click on your project, and select
+<code>Add files to project</code>.</p>
+<p><strong>Instead of adding the files to your project, it is more
+desirable to add them to the linker options:
+Project|Properties|Linker|Command Line and type the names of the
+libraries to link with in the &quot;Additional Options:&quot; box. Note: This must
+be done for each build configuration (e.g. Release,Debug).</strong></p>
+<h3 id="hello-sdl2">Hello SDL2</h3>
+<p>Here&#39;s a sample SDL snippet to verify everything is setup in your
+IDE:</p>
+<pre><code>    #include &quot;SDL.h&quot;
+
+    int main( int argc, char* argv[] )
+    {
+        const int WIDTH = 640;
+        const int HEIGHT = 480;
+        SDL_Window* window = NULL;
+        SDL_Renderer* renderer = NULL;
+
+        SDL_Init(SDL_INIT_VIDEO);
+        window = SDL_CreateWindow(&quot;SDL2 Test&quot;, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT, SDL_WINDOW_SHOWN);
+        renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return 0;
+    }</code></pre>
+<h3 id="thats-it">That&#39;s it!</h3>
+<p>I hope that this document has helped you get through the most
+difficult part of using the SDL: installing it. Suggestions for
+improvements should be posted to the <a href="https://github.com/libsdl-org/SDL/issues">Github Issues</a>.</p>
+<h3 id="credits">Credits</h3>
+<p>Thanks to <a href="mailto:pesterhazy@gmx.net.html">Paulus
+Esterhazy</a>, for the work on VC++ port.</p>
+<p>This document was originally called &quot;VisualC.txt&quot;, and was written by
+<a href="mailto:slouken@libsdl.org.html">Sam Lantinga</a>.</p>
+<p>Later, it was converted to HTML and expanded into the document that
+you see today by <a href="mailto:snowlion@sprynet.com.html">Lion
+Kimbro</a>.</p>
+<p>Minor Fixes and Visual C++ 7 Information (In Green) was added by <a href="mailto:james@conceptofzero.net.html">James Turk</a></p>
+</body>
+</html>

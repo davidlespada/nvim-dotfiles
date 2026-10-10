@@ -1,0 +1,68 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_HINT_CPU_FEATURE_MASK:
+.\"   https://wiki.libsdl.org/SDL_HINT_CPU_FEATURE_MASK
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_HINT_CPU_FEATURE_MASK
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_HINT_CPU_FEATURE_MASK 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_HINT_CPU_FEATURE_MASK \- A variable that limits what CPU features are available.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_hints.h>
+.PP
+.BI "#define SDL_HINT_CPU_FEATURE_MASK \(dqSDL_CPU_FEATURE_MASK\(dq
+.fi
+.SH DESCRIPTION
+By default, SDL marks all features the current CPU supports as available\[char46] This hint allows the enabled features to be limited to a subset\[char46]
+.PP
+When the hint is unset, or empty, SDL will enable all detected CPU features\[char46]
+.PP
+The variable can be set to a comma separated list containing the following items:
+.PP
+
+\(bu \(dqall\(dq
+.PP
+\(bu \(dqaltivec\(dq
+.PP
+\(bu \(dqsse\(dq
+.PP
+\(bu \(dqsse2\(dq
+.PP
+\(bu \(dqsse3\(dq
+.PP
+\(bu \(dqsse41\(dq
+.PP
+\(bu \(dqsse42\(dq
+.PP
+\(bu \(dqavx\(dq
+.PP
+\(bu \(dqavx2\(dq
+.PP
+\(bu \(dqavx512f\(dq
+.PP
+\(bu \(dqarm-simd\(dq
+.PP
+\(bu \(dqneon\(dq
+.PP
+\(bu \(dqsve2\(dq
+.PP
+\(bu \(dqlsx\(dq
+.PP
+\(bu \(dqlasx\(dq
+.PP
+The items can be prefixed by \(aq+\(aq/\(aq-\(aq to add/remove features\[char46]
+
+.SH AVAILABILITY
+This hint is available since SDL 3\[char46]2\[char46]0\[char46]
+

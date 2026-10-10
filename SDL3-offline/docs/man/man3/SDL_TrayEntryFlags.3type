@@ -1,0 +1,39 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_TrayEntryFlags:
+.\"   https://wiki.libsdl.org/SDL_TrayEntryFlags
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_TrayEntryFlags
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_TrayEntryFlags 3type "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 DATATYPES"
+.SH NAME
+SDL_TrayEntryFlags \- Flags that control the creation of system tray entries.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_tray.h>
+.PP
+.BI "typedef Uint32 SDL_TrayEntryFlags;
+.BI "
+.BI "#define SDL_TRAYENTRY_BUTTON      0x00000001u /**< Make the entry a simple button. Required. */
+.BI "#define SDL_TRAYENTRY_CHECKBOX    0x00000002u /**< Make the entry a checkbox. Required. */
+.BI "#define SDL_TRAYENTRY_SUBMENU     0x00000004u /**< Prepare the entry to have a submenu. Required */
+.BI "#define SDL_TRAYENTRY_DISABLED    0x80000000u /**< Make the entry disabled. Optional. */
+.BI "#define SDL_TRAYENTRY_CHECKED     0x40000000u /**< Make the entry checked. This is valid only for checkboxes. Optional. */
+.fi
+.SH DESCRIPTION
+Some of these flags are required; exactly one of them must be specified at the time a tray entry is created\[char46] Other flags are optional; zero or more of those can be OR\(aqed together with the required flag\[char46]
+
+.SH AVAILABILITY
+This datatype is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_InsertTrayEntryAt (3)

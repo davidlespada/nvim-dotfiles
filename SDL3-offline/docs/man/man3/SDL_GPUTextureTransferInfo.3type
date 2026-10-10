@@ -1,0 +1,54 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GPUTextureTransferInfo:
+.\"   https://wiki.libsdl.org/SDL_GPUTextureTransferInfo
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GPUTextureTransferInfo
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GPUTextureTransferInfo 3type "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 DATATYPES"
+.SH NAME
+SDL_GPUTextureTransferInfo \- A structure specifying parameters related to transferring data to or from a texture.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_gpu.h>
+.PP
+.BI "typedef struct SDL_GPUTextureTransferInfo
+.BI "{
+.BI "    SDL_GPUTransferBuffer *transfer_buffer;  /**< The transfer buffer used in the transfer operation. */
+.BI "    Uint32 offset;                           /**< The starting byte of the image data in the transfer buffer. */
+.BI "    Uint32 pixels_per_row;                   /**< The number of pixels from one row to the next. */
+.BI "    Uint32 rows_per_layer;                   /**< The number of rows from one layer/depth-slice to the next. */
+.BI "} SDL_GPUTextureTransferInfo;
+.fi
+.SH DESCRIPTION
+If either of
+.BR pixels_per_row
+or
+.BR rows_per_layer
+is zero, then width and height of passed
+.BR SDL_GPUTextureRegion
+to
+.BR SDL_UploadToGPUTexture
+or
+.BR SDL_DownloadFromGPUTexture
+are used as default values respectively and data is considered to be tightly packed\[char46]
+.PP
+.BR WARNING :
+On some older/integrated hardware, Direct3D 12 requires texture data row pitch to be 256 byte aligned, and offsets to be aligned to 512 bytes\[char46] If they are not, SDL will make a temporary copy of the data that is properly aligned, but this adds overhead to the transfer process\[char46] Apps can avoid this by aligning their data appropriately, or using a different GPU backend than Direct3D 12\[char46]
+
+.SH AVAILABILITY
+This struct is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_UploadToGPUTexture (3),
+.BR SDL_DownloadFromGPUTexture (3),
+.BR SDL_GPUTransferBuffer (3type)

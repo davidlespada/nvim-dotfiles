@@ -1,0 +1,61 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_asprintf:
+.\"   https://wiki.libsdl.org/SDL_asprintf
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_asprintf
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_asprintf 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_asprintf \- This works exactly like asprintf() but doesn\(aqt require access to a C runtime.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "int SDL_asprintf(char **strp, const char *fmt, ...);
+.fi
+.SH DESCRIPTION
+Functions identically to
+.BR SDL_snprintf (),
+except it allocates a buffer large enough to hold the output string on behalf of the caller\[char46]
+.PP
+On success, this function returns the number of bytes (not characters) comprising the output string, not counting the null-terminator character, and sets
+.BR *strp
+to the newly-allocated string\[char46]
+.PP
+On error, this function returns a negative number, and the value of
+.BR *strp
+is undefined\[char46]
+.PP
+The returned string is owned by the caller, and should be passed to
+.BR SDL_free
+when no longer needed\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I strp
+on output, is set to the new string\[char46] Must not be NULL\[char46]
+.TP
+.I fmt
+a printf-style format string\[char46] Must not be NULL\[char46]
+.TP
+.I ...
+a list of values to be used with the format string\[char46]
+.SH RETURN VALUE
+Returns the number of bytes in the newly-allocated string, not counting the null-terminator char, or a negative value on error\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+

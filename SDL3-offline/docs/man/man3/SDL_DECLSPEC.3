@@ -1,0 +1,33 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_DECLSPEC:
+.\"   https://wiki.libsdl.org/SDL_DECLSPEC
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_DECLSPEC
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_DECLSPEC 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_DECLSPEC \- A macro to tag a symbol as a public API.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_begin_code.h>
+.PP
+.BI "#define SDL_DECLSPEC __attribute__ ((visibility(\(dqdefault\(dq)))
+.fi
+.SH DESCRIPTION
+SDL uses this macro for all its public functions\[char46] On some targets, it is used to signal to the compiler that this function needs to be exported from a shared library, but it might have other side effects\[char46]
+.PP
+This symbol is used in SDL\(aqs headers, but apps and other libraries are welcome to use it for their own interfaces as well\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+

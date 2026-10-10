@@ -1,0 +1,43 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_HINT_MAC_USE_GCMOUSE:
+.\"   https://wiki.libsdl.org/SDL_HINT_MAC_USE_GCMOUSE
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_HINT_MAC_USE_GCMOUSE
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_HINT_MAC_USE_GCMOUSE 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_HINT_MAC_USE_GCMOUSE \- A variable controlling whether the GCMouse API will be used on macOS.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_hints.h>
+.PP
+.BI "#define SDL_HINT_MAC_USE_GCMOUSE \(dqSDL_MAC_USE_GCMOUSE\(dq
+.fi
+.SH DESCRIPTION
+On supported versions of macOS, GCMouse is usually a better way to read mouse input, but may cause problems in some scenarios (remote control software that wants to send non-GCMouse input events, etc)\[char46]
+.PP
+When GCMouse is disabled, SDL will use standard Cocoa mouse events\[char46]
+.PP
+The variable can be set to the following values:
+.PP
+
+\(bu \(dq0\(dq: GCMouse won\(aqt be used\[char46]
+.PP
+\(bu \(dq1\(dq: GCMouse will be used if available\[char46] (default)
+.PP
+This hint needs to be set before
+.BR SDL_Init ()\[char46]
+
+.SH AVAILABILITY
+This hint is available since SDL 3\[char46]6\[char46]0\[char46]
+

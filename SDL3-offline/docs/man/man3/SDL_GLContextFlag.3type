@@ -1,0 +1,35 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GLContextFlag:
+.\"   https://wiki.libsdl.org/SDL_GLContextFlag
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GLContextFlag
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GLContextFlag 3type "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 DATATYPES"
+.SH NAME
+SDL_GLContextFlag \- Possible flags to be set for the
+.BR SDL_GL_CONTEXT_FLAGS
+attribute.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_video.h>
+.PP
+.BI "typedef Uint32 SDL_GLContextFlag;
+.BI "
+.BI "#define SDL_GL_CONTEXT_DEBUG_FLAG              0x0001
+.BI "#define SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG 0x0002
+.BI "#define SDL_GL_CONTEXT_ROBUST_ACCESS_FLAG      0x0004
+.BI "#define SDL_GL_CONTEXT_RESET_ISOLATION_FLAG    0x0008
+.fi
+.SH AVAILABILITY
+This datatype is available since SDL 3\[char46]2\[char46]0\[char46]
+

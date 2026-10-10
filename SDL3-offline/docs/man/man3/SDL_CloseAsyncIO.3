@@ -1,0 +1,76 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_CloseAsyncIO:
+.\"   https://wiki.libsdl.org/SDL_CloseAsyncIO
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_CloseAsyncIO
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_CloseAsyncIO 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_CloseAsyncIO \- Close and free any allocated resources for an async I/O object.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_asyncio.h>
+.PP
+.BI "bool SDL_CloseAsyncIO(SDL_AsyncIO *asyncio, bool flush, SDL_AsyncIOQueue *queue, void *userdata);
+.fi
+.SH DESCRIPTION
+Closing a file is _also_ an asynchronous task! If a write failure were to happen during the closing process, for example, the task results will report it as usual\[char46]
+.PP
+Closing a file that has been written to does not guarantee the data has made it to physical media; it may remain in the operating system\(aqs file cache, for later writing to disk\[char46] This means that a successfully-closed file can be lost if the system crashes or loses power in this small window\[char46] To prevent this, call this function with the
+.BR flush
+parameter set to true\[char46] This will make the operation take longer, and perhaps increase system load in general, but a successful result guarantees that the data has made it to physical storage\[char46] Don\(aqt use this for temporary files, caches, and unimportant data, and definitely use it for crucial irreplaceable files, like game saves\[char46]
+.PP
+This function guarantees that the close will happen after any other pending tasks to
+.BR asyncio ,
+so it\(aqs safe to open a file, start several operations, close the file immediately, then check for all results later\[char46] This function will not block until the tasks have completed\[char46]
+.PP
+Once this function returns true,
+.BR asyncio
+is no longer valid, regardless of any future outcomes\[char46] Any completed tasks might still contain this pointer in their
+.BR SDL_AsyncIOOutcome
+data, in case the app was using this value to track information, but it should not be used again\[char46]
+.PP
+If this function returns false, the close wasn\(aqt started at all, and it\(aqs safe to attempt to close again later\[char46]
+.PP
+An
+.BR SDL_AsyncIOQueue
+must be specified\[char46] The newly-created task will be added to it when it completes its work\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I asyncio
+a pointer to an
+.BR SDL_AsyncIO
+structure to close\[char46]
+.TP
+.I flush
+true if data should sync to disk before the task completes\[char46]
+.TP
+.I queue
+a queue to add the new
+.BR SDL_AsyncIO
+to\[char46]
+.TP
+.I userdata
+an app-defined pointer that will be provided with the task results\[char46]
+.SH RETURN VALUE
+Returns true on success or false on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread, but two threads should not attempt to close the same object\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+

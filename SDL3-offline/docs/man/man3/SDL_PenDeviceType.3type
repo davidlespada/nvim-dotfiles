@@ -1,0 +1,39 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_PenDeviceType:
+.\"   https://wiki.libsdl.org/SDL_PenDeviceType
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_PenDeviceType
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_PenDeviceType 3type "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 DATATYPES"
+.SH NAME
+SDL_PenDeviceType \- An enum that describes the type of a pen device.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_pen.h>
+.PP
+.BI "typedef enum SDL_PenDeviceType
+.BI "{
+.BI "    SDL_PEN_DEVICE_TYPE_INVALID = -1, /**< Not a valid pen device. */
+.BI "    SDL_PEN_DEVICE_TYPE_UNKNOWN,      /**< Don't know specifics of this pen. */
+.BI "    SDL_PEN_DEVICE_TYPE_DIRECT,       /**< Pen touches display. */
+.BI "    SDL_PEN_DEVICE_TYPE_INDIRECT      /**< Pen touches something that isn't the display. */
+.BI "} SDL_PenDeviceType;
+.fi
+.SH DESCRIPTION
+A \(dqdirect\(dq device is a pen that touches a graphic display (like an Apple Pencil on an iPad\(aqs screen)\[char46] \(dqIndirect\(dq devices touch an external tablet surface that is connected to the machine but is not a display (like a lower-end Wacom tablet connected over USB)\[char46]
+.PP
+Apps may use this information to decide if they should draw a cursor; if the pen is touching the screen directly, a cursor doesn\(aqt make sense and can be in the way, but becomes necessary for indirect devices to know where on the display they are interacting\[char46]
+
+.SH AVAILABILITY
+This enum is available since SDL 3\[char46]4\[char46]0\[char46]
+

@@ -1,0 +1,79 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_AcquireGPUSwapchainTexture:
+.\"   https://wiki.libsdl.org/SDL_AcquireGPUSwapchainTexture
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_AcquireGPUSwapchainTexture
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_AcquireGPUSwapchainTexture 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_AcquireGPUSwapchainTexture \- Acquire a texture to use in presentation.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_gpu.h>
+.PP
+.BI "bool SDL_AcquireGPUSwapchainTexture(
+.BI "    SDL_GPUCommandBuffer *command_buffer,
+.BI "    SDL_Window *window,
+.BI "    SDL_GPUTexture **swapchain_texture,
+.BI "    Uint32 *swapchain_texture_width,
+.BI "    Uint32 *swapchain_texture_height);
+.fi
+.SH DESCRIPTION
+When a swapchain texture is acquired on a command buffer, it will automatically be submitted for presentation when the command buffer is submitted\[char46] The swapchain texture should only be referenced by the command buffer used to acquire it\[char46]
+.PP
+If too many frames are in flight, this function will fill the swapchain texture handle with NULL and return true\[char46] This is not an error\[char46] This NULL pointer should not be passed back into SDL\[char46] Instead, it should be considered as an indication to wait\[char46]
+.PP
+In VSYNC present mode (which is the default) this function may block on vblank\[char46]
+.PP
+If you use this function, it is possible to create a situation where many command buffers are allocated while the rendering context waits for the GPU to catch up, which will cause memory usage to grow\[char46] You should use
+.BR SDL_WaitAndAcquireGPUSwapchainTexture ()
+unless you know what you are doing with timing\[char46]
+.PP
+The swapchain texture is managed by the implementation and must not be freed by the user\[char46] You MUST NOT call this function from any thread other than the one that created the window\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I command_buffer
+a command buffer\[char46]
+.TP
+.I window
+a window that has been claimed\[char46]
+.TP
+.I swapchain_texture
+a pointer filled in with a swapchain texture handle\[char46]
+.TP
+.I swapchain_texture_width
+a pointer filled in with the swapchain texture width, may be NULL\[char46]
+.TP
+.I swapchain_texture_height
+a pointer filled in with the swapchain texture height, may be NULL\[char46]
+.SH RETURN VALUE
+Returns true on success, false on error; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH THREAD SAFETY
+This function should only be called from the thread that created the window\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_ClaimWindowForGPUDevice (3),
+.BR SDL_SubmitGPUCommandBuffer (3),
+.BR SDL_SubmitGPUCommandBufferAndAcquireFence (3),
+.BR SDL_CancelGPUCommandBuffer (3),
+.BR SDL_GetWindowSizeInPixels (3),
+.BR SDL_WaitForGPUSwapchain (3),
+.BR SDL_WaitAndAcquireGPUSwapchainTexture (3),
+.BR SDL_SetGPUAllowedFramesInFlight (3)

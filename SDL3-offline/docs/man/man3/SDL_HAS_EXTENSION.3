@@ -1,0 +1,35 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_HAS_EXTENSION:
+.\"   https://wiki.libsdl.org/SDL_HAS_EXTENSION
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_HAS_EXTENSION
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_HAS_EXTENSION 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_HAS_EXTENSION \- Check if the compiler supports a given extension.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_begin_code.h>
+.PP
+.BI "#define SDL_HAS_EXTENSION(x) __has_extension(x)
+.fi
+.SH DESCRIPTION
+This allows preprocessor checks for things that otherwise might fail to compile\[char46]
+.PP
+Supported by virtually all clang versions and more-recent GCCs\[char46] Use this instead of checking the clang version if possible\[char46]
+.PP
+On compilers without has_extension support, this is defined to 0 (always false)\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+

@@ -1,0 +1,71 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GetEventDescription:
+.\"   https://wiki.libsdl.org/SDL_GetEventDescription
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GetEventDescription
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GetEventDescription 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_GetEventDescription \- Generate an English description of an event.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_events.h>
+.PP
+.BI "int SDL_GetEventDescription(const SDL_Event *event, char *buf, int buflen);
+.fi
+.SH DESCRIPTION
+This will fill
+.BR buf
+with a null-terminated string that might look something like this:
+
+.IP
+.EX
+SDL_EVENT_MOUSE_MOTION (timestamp=1140256324 windowid=2 which=0 state=0 x=492.99 y=139.09 xrel=52 yrel=6)
+.EE
+.PP
+
+The exact format of the string is not guaranteed; it is intended for logging purposes, to be read by a human, and not parsed by a computer\[char46]
+.PP
+The returned value follows the same rules as
+.BR SDL_snprintf ():
+.BR buf
+will always be NULL-terminated (unless
+.BR buflen
+is zero), and will be truncated if
+.BR buflen
+is too small\[char46] The return code is the number of bytes needed for the complete string, not counting the NULL-terminator, whether the string was truncated or not\[char46] Unlike
+.BR SDL_snprintf (),
+though, this function never returns
+-1\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I event
+an event to describe\[char46] May be NULL\[char46]
+.TP
+.I buf
+the buffer to fill with the description string\[char46] May be NULL\[char46]
+.TP
+.I buflen
+the maximum bytes that can be written to
+.BR buf \[char46]
+
+.SH RETURN VALUE
+Returns number of bytes needed for the full string, not counting the null-terminator byte\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]4\[char46]0\[char46]
+

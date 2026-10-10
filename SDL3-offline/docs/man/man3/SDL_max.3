@@ -1,0 +1,49 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_max:
+.\"   https://wiki.libsdl.org/SDL_max
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_max
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_max 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_max \- Return the greater of two values.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "#define SDL_max(x, y) (((x) > (y)) ? (x) : (y))
+.fi
+.SH DESCRIPTION
+This is a helper macro that might be more clear than writing out the comparisons directly, and works with any type that can be compared with the
+.BR >
+operator\[char46] However, it double-evaluates both its parameters, so do not use expressions with side-effects here\[char46]
+
+.SH MACRO PARAMETERS
+.TP
+.I x
+the first value to compare\[char46]
+.TP
+.I y
+the second value to compare\[char46]
+.SH RETURN VALUE
+Returns the greater of
+.BR x
+and
+.BR y \[char46]
+
+.SH THREAD SAFETY
+It is safe to call this macro from any thread\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+

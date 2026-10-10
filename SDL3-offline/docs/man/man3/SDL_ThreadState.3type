@@ -1,0 +1,40 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_ThreadState:
+.\"   https://wiki.libsdl.org/SDL_ThreadState
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_ThreadState
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_ThreadState 3type "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 DATATYPES"
+.SH NAME
+SDL_ThreadState \- The SDL thread state.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_thread.h>
+.PP
+.BI "typedef enum SDL_ThreadState
+.BI "{
+.BI "    SDL_THREAD_UNKNOWN,     /**< The thread is not valid */
+.BI "    SDL_THREAD_ALIVE,       /**< The thread is currently running */
+.BI "    SDL_THREAD_DETACHED,    /**< The thread is detached and can't be waited on */
+.BI "    SDL_THREAD_COMPLETE     /**< The thread has finished and should be cleaned up with SDL_WaitThread() */
+.BI "} SDL_ThreadState;
+.fi
+.SH DESCRIPTION
+The current state of a thread can be checked by calling
+.BR SDL_GetThreadState \[char46]
+
+.SH AVAILABILITY
+This enum is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_GetThreadState (3)

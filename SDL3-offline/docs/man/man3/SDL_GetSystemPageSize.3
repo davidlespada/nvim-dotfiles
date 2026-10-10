@@ -1,0 +1,41 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GetSystemPageSize:
+.\"   https://wiki.libsdl.org/SDL_GetSystemPageSize
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GetSystemPageSize
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GetSystemPageSize 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_GetSystemPageSize \- Report the size of a page of memory.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_cpuinfo.h>
+.PP
+.BI "int SDL_GetSystemPageSize(void);
+.fi
+.SH DESCRIPTION
+Different platforms might have different memory page sizes\[char46] In current times, 4 kilobytes is not unusual, but newer systems are moving to larger page sizes, and esoteric platforms might have any unexpected size\[char46]
+.PP
+Note that this function can return 0, which means SDL can\(aqt determine the page size on this platform\[char46] It will _not_ set an error string to be retrieved with
+.BR SDL_GetError ()
+in this case! In this case, defaulting to 4096 is often a reasonable option\[char46]
+
+.SH RETURN VALUE
+Returns the size of a single page of memory, in bytes, or 0 if SDL can\(aqt determine this information\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]4\[char46]0\[char46]
+

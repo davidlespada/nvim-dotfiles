@@ -1,0 +1,42 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_HINT_KMSDRM_ATOMIC:
+.\"   https://wiki.libsdl.org/SDL_HINT_KMSDRM_ATOMIC
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_HINT_KMSDRM_ATOMIC
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_HINT_KMSDRM_ATOMIC 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_HINT_KMSDRM_ATOMIC \- A variable that controls whether KMSDRM will use \(dqatomic\(dq functionality.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_hints.h>
+.PP
+.BI "#define SDL_HINT_KMSDRM_ATOMIC \(dqSDL_KMSDRM_ATOMIC\(dq
+.fi
+.SH DESCRIPTION
+The KMSDRM backend can use atomic commits, if both DRM_CLIENT_CAP_ATOMIC and DRM_CLIENT_CAP_UNIVERSAL_PLANES is supported by the system\[char46] As of SDL 3\[char46]4\[char46]0, it will favor this functionality, but in case this doesn\(aqt work well on a given system or other surprises, this hint can be used to disable it\[char46]
+.PP
+This hint can not enable the functionality if it isn\(aqt available\[char46]
+.PP
+The variable can be set to the following values:
+.PP
+
+\(bu \(dq0\(dq: SDL will not use the KMSDRM \(dqatomic\(dq functionality\[char46]
+.PP
+\(bu \(dq1\(dq: SDL will allow usage of the KMSDRM \(dqatomic\(dq functionality\[char46] (default)
+.PP
+This hint should be set before SDL is initialized\[char46]
+
+.SH AVAILABILITY
+This hint is available since SDL 3\[char46]4\[char46]0\[char46]
+

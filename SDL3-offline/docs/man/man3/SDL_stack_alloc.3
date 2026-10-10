@@ -1,0 +1,54 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_stack_alloc:
+.\"   https://wiki.libsdl.org/SDL_stack_alloc
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_stack_alloc
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_stack_alloc 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_stack_alloc \- Allocate memory on the stack (maybe).
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "#define SDL_stack_alloc(type, count)    (type*)alloca(sizeof(type)*(count))
+.fi
+.SH DESCRIPTION
+If SDL knows how to access alloca() on the current platform, it will use it to stack-allocate memory here\[char46] If it doesn\(aqt, it will use
+.BR SDL_malloc ()
+to heap-allocate memory\[char46]
+.PP
+Since this might not be stack memory at all, it\(aqs important that you check the returned pointer for NULL, and that you call
+.BR SDL_stack_free
+on the memory when done with it\[char46] Since this might be stack memory, it\(aqs important that you don\(aqt allocate large amounts of it, or allocate in a loop without returning from the function, so the stack doesn\(aqt overflow\[char46]
+
+.SH MACRO PARAMETERS
+.TP
+.I type
+the datatype of the memory to allocate\[char46]
+.TP
+.I count
+the number of
+.BR type
+objects to allocate\[char46]
+.SH RETURN VALUE
+Returns newly-allocated memory, or NULL on failure\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this macro from any thread\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_stack_free (3)

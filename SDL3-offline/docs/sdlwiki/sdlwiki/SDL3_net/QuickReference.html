@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>QuickReference</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">:root {
+color-scheme: dark light; 
+}
+body {
+background-color: white;
+padding: 2vw;
+color: #333;
+max-width: 1200px;
+margin: 0 auto;
+font-size: 16px;
+line-height: 1.5;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+overflow-wrap: break-word;
+}
+a {
+color: #0969da;
+
+}
+a:visited {
+color: #064998;
+}
+h1 {
+border-bottom: 2px solid #efefef;
+}
+h2 {
+border-bottom: 1px solid #efefef;
+}
+p {
+max-width: 85ch;
+}
+li {
+max-width: 85ch;
+}
+div.sourceCode {
+background-color: #f6f8fa;
+max-width: 100%;
+padding: 16px;
+}
+code {
+background-color: #f6f8fa;
+padding: 0px;
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+"Liberation Mono", monospace;
+}
+table {
+border: 1px solid #808080;
+border-collapse: collapse;
+}
+td {
+border: 1px solid #808080;
+padding: 5px;
+}
+tr:nth-child(even) {
+background-color: #f6f8fa;
+}
+.wikitopbanner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #efefef;
+padding: 10px;
+margin-bottom: 10px;
+width: auto;
+}
+.wikibottombanner {
+background-color: #efefef;
+padding: 10px;
+margin-top: 10px;
+width: auto;
+}
+.alertBox {
+background-color: #f8d7da;
+border: 1px solid #f5c6cb;
+max-width: 60%;
+padding: 10;
+margin: auto;
+}
+.anchorImage {
+visibility: hidden;
+padding-left: 0.2em;
+color: #fff;
+}
+.anchorText:hover .anchorImage {
+visibility: visible;
+}
+hr {
+display: block;
+height: 1px;
+border: 0;
+border-top: 1px solid #efefef;
+margin: 1em 0;
+padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+body {
+color: #e6edf3;
+background-color: #0d1117;
+}
+h1 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+h2 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+hr {
+border-color: rgba(48, 54, 61, 0.7);
+}
+div.sourceCode {
+background-color: #161b22;
+}
+code {
+background-color: #161b22;
+}
+a {
+color: #4493f8;
+}
+a:visited {
+color: #2f66ad;
+}
+table {
+border-color: rgba(48, 54, 61, 0.7);
+}
+td {
+border-color: rgba(48, 54, 61, 0.7);
+}
+tr:nth-child(even) {
+background-color: #161b22;
+}
+.wikitopbanner {
+background-color: #263040;
+}
+.wikibottombanner {
+background-color: #263040;
+}
+.anchorText:hover .anchorImage {
+filter: invert(100%);
+}
+}
+@media print {
+body {
+font-size: 12px;
+}
+table {
+font-size: inherit;
+}
+a:visited {
+color: #0969da;
+}
+.wikitopbanner,
+.anchorText,
+.wikibottombanner {
+display: none;
+}
+}
+</style>
+  <style type="text/css"> code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+{ content: attr(title);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; pointer-events: all; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+@media (prefers-color-scheme: dark) {
+code span.al { color: #95da4c; font-weight: bold; } 
+code span.an { color: #3f8058; } 
+code span.at { color: #2980b9; } 
+code span.bn { color: #f67400; } 
+code span.bu { color: #7f8c8d; } 
+code span.ch { color: #3daee9; } 
+code span.co { color: #7a7c7d; } 
+code span.cv { color: #7f8c8d; } 
+code span.cn { color: #27aeae; font-weight: bold; } 
+code span.cf { color: #fdbc4b; font-weight: bold; } 
+code span.dt { color: #2980b9; } 
+code span.dv { color: #f67400; } 
+code span.do { color: #a43340; } 
+code span.er { color: #da4453; } 
+code span.ex { color: #0099ff; font-weight: bold; } 
+code span.fl { color: #f67400; } 
+code span.fu { color: #8e44ad; } 
+code span.im { color: #27ae60; } 
+code span.in { color: #c45b00; } 
+code span.kw { color: #cfcfc2; font-weight: bold; } 
+code span.op { color: #cfcfc2; } 
+code span.ot { color: #27ae60; } 
+code span.pp { color: #27ae60; } 
+code span.sc { color: #3daee9; } 
+code span.ss { color: #da4453; } 
+code span.st { color: #f44f4f; } 
+code span.va { color: #27aeae; } 
+code span.vs { color: #da4453; } 
+code span.wa { color: #da4453; } 
+}</style>
+</head>
+<body>
+<!-- DO NOT EDIT THIS PAGE ON THE WIKI. IT WILL BE OVERWRITTEN BY WIKIHEADERS AND CHANGES WILL BE LOST! -->
+
+<h1 id="quickreference">QuickReference</h1>
+<p>If you want to paste this into a text editor that can&#39;t handle the
+fancy Unicode section headers, try using <a href="QuickReferenceNoUnicode.html">QuickReferenceNoUnicode</a>
+instead.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// SDL3_net API Quick Reference</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">// https://libsdl.org/</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">// The latest version of this document can be found at https://wiki.libsdl.org/SDL3_net/QuickReference</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Based on SDL_net version 3.3.0</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">// This can be useful in an IDE with search and syntax highlighting.</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">//</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">// Original idea for this document came from Dan Bechard (thanks!)</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">// ASCII art generated by: https://patorjk.com/software/taag/#p=display&amp;f=ANSI%20Shadow (with modified &#39;S&#39; for readability)</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">//  ██████╗ ██████╗  ██╗      ███╗   ██╗ ███████╗ ████████╗</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">// ██╔════╝ ██╔══██╗ ██║      ████╗  ██║ ██╔════╝ ╚══██╔══╝</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">// ███████╗ ██║  ██║ ██║      ██╔██╗ ██║ █████╗      ██║</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">// ╚════██║ ██║  ██║ ██║      ██║╚██╗██║ ██╔══╝      ██║</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">// ██████╔╝ ██████╔╝ ███████╗ ██║ ╚████║ ███████╗    ██║</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">// ╚═════╝  ╚═════╝  ╚══════╝ ╚═╝  ╚═══╝ ╚══════╝    ╚═╝</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="pp">#define SDL_NET_MAJOR_VERSION                                                                                     </span><span class="co">// The current major version of the SDL_net headers.</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="pp">#define SDL_NET_MINOR_VERSION                                                                                     </span><span class="co">// The current minor version of the SDL_net headers.</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="pp">#define SDL_NET_MICRO_VERSION                                                                                     </span><span class="co">// The current micro (or patchlevel) version of the SDL_net headers.</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="pp">#define SDL_NET_VERSION                                                                                           </span><span class="co">// This is the version number macro for the current SDL_net version.</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="pp">#define SDL_NET_VERSION_ATLEAST</span><span class="op">(</span><span class="pp">X</span><span class="op">,</span><span class="pp"> Y</span><span class="op">,</span><span class="pp"> Z</span><span class="op">)</span><span class="pp">                                                                          </span><span class="co">// This macro will evaluate to true if compiled with SDL_net at least X.Y.Z.</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> NET_Version<span class="op">(</span><span class="dt">void</span><span class="op">);</span>                                                                                            <span class="co">// This function gets the version of the dynamically linked SDL_net library.</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> NET_Init<span class="op">(</span><span class="dt">void</span><span class="op">);</span>                                                                                              <span class="co">// Initialize the SDL_net library.</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> NET_Quit<span class="op">(</span><span class="dt">void</span><span class="op">);</span>                                                                                              <span class="co">// Deinitialize the SDL_net library.</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>NET_Address <span class="op">*</span> NET_ResolveHostname<span class="op">(</span><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span>host<span class="op">);</span>                                                              <span class="co">// Resolve a human-readable hostname.</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>NET_Status NET_WaitUntilResolved<span class="op">(</span>NET_Address <span class="op">*</span>address<span class="op">,</span> Sint32 timeout<span class="op">);</span>                                           <span class="co">// Block until an address is resolved.</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>NET_Status NET_GetAddressStatus<span class="op">(</span>NET_Address <span class="op">*</span>address<span class="op">);</span>                                                            <span class="co">// Check if an address is resolved, without blocking.</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">char</span> <span class="op">*</span> NET_GetAddressString<span class="op">(</span>NET_Address <span class="op">*</span>address<span class="op">);</span>                                                          <span class="co">// Get a human-readable string from a resolved address.</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="dt">const</span> <span class="dt">void</span> <span class="op">*</span> NET_GetAddressBytes<span class="op">(</span>NET_Address <span class="op">*</span>address<span class="op">,</span> <span class="dt">int</span> <span class="op">*</span>num_bytes<span class="op">);</span>                                           <span class="co">// Get the protocol-level bytes of a network address from a resolved address.</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>NET_Address <span class="op">*</span> NET_RefAddress<span class="op">(</span>NET_Address <span class="op">*</span>address<span class="op">);</span>                                                               <span class="co">// Add a reference to an NET_Address.</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> NET_UnrefAddress<span class="op">(</span>NET_Address <span class="op">*</span>address<span class="op">);</span>                                                                      <span class="co">// Drop a reference to an NET_Address.</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> NET_SimulateAddressResolutionLoss<span class="op">(</span><span class="dt">int</span> percent_loss<span class="op">);</span>                                                         <span class="co">// Enable simulated address resolution failures.</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> NET_CompareAddresses<span class="op">(</span><span class="dt">const</span> NET_Address <span class="op">*</span>a<span class="op">,</span> <span class="dt">const</span> NET_Address <span class="op">*</span>b<span class="op">);</span>                                             <span class="co">// Compare two NET_Address objects.</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>NET_Address <span class="op">**</span> NET_GetLocalAddresses<span class="op">(</span><span class="dt">int</span> <span class="op">*</span>num_addresses<span class="op">);</span>                                                         <span class="co">// Obtain a list of local addresses on the system.</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> NET_FreeLocalAddresses<span class="op">(</span>NET_Address <span class="op">**</span>addresses<span class="op">);</span>                                                             <span class="co">// Free the results from NET_GetLocalAddresses.</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>NET_StreamSocket <span class="op">*</span> NET_CreateClient<span class="op">(</span>NET_Address <span class="op">*</span>address<span class="op">,</span> Uint16 port<span class="op">,</span> SDL_PropertiesID props<span class="op">);</span>                   <span class="co">// Begin connecting a socket as a client to a remote server.</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>NET_Status NET_WaitUntilConnected<span class="op">(</span>NET_StreamSocket <span class="op">*</span>sock<span class="op">,</span> Sint32 timeout<span class="op">);</span>                                        <span class="co">// Block until a stream socket has connected to a server.</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>NET_Server <span class="op">*</span> NET_CreateServer<span class="op">(</span>NET_Address <span class="op">*</span>addr<span class="op">,</span> Uint16 port<span class="op">,</span> SDL_PropertiesID props<span class="op">);</span>                            <span class="co">// Create a server, which listens for connections to accept.</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> NET_AcceptClient<span class="op">(</span>NET_Server <span class="op">*</span>server<span class="op">,</span> NET_StreamSocket <span class="op">**</span>client_stream<span class="op">);</span>                                      <span class="co">// Create a stream socket for the next pending client connection.</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> NET_DestroyServer<span class="op">(</span>NET_Server <span class="op">*</span>server<span class="op">);</span>                                                                       <span class="co">// Dispose of a previously-created server.</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>NET_Address <span class="op">*</span> NET_GetStreamSocketAddress<span class="op">(</span>NET_StreamSocket <span class="op">*</span>sock<span class="op">);</span>                                                 <span class="co">// Get the remote address of a stream socket.</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>NET_Status NET_GetConnectionStatus<span class="op">(</span>NET_StreamSocket <span class="op">*</span>sock<span class="op">);</span>                                                       <span class="co">// Check if a stream socket is connected, without blocking.</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> NET_WriteToStreamSocket<span class="op">(</span>NET_StreamSocket <span class="op">*</span>sock<span class="op">,</span> <span class="dt">const</span> <span class="dt">void</span> <span class="op">*</span>buf<span class="op">,</span> <span class="dt">int</span> buflen<span class="op">);</span>                                <span class="co">// Send bytes over a stream socket to a remote system.</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> NET_GetStreamSocketPendingWrites<span class="op">(</span>NET_StreamSocket <span class="op">*</span>sock<span class="op">);</span>                                                     <span class="co">// Query bytes still pending transmission on a stream socket.</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> NET_WaitUntilStreamSocketDrained<span class="op">(</span>NET_StreamSocket <span class="op">*</span>sock<span class="op">,</span> Sint32 timeout<span class="op">);</span>                                     <span class="co">// Block until all of a stream socket&#39;s pending data is sent.</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> NET_ReadFromStreamSocket<span class="op">(</span>NET_StreamSocket <span class="op">*</span>sock<span class="op">,</span> <span class="dt">void</span> <span class="op">*</span>buf<span class="op">,</span> <span class="dt">int</span> buflen<span class="op">);</span>                                      <span class="co">// Receive bytes that a remote system sent to a stream socket.</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> NET_SimulateStreamPacketLoss<span class="op">(</span>NET_StreamSocket <span class="op">*</span>sock<span class="op">,</span> <span class="dt">int</span> percent_loss<span class="op">);</span>                                      <span class="co">// Enable simulated stream socket failures.</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> NET_DestroyStreamSocket<span class="op">(</span>NET_StreamSocket <span class="op">*</span>sock<span class="op">);</span>                                                             <span class="co">// Dispose of a previously-created stream socket.</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>NET_DatagramSocket <span class="op">*</span> NET_CreateDatagramSocket<span class="op">(</span>NET_Address <span class="op">*</span>addr<span class="op">,</span> Uint16 port<span class="op">,</span> SDL_PropertiesID props<span class="op">);</span>            <span class="co">// Create and bind a new datagram socket.</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> NET_SendDatagram<span class="op">(</span>NET_DatagramSocket <span class="op">*</span>sock<span class="op">,</span> NET_Address <span class="op">*</span>address<span class="op">,</span> Uint16 port<span class="op">,</span> <span class="dt">const</span> <span class="dt">void</span> <span class="op">*</span>buf<span class="op">,</span> <span class="dt">int</span> buflen<span class="op">);</span>  <span class="co">// Send a new packet over a datagram socket to a remote system.</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> NET_ReceiveDatagram<span class="op">(</span>NET_DatagramSocket <span class="op">*</span>sock<span class="op">,</span> NET_Datagram <span class="op">**</span>dgram<span class="op">);</span>                                         <span class="co">// Receive a new packet that a remote system sent to a datagram socket.</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> NET_DestroyDatagram<span class="op">(</span>NET_Datagram <span class="op">*</span>dgram<span class="op">);</span>                                                                    <span class="co">// Dispose of a datagram packet previously received.</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> NET_SimulateDatagramPacketLoss<span class="op">(</span>NET_DatagramSocket <span class="op">*</span>sock<span class="op">,</span> <span class="dt">int</span> percent_loss<span class="op">);</span>                                  <span class="co">// Enable simulated datagram socket failures.</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> NET_DestroyDatagramSocket<span class="op">(</span>NET_DatagramSocket <span class="op">*</span>sock<span class="op">);</span>                                                         <span class="co">// Dispose of a previously-created datagram socket.</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> NET_WaitUntilInputAvailable<span class="op">(</span><span class="dt">void</span> <span class="op">**</span>vsockets<span class="op">,</span> <span class="dt">int</span> numsockets<span class="op">,</span> Sint32 timeout<span class="op">);</span>                                 <span class="co">// Block on multiple sockets until at least one has data available.</span></span></code></pre></div>
+</body>
+</html>

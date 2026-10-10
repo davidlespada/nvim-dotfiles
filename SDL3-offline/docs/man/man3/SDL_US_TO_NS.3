@@ -1,0 +1,41 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_US_TO_NS:
+.\"   https://wiki.libsdl.org/SDL_US_TO_NS
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_US_TO_NS
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_US_TO_NS 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_US_TO_NS \- Convert microseconds to nanoseconds.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_timer.h>
+.PP
+.BI "#define SDL_US_TO_NS(US)        (((Uint64)(US)) * SDL_NS_PER_US)
+.fi
+.SH DESCRIPTION
+This only converts whole numbers, not fractional microseconds\[char46]
+
+.SH MACRO PARAMETERS
+.TP
+.I US
+the number of microseconds to convert\[char46]
+.SH RETURN VALUE
+Returns US, expressed in nanoseconds\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this macro from any thread\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+

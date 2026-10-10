@@ -1,0 +1,48 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GetAndroidExternalStoragePath:
+.\"   https://wiki.libsdl.org/SDL_GetAndroidExternalStoragePath
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GetAndroidExternalStoragePath
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GetAndroidExternalStoragePath 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_GetAndroidExternalStoragePath \- Get the path used for external storage for this Android application.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_system.h>
+.PP
+.BI "const char * SDL_GetAndroidExternalStoragePath(void);
+.fi
+.SH DESCRIPTION
+This path is unique to your application, but is public and can be written to by other applications\[char46]
+.PP
+Your external storage path is typically:
+.BR /storage/sdcard0/Android/data/your\[char46]app\[char46]package/files \[char46]
+.PP
+This is a C wrapper over
+.BR android\[char46]content\[char46]Context\[char46]getExternalFilesDir() :
+.PP
+https://developer\[char46]android\[char46]com/reference/android/content/Context#getExternalFilesDir()
+
+.SH RETURN VALUE
+Returns the path used for external storage for this application on success or NULL on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_GetAndroidExternalStorageState (3),
+.BR SDL_GetAndroidInternalStoragePath (3),
+.BR SDL_GetAndroidCachePath (3)

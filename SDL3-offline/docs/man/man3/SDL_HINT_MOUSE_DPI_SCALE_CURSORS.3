@@ -1,0 +1,38 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_HINT_MOUSE_DPI_SCALE_CURSORS:
+.\"   https://wiki.libsdl.org/SDL_HINT_MOUSE_DPI_SCALE_CURSORS
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_HINT_MOUSE_DPI_SCALE_CURSORS
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_HINT_MOUSE_DPI_SCALE_CURSORS 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_HINT_MOUSE_DPI_SCALE_CURSORS \- A variable setting whether we should scale cursors by the current display scale.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_hints.h>
+.PP
+.BI "#define SDL_HINT_MOUSE_DPI_SCALE_CURSORS \(dqSDL_MOUSE_DPI_SCALE_CURSORS\(dq
+.fi
+.SH DESCRIPTION
+The variable can be set to the following values:
+.PP
+
+\(bu \(dq0\(dq: Cursors will not change size based on the display content scale\[char46] (default)
+.PP
+\(bu \(dq1\(dq: Cursors will automatically match the display content scale (e\[char46]g\[char46] a 2x sized cursor will be used when the window is on a monitor with 200% scale)\[char46] This is currently implemented on Windows\[char46]
+.PP
+This hint needs to be set before creating cursors\[char46]
+
+.SH AVAILABILITY
+This hint is available since SDL 3\[char46]4\[char46]0\[char46]
+

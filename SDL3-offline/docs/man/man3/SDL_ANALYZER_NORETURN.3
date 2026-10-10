@@ -1,0 +1,39 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_ANALYZER_NORETURN:
+.\"   https://wiki.libsdl.org/SDL_ANALYZER_NORETURN
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_ANALYZER_NORETURN
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_ANALYZER_NORETURN 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_ANALYZER_NORETURN \- A macro to tag a function as never-returning (for analysis purposes).
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_begin_code.h>
+.PP
+.BI "#define SDL_ANALYZER_NORETURN __attribute__((analyzer_noreturn))
+.fi
+.SH DESCRIPTION
+This is almost identical to
+.BR SDL_NORETURN ,
+except functions marked with this _can_ actually return\[char46] The difference is that this isn\(aqt used for code generation, but rather static analyzers use this information to assume truths about program state and available code paths\[char46] Specifically, this tag is useful for writing an assertion mechanism\[char46] Indeed,
+.BR SDL_assert
+uses this tag behind the scenes\[char46] Generally, apps that don\(aqt understand the specific use-case for this tag should avoid using it directly\[char46]
+.PP
+On compilers without analyzer_noreturn support, this is defined to nothing\[char46]
+.PP
+This symbol is used in SDL\(aqs headers, but apps and other libraries are welcome to use it for their own interfaces as well\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+

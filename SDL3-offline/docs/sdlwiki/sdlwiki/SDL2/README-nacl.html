@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README-nacl</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+  <style type="text/css">:root {
+color-scheme: dark light; 
+}
+body {
+background-color: white;
+padding: 2vw;
+color: #333;
+max-width: 1200px;
+margin: 0 auto;
+font-size: 16px;
+line-height: 1.5;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+overflow-wrap: break-word;
+}
+a {
+color: #0969da;
+
+}
+a:visited {
+color: #064998;
+}
+h1 {
+border-bottom: 2px solid #efefef;
+}
+h2 {
+border-bottom: 1px solid #efefef;
+}
+p {
+max-width: 85ch;
+}
+li {
+max-width: 85ch;
+}
+div.sourceCode {
+background-color: #f6f8fa;
+max-width: 100%;
+padding: 16px;
+}
+code {
+background-color: #f6f8fa;
+padding: 0px;
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+"Liberation Mono", monospace;
+}
+table {
+border: 1px solid #808080;
+border-collapse: collapse;
+}
+td {
+border: 1px solid #808080;
+padding: 5px;
+}
+tr:nth-child(even) {
+background-color: #f6f8fa;
+}
+.wikitopbanner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #efefef;
+padding: 10px;
+margin-bottom: 10px;
+width: auto;
+}
+.wikibottombanner {
+background-color: #efefef;
+padding: 10px;
+margin-top: 10px;
+width: auto;
+}
+.alertBox {
+background-color: #f8d7da;
+border: 1px solid #f5c6cb;
+max-width: 60%;
+padding: 10;
+margin: auto;
+}
+.anchorImage {
+visibility: hidden;
+padding-left: 0.2em;
+color: #fff;
+}
+.anchorText:hover .anchorImage {
+visibility: visible;
+}
+hr {
+display: block;
+height: 1px;
+border: 0;
+border-top: 1px solid #efefef;
+margin: 1em 0;
+padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+body {
+color: #e6edf3;
+background-color: #0d1117;
+}
+h1 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+h2 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+hr {
+border-color: rgba(48, 54, 61, 0.7);
+}
+div.sourceCode {
+background-color: #161b22;
+}
+code {
+background-color: #161b22;
+}
+a {
+color: #4493f8;
+}
+a:visited {
+color: #2f66ad;
+}
+table {
+border-color: rgba(48, 54, 61, 0.7);
+}
+td {
+border-color: rgba(48, 54, 61, 0.7);
+}
+tr:nth-child(even) {
+background-color: #161b22;
+}
+.wikitopbanner {
+background-color: #263040;
+}
+.wikibottombanner {
+background-color: #263040;
+}
+.anchorText:hover .anchorImage {
+filter: invert(100%);
+}
+}
+@media print {
+body {
+font-size: 12px;
+}
+table {
+font-size: inherit;
+}
+a:visited {
+color: #0969da;
+}
+.wikitopbanner,
+.anchorText,
+.wikibottombanner {
+display: none;
+}
+}
+</style>
+  <style type="text/css"> code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+{ content: attr(title);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; pointer-events: all; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+@media (prefers-color-scheme: dark) {
+code span.al { color: #95da4c; font-weight: bold; } 
+code span.an { color: #3f8058; } 
+code span.at { color: #2980b9; } 
+code span.bn { color: #f67400; } 
+code span.bu { color: #7f8c8d; } 
+code span.ch { color: #3daee9; } 
+code span.co { color: #7a7c7d; } 
+code span.cv { color: #7f8c8d; } 
+code span.cn { color: #27aeae; font-weight: bold; } 
+code span.cf { color: #fdbc4b; font-weight: bold; } 
+code span.dt { color: #2980b9; } 
+code span.dv { color: #f67400; } 
+code span.do { color: #a43340; } 
+code span.er { color: #da4453; } 
+code span.ex { color: #0099ff; font-weight: bold; } 
+code span.fl { color: #f67400; } 
+code span.fu { color: #8e44ad; } 
+code span.im { color: #27ae60; } 
+code span.in { color: #c45b00; } 
+code span.kw { color: #cfcfc2; font-weight: bold; } 
+code span.op { color: #cfcfc2; } 
+code span.ot { color: #27ae60; } 
+code span.pp { color: #27ae60; } 
+code span.sc { color: #3daee9; } 
+code span.ss { color: #da4453; } 
+code span.st { color: #f44f4f; } 
+code span.va { color: #27aeae; } 
+code span.vs { color: #da4453; } 
+code span.wa { color: #da4453; } 
+}</style>
+</head>
+<body>
+<h1 id="native-client">Native Client</h1>
+<p>Requirements:</p>
+<ul>
+<li>Native Client SDK (<a href="https://developer.chrome.com/native-client">https://developer.chrome.com/native-client</a>),
+(tested with Pepper version 33 or higher).</li>
+</ul>
+<p>The SDL backend for Chrome&#39;s Native Client has been tested only with
+the PNaCl toolchain, which generates binaries designed to run on ARM and
+x86_32/64 platforms. This does not mean it won&#39;t work with the other
+toolchains!</p>
+<h1 id="-building-sdl-for-nacl">================================================================================
+Building SDL for NaCl</h1>
+<p>Set up the right environment variables (see naclbuild.sh), then
+configure SDL with:</p>
+<pre><code>configure --host=pnacl --prefix some/install/destination</code></pre>
+<p>Then &quot;make&quot;.</p>
+<p>As an example of how to create a deployable app a Makefile project is
+provided in test/nacl/Makefile, which includes some monkey patching of
+the common.mk file provided by NaCl, without which linking properly to
+SDL won&#39;t work (the search path can&#39;t be modified externally, so the
+linker won&#39;t find SDL&#39;s binaries unless you dump them into the SDK path,
+which is inconvenient). Also provided in test/nacl is the required
+support file, such as index.html, manifest.json, etc. SDL apps for NaCl
+run on a worker thread using the ppapi_simple infrastructure. This
+allows for blocking calls on all the relevant systems (OpenGL ES,
+filesystem), hiding the asynchronous nature of the browser behind the
+scenes...which is not the same as making it disappear!</p>
+<h1 id="-running-tests">================================================================================
+Running tests</h1>
+<p>Due to the nature of NaCl programs, building and running SDL tests is
+not as straightforward as one would hope. The script naclbuild.sh in
+build-scripts automates the process and should serve as a guide for
+users of SDL trying to build their own applications.</p>
+<p>Basic usage:</p>
+<pre><code>./naclbuild.sh path/to/pepper/toolchain (i.e. ~/naclsdk/pepper_35)</code></pre>
+<p>This will build testgles2.c by default.</p>
+<p>If you want to build a different test, for example
+testrendercopyex.c:</p>
+<pre><code>SOURCES=~/sdl/SDL/test/testrendercopyex.c ./naclbuild.sh ~/naclsdk/pepper_35</code></pre>
+<p>Once the build finishes, you have to serve the contents with a web
+server (the script will give you instructions on how to do that with
+Python).</p>
+<h1 id="-rwops-and-nacl_io">================================================================================
+RWops and nacl_io</h1>
+<p>SDL_RWops work transparently with nacl_io. Two functions control the
+mount points:</p>
+<pre><code>int mount(const char* source, const char* target,
+                  const char* filesystemtype,
+                  unsigned long mountflags, const void *data);
+int umount(const char *target);
+
+For convenience, SDL will by default mount an httpfs tree at / before calling</code></pre>
+<p>the app&#39;s main function. Such setting can be overridden by
+calling:</p>
+<pre><code>umount(&quot;/&quot;);</code></pre>
+<p>And then mounting a different filesystem at /</p>
+<p>It&#39;s important to consider that the asynchronous nature of file
+operations on a browser is hidden from the application, effectively
+providing the developer with a set of blocking file operations just like
+you get in a regular desktop environment, which eases the job of porting
+to Native Client, but also introduces a set of challenges of its own, in
+particular when big file sizes and slow connections are involved.</p>
+<p>For more information on how nacl_io and mount points work, see:</p>
+<pre><code>https://developer.chrome.com/native-client/devguide/coding/nacl_io
+https://src.chromium.org/chrome/trunk/src/native_client_sdk/src/libraries/nacl_io/nacl_io.h</code></pre>
+<p>To be able to save into the directory &quot;/save/&quot; (like backup of game)
+:</p>
+<pre><code>mount(&quot;&quot;, &quot;/save&quot;, &quot;html5fs&quot;, 0, &quot;type=PERSISTENT&quot;);</code></pre>
+<p>And add to manifest.json :</p>
+<pre><code>&quot;permissions&quot;: [
+    &quot;unlimitedStorage&quot;
+]</code></pre>
+<h1 id="-todo---known-issues">================================================================================
+TODO - Known Issues</h1>
+<ul>
+<li>Testing of all systems with a real application (something other than
+SDL&#39;s tests)</li>
+<li>Key events don&#39;t seem to work properly</li>
+</ul>
+</body>
+</html>

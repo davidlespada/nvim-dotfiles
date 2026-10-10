@@ -1,0 +1,89 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_realloc:
+.\"   https://wiki.libsdl.org/SDL_realloc
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_realloc
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_realloc 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_realloc \- Change the size of allocated memory.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "void * SDL_realloc(void *mem, size_t size);
+.fi
+.SH DESCRIPTION
+The memory returned by this function must be freed with
+.BR SDL_free ()\[char46]
+.PP
+If
+.BR size
+is 0, it will be set to 1\[char46] Note that this is unlike some other C runtime
+.BR realloc
+implementations, which may treat
+.BR "realloc(mem, 0)"
+the same way as
+.BR free(mem) \[char46]
+.PP
+If
+.BR mem
+is NULL, the behavior of this function is equivalent to
+.BR SDL_malloc ()\[char46]
+Otherwise, the function can have one of three possible outcomes:
+.PP
+
+\(bu If it returns the same pointer as
+.BR mem ,
+it means that
+.BR mem
+was resized in place without freeing\[char46]
+.PP
+\(bu If it returns a different non-NULL pointer, it means that
+.BR mem
+was freed and cannot be dereferenced anymore\[char46]
+.PP
+\(bu If it returns NULL (indicating failure), then
+.BR mem
+will remain valid and must still be freed with
+.BR SDL_free ()\[char46]
+.PP
+If the allocation is successfully resized, the returned pointer is guaranteed to be aligned to either the
+.IR "fundamental alignment"
+.BR "" ( alignof(max_align_t)
+in C11 and later) or
+.BR "2
+.IR " sizeof(void " )"
+,
+whichever is smaller\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I mem
+a pointer to allocated memory to reallocate, or NULL\[char46]
+.TP
+.I size
+the new size of the memory\[char46]
+.SH RETURN VALUE
+Returns a pointer to the newly allocated memory, or NULL if allocation failed\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_free (3),
+.BR SDL_malloc (3),
+.BR SDL_calloc (3)

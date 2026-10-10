@@ -1,0 +1,39 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GetOpenHarmonyInternalStoragePath:
+.\"   https://wiki.libsdl.org/SDL_GetOpenHarmonyInternalStoragePath
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GetOpenHarmonyInternalStoragePath
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GetOpenHarmonyInternalStoragePath 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_GetOpenHarmonyInternalStoragePath \- Get the path used for internal storage for this OpenHarmony application.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_system.h>
+.PP
+.BI "const char * SDL_GetOpenHarmonyInternalStoragePath(void);
+.fi
+.SH DESCRIPTION
+This path is unique to your application and cannot be written to by other applications\[char46]
+.PP
+Your internal storage path is typically:
+.BR /data/storage/el2/base/files \[char46]
+
+.SH RETURN VALUE
+Returns the path used for internal storage or NULL on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]6\[char46]0\[char46]
+

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Installation</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">:root {
+color-scheme: dark light; 
+}
+body {
+background-color: white;
+padding: 2vw;
+color: #333;
+max-width: 1200px;
+margin: 0 auto;
+font-size: 16px;
+line-height: 1.5;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+overflow-wrap: break-word;
+}
+a {
+color: #0969da;
+
+}
+a:visited {
+color: #064998;
+}
+h1 {
+border-bottom: 2px solid #efefef;
+}
+h2 {
+border-bottom: 1px solid #efefef;
+}
+p {
+max-width: 85ch;
+}
+li {
+max-width: 85ch;
+}
+div.sourceCode {
+background-color: #f6f8fa;
+max-width: 100%;
+padding: 16px;
+}
+code {
+background-color: #f6f8fa;
+padding: 0px;
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+"Liberation Mono", monospace;
+}
+table {
+border: 1px solid #808080;
+border-collapse: collapse;
+}
+td {
+border: 1px solid #808080;
+padding: 5px;
+}
+tr:nth-child(even) {
+background-color: #f6f8fa;
+}
+.wikitopbanner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #efefef;
+padding: 10px;
+margin-bottom: 10px;
+width: auto;
+}
+.wikibottombanner {
+background-color: #efefef;
+padding: 10px;
+margin-top: 10px;
+width: auto;
+}
+.alertBox {
+background-color: #f8d7da;
+border: 1px solid #f5c6cb;
+max-width: 60%;
+padding: 10;
+margin: auto;
+}
+.anchorImage {
+visibility: hidden;
+padding-left: 0.2em;
+color: #fff;
+}
+.anchorText:hover .anchorImage {
+visibility: visible;
+}
+hr {
+display: block;
+height: 1px;
+border: 0;
+border-top: 1px solid #efefef;
+margin: 1em 0;
+padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+body {
+color: #e6edf3;
+background-color: #0d1117;
+}
+h1 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+h2 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+hr {
+border-color: rgba(48, 54, 61, 0.7);
+}
+div.sourceCode {
+background-color: #161b22;
+}
+code {
+background-color: #161b22;
+}
+a {
+color: #4493f8;
+}
+a:visited {
+color: #2f66ad;
+}
+table {
+border-color: rgba(48, 54, 61, 0.7);
+}
+td {
+border-color: rgba(48, 54, 61, 0.7);
+}
+tr:nth-child(even) {
+background-color: #161b22;
+}
+.wikitopbanner {
+background-color: #263040;
+}
+.wikibottombanner {
+background-color: #263040;
+}
+.anchorText:hover .anchorImage {
+filter: invert(100%);
+}
+}
+@media print {
+body {
+font-size: 12px;
+}
+table {
+font-size: inherit;
+}
+a:visited {
+color: #0969da;
+}
+.wikitopbanner,
+.anchorText,
+.wikibottombanner {
+display: none;
+}
+}
+</style>
+  <style type="text/css"> code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+{ content: attr(title);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; pointer-events: all; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+@media (prefers-color-scheme: dark) {
+code span.al { color: #95da4c; font-weight: bold; } 
+code span.an { color: #3f8058; } 
+code span.at { color: #2980b9; } 
+code span.bn { color: #f67400; } 
+code span.bu { color: #7f8c8d; } 
+code span.ch { color: #3daee9; } 
+code span.co { color: #7a7c7d; } 
+code span.cv { color: #7f8c8d; } 
+code span.cn { color: #27aeae; font-weight: bold; } 
+code span.cf { color: #fdbc4b; font-weight: bold; } 
+code span.dt { color: #2980b9; } 
+code span.dv { color: #f67400; } 
+code span.do { color: #a43340; } 
+code span.er { color: #da4453; } 
+code span.ex { color: #0099ff; font-weight: bold; } 
+code span.fl { color: #f67400; } 
+code span.fu { color: #8e44ad; } 
+code span.im { color: #27ae60; } 
+code span.in { color: #c45b00; } 
+code span.kw { color: #cfcfc2; font-weight: bold; } 
+code span.op { color: #cfcfc2; } 
+code span.ot { color: #27ae60; } 
+code span.pp { color: #27ae60; } 
+code span.sc { color: #3daee9; } 
+code span.ss { color: #da4453; } 
+code span.st { color: #f44f4f; } 
+code span.va { color: #27aeae; } 
+code span.vs { color: #da4453; } 
+code span.wa { color: #da4453; } 
+}</style>
+</head>
+<body>
+<h1 id="installing-sdl">Installing SDL</h1>
+<p>How to install SDL varies depending on your platform. You will need
+to <a href="SourceCode.html">download the source code</a> first for most
+of them, unless prebuilt binaries are available.</p>
+<p>SDL 1.2 isn&#39;t covered here. It can be installed on legacy platforms
+that SDL2 doesn&#39;t support, such as Mac OS 9 or Windows 95, but settling
+for 1.2 would not be a drop-in replacement for 2.0. Some of these
+installation instructions happen to work with 1.2, however, on the
+platforms we cover.</p>
+<h2 id="static-linking">Static linking</h2>
+<p>SDL 2.0, unlike 1.2, uses <a href="FAQLicensing.html">the zlib
+license</a>, which means you can build a static library linked directly
+to your program, or just compile SDL&#39;s C code directly as part of your
+project, without requirements to publish your source code, etc. However,
+we encourage you to <em>not</em> statically link for various technical
+and moral reasons (see <a href="https://github.com/libsdl-org/SDL/blob/main/docs/README-dynapi.md">docs/README-dynapi.md</a>),
+and won&#39;t cover the details of how to in this document. You may not
+statically link SDL 1.2 in most cases due to its LGPL licensing, but you
+should really stop using SDL 1.2 anyhow.</p>
+<h2 id="supported-platforms">Supported platforms</h2>
+<h3 id="linuxunix">Linux/Unix</h3>
+<p>Several other platforms will be built &quot;the Unix way,&quot; so we&#39;ll
+describe this platform first.</p>
+<p>SDL supports most popular flavors of Unix: Linux 2.6+, the various
+BSDs (FreeBSD, NetBSD, OpenBSD), Solaris, and other things like
+them.</p>
+<p>First! Do you need to compile SDL yourself? It&#39;s possible your
+distribution&#39;s package manager already did it for you!</p>
+<p>Debian-based systems (including Ubuntu) can simply do <em>sudo
+apt-get install libsdl2-2.0-0</em> to get the library installed
+system-wide, and all sorts of other useful dependencies, too. <em>sudo
+apt-get install libsdl2-dev</em> will install everything necessary to
+build programs that use SDL. Please see <a href="https://github.com/libsdl-org/SDL/blob/SDL2/docs/README-linux.md">docs/README-linux.md</a>
+for a more complete discussion of packages involved.</p>
+<p>Red Hat-based systems (including Fedora prior to Fedora 42) can run
+<em>sudo dnf install SDL2</em> to install the library system-wide, or
+&quot;sudo dnf install SDL2-devel&quot; to get headers and other build
+requirements ready for compiling your own SDL programs.</p>
+<p>Gentoo users can <em>sudo emerge libsdl2</em> to get everything they
+need.</p>
+<p>If you&#39;re compiling SDL yourself, here&#39;s what we refer to as &quot;the
+Unix way&quot; of building:</p>
+<ul>
+<li>Get a copy of the source code, either from Mercurial or an official
+tarball or whatever.</li>
+<li>Make a separate build directory (SDL will refuse to build in the
+base of the source tree).</li>
+<li>Run the configure script to set things up.</li>
+<li>Run &quot;make&quot; to compile SDL.</li>
+<li>Run &quot;make install&quot; to install your new SDL build on the system.</li>
+</ul>
+<p>This looks something like this:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/libsdl-org/SDL.git <span class="at">-b</span> SDL2</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> SDL</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">../configure</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code></pre></div>
+<p>The last command says &quot;sudo&quot; so we can write it to /usr/local (by
+default). You can change this to a different location with the --prefix
+option to the configure script. In fact, there are a LOT of good options
+you can use with configure! Be sure to check out its --help option for
+details. SDL tries to do the right thing by default, though, so you can
+usually get away with no options at all. &quot;make&quot; could be &quot;make -j4&quot; or
+whatever if you have more than one CPU; SDL can safely be built in
+parallel across all the CPU cores you have available to you. A good rule
+of thumb for Linux is the number of cores plus two, so you use all the
+processing resources possible, and if a process or two is competing for
+the disk, those two extra jobs might be able to put the otherwise-idle
+CPU cores to work in the meantime (so on a four-core system? Try &quot;make
+-j6&quot;.)</p>
+<p>An alternative to the configure script is the CMake project file. It
+works on similar principles to the configure script. CMake does not
+provide you with a --help option to show all available configuration
+options, but it provides a GUI to change configuration options:
+cmake-gui. There is also ccmake for the console aficionados.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/libsdl-org/SDL</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> SDL</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> .. <span class="at">-DCMAKE_BUILD_TYPE</span><span class="op">=</span>Release</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">--build</span> . <span class="at">--config</span> Release <span class="at">--parallel</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#CMake &gt;= 3.15</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> cmake <span class="at">--install</span> . <span class="at">--config</span> Release</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#CMake &lt;= 3.14</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> make install</span></code></pre></div>
+<p>Once you have the library installed, you can use the sdl2-config
+program to help you compile your own code:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gcc</span> <span class="at">-o</span> myprogram myprogram.c <span class="kw">`</span><span class="ex">sdl2-config</span> <span class="at">--cflags</span> <span class="at">--libs</span><span class="kw">`</span></span></code></pre></div>
+<p>SDL on Unix should only link against the C runtime (glibc). Every
+thing else it needs will be dynamically loaded at runtime: X11, ALSA,
+d-bus, etc. This means it is possible to build an SDL that has support
+for all sorts of targets built in, and it will examine the system at
+runtime to decide what should be used (for example, if Xlib isn&#39;t
+available, it might try to load Wayland support, etc). In that respect,
+if you plan to ship the SDL binary that you build, it is to your benefit
+to make sure your system has development headers for as many targets as
+possible, regardless of what you plan to personally use, so your final
+library is as robust as possible. See <a href="https://github.com/libsdl-org/SDL/blob/SDL2/docs/README-linux.md">docs/README-linux.md</a>
+for more details.</p>
+<h3 id="steamos">SteamOS</h3>
+<p>SteamOS is literally a Linux system, and uses the same binaries you
+distribute to generic Linux Steam users, so generally speaking, all the
+other Linux advice applies.</p>
+<p>If you are shipping a Linux game on Steam, or explicitly targeting
+SteamOS, the system is guaranteed to provide SDL. The Steam Client will
+set up the dynamic loader path so that a known-good copy of SDL is
+available to any program that needs it before launching a game. Steam
+provides both SDL 1.2 and 2.0 in this manner, for both x86 and amd64, in
+addition to several add-on libraries like SDL_mixer. When shipping a
+Linux game on Steam, do not ship a build of SDL with your game. Link
+against SDL as normal, and expect it to be available on the player&#39;s
+system. This allows Valve to make fixes and improvements to their SDL
+and those fixes to flow on to your game.</p>
+<p>We are obsessive about SDL2 having a backwards-compatible ABI.
+Whether you build your game using the Steam Runtime SDK or just about
+any old copy of SDL2, it <em>should</em> work with the one that ships
+with Steam.</p>
+<p>In fact, it&#39;s not a bad idea to just copy the SDL build out of the
+Steam Runtime if you plan to ship a Linux game for non-Steam platforms,
+too, since you know it&#39;s definitely built sanely.</p>
+<h3 id="windows-xpvista7810">Windows XP/Vista/7/8/10</h3>
+<p>SDL currently provides Visual Studio project files for Visual Studio
+2010 or later in various flavors, and the CMake files can often generate
+project files for other Windows compilers. Win32 and Win64 are both
+supported, and we support any Windows version back to Windows XP.</p>
+<p>As of SDL 2.0.3, the codebase still compiles on Cygwin and MingW32,
+but we expect these to stop working in the future. MingW64 is still
+supported (and despite the name, can also build 32-bit binaries). Note
+that the Visual Studio builds produce standard Windows .DLLs, which are
+usable with any compiler that can link to them, and we care about making
+sure the public SDL headers work with any compiler, but making sure SDL
+itself builds with some of these compilers has become time-consuming and
+messy for diminishing returns. For simple fixes, we will always accept
+patches, though!</p>
+<p>On Windows, SDL does not depend on a C runtime at all, not even for
+malloc(). This means it&#39;s possible to build SDL with almost any Windows
+compiler and have it work with a program built with any other.
+Furthermore, it means that SDLmain (the small static .lib file that
+optionally provides WinMain()) does not force you to deal with Debug vs
+Release builds in your app, since it doesn&#39;t need either a Debug or
+Release C runtime. One .lib should work everywhere.</p>
+<p>Binaries are built for official releases and can be found at <a href="https://github.com/libsdl-org/SDL/releases">The GitHub
+Page</a></p>
+<h3 id="macos">macOS</h3>
+<p>You can build for macOS &quot;the Unix way&quot; with the configure or CMake
+scripts, and Xcode projects are also provided. You can ship an
+SDL.framework, or just build the .dylib file and ship it with an
+appropriate install_name to ship beside your program&#39;s binary.</p>
+<p>If you are building &quot;the Unix way,&quot; we encourage you to use <a href="https://github.com/libsdl-org/SDL/blob/SDL2/build-scripts/clang-fat.sh">build-scripts/clang-fat.sh</a>
+in the SDL source tree for your compiler:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="va">CC</span><span class="op">=</span>/where/i/cloned/SDL/build-scripts/clang-fat.sh <span class="ex">../configure</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span></span></code></pre></div>
+<p>This will accomplish two important things. First, it will build an
+x86-64/arm64 &quot;universal&quot; version of the library. Second, it will make
+sure the library is compiled and linked with a good
+<code>-mmacosx-version-min</code> option for each arch, so that the
+library will work on any macOS version back as far as possible,
+regardless of what version of Xcode you compiled on and what platform
+SDK. Without this, you are likely to build something that only works on
+the latest version of macOS!</p>
+<p>SDL2 has dropped support for PowerPC Macs and Mac OS X versions older
+than 10.6 (SDL 1.2 still supports PPC and 10.0, though). That being
+said, some small changes can make it work, but they make the codebase
+uglier for small gains, and it&#39;s getting hard to find older macs to test
+on, so we probably will not be restoring official support.</p>
+<h3 id="haiku">Haiku</h3>
+<p>Build SDL &quot;the Unix way&quot; with the configure or CMake scripts. SDL2
+can be built with either Haiku&#39;s gcc4 compiler or their legacy,
+BeOS-compatible gcc 2.95.</p>
+<p>To build and install SDL locally, run:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> build</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> build</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">../configure</span> <span class="at">--prefix</span><span class="op">=</span><span class="va">$HOME</span>/config/non-packaged</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> install</span></code></pre></div>
+<h3 id="ios">iOS</h3>
+<p>SDL supports iOS 6.1+ and ships with iOS project files (in the
+Xcode-iOS directory) which will produce a static library. This library
+should be usable across all supported iOS devices (including iPhones,
+iPods, and iPads), and the emulator. Just load the Xcode project and
+click &quot;Build.&quot;</p>
+<h3 id="android">Android</h3>
+<p>SDL supports Android 4.1+.</p>
+<p>See <a href="Android.html">Building SDL2 for Android</a>.</p>
+<h3 id="raspberry-pi">Raspberry Pi</h3>
+<p>If you want to build SDL on your Raspberry Pi directly, just build it
+&quot;the Unix way,&quot; as the RPi is, more or less, a standard Linux system. It
+can be built with X11 support, and also can do OpenGL ES rendering
+directly to the screen without an X server, to save resources. In
+theory, Wayland could also be supported, but at the time of this writing
+it doesn&#39;t configure/compile correctly (send patches!).</p>
+<h3 id="nacl">NaCL</h3>
+<p>SDL can target Google Chrome&#39;s Native Client, aka &quot;NaCL&quot;, which is,
+more or less, native binaries as web apps. We&#39;ve tested with &quot;PNaCL&quot;
+specifically, but you can probably make this work with other compilers
+too.</p>
+<p>Please see <a href="https://github.com/libsdl-org/SDL/blob/SDL2/docs/README-nacl.md">docs/README-nacl.md</a>
+for more details, including how to use our build scripts to generate an
+SDL build.</p>
+<h3 id="emscripten">Emscripten</h3>
+<p>SDL, as of 2.0.4, can be built with <a href="https://emscripten.org/">Emscripten</a>, so you can compile your
+SDL2-based C/C++ application to JavaScript/asm.js/WebAssembly, and
+render with OpenGL ES 2 (which becomes WebGL calls in the end). This
+port is currently considered experimental, but is already very
+promising; Humble Bundle is shipping several games as web apps that use
+it.</p>
+<p>This port is generally built &quot;the Unix way,&quot; but with a little
+wrapper script over the configure script or CMake to smooth out some
+quirks. At the end, you should have a libSDL2.a static library to link
+against your Emscripten-compiled app.</p>
+<p>Please see <a href="https://github.com/libsdl-org/SDL/blob/SDL2/docs/README-emscripten.md">docs/README-emscripten.md</a>
+for more details.</p>
+<p>Also note that Emscripten has a simple implementation of SDL 1.2&#39;s
+API built in. This is written by hand in JavaScript and is unrelated to
+the SDL codebase. The SDL2 port literally uses Emscripten to compile
+SDL&#39;s C code and link it to your app.</p>
+<h3 id="nintendo-switch">Nintendo Switch</h3>
+<p>SDL2 runs on the Nintendo Switch! There are commercial games shipping
+with this port. This port is kept in a separate repository, but is
+available for free, under the zlib license, to anyone that is under NDA
+for Switch development with Nintendo. Please contact Ryan (icculus at
+icculus dot org) for details.</p>
+<h3 id="winrtuwpwindows-10">WinRT/UWP/Windows 10</h3>
+<p>There are Visual Studio project files for UWP (using Visual Studio
+2019). These are in the &quot;VisualC-WinRT&quot; directory.</p>
+<h3 id="windows-8winphone">Windows 8/WinPhone</h3>
+<p>We no longer have build environments for Windows 8 or Windows Phone.
+The Win32 targets still support Windows 8.</p>
+<h3 id="qnx">QNX</h3>
+<p>QNX is supported. You can build for this platform &quot;the unix way.&quot;</p>
+<h3 id="ouya">Ouya</h3>
+<p>SDL apps work on the Ouya! Just build like a standard Android
+application and side-load it on the device to test.</p>
+<h3 id="ibm-os2-ecomstation-and-arcaos">IBM OS/2, eComStation and
+ArcaOS</h3>
+<p>OS/2 is supported. You can build for this platform using OpenWatcom
+by running &quot;wmake -f Makefile.os2&quot; from the source directory.</p>
+<h3 id="risc-os">RISC OS</h3>
+<p>RISC OS is supported. You can build for this platform &quot;the unix way&quot;,
+or by using CMake.</p>
+<h3 id="sony-playstation-2">Sony PlayStation 2</h3>
+<p>The PlayStation 2 is supported using a homebrew toolkit. You can
+build for this platform using CMake.</p>
+<h3 id="sony-playstation-portable">Sony PlayStation Portable</h3>
+<p>The PlayStation Portable is supported using a homebrew toolkit. You
+can build for this platform using CMake.</p>
+<h3 id="sony-playstation-vita">Sony PlayStation Vita</h3>
+<p>The PlayStation Vita is supported using a homebrew toolkit. You can
+build for this platform using CMake.</p>
+<h2 id="not-supported-or-abandoned">Not supported or abandoned</h2>
+<p>If your favorite system is listed below, we aren&#39;t working on it. If
+you send reasonable patches, we are happy to take a look, though! SDL
+1.2&#39;s API and feature set is different than SDL 2 (dramatically
+different in some cases), but it&#39;s possible that 1.2 still supports some
+of these systems.</p>
+<h3 id="consoles-playstation-xbox-wii-etc">Consoles (PlayStation, XBox,
+Wii, etc)</h3>
+<p>SDL2 does not currently support (most of) these platforms, but we&#39;d
+really like to! If you work for Sony, Microsoft, or Nintendo, we would
+like to port SDL2 to these platforms and provide support to registered
+developers in a separate repository. Please get in touch with us!</p>
+<h3 id="nintendo-ds">Nintendo DS</h3>
+<p>This worked at some point using a homebrew toolkit, but we removed it
+due to bitrot. There&#39;s some rudimentary support in SDL 1.2.</p>
+<h3 id="pandora-and-gp2x-wiz">Pandora and GP2X Wiz</h3>
+<p>This worked at some point.</p>
+<h3 id="beos">BeOS</h3>
+<p>Support was removed in SDL 2.0.2. SDL 1.2 still supports BeOS. Haiku,
+a modern open-source OS that can run BeOS binaries, is still
+supported.</p>
+<h3 id="mac-os-9-mac-os-classic">Mac OS 9 (&quot;Mac OS Classic&quot;)</h3>
+<p>Support was removed in SDL 2.0. SDL 1.2 still supports Mac OS
+Classic.</p>
+<h3 id="windows-9598me">Windows 95/98/ME</h3>
+<p>Support was removed in SDL 2.0 (Windows XP and later are supported).
+SDL 1.2 still supports Win9x.</p>
+<h3 id="amigaos-and-morphos">AmigaOS and MorphOS</h3>
+<p>Support was removed in SDL 2.0 (and later versions of 1.2, too).
+There are forks of SDL 1.2 and 2.0 that support them, though.</p>
+<h3 id="dreamcast">Dreamcast</h3>
+<p>Support was removed in SDL 2.0. SDL 1.2 had limited homebrew support
+for the Dreamcast.</p>
+<h3 id="atari-mint">Atari MiNT</h3>
+<p>Support was removed in SDL 2.0. SDL 1.2 still supports it.</p>
+<h3 id="symbian">Symbian</h3>
+<p>Support was removed in SDL 2.0. SDL 1.2 still supports it.</p>
+</body>
+</html>

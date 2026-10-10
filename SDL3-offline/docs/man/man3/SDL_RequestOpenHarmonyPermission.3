@@ -1,0 +1,59 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_RequestOpenHarmonyPermission:
+.\"   https://wiki.libsdl.org/SDL_RequestOpenHarmonyPermission
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_RequestOpenHarmonyPermission
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_RequestOpenHarmonyPermission 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_RequestOpenHarmonyPermission \- Request permissions at runtime, asynchronously.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_system.h>
+.PP
+.BI "bool SDL_RequestOpenHarmonyPermission(const char *permission, SDL_RequestOpenHarmonyPermissionCallback cb, void *userdata);
+.fi
+.SH DESCRIPTION
+You do not need to call this for built-in functionality of SDL; recording from a microphone or reading images from a camera, using standard SDL APIs, will manage permission requests for you\[char46]
+.PP
+This function never blocks\[char46] Instead, the app-supplied callback will be called when a decision has been made\[char46] This callback may happen on a different thread, and possibly much later, as it might wait on a user to respond to a system dialog\[char46] If permission has already been granted for a specific entitlement, the callback will still fire, probably on the current thread and before this function returns\[char46]
+.PP
+If the request submission fails, this function returns false and the callback will NOT be called, but this should only happen in catastrophic conditions, like memory running out\[char46] Normally there will be a yes or no to the request through the callback\[char46]
+.PP
+For the
+.BR permission
+parameter, choose a value from here:
+.PP
+https://developer\[char46]huawei\[char46]com/consumer/en/doc/harmonyos-guides/app-permissions
+.PP
+Strings should be in the form of \(dqohos\[char46]permission\[char46]PERMISSION_NAME\(dq\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I permission
+the permission to request\[char46]
+.TP
+.I cb
+the callback to trigger when the request has a response\[char46]
+.TP
+.I userdata
+an app-controlled pointer that is passed to the callback\[char46]
+.SH RETURN VALUE
+Returns true if the request was submitted, false if there was an error submitting\[char46] The result of the request is only ever reported through the callback, not this return value\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]6\[char46]0\[char46]
+

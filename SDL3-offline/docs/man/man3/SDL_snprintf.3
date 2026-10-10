@@ -1,0 +1,64 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_snprintf:
+.\"   https://wiki.libsdl.org/SDL_snprintf
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_snprintf
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_snprintf 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_snprintf \- This works exactly like snprintf() but doesn\(aqt require access to a C runtime.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "int SDL_snprintf(char *text, size_t maxlen, const char *fmt, ...);
+.fi
+.SH DESCRIPTION
+Format a string of up to
+.BR maxlen -1
+bytes, converting each \(aq%\(aq item with values provided through variable arguments\[char46]
+.PP
+While some C runtimes differ on how to deal with too-large strings, this function null-terminates the output, by treating the null-terminator as part of the
+.BR maxlen
+count\[char46] Note that if
+.BR maxlen
+is zero, however, no bytes will be written at all\[char46]
+.PP
+This function returns the number of _bytes_ (not _characters_) that should be written, excluding the null-terminator character\[char46] If this returns a number >=
+.BR maxlen ,
+it means the output string was truncated\[char46] A negative return value means an error occurred\[char46]
+.PP
+Referencing the output string\(aqs pointer with a format item is undefined behavior\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I text
+the buffer to write the string into\[char46] Must not be NULL\[char46]
+.TP
+.I maxlen
+the maximum bytes to write, including the null-terminator\[char46]
+.TP
+.I fmt
+a printf-style format string\[char46] Must not be NULL\[char46]
+.TP
+.I ...
+a list of values to be used with the format string\[char46]
+.SH RETURN VALUE
+Returns the number of bytes that should be written, not counting the null-terminator char, or a negative value on error\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+

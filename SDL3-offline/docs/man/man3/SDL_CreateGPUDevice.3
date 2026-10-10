@@ -1,0 +1,64 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_CreateGPUDevice:
+.\"   https://wiki.libsdl.org/SDL_CreateGPUDevice
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_CreateGPUDevice
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_CreateGPUDevice 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_CreateGPUDevice \- Creates a GPU context.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_gpu.h>
+.PP
+.BI "SDL_GPUDevice * SDL_CreateGPUDevice(
+.BI "    SDL_GPUShaderFormat format_flags,
+.BI "    bool debug_mode,
+.BI "    const char *name);
+.fi
+.SH DESCRIPTION
+The GPU driver name can be one of the following:
+.PP
+
+\(bu \(dqvulkan\(dq: [Vulkan](CategoryGPU#vulkan)
+.PP
+\(bu \(dqdirect3d12\(dq: [D3D12](CategoryGPU#d3d12)
+.PP
+\(bu \(dqmetal\(dq: [Metal](CategoryGPU#metal)
+.PP
+\(bu NULL: let SDL pick the optimal driver
+
+.SH FUNCTION PARAMETERS
+.TP
+.I format_flags
+a bitflag indicating which shader formats the app is able to provide\[char46]
+.TP
+.I debug_mode
+enable debug mode properties and validations\[char46]
+.TP
+.I name
+the preferred GPU driver, or NULL to let SDL pick the optimal driver\[char46]
+.SH RETURN VALUE
+Returns a GPU context on success or NULL on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_CreateGPUDeviceWithProperties (3),
+.BR SDL_GetGPUShaderFormats (3),
+.BR SDL_GetGPUDeviceDriver (3),
+.BR SDL_DestroyGPUDevice (3),
+.BR SDL_GPUSupportsShaderFormats (3)

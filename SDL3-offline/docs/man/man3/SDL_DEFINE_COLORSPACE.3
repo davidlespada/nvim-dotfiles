@@ -1,0 +1,86 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_DEFINE_COLORSPACE:
+.\"   https://wiki.libsdl.org/SDL_DEFINE_COLORSPACE
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_DEFINE_COLORSPACE
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_DEFINE_COLORSPACE 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_DEFINE_COLORSPACE \- A macro for defining custom
+.BR SDL_Colorspace
+formats.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_pixels.h>
+.PP
+.BI "#define SDL_DEFINE_COLORSPACE(type, range, primaries, transfer, matrix, chroma) \(rs
+.BI "    (((Uint32)(type) << 28) | ((Uint32)(range) << 24) | ((Uint32)(chroma) << 20) | \(rs
+.BI "    ((Uint32)(primaries) << 10) | ((Uint32)(transfer) << 5) | ((Uint32)(matrix) << 0))
+.fi
+.SH DESCRIPTION
+For example, defining
+.BR SDL_COLORSPACE_SRGB
+looks like this:
+
+.IP
+.EX
+SDL_DEFINE_COLORSPACE(SDL_COLOR_TYPE_RGB,
+                      SDL_COLOR_RANGE_FULL,
+                      SDL_COLOR_PRIMARIES_BT709,
+                      SDL_TRANSFER_CHARACTERISTICS_SRGB,
+                      SDL_MATRIX_COEFFICIENTS_IDENTITY,
+                      SDL_CHROMA_LOCATION_NONE)
+.EE
+.PP
+
+.SH MACRO PARAMETERS
+.TP
+.I type
+the type of the new format, probably an
+.BR SDL_ColorType
+value\[char46]
+.TP
+.I range
+the range of the new format, probably a
+.BR SDL_ColorRange
+value\[char46]
+.TP
+.I primaries
+the primaries of the new format, probably an
+.BR SDL_ColorPrimaries
+value\[char46]
+.TP
+.I transfer
+the transfer characteristics of the new format, probably an
+.BR SDL_TransferCharacteristics
+value\[char46]
+.TP
+.I matrix
+the matrix coefficients of the new format, probably an
+.BR SDL_MatrixCoefficients
+value\[char46]
+.TP
+.I chroma
+the chroma sample location of the new format, probably an
+.BR SDL_ChromaLocation
+value\[char46]
+.SH RETURN VALUE
+Returns a format value in the style of
+.BR SDL_Colorspace \[char46]
+
+.SH THREAD SAFETY
+It is safe to call this macro from any thread\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+

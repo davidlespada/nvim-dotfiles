@@ -1,0 +1,59 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_RenderReadPixels:
+.\"   https://wiki.libsdl.org/SDL_RenderReadPixels
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_RenderReadPixels
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_RenderReadPixels 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_RenderReadPixels \- Read pixels from the current rendering target.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_render.h>
+.PP
+.BI "SDL_Surface * SDL_RenderReadPixels(SDL_Renderer *renderer, const SDL_Rect *rect);
+.fi
+.SH DESCRIPTION
+The returned surface contains pixels inside the desired area clipped to the current viewport, and should be freed with
+.BR SDL_DestroySurface ()\[char46]
+.PP
+Note that this returns the actual pixels on the screen, so if you are using logical presentation you should use
+.BR SDL_GetRenderLogicalPresentationRect ()
+to get the area containing your content\[char46]
+.PP
+.BR WARNING :
+This is a very slow operation, and should not be used frequently\[char46] If you\(aqre using this on the main rendering target, it should be called after rendering and before
+.BR SDL_RenderPresent ()\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I renderer
+the rendering context\[char46]
+.TP
+.I rect
+an
+.BR SDL_Rect
+structure representing the area to read, which will be clipped to the current viewport, or NULL for the entire viewport\[char46]
+.SH RETURN VALUE
+Returns a new
+.BR SDL_Surface
+on success or NULL on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH THREAD SAFETY
+This function should only be called on the main thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+

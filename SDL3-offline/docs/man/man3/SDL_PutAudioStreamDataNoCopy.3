@@ -1,0 +1,75 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_PutAudioStreamDataNoCopy:
+.\"   https://wiki.libsdl.org/SDL_PutAudioStreamDataNoCopy
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_PutAudioStreamDataNoCopy
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_PutAudioStreamDataNoCopy 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_PutAudioStreamDataNoCopy \- Add external data to an audio stream without copying it.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_audio.h>
+.PP
+.BI "bool SDL_PutAudioStreamDataNoCopy(SDL_AudioStream *stream, const void *buf, int len, SDL_AudioStreamDataCompleteCallback callback, void *userdata);
+.fi
+.SH DESCRIPTION
+Unlike
+.BR SDL_PutAudioStreamData (),
+this function does not make a copy of the provided data, instead storing the provided pointer\[char46] This means that the put operation does not need to allocate and copy the data, but the original data must remain available until the stream is done with it, either by being read from the stream in its entirety, or a call to
+.BR SDL_ClearAudioStream ()
+or
+.BR SDL_DestroyAudioStream ()\[char46]
+.PP
+The data must match the format/channels/samplerate specified in the latest call to
+.BR SDL_SetAudioStreamFormat ,
+or the format specified when creating the stream if it hasn\(aqt been changed\[char46]
+.PP
+An optional callback may be provided, which is called when the stream no longer needs the data\[char46] Once this callback fires, the stream will not access the data again\[char46] This callback will fire for any reason the data is no longer needed, including clearing or destroying the stream\[char46]
+.PP
+Note that there is still an allocation to store tracking information, so this function is more efficient for larger blocks of data\[char46] If you\(aqre planning to put a few samples at a time, it will be more efficient to use
+.BR SDL_PutAudioStreamData (),
+which allocates and buffers in blocks\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I stream
+the stream the audio data is being added to\[char46]
+.TP
+.I buf
+a pointer to the audio data to add\[char46]
+.TP
+.I len
+the number of bytes to add to the stream\[char46]
+.TP
+.I callback
+the callback function to call when the data is no longer needed by the stream\[char46] May be NULL\[char46]
+.TP
+.I userdata
+an opaque pointer provided to the callback for its own personal use\[char46]
+.SH RETURN VALUE
+Returns true on success or false on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread, but if the stream has a callback set, the caller might need to manage extra locking\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]4\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_ClearAudioStream (3),
+.BR SDL_FlushAudioStream (3),
+.BR SDL_GetAudioStreamData (3),
+.BR SDL_GetAudioStreamQueued (3)

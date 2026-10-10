@@ -1,0 +1,46 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_AcquireGPUCommandBuffer:
+.\"   https://wiki.libsdl.org/SDL_AcquireGPUCommandBuffer
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_AcquireGPUCommandBuffer
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_AcquireGPUCommandBuffer 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_AcquireGPUCommandBuffer \- Acquire a command buffer.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_gpu.h>
+.PP
+.BI "SDL_GPUCommandBuffer * SDL_AcquireGPUCommandBuffer(
+.BI "    SDL_GPUDevice *device);
+.fi
+.SH DESCRIPTION
+This command buffer is managed by the implementation and should not be freed by the user\[char46] The command buffer may only be used on the thread it was acquired on\[char46] The command buffer should be submitted on the thread it was acquired on\[char46]
+.PP
+It is valid to acquire multiple command buffers on the same thread at once\[char46] In fact a common design pattern is to acquire two command buffers per frame where one is dedicated to render and compute passes and the other is dedicated to copy passes and other preparatory work such as generating mipmaps\[char46] Interleaving commands between the two command buffers reduces the total amount of passes overall which improves rendering performance\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I device
+a GPU context\[char46]
+.SH RETURN VALUE
+Returns a command buffer, or NULL on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_SubmitGPUCommandBuffer (3),
+.BR SDL_SubmitGPUCommandBufferAndAcquireFence (3)

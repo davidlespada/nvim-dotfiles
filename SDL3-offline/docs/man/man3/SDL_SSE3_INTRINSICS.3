@@ -1,0 +1,37 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_SSE3_INTRINSICS:
+.\"   https://wiki.libsdl.org/SDL_SSE3_INTRINSICS
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_SSE3_INTRINSICS
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_SSE3_INTRINSICS 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_SSE3_INTRINSICS \- Defined if (and only if) the compiler supports Intel SSE3 intrinsics.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_intrin.h>
+.PP
+.BI "#define SDL_SSE3_INTRINSICS 1
+.fi
+.SH DESCRIPTION
+If this macro is defined, SDL will have already included
+.BR <pmmintrin\[char46]h>
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_SSE_INTRINSICS (3),
+.BR SDL_SSE2_INTRINSICS (3),
+.BR SDL_SSE4_1_INTRINSICS (3),
+.BR SDL_SSE4_2_INTRINSICS (3)

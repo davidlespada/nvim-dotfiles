@@ -1,0 +1,62 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GetProcessOutput:
+.\"   https://wiki.libsdl.org/SDL_GetProcessOutput
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GetProcessOutput
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GetProcessOutput 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_GetProcessOutput \- Get the
+.BR SDL_IOStream
+associated with process standard output.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_process.h>
+.PP
+.BI "SDL_IOStream * SDL_GetProcessOutput(SDL_Process *process);
+.fi
+.SH DESCRIPTION
+The process must have been created with
+.BR SDL_CreateProcess ()
+and pipe_stdio set to true, or with
+.BR SDL_CreateProcessWithProperties ()
+and
+.BR SDL_PROP_PROCESS_CREATE_STDOUT_NUMBER
+set to
+.BR SDL_PROCESS_STDIO_APP \[char46]
+.PP
+Reading from this stream can return 0 with
+.BR SDL_GetIOStatus ()
+returning
+.BR SDL_IO_STATUS_NOT_READY
+if no output is available yet\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I process
+The process to get the output stream for\[char46]
+.SH RETURN VALUE
+Returns the output stream or NULL on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_CreateProcess (3),
+.BR SDL_CreateProcessWithProperties (3),
+.BR SDL_GetProcessInput (3)

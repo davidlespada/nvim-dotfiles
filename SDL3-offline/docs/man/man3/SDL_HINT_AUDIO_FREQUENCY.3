@@ -1,0 +1,33 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_HINT_AUDIO_FREQUENCY:
+.\"   https://wiki.libsdl.org/SDL_HINT_AUDIO_FREQUENCY
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_HINT_AUDIO_FREQUENCY
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_HINT_AUDIO_FREQUENCY 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_HINT_AUDIO_FREQUENCY \- A variable controlling the default audio frequency.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_hints.h>
+.PP
+.BI "#define SDL_HINT_AUDIO_FREQUENCY \(dqSDL_AUDIO_FREQUENCY\(dq
+.fi
+.SH DESCRIPTION
+If the application doesn\(aqt specify the audio frequency when opening the device, this hint can be used to specify a default frequency that will be used\[char46] This defaults to \(dq44100\(dq\[char46]
+.PP
+This hint should be set before an audio device is opened\[char46]
+
+.SH AVAILABILITY
+This hint is available since SDL 3\[char46]2\[char46]0\[char46]
+

@@ -1,0 +1,55 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_murmur3_32:
+.\"   https://wiki.libsdl.org/SDL_murmur3_32
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_murmur3_32
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_murmur3_32 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_murmur3_32 \- Calculate a 32-bit MurmurHash3 value for a block of data.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "Uint32 SDL_murmur3_32(const void *data, size_t len, Uint32 seed);
+.fi
+.SH DESCRIPTION
+https://en\[char46]wikipedia\[char46]org/wiki/MurmurHash
+.PP
+A seed may be specified, which changes the final results consistently, but this does not work like
+.BR SDL_crc16
+and
+.BR SDL_crc32 :
+you can\(aqt feed a previous result from this function back into itself as the next seed value to calculate a hash in chunks; it won\(aqt produce the same hash as it would if the same data was provided in a single call\[char46]
+.PP
+If you aren\(aqt sure what to provide for a seed, zero is fine\[char46] Murmur3 is not cryptographically secure, so it shouldn\(aqt be used for hashing top-secret data\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I data
+the data to be hashed\[char46]
+.TP
+.I len
+the size of data, in bytes\[char46]
+.TP
+.I seed
+a value that alters the final hash value\[char46]
+.SH RETURN VALUE
+Returns a Murmur3 32-bit hash value\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+

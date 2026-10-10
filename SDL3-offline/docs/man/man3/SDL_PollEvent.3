@@ -1,0 +1,83 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_PollEvent:
+.\"   https://wiki.libsdl.org/SDL_PollEvent
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_PollEvent
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_PollEvent 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_PollEvent \- Poll for currently pending events.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_events.h>
+.PP
+.BI "bool SDL_PollEvent(SDL_Event *event);
+.fi
+.SH DESCRIPTION
+If
+.BR event
+is not NULL, the next event is removed from the queue and stored in the
+.BR SDL_Event
+structure pointed to by
+.BR event \[char46]
+.PP
+If
+.BR event
+is NULL, it simply returns true if there is an event in the queue, but will not remove it from the queue\[char46]
+.PP
+As this function may implicitly call
+.BR SDL_PumpEvents (),
+you can only call this function in the thread that initialized the video subsystem\[char46]
+.PP
+
+.BR SDL_PollEvent ()
+is the favored way of receiving system events since it can be done from the main loop and does not suspend the main loop while waiting on an event to be posted\[char46]
+.PP
+The common practice is to fully process the event queue once every frame, usually as a first step before updating the game\(aqs state:
+
+.IP
+.EX
+while (game_is_still_running) {
+    SDL_Event event;
+    while (SDL_PollEvent(&event)) {  // poll until all events are handled!
+        // decide what to do with this event.
+    }
+
+    // update game state, draw the current frame
+}
+.EE
+.PP
+
+Note that Windows (and possibly other platforms) has a quirk about how it handles events while dragging/resizing a window, which can cause this function to block for significant amounts of time\[char46] Technical explanations and solutions are discussed on the wiki:
+.PP
+https://wiki\[char46]libsdl\[char46]org/SDL3/AppFreezeDuringDrag
+
+.SH FUNCTION PARAMETERS
+.TP
+.I event
+the
+.BR SDL_Event
+structure to be filled with the next event from the queue, or NULL\[char46]
+.SH RETURN VALUE
+Returns true if this got an event or false if there are none available\[char46]
+
+.SH THREAD SAFETY
+This function should only be called on the main thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_PushEvent (3),
+.BR SDL_WaitEvent (3),
+.BR SDL_WaitEventTimeout (3)

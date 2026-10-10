@@ -1,0 +1,62 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_DrawGPUIndexedPrimitives:
+.\"   https://wiki.libsdl.org/SDL_DrawGPUIndexedPrimitives
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_DrawGPUIndexedPrimitives
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_DrawGPUIndexedPrimitives 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_DrawGPUIndexedPrimitives \- Draws data using bound graphics state with an index buffer and instancing enabled.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_gpu.h>
+.PP
+.BI "void SDL_DrawGPUIndexedPrimitives(
+.BI "    SDL_GPURenderPass *render_pass,
+.BI "    Uint32 num_indices,
+.BI "    Uint32 num_instances,
+.BI "    Uint32 first_index,
+.BI "    Sint32 vertex_offset,
+.BI "    Uint32 first_instance);
+.fi
+.SH DESCRIPTION
+You must not call this function before binding a graphics pipeline\[char46]
+.PP
+Note that the
+.BR first_vertex
+and
+.BR first_instance
+parameters are NOT compatible with built-in vertex/instance ID variables in shaders (for example, SV_VertexID); GPU APIs and shader languages do not define these built-in variables consistently, so if your shader depends on them, the only way to keep behavior consistent and portable is to always pass 0 for the correlating parameter in the draw calls\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I render_pass
+a render pass handle\[char46]
+.TP
+.I num_indices
+the number of indices to draw per instance\[char46]
+.TP
+.I num_instances
+the number of instances to draw\[char46]
+.TP
+.I first_index
+the starting index within the index buffer\[char46]
+.TP
+.I vertex_offset
+value added to vertex index before indexing into the vertex buffer\[char46]
+.TP
+.I first_instance
+the ID of the first instance to draw\[char46]
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+

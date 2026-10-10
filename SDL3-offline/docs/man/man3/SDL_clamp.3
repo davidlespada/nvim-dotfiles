@@ -1,0 +1,70 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_clamp:
+.\"   https://wiki.libsdl.org/SDL_clamp
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_clamp
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_clamp 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_clamp \- Return a value clamped to a range.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "#define SDL_clamp(x, a, b) (((x) < (a)) ? (a) : (((x) > (b)) ? (b) : (x)))
+.fi
+.SH DESCRIPTION
+If
+.BR x
+is outside the range a values between
+.BR a
+and
+.BR b ,
+the returned value will be
+.BR a
+or
+.BR b
+as appropriate\[char46] Otherwise,
+.BR x
+is returned\[char46]
+.PP
+This macro will produce incorrect results if
+.BR b
+is less than
+.BR a \[char46]
+.PP
+This is a helper macro that might be more clear than writing out the comparisons directly, and works with any type that can be compared with the
+.BR <
+and
+.BR >
+operators\[char46] However, it double-evaluates all its parameters, so do not use expressions with side-effects here\[char46]
+
+.SH MACRO PARAMETERS
+.TP
+.I x
+the value to compare\[char46]
+.TP
+.I a
+the low end value\[char46]
+.TP
+.I b
+the high end value\[char46]
+.SH RETURN VALUE
+Returns x, clamped between a and b\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this macro from any thread\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+

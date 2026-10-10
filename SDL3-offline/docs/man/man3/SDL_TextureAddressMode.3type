@@ -1,0 +1,43 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_TextureAddressMode:
+.\"   https://wiki.libsdl.org/SDL_TextureAddressMode
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_TextureAddressMode
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_TextureAddressMode 3type "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 DATATYPES"
+.SH NAME
+SDL_TextureAddressMode \- The addressing mode for a texture when used in
+.BR SDL_RenderGeometry ().
+
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_render.h>
+.PP
+.BI "typedef enum SDL_TextureAddressMode
+.BI "{
+.BI "    SDL_TEXTURE_ADDRESS_INVALID = -1,
+.BI "    SDL_TEXTURE_ADDRESS_AUTO,   /**< Wrapping is enabled if texture coordinates are outside [0, 1], this is the default */
+.BI "    SDL_TEXTURE_ADDRESS_CLAMP,  /**< Texture coordinates are clamped to the [0, 1] range */
+.BI "    SDL_TEXTURE_ADDRESS_WRAP    /**< The texture is repeated (tiled) */
+.BI "} SDL_TextureAddressMode;
+.fi
+.SH DESCRIPTION
+This affects how texture coordinates are interpreted outside of [0, 1]
+.PP
+Texture wrapping is always supported for power of two texture sizes, and is supported for other texture sizes if
+.BR SDL_PROP_RENDERER_TEXTURE_WRAPPING_BOOLEAN
+is set to true\[char46]
+
+.SH AVAILABILITY
+This enum is available since SDL 3\[char46]4\[char46]0\[char46]
+

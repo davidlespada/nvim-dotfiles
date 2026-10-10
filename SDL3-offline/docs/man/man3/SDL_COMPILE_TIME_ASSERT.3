@@ -1,0 +1,59 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_COMPILE_TIME_ASSERT:
+.\"   https://wiki.libsdl.org/SDL_COMPILE_TIME_ASSERT
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_COMPILE_TIME_ASSERT
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_COMPILE_TIME_ASSERT 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_COMPILE_TIME_ASSERT \- A compile-time assertion.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "#define SDL_COMPILE_TIME_ASSERT(name, x) FailToCompileIf_x_IsFalse(x)
+.fi
+.SH DESCRIPTION
+This can check constant values _known to the compiler at build time_ for correctness, and end the compile with the error if they fail\[char46]
+.PP
+Often times these are used to verify basic truths, like the size of a datatype is what is expected:
+
+.IP
+.EX
+SDL_COMPILE_TIME_ASSERT(uint32_size, sizeof(Uint32) == 4);
+.EE
+.PP
+
+The
+.BR name
+parameter must be a valid C symbol, and must be unique across all compile-time asserts in the same compilation unit (one run of the compiler), or the build might fail with cryptic errors on some targets\[char46] This is used with a C language trick that works on older compilers that don\(aqt support better assertion techniques\[char46]
+.PP
+If you need an assertion that operates at runtime, on variable data, you should try
+.BR SDL_assert
+instead\[char46]
+
+.SH MACRO PARAMETERS
+.TP
+.I name
+a unique identifier for this assertion\[char46]
+.TP
+.I x
+the value to test\[char46] Must be a boolean value\[char46]
+.SH THREAD SAFETY
+This macro doesn\(aqt generate any code to run\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_assert (3)

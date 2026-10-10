@@ -1,0 +1,53 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_DestroyAsyncIOQueue:
+.\"   https://wiki.libsdl.org/SDL_DestroyAsyncIOQueue
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_DestroyAsyncIOQueue
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_DestroyAsyncIOQueue 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_DestroyAsyncIOQueue \- Destroy a previously-created async I/O task queue.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_asyncio.h>
+.PP
+.BI "void SDL_DestroyAsyncIOQueue(SDL_AsyncIOQueue *queue);
+.fi
+.SH DESCRIPTION
+If there are still tasks pending for this queue, this call will block until those tasks are finished\[char46] All those tasks will be deallocated\[char46] Their results will be lost to the app\[char46]
+.PP
+Any pending reads from
+.BR SDL_LoadFileAsync ()
+that are still in this queue will have their buffers deallocated by this function, to prevent a memory leak\[char46]
+.PP
+Once this function is called, the queue is no longer valid and should not be used, including by other threads that might access it while destruction is blocking on pending tasks\[char46]
+.PP
+Do not destroy a queue that still has threads waiting on it through
+.BR SDL_WaitAsyncIOResult ()\[char46]
+You can call
+.BR SDL_SignalAsyncIOQueue ()
+first to unblock those threads, and take measures (such as
+.BR SDL_WaitThread ())
+to make sure they have finished their wait and won\(aqt wait on the queue again\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I queue
+the task queue to destroy\[char46]
+.SH THREAD SAFETY
+It is safe to call this function from any thread, so long as no other thread is waiting on the queue with
+.BR SDL_WaitAsyncIOResult \[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+

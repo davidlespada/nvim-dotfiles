@@ -1,0 +1,40 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_HINT_JOYSTICK_HIDAPI_GIP_RESET_FOR_METADATA:
+.\"   https://wiki.libsdl.org/SDL_HINT_JOYSTICK_HIDAPI_GIP_RESET_FOR_METADATA
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_HINT_JOYSTICK_HIDAPI_GIP_RESET_FOR_METADATA
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_HINT_JOYSTICK_HIDAPI_GIP_RESET_FOR_METADATA 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_HINT_JOYSTICK_HIDAPI_GIP_RESET_FOR_METADATA \- A variable controlling whether the new HIDAPI driver for wired Xbox One (GIP) controllers should reset the controller if it can\(aqt get the metadata from the controller.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_hints.h>
+.PP
+.BI "#define SDL_HINT_JOYSTICK_HIDAPI_GIP_RESET_FOR_METADATA \(dqSDL_JOYSTICK_HIDAPI_GIP_RESET_FOR_METADATA\(dq
+.fi
+.SH DESCRIPTION
+The variable can be set to the following values:
+.PP
+
+\(bu \(dq0\(dq: Assume this is a generic controller\[char46]
+.PP
+\(bu \(dq1\(dq: Reset the controller to get metadata\[char46]
+.PP
+By default the controller is reset\[char46] This is so we can properly detect the controller type\[char46]
+.PP
+This hint should be set before initializing joysticks and gamepads\[char46]
+
+.SH AVAILABILITY
+This hint is available since SDL 3\[char46]4\[char46]0\[char46]
+

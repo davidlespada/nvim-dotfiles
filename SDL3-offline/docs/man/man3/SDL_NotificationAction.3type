@@ -1,0 +1,48 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_NotificationAction:
+.\"   https://wiki.libsdl.org/SDL_NotificationAction
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_NotificationAction
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_NotificationAction 3type "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 DATATYPES"
+.SH NAME
+SDL_NotificationAction \- Notification structure describing actions that can be used to allow users to interact with notification dialogs.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_notification.h>
+.PP
+.BI "typedef union SDL_NotificationAction
+.BI "{
+.BI "    SDL_NotificationActionType type;
+.BI "
+.BI "    struct
+.BI "    {
+.BI "        SDL_NotificationActionType type; /**< SDL_NOTIFICATION_ACTION_TYPE_BUTTON */
+.BI "        const char *action_id;           /**< The identifier string for the button. 'default' is a reserved identifier and must not be used. */
+.BI "        const char *action_label;        /**< The localized label for the button associated with the action, in UTF-8 encoding. */
+.BI "    } button;
+.BI "
+.BI "    Uint8 padding[128];
+.BI "} SDL_NotificationAction;
+.fi
+.SH DESCRIPTION
+Exactly How they are presented depends on the platform and implementation\[char46]
+.PP
+User interactions with a notification are reported via events with the type
+.BR SDL_EVENT_NOTIFICATION_ACTION_INVOKED \[char46]
+.PP
+Action types: - button: A button with a localized text label, which generates feedback when activated\[char46]
+
+.SH SEE ALSO
+.BR SDL_NotificationEvent (3type),
+.BR SDL_NotificationActionType (3)

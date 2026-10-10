@@ -1,0 +1,44 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_assert_always:
+.\"   https://wiki.libsdl.org/SDL_assert_always
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_assert_always
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_assert_always 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_assert_always \- An assertion test that is always performed.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_assert.h>
+.PP
+.BI "#define SDL_assert_always(condition) SDL_enabled_assert(condition)
+.fi
+.SH DESCRIPTION
+This macro is always enabled no matter what
+.BR SDL_ASSERT_LEVEL
+is set to\[char46] You almost never want to use this, as it could trigger on an end-user\(aqs system, crashing your program\[char46]
+.PP
+One can set the environment variable
+.BR "" \(dq SDL_ASSERT \(dq
+to one of several strings (\(dqabort\(dq, \(dqbreak\(dq, \(dqretry\(dq, \(dqignore\(dq, \(dqalways_ignore\(dq) to force a default behavior, which may be desirable for automation purposes\[char46] If your platform requires GUI interfaces to happen on the main thread but you\(aqre debugging an assertion in a background thread, it might be desirable to set this to \(dqbreak\(dq so that your debugger takes control as soon as assert is triggered, instead of risking a bad UI interaction (deadlock, etc) in the application\[char46]
+
+.SH MACRO PARAMETERS
+.TP
+.I condition
+boolean value to test\[char46]
+.SH THREAD SAFETY
+It is safe to call this macro from any thread\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]2\[char46]0\[char46]
+

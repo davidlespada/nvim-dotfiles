@@ -1,0 +1,89 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_SetAppMetadataProperty:
+.\"   https://wiki.libsdl.org/SDL_SetAppMetadataProperty
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_SetAppMetadataProperty
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_SetAppMetadataProperty 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_SetAppMetadataProperty \- Specify metadata about your app through a set of properties.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_init.h>
+.PP
+.BI "bool SDL_SetAppMetadataProperty(const char *name, const char *value);
+.fi
+.SH DESCRIPTION
+You can optionally provide metadata about your app to SDL\[char46] This is not required, but strongly encouraged\[char46]
+.PP
+There are several locations where SDL can make use of metadata (an \(dqAbout\(dq box in the macOS menu bar, the name of the app can be shown on some audio mixers, etc)\[char46] Any piece of metadata can be left out, if a specific detail doesn\(aqt make sense for the app\[char46]
+.PP
+This function should be called as early as possible, before
+.BR SDL_Init \[char46]
+Multiple calls to this function are allowed, but various state might not change once it has been set up with a previous call to this function\[char46]
+.PP
+Once set, this metadata can be read using
+.BR SDL_GetAppMetadataProperty ()\[char46]
+.PP
+These are the supported properties:
+.PP
+
+\(bu
+.BR SDL_PROP_APP_METADATA_NAME_STRING :
+The human-readable name of the application, like \(dqMy Game 2: Bad Guy\(aqs Revenge!\(dq\[char46] This will show up anywhere the OS shows the name of the application separately from window titles, such as volume control applets, etc\[char46] If not provided by the app, SDL will attempt to pick a reasonable default (the app\(aqs binary\(aqs name if the platform can provide it, or \(dqSDL Application\(dq if all else fails)\[char46]
+.PP
+\(bu
+.BR SDL_PROP_APP_METADATA_VERSION_STRING :
+The version of the app that is running; there are no rules on format, so \(dq1\[char46]0\[char46]3beta2\(dq and \(dqApril 22nd, 2024\(dq and a git hash are all valid options\[char46] This has no default\[char46]
+.PP
+\(bu
+.BR SDL_PROP_APP_METADATA_IDENTIFIER_STRING :
+A unique string that identifies this app\[char46] This must be in reverse-domain format, like \(dqcom\[char46]example\[char46]mygame2\(dq\[char46] This string is used by desktop compositors to identify and group windows together, as well as match applications with associated desktop settings and icons\[char46] If you plan to package your application in a container such as Flatpak, the app ID should match the name of your Flatpak container as well\[char46] This has no default\[char46]
+.PP
+\(bu
+.BR SDL_PROP_APP_METADATA_CREATOR_STRING :
+The human-readable name of the creator/developer/maker of this app, like \(dqMojoWorkshop, LLC\(dq
+.PP
+\(bu
+.BR SDL_PROP_APP_METADATA_COPYRIGHT_STRING :
+The human-readable copyright notice, like \(dqCopyright (c) 2024 MojoWorkshop, LLC\(dq or whatnot\[char46] Keep this to one line, don\(aqt paste a copy of a whole software license in here\[char46] This has no default\[char46]
+.PP
+\(bu
+.BR SDL_PROP_APP_METADATA_URL_STRING :
+A URL to the app on the web\[char46] Maybe a product page, or a storefront, or even a GitHub repository, for user\(aqs further information This has no default\[char46]
+.PP
+\(bu
+.BR SDL_PROP_APP_METADATA_TYPE_STRING :
+The type of application this is\[char46] Currently this string can be \(dqgame\(dq for a video game, \(dqmediaplayer\(dq for a media player, or generically \(dqapplication\(dq if nothing else applies\[char46] Future versions of SDL might add new types\[char46] This defaults to \(dqapplication\(dq\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I name
+the name of the metadata property to set\[char46]
+.TP
+.I value
+the value of the property, or NULL to remove that property\[char46]
+.SH RETURN VALUE
+Returns true on success or false on failure; call
+.BR SDL_GetError ()
+for more information\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_GetAppMetadataProperty (3),
+.BR SDL_SetAppMetadata (3)

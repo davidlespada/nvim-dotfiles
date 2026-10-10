@@ -1,0 +1,60 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GetRelativeMouseState:
+.\"   https://wiki.libsdl.org/SDL_GetRelativeMouseState
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GetRelativeMouseState
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GetRelativeMouseState 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_GetRelativeMouseState \- Query SDL\(aqs cache for the synchronous mouse button state and accumulated mouse delta since last call.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_mouse.h>
+.PP
+.BI "SDL_MouseButtonFlags SDL_GetRelativeMouseState(float *x, float *y);
+.fi
+.SH DESCRIPTION
+This function returns the cached synchronous state as SDL understands it from the last pump of the event queue\[char46]
+.PP
+To query the platform for immediate asynchronous state, use
+.BR SDL_GetGlobalMouseState \[char46]
+.PP
+Passing non-NULL pointers to
+.BR x
+or
+.BR y
+will write the destination with respective x or y deltas accumulated since the last call to this function (or since event initialization)\[char46]
+.PP
+This function is useful for reducing overhead by processing relative mouse inputs in one go per-frame instead of individually per-event, at the expense of losing the order between events within the frame (e\[char46]g\[char46] quickly pressing and releasing a button within the same frame)\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I x
+a pointer to receive the x mouse delta accumulated since last call, can be NULL if unused\[char46]
+.TP
+.I y
+a pointer to receive the y mouse delta accumulated since last call, can be NULL if unused\[char46]
+.SH RETURN VALUE
+Returns a 32-bit bitmask of the button state that can be bitwise-compared against the
+.BR SDL_BUTTON_MASK (X)
+macro\[char46]
+
+.SH THREAD SAFETY
+This function should only be called on the main thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_GetMouseState (3),
+.BR SDL_GetGlobalMouseState (3)

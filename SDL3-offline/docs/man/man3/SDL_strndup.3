@@ -1,0 +1,60 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_strndup:
+.\"   https://wiki.libsdl.org/SDL_strndup
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_strndup
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_strndup 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_strndup \- Allocate a copy of a string, up to n characters.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_stdinc.h>
+.PP
+.BI "char * SDL_strndup(const char *str, size_t maxlen);
+.fi
+.SH DESCRIPTION
+This allocates enough space for a null-terminated copy of
+.BR str ,
+up to
+.BR maxlen
+bytes, using
+.BR SDL_malloc ,
+and then makes a copy of the string into this space\[char46]
+.PP
+If the string is longer than
+.BR maxlen
+bytes, the returned string will be
+.BR maxlen
+bytes long, plus a null-terminator character that isn\(aqt included in the count\[char46]
+.PP
+The returned string is owned by the caller, and should be passed to
+.BR SDL_free
+when no longer needed\[char46]
+
+.SH FUNCTION PARAMETERS
+.TP
+.I str
+the string to copy\[char46]
+.TP
+.I maxlen
+the maximum length of the copied string, not counting the null-terminator character\[char46]
+.SH RETURN VALUE
+Returns a pointer to the newly-allocated string\[char46]
+
+.SH THREAD SAFETY
+It is safe to call this function from any thread\[char46]
+
+.SH AVAILABILITY
+This function is available since SDL 3\[char46]2\[char46]0\[char46]
+

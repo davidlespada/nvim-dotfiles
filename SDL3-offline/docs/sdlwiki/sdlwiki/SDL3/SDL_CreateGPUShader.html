@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SDL_CreateGPUShader</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">:root {
+color-scheme: dark light; 
+}
+body {
+background-color: white;
+padding: 2vw;
+color: #333;
+max-width: 1200px;
+margin: 0 auto;
+font-size: 16px;
+line-height: 1.5;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+overflow-wrap: break-word;
+}
+a {
+color: #0969da;
+
+}
+a:visited {
+color: #064998;
+}
+h1 {
+border-bottom: 2px solid #efefef;
+}
+h2 {
+border-bottom: 1px solid #efefef;
+}
+p {
+max-width: 85ch;
+}
+li {
+max-width: 85ch;
+}
+div.sourceCode {
+background-color: #f6f8fa;
+max-width: 100%;
+padding: 16px;
+}
+code {
+background-color: #f6f8fa;
+padding: 0px;
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+"Liberation Mono", monospace;
+}
+table {
+border: 1px solid #808080;
+border-collapse: collapse;
+}
+td {
+border: 1px solid #808080;
+padding: 5px;
+}
+tr:nth-child(even) {
+background-color: #f6f8fa;
+}
+.wikitopbanner {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #efefef;
+padding: 10px;
+margin-bottom: 10px;
+width: auto;
+}
+.wikibottombanner {
+background-color: #efefef;
+padding: 10px;
+margin-top: 10px;
+width: auto;
+}
+.alertBox {
+background-color: #f8d7da;
+border: 1px solid #f5c6cb;
+max-width: 60%;
+padding: 10;
+margin: auto;
+}
+.anchorImage {
+visibility: hidden;
+padding-left: 0.2em;
+color: #fff;
+}
+.anchorText:hover .anchorImage {
+visibility: visible;
+}
+hr {
+display: block;
+height: 1px;
+border: 0;
+border-top: 1px solid #efefef;
+margin: 1em 0;
+padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+body {
+color: #e6edf3;
+background-color: #0d1117;
+}
+h1 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+h2 {
+border-color: rgba(48, 54, 61, 0.7);
+}
+hr {
+border-color: rgba(48, 54, 61, 0.7);
+}
+div.sourceCode {
+background-color: #161b22;
+}
+code {
+background-color: #161b22;
+}
+a {
+color: #4493f8;
+}
+a:visited {
+color: #2f66ad;
+}
+table {
+border-color: rgba(48, 54, 61, 0.7);
+}
+td {
+border-color: rgba(48, 54, 61, 0.7);
+}
+tr:nth-child(even) {
+background-color: #161b22;
+}
+.wikitopbanner {
+background-color: #263040;
+}
+.wikibottombanner {
+background-color: #263040;
+}
+.anchorText:hover .anchorImage {
+filter: invert(100%);
+}
+}
+@media print {
+body {
+font-size: 12px;
+}
+table {
+font-size: inherit;
+}
+a:visited {
+color: #0969da;
+}
+.wikitopbanner,
+.anchorText,
+.wikibottombanner {
+display: none;
+}
+}
+</style>
+  <style type="text/css"> code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+{ position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+{ content: attr(title);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; pointer-events: all; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+@media (prefers-color-scheme: dark) {
+code span.al { color: #95da4c; font-weight: bold; } 
+code span.an { color: #3f8058; } 
+code span.at { color: #2980b9; } 
+code span.bn { color: #f67400; } 
+code span.bu { color: #7f8c8d; } 
+code span.ch { color: #3daee9; } 
+code span.co { color: #7a7c7d; } 
+code span.cv { color: #7f8c8d; } 
+code span.cn { color: #27aeae; font-weight: bold; } 
+code span.cf { color: #fdbc4b; font-weight: bold; } 
+code span.dt { color: #2980b9; } 
+code span.dv { color: #f67400; } 
+code span.do { color: #a43340; } 
+code span.er { color: #da4453; } 
+code span.ex { color: #0099ff; font-weight: bold; } 
+code span.fl { color: #f67400; } 
+code span.fu { color: #8e44ad; } 
+code span.im { color: #27ae60; } 
+code span.in { color: #c45b00; } 
+code span.kw { color: #cfcfc2; font-weight: bold; } 
+code span.op { color: #cfcfc2; } 
+code span.ot { color: #27ae60; } 
+code span.pp { color: #27ae60; } 
+code span.sc { color: #3daee9; } 
+code span.ss { color: #da4453; } 
+code span.st { color: #f44f4f; } 
+code span.va { color: #27aeae; } 
+code span.vs { color: #da4453; } 
+code span.wa { color: #da4453; } 
+}</style>
+</head>
+<body>
+<h1 id="sdl_creategpushader">SDL_CreateGPUShader</h1>
+<p>Creates a shader to be used when creating a graphics pipeline.</p>
+<h2 id="header-file">Header File</h2>
+<p>Defined in <a href="https://github.com/libsdl-org/SDL/blob/main/include/SDL3/SDL_gpu.h">&lt;SDL3/SDL_gpu.h&gt;</a></p>
+<h2 id="syntax">Syntax</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>SDL_GPUShader <span class="op">*</span> SDL_CreateGPUShader<span class="op">(</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    SDL_GPUDevice <span class="op">*</span>device<span class="op">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">const</span> SDL_GPUShaderCreateInfo <span class="op">*</span>createinfo<span class="op">);</span></span></code></pre></div>
+<h2 id="function-parameters">Function Parameters</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td><a href="SDL_GPUDevice.html">SDL_GPUDevice</a> *</td>
+<td><strong>device</strong></td>
+<td>a GPU Context.</td>
+</tr>
+<tr class="even">
+<td>const <a href="SDL_GPUShaderCreateInfo.html">SDL_GPUShaderCreateInfo</a> *</td>
+<td><strong>createinfo</strong></td>
+<td>a struct describing the state of the shader to create.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="return-value">Return Value</h2>
+<p>(<a href="SDL_GPUShader.html">SDL_GPUShader</a> *) Returns a shader
+object on success, or NULL on failure; call <a href="SDL_GetError.html">SDL_GetError</a>() for more information.</p>
+<h2 id="remarks">Remarks</h2>
+<p>Shader resource bindings must be authored to follow a particular
+convention depending on the shader format. See below for details.</p>
+<hr />
+<p><strong>SPIR-V (GLSL)</strong></p>
+<p>For vertex shaders, use: - Set 0 for samplers, storage textures, and
+storage buffers - Set 1 for uniform data</p>
+<p>For fragment shaders, use: - Set 2 for samplers, storage textures,
+and storage buffers - Set 3 for uniform data</p>
+<p>The first resource in a given set must have a <code>binding</code> of
+0. Additional resources must appear at consecutive bindings (1, 2, etc),
+leaving no gaps in the set.</p>
+<p>All samplers must come first in the binding order, in order of how
+they are bound via <code>SDL_BindGPU*Samplers()</code>.</p>
+<p>All storage textures must come after all samplers in the binding
+order, in order of how they are bound via
+<code>SDL_Bind*StorageTextures()</code>.</p>
+<p>All storage buffers must come after all storage textures in the
+binding order, in order of how they are bound via
+<code>SDL_Bind*StorageBuffers()</code>.</p>
+<p><strong>Example</strong></p>
+<p>If a vertex shader binds 2 samplers, 2 storage textures, 2 storage
+buffers, and 2 uniform buffers, its binding layout should look like
+this:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode glsl"><code class="sourceCode glsl"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Any samplers come first in the set, in SDL bind slot order</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">layout</span><span class="op">(</span>set <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">binding</span> <span class="op">=</span> <span class="dv">0</span><span class="op">)</span> <span class="kw">uniform</span> <span class="dt">sampler2D</span> samplerBoundToSlot0<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">layout</span><span class="op">(</span>set <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">binding</span> <span class="op">=</span> <span class="dv">1</span><span class="op">)</span> <span class="kw">uniform</span> <span class="dt">sampler2D</span> samplerBoundToSlot1<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Any storage textures come next in the set, in SDL bind slot order</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">layout</span><span class="op">(</span>set <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">binding</span> <span class="op">=</span> <span class="dv">2</span><span class="op">)</span> <span class="kw">uniform</span> <span class="dt">image2D</span> storageTextureBoundToSlot0<span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">layout</span><span class="op">(</span>set <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">binding</span> <span class="op">=</span> <span class="dv">3</span><span class="op">)</span> <span class="kw">uniform</span> <span class="dt">image2D</span> storageTextureBoundToSlot1<span class="op">;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">// Any storage buffers come next in the set, in SDL bind slot order</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">layout</span><span class="op">(</span>set <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">binding</span> <span class="op">=</span> <span class="dv">4</span><span class="op">)</span> <span class="kw">buffer</span> storageBufferBoundToSlot0 <span class="op">{</span> <span class="op">...</span> <span class="op">};</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">layout</span><span class="op">(</span>set <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">binding</span> <span class="op">=</span> <span class="dv">5</span><span class="op">)</span> <span class="kw">buffer</span> storageBufferBoundToSlot1 <span class="op">{</span> <span class="op">...</span> <span class="op">};</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">// Any uniform buffers are in their own set, in SDL slot order</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">layout</span><span class="op">(</span>set <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">binding</span> <span class="op">=</span> <span class="dv">0</span><span class="op">)</span> <span class="kw">uniform</span> UniformDataBoundToSlot0 <span class="op">{</span> <span class="op">...</span> <span class="op">};</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="kw">layout</span><span class="op">(</span>set <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">binding</span> <span class="op">=</span> <span class="dv">1</span><span class="op">)</span> <span class="kw">uniform</span> UniformDataBoundToSlot1 <span class="op">{</span> <span class="op">...</span> <span class="op">};</span></span></code></pre></div>
+<hr />
+<p><strong>DXBC / DXIL (HLSL)</strong></p>
+<p>For vertex shaders, use: - <code>(t[n], space0)</code> for sampled
+textures, storage textures, and storage buffers -
+<code>(s[n], space0)</code> for samplers - <code>(b[n], space1)</code>
+for uniform data</p>
+<p>For fragment (aka &quot;pixel&quot;) shaders, use: -
+<code>(t[n], space2)</code> for sampled textures, storage textures, and
+storage buffers - <code>(s[n], space2)</code> for samplers -
+<code>(b[n], space3)</code> for uniform data</p>
+<p>The first resource in a given register set must have a register index
+of <code>0</code>. Additional resources must appear at consecutive
+indices (1, 2, etc), leaving no gaps in the register set.</p>
+<p>All sampled textures must come first in the <code>t</code> register
+set, in order of how they are bound via
+<code>SDL_BindGPU*Samplers()</code>.</p>
+<p>All sampler objects must be in the <code>s</code> register set, in
+the same order as the textures above.</p>
+<p>All storage textures must come after all samplers in the
+<code>t</code> register set, in order of how they are bound via
+<code>SDL_Bind*StorageTextures()</code>.</p>
+<p>All storage buffers must come after all storage textures in the
+<code>t</code> register set, in order of how they are bound via
+<code>SDL_Bind*StorageBuffers()</code>.</p>
+<p><strong>Example</strong></p>
+<p>If a pixel shader binds 2 samplers, 2 storage textures, 2 storage
+buffers, and 2 uniform buffers, its binding layout should look like
+this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Any samplers and sampled textures come first in their respective register sets, in SDL bind slot order</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>SamplerState SamplerBoundToSlot0 <span class="op">:</span> <span class="dt">register</span><span class="op">(</span> s0<span class="op">,</span> space2 <span class="op">);</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>SamplerState SamplerBoundToSlot1 <span class="op">:</span> <span class="dt">register</span><span class="op">(</span> s1<span class="op">,</span> space2 <span class="op">);</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>Texture2D SampledTextureBoundToSlot0 <span class="op">:</span> <span class="dt">register</span><span class="op">(</span> t0<span class="op">,</span> space2 <span class="op">);</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>Texture2D SampledTextureBoundToSlot1 <span class="op">:</span> <span class="dt">register</span><span class="op">(</span> t1<span class="op">,</span> space2 <span class="op">);</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Any storage textures come next in the `t` register set, in SDL bind slot order</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>Texture2D StorageTextureBoundToSlot0 <span class="op">:</span> <span class="dt">register</span><span class="op">(</span> t2<span class="op">,</span> space2 <span class="op">);</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>Texture2D StorageTextureBoundToSlot1 <span class="op">:</span> <span class="dt">register</span><span class="op">(</span> t3<span class="op">,</span> space2 <span class="op">);</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">// Any storage buffers come next in the `t` register set, in SDL bind slot order</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ByteAddressBuffer StorageBufferBoundToSlot0 <span class="op">:</span> <span class="dt">register</span><span class="op">(</span> t4<span class="op">,</span> space2 <span class="op">);</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>ByteAddressBuffer StorageBufferBoundToSlot1 <span class="op">:</span> <span class="dt">register</span><span class="op">(</span> t5<span class="op">,</span> space2 <span class="op">);</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">// Any uniform buffers are in the `b` register set *and* in their own space, in SDL slot order</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>cbuffer UniformDataBoundToSlot0 <span class="op">:</span> <span class="dt">register</span><span class="op">(</span> b0<span class="op">,</span> space3 <span class="op">)</span> <span class="op">{</span> <span class="op">...</span> <span class="op">};</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>cbuffer UniformDataBoundToSlot1 <span class="op">:</span> <span class="dt">register</span><span class="op">(</span> b1<span class="op">,</span> space3 <span class="op">)</span> <span class="op">{</span> <span class="op">...</span> <span class="op">};</span></span></code></pre></div>
+<hr />
+<p><strong>MSL / Metallib (Metal Shading Language)</strong></p>
+<p>The first resource in a given argument table must have an index of
+<code>0</code>. Additional resources must appear at consecutive indices
+(1, 2, etc), leaving no gaps in the table. (<em>Except</em> in the case
+of vertex buffers, which are mentioned below.)</p>
+<p>All sampled textures must come first in the <code>[[texture]]</code>
+argument table, in order of how they are bound via
+<code>SDL_BindGPU*Samplers()</code>.</p>
+<p>All sampler objects must be in the <code>[[sampler]]</code> argument
+table, in the same order as the textures above.</p>
+<p>All storage textures must come after all sampled textures in the
+<code>[[texture]]</code> argument table, in order of how they are bound
+via <code>SDL_BindGPU*StorageTextures()</code>.</p>
+<p>All uniform buffers must come first in the <code>[[buffer]]</code>
+argument table, in order of their slots in
+<code>SDL_PushGPU*UniformData()</code>.</p>
+<p>All storage buffers must come after all uniform buffers in the
+<code>[[buffer]]</code> argument table, in order of how they are bound
+via <code>SDL_BindGPU*StorageBuffers()</code>.</p>
+<p>In Metal, vertex buffers are also included in the
+<code>[[buffer]]</code> argument table. To work around this, SDL forces
+the vertex buffer bound to slot 0 to be bound at
+<code>[[buffer(14)]]</code>. The vertex buffer in slot 1 will be bound
+to <code>[[buffer(15)]]</code>, and so on. Rather than manually
+authoring vertex buffer indices, use the <code>[[stage_in]]</code>
+attribute which will automatically use the vertex input information from
+the <a href="SDL_GPUGraphicsPipeline.html">SDL_GPUGraphicsPipeline</a>.</p>
+<p><strong>Example</strong></p>
+<p>For a vertex shader with 1 vertex buffer, 2 samplers, 2 storage
+textures, 2 storage buffers, and 2 uniform buffers, the main function
+signature should look something like this:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c++"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>vertex VertexOutput ExampleVertexShader<span class="op">(</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Vertex buffers are their own special thing...</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    SomeVertexInput input <span class="op">[[</span><span class="at">stage_in</span><span class="op">]],</span> <span class="co">// alternatively, SomeVertexInput input [[buffer(14)]]</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Any samplers go in the `sampler` table, in SDL bind slot order</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    sampler samplerBoundToSlot0 <span class="op">[[</span><span class="at">sampler</span><span class="op">(</span><span class="dv">0</span><span class="op">)]],</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    sampler samplerBoundToSlot1 <span class="op">[[</span><span class="at">sampler</span><span class="op">(</span><span class="dv">1</span><span class="op">)]],</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Any sampled textures come first in the `texture` table, in SDL bind slot order</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    texture2d<span class="op">&lt;</span><span class="dt">float</span><span class="op">&gt;</span> sampledTextureBoundToSlot0 <span class="op">[[</span><span class="at">texture</span><span class="op">(</span><span class="dv">0</span><span class="op">)]],</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    texture2d<span class="op">&lt;</span><span class="dt">float</span><span class="op">&gt;</span> sampledTextureBoundToSlot1 <span class="op">[[</span><span class="at">texture</span><span class="op">(</span><span class="dv">1</span><span class="op">)]],</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Any storage textures come next in the `texture` table, in SDL bind slot order</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    texture2d<span class="op">&lt;</span><span class="dt">float</span><span class="op">&gt;</span> storageTextureBoundToSlot0 <span class="op">[[</span><span class="at">texture</span><span class="op">(</span><span class="dv">2</span><span class="op">)]],</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    texture2d<span class="op">&lt;</span><span class="dt">float</span><span class="op">&gt;</span> storageTextureBoundToSlot1 <span class="op">[[</span><span class="at">texture</span><span class="op">(</span><span class="dv">3</span><span class="op">)]],</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Any uniform buffers come first in the `buffer` table, in SDL slot order</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    constant SomeUniformStruct uniformDataBoundToSlot0 <span class="op">[[</span><span class="at">buffer</span><span class="op">(</span><span class="dv">0</span><span class="op">)]],</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    constant SomeUniformStruct uniformDataBoundToSlot1 <span class="op">[[</span><span class="at">buffer</span><span class="op">(</span><span class="dv">1</span><span class="op">)]],</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Any storage buffers come next in the `buffer` table, in SDL bind slot order</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    device SomeBufferStruct<span class="op">&amp;</span> storageBufferBoundToSlot0 <span class="op">[[</span><span class="at">buffer</span><span class="op">(</span><span class="dv">2</span><span class="op">)]],</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    device SomeBufferStruct<span class="op">&amp;</span> storageBufferBoundToSlot1 <span class="op">[[</span><span class="at">buffer</span><span class="op">(</span><span class="dv">3</span><span class="op">)]]);</span></span></code></pre></div>
+<hr />
+<p>Shader semantics other than system-value semantics do not matter in
+D3D12. For ease of use, the SDL implementation assumes that non
+system-value semantics will all be <code>TEXCOORD</code>. If you are
+using HLSL as the shader source language, your vertex semantics should
+start at <code>TEXCOORD0</code> and increment like so:
+<code>TEXCOORD1</code>, <code>TEXCOORD2</code>, etc.</p>
+<p>If you wish to change the semantic prefix to something other than
+<code>TEXCOORD</code> you can use <a href="SDL_PROP_GPU_DEVICE_CREATE_D3D12_SEMANTIC_NAME_STRING.html">SDL_PROP_GPU_DEVICE_CREATE_D3D12_SEMANTIC_NAME_STRING</a>
+with <a href="SDL_CreateGPUDeviceWithProperties.html">SDL_CreateGPUDeviceWithProperties</a>().</p>
+<p>There are optional properties that can be provided through
+<code>props</code>. These are the supported properties:</p>
+<ul>
+<li><a href="SDL_PROP_GPU_SHADER_CREATE_NAME_STRING.html"><code>SDL_PROP_GPU_SHADER_CREATE_NAME_STRING</code></a>:
+a name that can be displayed in debugging tools.</li>
+</ul>
+<h2 id="version">Version</h2>
+<p>This function is available since SDL 3.2.0.</p>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="SDL_CreateGPUGraphicsPipeline.html">SDL_CreateGPUGraphicsPipeline</a></li>
+<li><a href="SDL_ReleaseGPUShader.html">SDL_ReleaseGPUShader</a></li>
+</ul>
+<hr />
+<p><a href="CategoryAPI.html">CategoryAPI</a>, <a href="CategoryAPIFunction.html">CategoryAPIFunction</a>, <a href="CategoryGPU.html">CategoryGPU</a></p>
+</body>
+</html>

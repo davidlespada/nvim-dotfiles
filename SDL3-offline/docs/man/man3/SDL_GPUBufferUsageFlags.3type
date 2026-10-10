@@ -1,0 +1,46 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_GPUBufferUsageFlags:
+.\"   https://wiki.libsdl.org/SDL_GPUBufferUsageFlags
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_GPUBufferUsageFlags
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_GPUBufferUsageFlags 3type "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 DATATYPES"
+.SH NAME
+SDL_GPUBufferUsageFlags \- Specifies how a buffer is intended to be used by the client.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_gpu.h>
+.PP
+.BI "typedef Uint32 SDL_GPUBufferUsageFlags;
+.BI "
+.BI "#define SDL_GPU_BUFFERUSAGE_VERTEX                                  (1u << 0) /**< Buffer is a vertex buffer. */
+.BI "#define SDL_GPU_BUFFERUSAGE_INDEX                                   (1u << 1) /**< Buffer is an index buffer. */
+.BI "#define SDL_GPU_BUFFERUSAGE_INDIRECT                                (1u << 2) /**< Buffer is an indirect buffer. */
+.BI "#define SDL_GPU_BUFFERUSAGE_GRAPHICS_STORAGE_READ                   (1u << 3) /**< Buffer supports storage reads in graphics stages. */
+.BI "#define SDL_GPU_BUFFERUSAGE_COMPUTE_STORAGE_READ                    (1u << 4) /**< Buffer supports storage reads in the compute stage. */
+.BI "#define SDL_GPU_BUFFERUSAGE_COMPUTE_STORAGE_WRITE                   (1u << 5) /**< Buffer supports storage writes in the compute stage. */
+.fi
+.SH DESCRIPTION
+A buffer must have at least one usage flag\[char46]
+.PP
+If a buffer has multiple read usages, this may lead to a performance penalty due to more conservative memory barriers, but it also may not necessarily affect the performance\[char46]
+.PP
+Unlike textures, READ | WRITE can be used for simultaneous read-write usage\[char46] The same data synchronization concerns as textures apply\[char46]
+.PP
+If you use a STORAGE flag, the data in the buffer must respect std430 layout conventions\[char46] In practical terms this means you must ensure that vec3 and vec4 fields are 16-byte aligned\[char46]
+
+.SH AVAILABILITY
+This datatype is available since SDL 3\[char46]2\[char46]0\[char46]
+
+.SH SEE ALSO
+.BR SDL_CreateGPUBuffer (3)

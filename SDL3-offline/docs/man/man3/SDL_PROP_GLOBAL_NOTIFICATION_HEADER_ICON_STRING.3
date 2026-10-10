@@ -1,0 +1,41 @@
+.\" This manpage content is licensed under Creative Commons
+.\"  Attribution 4.0 International (CC BY 4.0)
+.\"   https://creativecommons.org/licenses/by/4.0/
+.\" This manpage was generated from SDL's wiki page for SDL_PROP_GLOBAL_NOTIFICATION_HEADER_ICON_STRING:
+.\"   https://wiki.libsdl.org/SDL_PROP_GLOBAL_NOTIFICATION_HEADER_ICON_STRING
+.\" Generated with SDL/build-scripts/wikiheaders.pl
+.\"  revision SDL-3.5.0-137944b
+.\" Please report issues in this manpage's content at:
+.\"   https://github.com/libsdl-org/sdlwiki/issues/new
+.\" Please report issues in the generation of this manpage from the wiki at:
+.\"   https://github.com/libsdl-org/SDL/issues/new?title=Misgenerated%20manpage%20for%20SDL_PROP_GLOBAL_NOTIFICATION_HEADER_ICON_STRING
+.\" SDL can be found at https://libsdl.org/
+.de URL
+\$2 \(laURL: \$1 \(ra\$3
+..
+.if \n[.g] .mso www.tmac
+.TH SDL_PROP_GLOBAL_NOTIFICATION_HEADER_ICON_STRING 3 "SDL 3.5.0" "Simple Directmedia Layer" "SDL3 FUNCTIONS"
+.SH NAME
+SDL_PROP_GLOBAL_NOTIFICATION_HEADER_ICON_STRING \- The path to an image to be used as the header icon for system notifications on some platforms.
+.SH SYNOPSIS
+.nf
+.B #include <SDL3/SDL_notification.h>
+.PP
+.BI "#define SDL_PROP_GLOBAL_NOTIFICATION_HEADER_ICON_STRING \(dqSDL.notification.header_icon\(dq
+.fi
+.SH DESCRIPTION
+This is required on: - Windows - *nix when not running in a container, and no \[char46]desktop entry is available
+.PP
+Image types supported depend on the platform, but \[char46]png generally offers the best compatability\[char46]
+.PP
+On *nix platforms, this can also be the name of a system icon, as specified by the Icon Naming Specification\[char46]
+.PP
+Can be set before calling
+.BR SDL_ShowNotificationWithProperties ()
+or
+.BR SDL_ShowNotification ()
+for the first time\[char46]
+
+.SH AVAILABILITY
+This macro is available since SDL 3\[char46]6\[char46]0\[char46]
+
