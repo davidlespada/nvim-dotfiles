@@ -1,45 +1,30 @@
--- Minimal Neovim config (from scratch)
--- This is step 0: no plugins, just vanilla options.
--- We will add modules (options, keymaps, plugins) one by one.
+require("config.lazy")
+require("config.options")
+require("config.keymaps")
 
--- Leader key: must be set BEFORE any plugins/keymaps
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.lsp.enable({ "clangd", "ols", "pyright" })
 
--- Setup lazy.nvim (auto-clone on fresh machines)
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
+vim.o.autocomplete = true
 
--- Basic options (each one explained)
-vim.opt.number = true         -- show line numbers
-vim.opt.relativenumber = false -- absolute numbers (toggle later if you want)
-vim.opt.tabstop = 2           -- a Tab = 2 spaces wide
-vim.opt.shiftwidth = 2        -- auto-indent width
-vim.opt.expandtab = true      -- Tab key inserts spaces
-vim.opt.termguicolors = true  -- 24-bit color
-vim.opt.signcolumn = "yes"    -- always show gutter (avoids text shift)
-vim.opt.cursorline = true     -- highlight current line
-vim.opt.scrolloff = 8         -- keep 8 lines visible around cursor
-vim.opt.ignorecase = true     -- /search case-insensitive...
-vim.opt.smartcase = true      -- ...unless capital letter used
-vim.opt.splitright = true     -- :vsplit opens right
-vim.opt.splitbelow = true     -- :split opens below
-vim.opt.updatetime = 250      -- faster CursorHold / diagnostics
-vim.opt.timeoutlen = 300      -- faster which-key popup
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(ev)
+		local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
+		if client:supports_method("textDocument/completion") then
+			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+		end
+	end,
+})
 
--- One sanity keymap: clear search highlight with <Esc>
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear search highlight" })
+vim.opt.complete:append("o")
+vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
+-- number auto suggestions
+vim.o.pumheight = 7
+vim.o.pumborder = "rounded"
 
-print("clean init.lua loaded")
-
-require("lazy").setup("daboio.plugins")
+-- format on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	callback = function(args)
+		require("conform").format({ bufnr = args.buf })
+	end,
+})
