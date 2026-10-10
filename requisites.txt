@@ -1,0 +1,41 @@
+# nvim-dotfiles requisites (Arch / CachyOS, official repos only, no AUR needed)
+# Install with:
+#   sudo pacman -S --needed $(grep -vE '^\s*(#|$)' requisites.txt | tr '\n' ' ')
+#
+# Generated from ~/.config/nvim:
+#   init.lua (LSP: clangd, ols, pyright)
+#   lua/config/lazy.lua (lazy.nvim bootstrap)
+#   lua/plugins/init.lua (telescope-fzf-native build, treesitter, conform formatters)
+#   lua/config/keymaps.lua (telescope pickers)
+
+# editor
+neovim
+# lazy.nvim bootstrap (lua/config/lazy.lua) + neo-tree git status
+git
+# C compiler for nvim-treesitter parsers (python,c,cpp,odin) and telescope-fzf-native build
+gcc
+# telescope-fzf-native build step: cmake --build (lua/plugins/init.lua)
+make
+cmake
+# telescope find_files (<leader>ff) / live_grep (<leader>sg) / grep_string
+fd
+ripgrep
+# treesitter parser tooling (nvim-treesitter)
+tree-sitter-cli
+# provides clangd (init.lua) + clang-format for c/cpp (conform formatters_by_ft)
+clang
+# lua formatter (conform formatters_by_ft)
+stylua
+# python formatters (conform formatters_by_ft)
+python-black
+python-isort
+# python LSP (init.lua vim.lsp.enable pyright); pulls nodejs automatically
+pyright
+# odin LSP (init.lua vim.lsp.enable ols)
+ols
+# odin formatter (conform formatters_by_ft)
+odinfmt
+# runtime for black/isort
+python
+# runtime for pyright (also pulled as pyright dependency)
+nodejs
