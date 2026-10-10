@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.16)
+project(sdl3-cpp-starter CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+find_package(SDL3 REQUIRED)
+add_executable(cpp-starter main.cpp)
+target_link_libraries(cpp-starter PRIVATE SDL3::SDL3)
+target_compile_options(cpp-starter PRIVATE -Wall -Wextra)

@@ -1,0 +1,6 @@
+[book]
+title = "SDL3 in C++ for the Unreal developer"
+authors = ["opencode guide"]
+
+[build]
+create-missing = false
